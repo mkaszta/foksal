@@ -28,31 +28,16 @@ namespace Foksal
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {            
-            string login = txtUsername.Text;
-            string password = RSACoder.Encryption(txtPassword.Text);
+        {                        
+            AppUser.Instance.LogIn(txtUsername.Text, txtPassword.Text);
 
-            using (SqlConnection dbConnection = new DBConnection().Connection)
+            if (AppUser.Instance.IsLoggedIn)
             {
-                string sqlQuery = string.Format("SELECT * FROM [Uzytkownicy] WHERE [Login] = '{0}' AND [Haslo] = '{1}'", login, password);
-                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        AppUser.Instance.IsLoggedIn = true;
-                    }
-                }
-            }
-
-            if (!AppUser.Instance.IsLoggedIn)
-            {
-                MessageBox.Show("Niepoprawna nazwa użytkownika i/lub hasło.", "Nieudane logowanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
             else
             {
-                this.Close();
+                MessageBox.Show("Niepoprawna nazwa użytkownika i/lub hasło.", "Nieudane logowanie", MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
         }
     }

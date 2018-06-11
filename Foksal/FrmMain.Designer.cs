@@ -30,35 +30,35 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.ribbon1 = new Janus.Windows.Ribbon.Ribbon();
+            this.dropDownCommand1 = new Janus.Windows.Ribbon.DropDownCommand();
             this.ribbonTabMain = new Janus.Windows.Ribbon.RibbonTab();
+            this.ribbonGroupUser = new Janus.Windows.Ribbon.RibbonGroup();
+            this.btnLogIn = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnLogOut = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnExit = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroupMain = new Janus.Windows.Ribbon.RibbonGroup();
-            this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
             this.buttonCommandUmowy = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommandProdukty = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommandRozliczenia = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommandDeskryptor = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTabSlowniki = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroupSlowniki = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommandLicencjodawcy = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommandWaluty = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommandDeskryptor = new Janus.Windows.Ribbon.ButtonCommand();
-            this.ribbonTabSettings = new Janus.Windows.Ribbon.RibbonTab();
-            this.ribbonGroupUsers = new Janus.Windows.Ribbon.RibbonGroup();
-            this.buttonCommandUsers = new Janus.Windows.Ribbon.ButtonCommand();
-            this.ribbonGroupPersonal = new Janus.Windows.Ribbon.RibbonGroup();
-            this.buttonCommandChangePassword = new Janus.Windows.Ribbon.ButtonCommand();
             this.Reports = new Janus.Windows.Ribbon.RibbonTab();
-            this.ribbonGroupReportsAgreements = new Janus.Windows.Ribbon.RibbonGroup();
-            this.ribbonGroupReportsSettlements = new Janus.Windows.Ribbon.RibbonGroup();
             this.ribbonGroupReportsGeneral = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand1 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonGroupReportsAgreements = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand2 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand3 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonGroupReportsSettlements = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand4 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.dropDownCommand1 = new Janus.Windows.Ribbon.DropDownCommand();
-            this.ribbonGroupUser = new Janus.Windows.Ribbon.RibbonGroup();
-            this.buttonCommandLogIn = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommandLogOut = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommandExit = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand3 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonTabSettings = new Janus.Windows.Ribbon.RibbonTab();
+            this.ribbonGroupPersonal = new Janus.Windows.Ribbon.RibbonGroup();
+            this.buttonCommandChangePassword = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonGroupUsers = new Janus.Windows.Ribbon.RibbonGroup();
+            this.buttonCommandUsers = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +90,11 @@
             this.ribbonTabSettings});
             this.ribbon1.Text = "";
             // 
+            // dropDownCommand1
+            // 
+            this.dropDownCommand1.Key = "dropDownCommand1";
+            this.dropDownCommand1.Name = "dropDownCommand1";
+            // 
             // ribbonTabMain
             // 
             this.ribbonTabMain.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
@@ -98,6 +103,39 @@
             this.ribbonTabMain.Key = "ribbonTab1";
             this.ribbonTabMain.Name = "ribbonTabMain";
             this.ribbonTabMain.Text = "Narzędzia główne";
+            // 
+            // ribbonGroupUser
+            // 
+            this.ribbonGroupUser.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnLogIn,
+            this.btnLogOut,
+            this.btnExit});
+            this.ribbonGroupUser.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupUser;
+            this.ribbonGroupUser.Key = "ribbonGroup1";
+            this.ribbonGroupUser.Name = "ribbonGroupUser";
+            this.ribbonGroupUser.Text = "Użytkownik";
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Key = "buttonCommand5";
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Text = "Zaloguj";
+            this.btnLogIn.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommandLogIn_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Key = "buttonCommand5";
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Text = "Wyloguj";
+            this.btnLogOut.Visible = false;
+            this.btnLogOut.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnLogOut_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Key = "buttonCommand5";
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Text = "Zamknij";
+            this.btnExit.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommandExit_Click);
             // 
             // ribbonGroupMain
             // 
@@ -111,19 +149,6 @@
             this.ribbonGroupMain.Key = "ribbonGroup1";
             this.ribbonGroupMain.Name = "ribbonGroupMain";
             this.ribbonGroupMain.Text = "Podstawowe";
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 497);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(899, 23);
-            // 
-            // 
-            // 
-            this.ribbonStatusBar1.SuperTipComponent.AutoPopDelay = 2000;
-            this.ribbonStatusBar1.SuperTipComponent.ImageList = null;
-            this.ribbonStatusBar1.TabIndex = 2;
-            this.ribbonStatusBar1.Text = "ribbonStatusBar1";
             // 
             // buttonCommandUmowy
             // 
@@ -142,6 +167,12 @@
             this.buttonCommandRozliczenia.Key = "buttonCommand1";
             this.buttonCommandRozliczenia.Name = "buttonCommandRozliczenia";
             this.buttonCommandRozliczenia.Text = "Rozliczenia";
+            // 
+            // buttonCommandDeskryptor
+            // 
+            this.buttonCommandDeskryptor.Key = "buttonCommand1";
+            this.buttonCommandDeskryptor.Name = "buttonCommandDeskryptor";
+            this.buttonCommandDeskryptor.Text = "Zmiany deskryptora";
             // 
             // ribbonTabSlowniki
             // 
@@ -174,52 +205,6 @@
             this.buttonCommandWaluty.Name = "buttonCommandWaluty";
             this.buttonCommandWaluty.Text = "Waluty";
             // 
-            // buttonCommandDeskryptor
-            // 
-            this.buttonCommandDeskryptor.Key = "buttonCommand1";
-            this.buttonCommandDeskryptor.Name = "buttonCommandDeskryptor";
-            this.buttonCommandDeskryptor.Text = "Zmiany deskryptora";
-            // 
-            // ribbonTabSettings
-            // 
-            this.ribbonTabSettings.Enabled = false;
-            this.ribbonTabSettings.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
-            this.ribbonGroupPersonal,
-            this.ribbonGroupUsers});
-            this.ribbonTabSettings.Key = "ribbonTab1";
-            this.ribbonTabSettings.Name = "ribbonTabSettings";
-            this.ribbonTabSettings.Text = "Ustawienia";
-            // 
-            // ribbonGroupUsers
-            // 
-            this.ribbonGroupUsers.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommandUsers});
-            this.ribbonGroupUsers.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupUsers;
-            this.ribbonGroupUsers.Key = "ribbonGroup1";
-            this.ribbonGroupUsers.Name = "ribbonGroupUsers";
-            this.ribbonGroupUsers.Text = "Użytkownicy";
-            // 
-            // buttonCommandUsers
-            // 
-            this.buttonCommandUsers.Key = "buttonCommand1";
-            this.buttonCommandUsers.Name = "buttonCommandUsers";
-            this.buttonCommandUsers.Text = "Użytkownicy i uprawnienia";
-            // 
-            // ribbonGroupPersonal
-            // 
-            this.ribbonGroupPersonal.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommandChangePassword});
-            this.ribbonGroupPersonal.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupPersonal;
-            this.ribbonGroupPersonal.Key = "ribbonGroup1";
-            this.ribbonGroupPersonal.Name = "ribbonGroupPersonal";
-            this.ribbonGroupPersonal.Text = "Moje";
-            // 
-            // buttonCommandChangePassword
-            // 
-            this.buttonCommandChangePassword.Key = "buttonCommand1";
-            this.buttonCommandChangePassword.Name = "buttonCommandChangePassword";
-            this.buttonCommandChangePassword.Text = "Zmień hasło";
-            // 
             // Reports
             // 
             this.Reports.Enabled = false;
@@ -230,25 +215,6 @@
             this.Reports.Key = "ribbonTab1";
             this.Reports.Name = "Reports";
             this.Reports.Text = "Raporty";
-            // 
-            // ribbonGroupReportsAgreements
-            // 
-            this.ribbonGroupReportsAgreements.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommand2});
-            this.ribbonGroupReportsAgreements.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupReportsAgreements;
-            this.ribbonGroupReportsAgreements.Key = "ribbonGroup1";
-            this.ribbonGroupReportsAgreements.Name = "ribbonGroupReportsAgreements";
-            this.ribbonGroupReportsAgreements.Text = "Umowy";
-            // 
-            // ribbonGroupReportsSettlements
-            // 
-            this.ribbonGroupReportsSettlements.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommand4,
-            this.buttonCommand3});
-            this.ribbonGroupReportsSettlements.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupReportsSettlements;
-            this.ribbonGroupReportsSettlements.Key = "ribbonGroup1";
-            this.ribbonGroupReportsSettlements.Name = "ribbonGroupReportsSettlements";
-            this.ribbonGroupReportsSettlements.Text = "Rozliczenia";
             // 
             // ribbonGroupReportsGeneral
             // 
@@ -265,17 +231,30 @@
             this.buttonCommand1.Name = "buttonCommand1";
             this.buttonCommand1.Text = "Raport końcowy";
             // 
+            // ribbonGroupReportsAgreements
+            // 
+            this.ribbonGroupReportsAgreements.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommand2});
+            this.ribbonGroupReportsAgreements.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupReportsAgreements;
+            this.ribbonGroupReportsAgreements.Key = "ribbonGroup1";
+            this.ribbonGroupReportsAgreements.Name = "ribbonGroupReportsAgreements";
+            this.ribbonGroupReportsAgreements.Text = "Umowy";
+            // 
             // buttonCommand2
             // 
             this.buttonCommand2.Key = "buttonCommand2";
             this.buttonCommand2.Name = "buttonCommand2";
             this.buttonCommand2.Text = "Podsumowanie umów";
             // 
-            // buttonCommand3
+            // ribbonGroupReportsSettlements
             // 
-            this.buttonCommand3.Key = "buttonCommand3";
-            this.buttonCommand3.Name = "buttonCommand3";
-            this.buttonCommand3.Text = "Harmonogram wypłat zaliczki";
+            this.ribbonGroupReportsSettlements.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommand4,
+            this.buttonCommand3});
+            this.ribbonGroupReportsSettlements.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupReportsSettlements;
+            this.ribbonGroupReportsSettlements.Key = "ribbonGroup1";
+            this.ribbonGroupReportsSettlements.Name = "ribbonGroupReportsSettlements";
+            this.ribbonGroupReportsSettlements.Text = "Rozliczenia";
             // 
             // buttonCommand4
             // 
@@ -283,48 +262,70 @@
             this.buttonCommand4.Name = "buttonCommand4";
             this.buttonCommand4.Text = "Lista rozliczeń";
             // 
-            // dropDownCommand1
+            // buttonCommand3
             // 
-            this.dropDownCommand1.Key = "dropDownCommand1";
-            this.dropDownCommand1.Name = "dropDownCommand1";
+            this.buttonCommand3.Key = "buttonCommand3";
+            this.buttonCommand3.Name = "buttonCommand3";
+            this.buttonCommand3.Text = "Harmonogram wypłat zaliczki";
             // 
-            // ribbonGroupUser
+            // ribbonTabSettings
             // 
-            this.ribbonGroupUser.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommandLogIn,
-            this.buttonCommandLogOut,
-            this.buttonCommandExit});
-            this.ribbonGroupUser.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupUser;
-            this.ribbonGroupUser.Key = "ribbonGroup1";
-            this.ribbonGroupUser.Name = "ribbonGroupUser";
-            this.ribbonGroupUser.Text = "Użytkownik";
+            this.ribbonTabSettings.Enabled = false;
+            this.ribbonTabSettings.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
+            this.ribbonGroupPersonal,
+            this.ribbonGroupUsers});
+            this.ribbonTabSettings.Key = "ribbonTab1";
+            this.ribbonTabSettings.Name = "ribbonTabSettings";
+            this.ribbonTabSettings.Text = "Ustawienia";
             // 
-            // buttonCommandLogIn
+            // ribbonGroupPersonal
             // 
-            this.buttonCommandLogIn.Key = "buttonCommand5";
-            this.buttonCommandLogIn.Name = "buttonCommandLogIn";
-            this.buttonCommandLogIn.Text = "Zaloguj";
-            this.buttonCommandLogIn.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommandLogIn_Click);
+            this.ribbonGroupPersonal.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommandChangePassword});
+            this.ribbonGroupPersonal.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupPersonal;
+            this.ribbonGroupPersonal.Key = "ribbonGroup1";
+            this.ribbonGroupPersonal.Name = "ribbonGroupPersonal";
+            this.ribbonGroupPersonal.Text = "Moje";
             // 
-            // buttonCommandLogOut
+            // buttonCommandChangePassword
             // 
-            this.buttonCommandLogOut.Key = "buttonCommand5";
-            this.buttonCommandLogOut.Name = "buttonCommandLogOut";
-            this.buttonCommandLogOut.Text = "Wyloguj";
-            this.buttonCommandLogOut.Visible = false;
+            this.buttonCommandChangePassword.Key = "buttonCommand1";
+            this.buttonCommandChangePassword.Name = "buttonCommandChangePassword";
+            this.buttonCommandChangePassword.Text = "Zmień hasło";
             // 
-            // buttonCommandExit
+            // ribbonGroupUsers
             // 
-            this.buttonCommandExit.Key = "buttonCommand5";
-            this.buttonCommandExit.Name = "buttonCommandExit";
-            this.buttonCommandExit.Text = "Zamknij";
-            this.buttonCommandExit.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommandExit_Click);
+            this.ribbonGroupUsers.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommandUsers});
+            this.ribbonGroupUsers.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroupUsers;
+            this.ribbonGroupUsers.Key = "ribbonGroup1";
+            this.ribbonGroupUsers.Name = "ribbonGroupUsers";
+            this.ribbonGroupUsers.Text = "Użytkownicy";
+            // 
+            // buttonCommandUsers
+            // 
+            this.buttonCommandUsers.Key = "buttonCommand1";
+            this.buttonCommandUsers.Name = "buttonCommandUsers";
+            this.buttonCommandUsers.Text = "Użytkownicy i uprawnienia";
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 498);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(899, 23);
+            // 
+            // 
+            // 
+            this.ribbonStatusBar1.SuperTipComponent.AutoPopDelay = 2000;
+            this.ribbonStatusBar1.SuperTipComponent.ImageList = null;
+            this.ribbonStatusBar1.TabIndex = 2;
+            this.ribbonStatusBar1.Text = "ribbonStatusBar1";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 520);
+            this.ClientSize = new System.Drawing.Size(899, 521);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbon1);
             this.IsMdiContainer = true;
@@ -366,9 +367,9 @@
         private Janus.Windows.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand1;
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroupUser;
-        private Janus.Windows.Ribbon.ButtonCommand buttonCommandLogIn;
-        private Janus.Windows.Ribbon.ButtonCommand buttonCommandLogOut;
-        private Janus.Windows.Ribbon.ButtonCommand buttonCommandExit;
+        private Janus.Windows.Ribbon.ButtonCommand btnLogIn;
+        private Janus.Windows.Ribbon.ButtonCommand btnLogOut;
+        private Janus.Windows.Ribbon.ButtonCommand btnExit;
     }
 }
 

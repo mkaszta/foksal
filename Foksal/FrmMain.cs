@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,21 +18,41 @@ namespace Foksal
             InitializeComponent();            
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void UserLogIn()
         {
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
+
+            btnLogIn.Visible = false;
+            btnLogOut.Visible = true;
+        }
+
+        private void UserLogOut()
+        {
+            AppUser.Instance.LogOut();
+
+            btnLogIn.Visible = true;
+            btnLogOut.Visible = false;
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            this.UserLogIn();
         }
 
         private void buttonCommandLogIn_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.ShowDialog();
+            this.UserLogOut();
+            this.UserLogIn();
+        }
+        private void btnLogOut_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            this.UserLogOut();
         }
 
         private void buttonCommandExit_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             Application.Exit();
-        }
+        }       
     }
 }
