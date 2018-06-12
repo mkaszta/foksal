@@ -40,19 +40,19 @@ namespace Foksal
             this.UserLogIn();
         }
 
-        private void buttonCommandLogIn_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
             this.UserLogOut();
             this.UserLogIn();
         }
-        private void btnLogOut_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.UserLogOut();
         }
 
-        private void buttonCommandExit_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }       
+        }
     }
 }
