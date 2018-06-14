@@ -36,16 +36,16 @@
             this.btnLogOut = new System.Windows.Forms.RibbonButton();
             this.btnExit = new System.Windows.Forms.RibbonButton();
             this.ribbonPanelMain_Basic = new System.Windows.Forms.RibbonPanel();
-            this.ribbonTabDictionaries = new System.Windows.Forms.RibbonTab();
-            this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
-            this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
             this.btnAgreements = new System.Windows.Forms.RibbonButton();
             this.btnProducts = new System.Windows.Forms.RibbonButton();
             this.btnSettlements = new System.Windows.Forms.RibbonButton();
             this.btnDescriptorChanges = new System.Windows.Forms.RibbonButton();
+            this.ribbonTabDictionaries = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelDictionaries_Dict = new System.Windows.Forms.RibbonPanel();
             this.btnLicensersDict = new System.Windows.Forms.RibbonButton();
             this.btnCurrencyDict = new System.Windows.Forms.RibbonButton();
+            this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
+            this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelSettings_Mine = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsChangePassword = new System.Windows.Forms.RibbonButton();
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
@@ -128,35 +128,14 @@
             this.ribbonPanelMain_Basic.Name = "ribbonPanelMain_Basic";
             this.ribbonPanelMain_Basic.Text = "Podstawowe";
             // 
-            // ribbonTabDictionaries
-            // 
-            this.ribbonTabDictionaries.Enabled = false;
-            this.ribbonTabDictionaries.Name = "ribbonTabDictionaries";
-            this.ribbonTabDictionaries.Panels.Add(this.ribbonPanelDictionaries_Dict);
-            this.ribbonTabDictionaries.Text = "Słowniki";
-            // 
-            // ribbonTabReports
-            // 
-            this.ribbonTabReports.Enabled = false;
-            this.ribbonTabReports.Name = "ribbonTabReports";
-            this.ribbonTabReports.Text = "Raporty";
-            // 
-            // ribbonTabSettings
-            // 
-            this.ribbonTabSettings.Enabled = false;
-            this.ribbonTabSettings.Name = "ribbonTabSettings";
-            this.ribbonTabSettings.Panels.Add(this.ribbonPanelSettings_Mine);
-            this.ribbonTabSettings.Panels.Add(this.ribbonPanelSettings_Users);
-            this.ribbonTabSettings.Text = "Ustawienia";
-            // 
             // btnAgreements
             // 
-            this.btnAgreements.Enabled = false;
             this.btnAgreements.Image = ((System.Drawing.Image)(resources.GetObject("btnAgreements.Image")));
             this.btnAgreements.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgreements.LargeImage")));
             this.btnAgreements.Name = "btnAgreements";
             this.btnAgreements.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnAgreements.SmallImage")));
             this.btnAgreements.Text = "Umowy";
+            this.btnAgreements.Click += new System.EventHandler(this.btnAgreements_Click);
             // 
             // btnProducts
             // 
@@ -185,6 +164,13 @@
             this.btnDescriptorChanges.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDescriptorChanges.SmallImage")));
             this.btnDescriptorChanges.Text = "ZmianyDeskryptora";
             // 
+            // ribbonTabDictionaries
+            // 
+            this.ribbonTabDictionaries.Enabled = false;
+            this.ribbonTabDictionaries.Name = "ribbonTabDictionaries";
+            this.ribbonTabDictionaries.Panels.Add(this.ribbonPanelDictionaries_Dict);
+            this.ribbonTabDictionaries.Text = "Słowniki";
+            // 
             // ribbonPanelDictionaries_Dict
             // 
             this.ribbonPanelDictionaries_Dict.Enabled = false;
@@ -208,6 +194,20 @@
             this.btnCurrencyDict.Name = "btnCurrencyDict";
             this.btnCurrencyDict.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnCurrencyDict.SmallImage")));
             this.btnCurrencyDict.Text = "Waluty";
+            // 
+            // ribbonTabReports
+            // 
+            this.ribbonTabReports.Enabled = false;
+            this.ribbonTabReports.Name = "ribbonTabReports";
+            this.ribbonTabReports.Text = "Raporty";
+            // 
+            // ribbonTabSettings
+            // 
+            this.ribbonTabSettings.Enabled = false;
+            this.ribbonTabSettings.Name = "ribbonTabSettings";
+            this.ribbonTabSettings.Panels.Add(this.ribbonPanelSettings_Mine);
+            this.ribbonTabSettings.Panels.Add(this.ribbonPanelSettings_Users);
+            this.ribbonTabSettings.Text = "Ustawienia";
             // 
             // ribbonPanelSettings_Mine
             // 
