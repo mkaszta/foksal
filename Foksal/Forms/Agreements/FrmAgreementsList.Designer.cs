@@ -52,6 +52,7 @@
             this.gridExAgreementsList.Name = "gridExAgreementsList";
             this.gridExAgreementsList.Size = new System.Drawing.Size(776, 426);
             this.gridExAgreementsList.TabIndex = 0;
+            this.gridExAgreementsList.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.gridExAgreementsList_RowDoubleClick);
             // 
             // FrmAgreementsList
             // 

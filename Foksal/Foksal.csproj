@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Agreements\FrmAgreement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmAgreement.Designer.cs">
+      <DependentUpon>FrmAgreement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmAgreementsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Agreements\frmAgreement.resx">
+      <DependentUpon>FrmAgreement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmAgreementsList.resx">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +127,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{5a0bb365-4503-4ae2-b033-5e094337b1e8}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{93216A2A-3E7A-4539-9AE8-78EB7973056F}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

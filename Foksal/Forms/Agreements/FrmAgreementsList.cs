@@ -39,5 +39,13 @@ namespace Foksal.Forms.Agreements
             dataAdapterAgreements.Fill(dataTableAgreements);
             gridExAgreementsList.DataSource = dataTableAgreements;
         }
+
+        private void gridExAgreementsList_RowDoubleClick(object sender, Janus.Windows.GridEX.RowActionEventArgs e)
+        {
+            FrmAgreement frmAgreement = new FrmAgreement(Convert.ToInt32(e.Row.Cells[0].Value));
+
+            frmAgreement.MdiParent = this.MdiParent;
+            frmAgreement.Show();
+        }
     }
 }
