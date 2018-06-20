@@ -12,7 +12,7 @@ namespace BLL.Entities
         public string ReportTitle { get; set; }
         public string ReportAuthor { get; set; }
         public string Title { get; set; }
-        public double Advance { get; set; }
+        public decimal Advance { get; set; }
         public DateTime? AdvanceDate { get; set; }
         public string Comments { get; set; }
         public DateTime? EditedDate { get; set; }

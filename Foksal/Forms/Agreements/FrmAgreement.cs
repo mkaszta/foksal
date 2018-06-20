@@ -1,5 +1,7 @@
 ﻿using BLL.Entities;
+using DAL.Grids;
 using DAL.Repositories;
+using System;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -12,8 +14,30 @@ namespace Foksal.Forms.Agreements
             InitializeComponent();
 
             this.agreement = AgreementsRepo.GetByID(agreementID);
+            FillControls();
 
-            label1.Text = this.agreement.ReportTitle;
+            GridAgreementPositionsRepo gridRepo = new GridAgreementPositionsRepo();
+            gridRepo.BindDataSet(gridExPositions, agreementID);
+        }
+
+        private void FillControls()
+        {
+            lblAgreement.Text = agreement.AgreementID.ToString();
+            txtComments.Text = agreement.Comments;
+            txtReportAuthor.Text = agreement.ReportAuthor;
+            txtReportTitle.Text = agreement.ReportTitle;
+            txtTitle.Text = agreement.Title;
+            numAdvance.Value = agreement.Advance;
+
+            if (agreement.Advance > 0)
+            {
+                DateTime dtTempDate = agreement.AdvanceDate.GetValueOrDefault();
+                if (dtTempDate < dtAdvanceDate.MinDate)
+                    dtTempDate = dtAdvanceDate.MinDate;
+
+                dtAdvanceDate.Enabled = true;
+                dtAdvanceDate.Value = dtTempDate;
+            }
         }
     }
 }

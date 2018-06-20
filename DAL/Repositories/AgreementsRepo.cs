@@ -25,7 +25,7 @@ namespace DAL.Repositories
                         agreement.Comments = reader.GetString(reader.GetOrdinal("Uwagi"));
                         agreement.EditedDate = reader.GetDateTime(reader.GetOrdinal("EdycjaData"));
                         agreement.EditetBy = reader.GetInt32(reader.GetOrdinal("EdycjaUzytkownik"));
-                        agreement.Advance = (double)reader.GetDecimal(reader.GetOrdinal("Zaliczka"));                        
+                        agreement.Advance = reader.GetDecimal(reader.GetOrdinal("Zaliczka"));                        
                         agreement.ReportAuthor = reader.GetString(reader.GetOrdinal("Autor"));
                         agreement.ReportTitle = reader.GetString(reader.GetOrdinal("Tytul"));
                         agreement.Title = reader.GetString(reader.GetOrdinal("TytulOryginal"));

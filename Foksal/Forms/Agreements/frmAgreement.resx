@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="gridExPositions_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Tytul"&gt;&lt;Caption&gt;Tytuł&lt;/Caption&gt;&lt;DataMember&gt;Tytul&lt;/DataMember&gt;&lt;Key&gt;Tytul&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Width&gt;244&lt;/Width&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
 </root>
