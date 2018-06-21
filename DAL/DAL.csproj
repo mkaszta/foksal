@@ -45,6 +45,9 @@
     <Compile Include="Grids\GridAgreementPositionsRepo.cs" />
     <Compile Include="Grids\GridAgreementsListRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AgreementPositionsRepo.cs" />
+    <Compile Include="Repositories\SettlementModelsRepo.cs" />
+    <Compile Include="Repositories\CurrenciesRepo.cs" />
     <Compile Include="Repositories\AgreementsRepo.cs" />
   </ItemGroup>
   <ItemGroup>
