@@ -21,7 +21,7 @@ namespace DAL.Repositories
 
                     while (reader.Read())
                     {
-                        agreement.AgreementID = Id;
+                        agreement.Id = Id;
                         agreement.Comments = reader.GetString(reader.GetOrdinal("Uwagi"));
                         agreement.EditedDate = reader.GetDateTime(reader.GetOrdinal("EdycjaData"));
                         agreement.EditetBy = reader.GetInt32(reader.GetOrdinal("EdycjaUzytkownik"));

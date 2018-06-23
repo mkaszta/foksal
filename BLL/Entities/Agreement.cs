@@ -8,7 +8,7 @@ namespace BLL.Entities
 {
     public class Agreement
     {
-        public int AgreementID { get; set; }
+        public int Id { get; set; }
         public string ReportTitle { get; set; }
         public string ReportAuthor { get; set; }
         public string Title { get; set; }

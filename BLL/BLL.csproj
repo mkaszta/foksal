@@ -63,7 +63,9 @@
     <Compile Include="Entities\AgreementPosition.cs" />
     <Compile Include="Entities\BillingPeriod.cs" />
     <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\Licensor.cs" />
     <Compile Include="Entities\SettlementModel.cs" />
+    <Compile Include="Entities\Threshold.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppUser.cs" />
     <Compile Include="RSACoder.cs" />

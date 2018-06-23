@@ -1,6 +1,7 @@
 ﻿using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
+using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -14,13 +15,16 @@ namespace Foksal.Forms.Agreements
         {
             InitializeComponent();
 
-            this.PrepareForm();            
+            this.PrepareForm();
 
             this.agreement = AgreementsRepo.GetByID(agreementID);
-            this.GetHeader();            
+
+            this.CreateHeader();
+            this.CreateLicensorsTab();
+            this.CreateScheduleTab();
 
             GridAgreementPositionsRepo gridRepo = new GridAgreementPositionsRepo();
-            gridRepo.BindDataSet(gridExPositions, agreementID);
+            gridRepo.BindDataSet(gridExPositions, this.agreement.Id);
         }
 
         private void PrepareForm()
@@ -38,9 +42,9 @@ namespace Foksal.Forms.Agreements
             cboSettlementModel.ValueMember = "Id";
         }
 
-        private void GetHeader()
+        private void CreateHeader()
         {
-            lblAgreement.Text = agreement.AgreementID.ToString();
+            lblAgreement.Text = agreement.Id.ToString();
             txtComments.Text = agreement.Comments;
             txtReportAuthor.Text = agreement.ReportAuthor;
             txtReportTitle.Text = agreement.ReportTitle;
@@ -56,11 +60,62 @@ namespace Foksal.Forms.Agreements
                 dtAdvanceDate.Enabled = true;
                 dtAdvanceDate.Value = dtTempDate;
             }
+
+            GridAgreementArticlesRepo gridArticlesRepo = new GridAgreementArticlesRepo();
+            gridArticlesRepo.BindDataSet(gridExArticles, this.agreement.Id);
+        }
+
+        private void CreateLicensorsTab()
+        {
+            GridEXColumn colLicensor = gridExLicensors.RootTable.Columns["LicencjodawcaId"];
+            GridEXColumn colLicensorCareOf = gridExLicensors.RootTable.Columns["LicencjodawcaIdCareOf"];
+            colLicensor.HasValueList = true;
+            colLicensorCareOf.HasValueList = true;
+
+            GridEXValueListItemCollection valuesCboLicensor = colLicensor.ValueList;
+            GridEXValueListItemCollection valuesCboLicensorCareOf = colLicensorCareOf.ValueList;
+
+            List<Licensor> lstLicensors = LicensorsRepo.GetAll();
+
+            foreach (var licensor in lstLicensors)
+            {
+                valuesCboLicensor.Add(licensor.Id, string.Format("{0} {1}", licensor.FirstName, licensor.LastName));
+                valuesCboLicensorCareOf.Add(licensor.Id, string.Format("{0} {1}", licensor.FirstName, licensor.LastName));
+            }
+
+            colLicensor.EditType = Janus.Windows.GridEX.EditType.DropDownList;
+            colLicensor.CompareTarget = Janus.Windows.GridEX.ColumnCompareTarget.Text;
+            colLicensor.DefaultGroupInterval = Janus.Windows.GridEX.GroupInterval.Text;
+
+            GridAgreementLicensorsRepo gridLicensorsRepo = new GridAgreementLicensorsRepo();
+            gridLicensorsRepo.BindDataSet(gridExLicensors, agreement.Id);
+        }
+
+        private void CreateScheduleTab()
+        {
+            GridEXColumn colCurrency = gridExSchedule.RootTable.Columns["WalutaId"];
+            colCurrency.HasValueList = true;
+
+            GridEXValueListItemCollection valuesCboCurrency = colCurrency.ValueList;
+
+            List<Currency> lstCurrencies = CurrenciesRepo.GetAll();
+
+            foreach (var currency in lstCurrencies)
+            {
+                valuesCboCurrency.Add(currency.Id, currency.Name);
+            }
+
+            colCurrency.EditType = Janus.Windows.GridEX.EditType.DropDownList;
+            colCurrency.CompareTarget = Janus.Windows.GridEX.ColumnCompareTarget.Text;
+            colCurrency.DefaultGroupInterval = Janus.Windows.GridEX.GroupInterval.Text;
+
+            GridAgreementScheduleRepo gridScheduleRepo = new GridAgreementScheduleRepo();
+            gridScheduleRepo.BindDataSet(gridExSchedule, agreement.Id);
         }
 
         private void GetPositionDetails(int positionId)
         {
-            AgreementPosition position = AgreementPositionsRepo.GetByID(positionId);            
+            AgreementPosition position = AgreementPositionsRepo.GetByID(positionId);
 
             txtKTM.Text = position.KTM;
             txtDescriptor.Text = position.Descriptor;
@@ -73,12 +128,32 @@ namespace Foksal.Forms.Agreements
             chkIndefinitePeriod.Checked = position.IsIndifinitePeriod;
             cboCurrency.SelectedValue = position.CurrencyId;
             cboSettlementModel.SelectedValue = position.SettlementModelId;
+
+            GridAgreementThresholdsRepo gridThresholdsRepo = new GridAgreementThresholdsRepo();
+            gridThresholdsRepo.BindDataSet(gridExThresholds, positionId);
+
+            GridAgreementRelatedProductsRepo gridRelatedProductsRepo = new GridAgreementRelatedProductsRepo();
+            gridRelatedProductsRepo.BindDataSet(gridExRelatedProducts, positionId);
         }
 
         private void gridExPositions_SelectionChanged(object sender, EventArgs e)
         {
             int positionId = (int)gridExPositions.CurrentRow.Cells["id"].Value;
             this.GetPositionDetails(positionId);
+        }
+
+        private void gridExLicensors_CellValueChanged(object sender, ColumnActionEventArgs e)
+        {
+            if (e.Column.DataMember == "LicencjodawcaId")
+            {
+                gridExLicensors.UpdateData();
+                int selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
+
+                Licensor selectedLicensor = LicensorsRepo.GetById(selectedId);
+                gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = selectedLicensor.Email;
+                gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
+                gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
+            }
         }
     }
 }
