@@ -48,17 +48,17 @@ namespace Foksal.Forms.Agreements
             txtComments.Text = agreement.Comments;
             txtReportAuthor.Text = agreement.ReportAuthor;
             txtReportTitle.Text = agreement.ReportTitle;
-            txtTitle.Text = agreement.Title;
+            lblTitle.Text = agreement.Title;
             numAdvance.Value = agreement.Advance;
 
-            if (agreement.Advance > 0)
+            if (agreement.AdvanceDate == null)
             {
-                DateTime dtTempDate = agreement.AdvanceDate.GetValueOrDefault();
-                if (dtTempDate < dtAdvanceDate.MinDate)
-                    dtTempDate = dtAdvanceDate.MinDate;
-
-                dtAdvanceDate.Enabled = true;
-                dtAdvanceDate.Value = dtTempDate;
+                dtAdvanceDate.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtAdvanceDate.Format = DateTimePickerFormat.Short;
+                dtAdvanceDate.Value = agreement.AdvanceDate.GetValueOrDefault();
             }
 
             GridAgreementArticlesRepo gridArticlesRepo = new GridAgreementArticlesRepo();
@@ -119,15 +119,47 @@ namespace Foksal.Forms.Agreements
 
             txtKTM.Text = position.KTM;
             txtDescriptor.Text = position.Descriptor;
-            numFreeCopies.Value = position.FreeCopies;
-            dtAgreementExpiration.Value = position.AgreementExpirationDate;
-            cboBillingPeriod.SelectedValue = position.BillingPeriod;
-            dtBillingPeriodFrom.Value = position.BillingPeriodStart;
-            dtBillingPeriodTo.Value = position.BillingPeriodEnd;
+            numFreeCopies.Value = position.FreeCopies;            
             chkFirstSale.Checked = position.IsChargedFromFirstSale;
             chkIndefinitePeriod.Checked = position.IsIndifinitePeriod;
             cboCurrency.SelectedValue = position.CurrencyId;
             cboSettlementModel.SelectedValue = position.SettlementModelId;
+            cboBillingPeriod.SelectedValue = position.BillingPeriod;            
+            lblWFMagDevileryDate.Text = position.WFMagDeliveryDate.GetValueOrDefault().ToShortDateString();
+            lblWFMagFirstSaleDate.Text = position.WFMagFirstSaleDate.GetValueOrDefault().ToShortDateString();
+            lblWFMagNetto.Text = position.WFMagNetto.ToString();
+            lblWFMagBrutto.Text = position.WFMagBrutto.ToString();
+            lblWFMagPZ.Text = position.WFMagPZ.ToString();
+            
+            if (position.AgreementExpirationDate == null)
+            {
+                dtAgreementExpiration.Format = DateTimePickerFormat.Custom;                
+            }
+            else
+            {
+                dtAgreementExpiration.Format = DateTimePickerFormat.Short;
+                dtAgreementExpiration.Value = position.AgreementExpirationDate.GetValueOrDefault();
+            }
+            
+            if (position.BillingPeriodStart == null)
+            {
+                dtBillingPeriodFrom.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtBillingPeriodFrom.Format = DateTimePickerFormat.Short;
+                dtBillingPeriodFrom.Value = position.BillingPeriodStart.GetValueOrDefault();
+            }
+            
+            if (position.BillingPeriodEnd == null)
+            {
+                dtBillingPeriodTo.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtBillingPeriodTo.Format = DateTimePickerFormat.Short;
+                dtBillingPeriodTo.Value = position.BillingPeriodEnd.GetValueOrDefault();
+            }
 
             GridAgreementThresholdsRepo gridThresholdsRepo = new GridAgreementThresholdsRepo();
             gridThresholdsRepo.BindDataSet(gridExThresholds, positionId);

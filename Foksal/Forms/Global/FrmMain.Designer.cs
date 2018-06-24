@@ -50,6 +50,7 @@
             this.btnSettingsChangePassword = new System.Windows.Forms.RibbonButton();
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsUsers = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -125,6 +126,7 @@
             this.ribbonPanelMain_Basic.Items.Add(this.btnProducts);
             this.ribbonPanelMain_Basic.Items.Add(this.btnSettlements);
             this.ribbonPanelMain_Basic.Items.Add(this.btnDescriptorChanges);
+            this.ribbonPanelMain_Basic.Items.Add(this.ribbonButton1);
             this.ribbonPanelMain_Basic.Name = "ribbonPanelMain_Basic";
             this.ribbonPanelMain_Basic.Text = "Podstawowe";
             // 
@@ -239,6 +241,15 @@
             this.btnSettingsUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsUsers.SmallImage")));
             this.btnSettingsUsers.Text = "Użytkownicy";
             // 
+            // ribbonButton1
+            // 
+            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
+            this.ribbonButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.LargeImage")));
+            this.ribbonButton1.Name = "ribbonButton1";
+            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
+            this.ribbonButton1.Text = "Umowy 2 TEST";
+            this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +289,7 @@
         private System.Windows.Forms.RibbonButton btnSettingsChangePassword;
         private System.Windows.Forms.RibbonPanel ribbonPanelSettings_Users;
         private System.Windows.Forms.RibbonButton btnSettingsUsers;
+        private System.Windows.Forms.RibbonButton ribbonButton1;
     }
 }
 

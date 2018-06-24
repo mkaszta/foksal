@@ -58,5 +58,12 @@ namespace Foksal
             frmAgreementsList.MdiParent = this;
             frmAgreementsList.Show();
         }
+
+        private void ribbonButton1_Click(object sender, EventArgs e)
+        {
+            agrList_TEST frmAgreementsList = new agrList_TEST();
+            frmAgreementsList.MdiParent = this;
+            frmAgreementsList.Show();
+        }
     }
 }

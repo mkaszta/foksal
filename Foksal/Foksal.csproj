@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Agreements\agrList_TEST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\agrList_TEST.Designer.cs">
+      <DependentUpon>agrList_TEST.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmAgreement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Agreements\agrList_TEST.resx">
+      <DependentUpon>agrList_TEST.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\frmAgreement.resx">
       <DependentUpon>FrmAgreement.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,7 +116,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\BLL.Entities.BillingPeriod.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

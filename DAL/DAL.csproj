@@ -46,6 +46,7 @@
     <Compile Include="Grids\GridAgreementScheduleRepo.cs" />
     <Compile Include="Grids\GridAgreementRelatedProductsRepo.cs" />
     <Compile Include="Grids\GridAgreementLicensorsRepo.cs" />
+    <Compile Include="Grids\GridAgreementsListTESTRepo.cs" />
     <Compile Include="Grids\GridAgreementThresholdsRepo.cs" />
     <Compile Include="Grids\GridAgreementPositionsRepo.cs" />
     <Compile Include="Grids\GridAgreementsListRepo.cs" />
