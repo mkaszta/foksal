@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout gridExPositions_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout gridExLicensors_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout gridExSchedule_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExThresholds_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgreement));
+            Janus.Windows.GridEX.GridEXLayout gridExPositions_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExRelatedProducts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout gridExLicensors_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout gridExSchedule_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExArticles_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.label1 = new System.Windows.Forms.Label();
             this.txtReportTitle = new System.Windows.Forms.TextBox();
@@ -50,11 +50,38 @@
             this.tabPositions = new System.Windows.Forms.TabPage();
             this.chkIndefinitePeriod = new System.Windows.Forms.CheckBox();
             this.chkFirstSale = new System.Windows.Forms.CheckBox();
+            this.numModelPercent = new System.Windows.Forms.NumericUpDown();
+            this.numModelFixedPrice = new System.Windows.Forms.NumericUpDown();
+            this.lblModelPercent = new System.Windows.Forms.Label();
+            this.lblModelFixedPrice = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblWFMagPZ = new System.Windows.Forms.Label();
+            this.lblWFMagBrutto = new System.Windows.Forms.Label();
+            this.lblWFMagNetto = new System.Windows.Forms.Label();
+            this.lblWFMagFirstSaleDate = new System.Windows.Forms.Label();
+            this.lblWFMagDevileryDate = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.cboCurrency = new System.Windows.Forms.ComboBox();
+            this.gridExThresholds = new Janus.Windows.GridEX.GridEX();
             this.gridExPositions = new Janus.Windows.GridEX.GridEX();
+            this.gridExRelatedProducts = new Janus.Windows.GridEX.GridEX();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboBillingPeriod = new System.Windows.Forms.ComboBox();
+            this.cboSettlementModel = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtBillingPeriodTo = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtBillingPeriodFrom = new System.Windows.Forms.DateTimePicker();
             this.dtAgreementExpiration = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.txtKTM = new System.Windows.Forms.TextBox();
@@ -67,65 +94,27 @@
             this.gridExLicensors = new Janus.Windows.GridEX.GridEX();
             this.tabPageSchedule = new System.Windows.Forms.TabPage();
             this.gridExSchedule = new Janus.Windows.GridEX.GridEX();
-            this.groupModel = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label22 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cboBillingPeriod = new System.Windows.Forms.ComboBox();
-            this.cboSettlementModel = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dtBillingPeriodTo = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dtBillingPeriodFrom = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.gridExThresholds = new Janus.Windows.GridEX.GridEX();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.gridExRelatedProducts = new Janus.Windows.GridEX.GridEX();
             this.gridExArticles = new Janus.Windows.GridEX.GridEX();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.lblWFMagDevileryDate = new System.Windows.Forms.Label();
-            this.lblWFMagFirstSaleDate = new System.Windows.Forms.Label();
-            this.lblWFMagNetto = new System.Windows.Forms.Label();
-            this.lblWFMagBrutto = new System.Windows.Forms.Label();
-            this.lblWFMagPZ = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPositions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExPositions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).BeginInit();
             this.tabPageLicensors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).BeginInit();
             this.tabPageSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSchedule)).BeginInit();
-            this.groupModel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExArticles)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -244,7 +233,6 @@
             // 
             this.tabPositions.Controls.Add(this.chkIndefinitePeriod);
             this.tabPositions.Controls.Add(this.chkFirstSale);
-            this.tabPositions.Controls.Add(this.groupModel);
             this.tabPositions.Controls.Add(this.groupBox3);
             this.tabPositions.Controls.Add(this.richTextBox1);
             this.tabPositions.Controls.Add(this.label16);
@@ -266,7 +254,7 @@
             this.tabPositions.Controls.Add(this.label12);
             this.tabPositions.Location = new System.Drawing.Point(4, 22);
             this.tabPositions.Name = "tabPositions";
-            this.tabPositions.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPositions.Padding = new System.Windows.Forms.Padding(3);
             this.tabPositions.Size = new System.Drawing.Size(972, 431);
             this.tabPositions.TabIndex = 1;
             this.tabPositions.Text = "Pozycje";
@@ -292,11 +280,172 @@
             this.chkFirstSale.Text = "Nalicz od pierwszej sprzedaży";
             this.chkFirstSale.UseVisualStyleBackColor = true;
             // 
+            // numModelPercent
+            // 
+            this.numModelPercent.Location = new System.Drawing.Point(6, 71);
+            this.numModelPercent.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numModelPercent.Name = "numModelPercent";
+            this.numModelPercent.Size = new System.Drawing.Size(101, 20);
+            this.numModelPercent.TabIndex = 58;
+            // 
+            // numModelFixedPrice
+            // 
+            this.numModelFixedPrice.Location = new System.Drawing.Point(6, 110);
+            this.numModelFixedPrice.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numModelFixedPrice.Name = "numModelFixedPrice";
+            this.numModelFixedPrice.Size = new System.Drawing.Size(101, 20);
+            this.numModelFixedPrice.TabIndex = 60;
+            // 
+            // lblModelPercent
+            // 
+            this.lblModelPercent.AutoSize = true;
+            this.lblModelPercent.Location = new System.Drawing.Point(3, 55);
+            this.lblModelPercent.Name = "lblModelPercent";
+            this.lblModelPercent.Size = new System.Drawing.Size(83, 13);
+            this.lblModelPercent.TabIndex = 61;
+            this.lblModelPercent.Text = "lblModelPercent";
+            // 
+            // lblModelFixedPrice
+            // 
+            this.lblModelFixedPrice.AutoSize = true;
+            this.lblModelFixedPrice.Location = new System.Drawing.Point(3, 94);
+            this.lblModelFixedPrice.Name = "lblModelFixedPrice";
+            this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
+            this.lblModelFixedPrice.TabIndex = 63;
+            this.lblModelFixedPrice.Text = "lblModelFixedPrice";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblWFMagPZ);
+            this.groupBox3.Controls.Add(this.lblWFMagBrutto);
+            this.groupBox3.Controls.Add(this.lblWFMagNetto);
+            this.groupBox3.Controls.Add(this.lblWFMagFirstSaleDate);
+            this.groupBox3.Controls.Add(this.lblWFMagDevileryDate);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Location = new System.Drawing.Point(314, 302);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(318, 113);
+            this.groupBox3.TabIndex = 55;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "WF MAG";
+            // 
+            // lblWFMagPZ
+            // 
+            this.lblWFMagPZ.AutoSize = true;
+            this.lblWFMagPZ.Location = new System.Drawing.Point(163, 85);
+            this.lblWFMagPZ.Name = "lblWFMagPZ";
+            this.lblWFMagPZ.Size = new System.Drawing.Size(69, 13);
+            this.lblWFMagPZ.TabIndex = 67;
+            this.lblWFMagPZ.Text = "lblWFMagPZ";
+            // 
+            // lblWFMagBrutto
+            // 
+            this.lblWFMagBrutto.AutoSize = true;
+            this.lblWFMagBrutto.Location = new System.Drawing.Point(163, 72);
+            this.lblWFMagBrutto.Name = "lblWFMagBrutto";
+            this.lblWFMagBrutto.Size = new System.Drawing.Size(83, 13);
+            this.lblWFMagBrutto.TabIndex = 66;
+            this.lblWFMagBrutto.Text = "lblWFMagBrutto";
+            // 
+            // lblWFMagNetto
+            // 
+            this.lblWFMagNetto.AutoSize = true;
+            this.lblWFMagNetto.Location = new System.Drawing.Point(163, 59);
+            this.lblWFMagNetto.Name = "lblWFMagNetto";
+            this.lblWFMagNetto.Size = new System.Drawing.Size(81, 13);
+            this.lblWFMagNetto.TabIndex = 65;
+            this.lblWFMagNetto.Text = "lblWFMagNetto";
+            // 
+            // lblWFMagFirstSaleDate
+            // 
+            this.lblWFMagFirstSaleDate.AutoSize = true;
+            this.lblWFMagFirstSaleDate.Location = new System.Drawing.Point(163, 46);
+            this.lblWFMagFirstSaleDate.Name = "lblWFMagFirstSaleDate";
+            this.lblWFMagFirstSaleDate.Size = new System.Drawing.Size(118, 13);
+            this.lblWFMagFirstSaleDate.TabIndex = 64;
+            this.lblWFMagFirstSaleDate.Text = "lblWFMagFirstSaleDate";
+            // 
+            // lblWFMagDevileryDate
+            // 
+            this.lblWFMagDevileryDate.AutoSize = true;
+            this.lblWFMagDevileryDate.Location = new System.Drawing.Point(163, 33);
+            this.lblWFMagDevileryDate.Name = "lblWFMagDevileryDate";
+            this.lblWFMagDevileryDate.Size = new System.Drawing.Size(116, 13);
+            this.lblWFMagDevileryDate.TabIndex = 56;
+            this.lblWFMagDevileryDate.Text = "lblWFMagDevileryDate";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label27.Location = new System.Drawing.Point(3, 46);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(154, 13);
+            this.label27.TabIndex = 59;
+            this.label27.Text = "Data pierwszej sprzedaży:";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(83, 59);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(74, 13);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "Detal netto:";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label26.Location = new System.Drawing.Point(69, 33);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 13);
+            this.label26.TabIndex = 57;
+            this.label26.Text = "Data dostawy:";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label29.Location = new System.Drawing.Point(79, 72);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(78, 13);
+            this.label29.TabIndex = 61;
+            this.label29.Text = "Detal brutto:";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label30.Location = new System.Drawing.Point(99, 85);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(58, 13);
+            this.label30.TabIndex = 63;
+            this.label30.Text = "Ilość PZ:";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(314, 142);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(318, 67);
+            this.richTextBox1.Size = new System.Drawing.Size(318, 154);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
             // 
@@ -309,6 +458,24 @@
             this.label16.TabIndex = 20;
             this.label16.Text = "Uwagi:";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(635, 177);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(34, 13);
+            this.label18.TabIndex = 52;
+            this.label18.Text = "Progi:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(635, 302);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(106, 13);
+            this.label19.TabIndex = 54;
+            this.label19.Text = "Produkty powiązane:";
+            // 
             // cboCurrency
             // 
             this.cboCurrency.FormattingEnabled = true;
@@ -316,6 +483,21 @@
             this.cboCurrency.Name = "cboCurrency";
             this.cboCurrency.Size = new System.Drawing.Size(124, 21);
             this.cboCurrency.TabIndex = 49;
+            // 
+            // gridExThresholds
+            // 
+            this.gridExThresholds.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExThresholds.ColumnAutoResize = true;
+            this.gridExThresholds.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            gridExThresholds_DesignTimeLayout.LayoutString = resources.GetString("gridExThresholds_DesignTimeLayout.LayoutString");
+            this.gridExThresholds.DesignTimeLayout = gridExThresholds_DesignTimeLayout;
+            this.gridExThresholds.DynamicFiltering = true;
+            this.gridExThresholds.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.gridExThresholds.GroupByBoxVisible = false;
+            this.gridExThresholds.Location = new System.Drawing.Point(638, 193);
+            this.gridExThresholds.Name = "gridExThresholds";
+            this.gridExThresholds.Size = new System.Drawing.Size(318, 103);
+            this.gridExThresholds.TabIndex = 51;
             // 
             // gridExPositions
             // 
@@ -329,9 +511,24 @@
             this.gridExPositions.GroupByBoxVisible = false;
             this.gridExPositions.Location = new System.Drawing.Point(6, 6);
             this.gridExPositions.Name = "gridExPositions";
-            this.gridExPositions.Size = new System.Drawing.Size(297, 412);
+            this.gridExPositions.Size = new System.Drawing.Size(297, 409);
             this.gridExPositions.TabIndex = 2;
             this.gridExPositions.SelectionChanged += new System.EventHandler(this.gridExPositions_SelectionChanged);
+            // 
+            // gridExRelatedProducts
+            // 
+            this.gridExRelatedProducts.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExRelatedProducts.ColumnAutoResize = true;
+            this.gridExRelatedProducts.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            gridExRelatedProducts_DesignTimeLayout.LayoutString = resources.GetString("gridExRelatedProducts_DesignTimeLayout.LayoutString");
+            this.gridExRelatedProducts.DesignTimeLayout = gridExRelatedProducts_DesignTimeLayout;
+            this.gridExRelatedProducts.DynamicFiltering = true;
+            this.gridExRelatedProducts.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.gridExRelatedProducts.GroupByBoxVisible = false;
+            this.gridExRelatedProducts.Location = new System.Drawing.Point(638, 318);
+            this.gridExRelatedProducts.Name = "gridExRelatedProducts";
+            this.gridExRelatedProducts.Size = new System.Drawing.Size(318, 97);
+            this.gridExRelatedProducts.TabIndex = 53;
             // 
             // label11
             // 
@@ -341,6 +538,88 @@
             this.label11.Size = new System.Drawing.Size(61, 13);
             this.label11.TabIndex = 25;
             this.label11.Text = "Deskryptor:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cboBillingPeriod);
+            this.groupBox4.Controls.Add(this.numModelPercent);
+            this.groupBox4.Controls.Add(this.cboSettlementModel);
+            this.groupBox4.Controls.Add(this.numModelFixedPrice);
+            this.groupBox4.Controls.Add(this.lblModelPercent);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.lblModelFixedPrice);
+            this.groupBox4.Controls.Add(this.dtBillingPeriodTo);
+            this.groupBox4.Controls.Add(this.dtBillingPeriodFrom);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Location = new System.Drawing.Point(638, 9);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(318, 165);
+            this.groupBox4.TabIndex = 57;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Model rozliczenia";
+            // 
+            // cboBillingPeriod
+            // 
+            this.cboBillingPeriod.FormattingEnabled = true;
+            this.cboBillingPeriod.Location = new System.Drawing.Point(198, 71);
+            this.cboBillingPeriod.Name = "cboBillingPeriod";
+            this.cboBillingPeriod.Size = new System.Drawing.Size(102, 21);
+            this.cboBillingPeriod.TabIndex = 48;
+            // 
+            // cboSettlementModel
+            // 
+            this.cboSettlementModel.FormattingEnabled = true;
+            this.cboSettlementModel.Location = new System.Drawing.Point(6, 19);
+            this.cboSettlementModel.Name = "cboSettlementModel";
+            this.cboSettlementModel.Size = new System.Drawing.Size(294, 21);
+            this.cboSettlementModel.TabIndex = 50;
+            this.cboSettlementModel.SelectedIndexChanged += new System.EventHandler(this.cboSettlementModel_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(170, 101);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 13);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "od:";
+            // 
+            // dtBillingPeriodTo
+            // 
+            this.dtBillingPeriodTo.CustomFormat = " ";
+            this.dtBillingPeriodTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBillingPeriodTo.Location = new System.Drawing.Point(198, 124);
+            this.dtBillingPeriodTo.Name = "dtBillingPeriodTo";
+            this.dtBillingPeriodTo.Size = new System.Drawing.Size(102, 20);
+            this.dtBillingPeriodTo.TabIndex = 45;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(197, 55);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(103, 13);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Okres rozliczeniowy:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(170, 130);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "do:";
+            // 
+            // dtBillingPeriodFrom
+            // 
+            this.dtBillingPeriodFrom.CustomFormat = " ";
+            this.dtBillingPeriodFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBillingPeriodFrom.Location = new System.Drawing.Point(198, 98);
+            this.dtBillingPeriodFrom.Name = "dtBillingPeriodFrom";
+            this.dtBillingPeriodFrom.Size = new System.Drawing.Size(102, 20);
+            this.dtBillingPeriodFrom.TabIndex = 44;
             // 
             // dtAgreementExpiration
             // 
@@ -418,7 +697,7 @@
             this.tabPageLicensors.Controls.Add(this.gridExLicensors);
             this.tabPageLicensors.Location = new System.Drawing.Point(4, 22);
             this.tabPageLicensors.Name = "tabPageLicensors";
-            this.tabPageLicensors.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageLicensors.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageLicensors.Size = new System.Drawing.Size(972, 431);
             this.tabPageLicensors.TabIndex = 2;
             this.tabPageLicensors.Text = "Licencjodawcy";
@@ -447,7 +726,7 @@
             this.tabPageSchedule.Controls.Add(this.gridExSchedule);
             this.tabPageSchedule.Location = new System.Drawing.Point(4, 22);
             this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSchedule.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageSchedule.Size = new System.Drawing.Size(972, 431);
             this.tabPageSchedule.TabIndex = 3;
             this.tabPageSchedule.Text = "Harmonogram";
@@ -470,282 +749,6 @@
             this.gridExSchedule.Size = new System.Drawing.Size(959, 419);
             this.gridExSchedule.TabIndex = 4;
             // 
-            // groupModel
-            // 
-            this.groupModel.Controls.Add(this.label21);
-            this.groupModel.Controls.Add(this.numericUpDown1);
-            this.groupModel.Controls.Add(this.label22);
-            this.groupModel.Controls.Add(this.numericUpDown5);
-            this.groupModel.Controls.Add(this.numericUpDown2);
-            this.groupModel.Controls.Add(this.label23);
-            this.groupModel.Controls.Add(this.label25);
-            this.groupModel.Controls.Add(this.label24);
-            this.groupModel.Controls.Add(this.numericUpDown4);
-            this.groupModel.Controls.Add(this.numericUpDown3);
-            this.groupModel.Enabled = false;
-            this.groupModel.Location = new System.Drawing.Point(638, 112);
-            this.groupModel.Name = "groupModel";
-            this.groupModel.Size = new System.Drawing.Size(318, 160);
-            this.groupModel.TabIndex = 56;
-            this.groupModel.TabStop = false;
-            this.groupModel.Text = "Szczegóły modelu";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(60, 104);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(100, 13);
-            this.label21.TabIndex = 57;
-            this.label21.Text = "Cena nie niższa niż:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(166, 24);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDown1.TabIndex = 58;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(101, 130);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(59, 13);
-            this.label22.TabIndex = 59;
-            this.label22.Text = "% od ceny:";
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.Location = new System.Drawing.Point(166, 128);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDown5.TabIndex = 66;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(166, 50);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDown2.TabIndex = 60;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(56, 26);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 13);
-            this.label23.TabIndex = 61;
-            this.label23.Text = "Stała cena hurtowa:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(22, 78);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(138, 13);
-            this.label25.TabIndex = 65;
-            this.label25.Text = "Stała kwota za egzemplarz:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(57, 52);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(103, 13);
-            this.label24.TabIndex = 63;
-            this.label24.Text = "Kwota jednorazowa:";
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Location = new System.Drawing.Point(166, 102);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDown4.TabIndex = 64;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(166, 76);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(74, 20);
-            this.numericUpDown3.TabIndex = 62;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lblWFMagPZ);
-            this.groupBox3.Controls.Add(this.lblWFMagBrutto);
-            this.groupBox3.Controls.Add(this.lblWFMagNetto);
-            this.groupBox3.Controls.Add(this.lblWFMagFirstSaleDate);
-            this.groupBox3.Controls.Add(this.lblWFMagDevileryDate);
-            this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Controls.Add(this.label28);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.label29);
-            this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Location = new System.Drawing.Point(638, 278);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(318, 138);
-            this.groupBox3.TabIndex = 55;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "WF MAG";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label27.Location = new System.Drawing.Point(3, 46);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(154, 13);
-            this.label27.TabIndex = 59;
-            this.label27.Text = "Data pierwszej sprzedaży:";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label28.Location = new System.Drawing.Point(83, 59);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(74, 13);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "Detal netto:";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label26.Location = new System.Drawing.Point(69, 33);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(88, 13);
-            this.label26.TabIndex = 57;
-            this.label26.Text = "Data dostawy:";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label29.Location = new System.Drawing.Point(79, 72);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(78, 13);
-            this.label29.TabIndex = 61;
-            this.label29.Text = "Detal brutto:";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label30.Location = new System.Drawing.Point(99, 85);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(58, 13);
-            this.label30.TabIndex = 63;
-            this.label30.Text = "Ilość PZ:";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cboBillingPeriod);
-            this.groupBox4.Controls.Add(this.cboSettlementModel);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.dtBillingPeriodTo);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.dtBillingPeriodFrom);
-            this.groupBox4.Location = new System.Drawing.Point(638, 9);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(318, 98);
-            this.groupBox4.TabIndex = 57;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Model rozliczenia";
-            // 
-            // cboBillingPeriod
-            // 
-            this.cboBillingPeriod.FormattingEnabled = true;
-            this.cboBillingPeriod.Location = new System.Drawing.Point(6, 64);
-            this.cboBillingPeriod.Name = "cboBillingPeriod";
-            this.cboBillingPeriod.Size = new System.Drawing.Size(130, 21);
-            this.cboBillingPeriod.TabIndex = 48;
-            // 
-            // cboSettlementModel
-            // 
-            this.cboSettlementModel.FormattingEnabled = true;
-            this.cboSettlementModel.Location = new System.Drawing.Point(6, 19);
-            this.cboSettlementModel.Name = "cboSettlementModel";
-            this.cboSettlementModel.Size = new System.Drawing.Size(294, 21);
-            this.cboSettlementModel.TabIndex = 50;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(139, 49);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 13);
-            this.label8.TabIndex = 42;
-            this.label8.Text = "od:";
-            // 
-            // dtBillingPeriodTo
-            // 
-            this.dtBillingPeriodTo.CustomFormat = " ";
-            this.dtBillingPeriodTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBillingPeriodTo.Location = new System.Drawing.Point(225, 65);
-            this.dtBillingPeriodTo.Name = "dtBillingPeriodTo";
-            this.dtBillingPeriodTo.Size = new System.Drawing.Size(75, 20);
-            this.dtBillingPeriodTo.TabIndex = 45;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 48);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 13);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "Okres rozliczeniowy:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(222, 49);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "do:";
-            // 
-            // dtBillingPeriodFrom
-            // 
-            this.dtBillingPeriodFrom.CustomFormat = " ";
-            this.dtBillingPeriodFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBillingPeriodFrom.Location = new System.Drawing.Point(142, 65);
-            this.dtBillingPeriodFrom.Name = "dtBillingPeriodFrom";
-            this.dtBillingPeriodFrom.Size = new System.Drawing.Size(77, 20);
-            this.dtBillingPeriodFrom.TabIndex = 44;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -754,54 +757,6 @@
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Data zaliczki:";
-            // 
-            // gridExThresholds
-            // 
-            this.gridExThresholds.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExThresholds.ColumnAutoResize = true;
-            this.gridExThresholds.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            gridExThresholds_DesignTimeLayout.LayoutString = resources.GetString("gridExThresholds_DesignTimeLayout.LayoutString");
-            this.gridExThresholds.DesignTimeLayout = gridExThresholds_DesignTimeLayout;
-            this.gridExThresholds.DynamicFiltering = true;
-            this.gridExThresholds.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.gridExThresholds.GroupByBoxVisible = false;
-            this.gridExThresholds.Location = new System.Drawing.Point(314, 232);
-            this.gridExThresholds.Name = "gridExThresholds";
-            this.gridExThresholds.Size = new System.Drawing.Size(318, 77);
-            this.gridExThresholds.TabIndex = 51;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(311, 216);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(34, 13);
-            this.label18.TabIndex = 52;
-            this.label18.Text = "Progi:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(311, 312);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 13);
-            this.label19.TabIndex = 54;
-            this.label19.Text = "Produkty powiązane:";
-            // 
-            // gridExRelatedProducts
-            // 
-            this.gridExRelatedProducts.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExRelatedProducts.ColumnAutoResize = true;
-            this.gridExRelatedProducts.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            gridExRelatedProducts_DesignTimeLayout.LayoutString = resources.GetString("gridExRelatedProducts_DesignTimeLayout.LayoutString");
-            this.gridExRelatedProducts.DesignTimeLayout = gridExRelatedProducts_DesignTimeLayout;
-            this.gridExRelatedProducts.DynamicFiltering = true;
-            this.gridExRelatedProducts.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.gridExRelatedProducts.GroupByBoxVisible = false;
-            this.gridExRelatedProducts.Location = new System.Drawing.Point(314, 328);
-            this.gridExRelatedProducts.Name = "gridExRelatedProducts";
-            this.gridExRelatedProducts.Size = new System.Drawing.Size(318, 88);
-            this.gridExRelatedProducts.TabIndex = 53;
             // 
             // gridExArticles
             // 
@@ -866,51 +821,6 @@
             this.label31.TabIndex = 58;
             this.label31.Text = "Tytuł:";
             // 
-            // lblWFMagDevileryDate
-            // 
-            this.lblWFMagDevileryDate.AutoSize = true;
-            this.lblWFMagDevileryDate.Location = new System.Drawing.Point(163, 33);
-            this.lblWFMagDevileryDate.Name = "lblWFMagDevileryDate";
-            this.lblWFMagDevileryDate.Size = new System.Drawing.Size(116, 13);
-            this.lblWFMagDevileryDate.TabIndex = 56;
-            this.lblWFMagDevileryDate.Text = "lblWFMagDevileryDate";
-            // 
-            // lblWFMagFirstSaleDate
-            // 
-            this.lblWFMagFirstSaleDate.AutoSize = true;
-            this.lblWFMagFirstSaleDate.Location = new System.Drawing.Point(163, 46);
-            this.lblWFMagFirstSaleDate.Name = "lblWFMagFirstSaleDate";
-            this.lblWFMagFirstSaleDate.Size = new System.Drawing.Size(118, 13);
-            this.lblWFMagFirstSaleDate.TabIndex = 64;
-            this.lblWFMagFirstSaleDate.Text = "lblWFMagFirstSaleDate";
-            // 
-            // lblWFMagNetto
-            // 
-            this.lblWFMagNetto.AutoSize = true;
-            this.lblWFMagNetto.Location = new System.Drawing.Point(163, 59);
-            this.lblWFMagNetto.Name = "lblWFMagNetto";
-            this.lblWFMagNetto.Size = new System.Drawing.Size(81, 13);
-            this.lblWFMagNetto.TabIndex = 65;
-            this.lblWFMagNetto.Text = "lblWFMagNetto";
-            // 
-            // lblWFMagBrutto
-            // 
-            this.lblWFMagBrutto.AutoSize = true;
-            this.lblWFMagBrutto.Location = new System.Drawing.Point(163, 72);
-            this.lblWFMagBrutto.Name = "lblWFMagBrutto";
-            this.lblWFMagBrutto.Size = new System.Drawing.Size(83, 13);
-            this.lblWFMagBrutto.TabIndex = 66;
-            this.lblWFMagBrutto.Text = "lblWFMagBrutto";
-            // 
-            // lblWFMagPZ
-            // 
-            this.lblWFMagPZ.AutoSize = true;
-            this.lblWFMagPZ.Location = new System.Drawing.Point(163, 85);
-            this.lblWFMagPZ.Name = "lblWFMagPZ";
-            this.lblWFMagPZ.Size = new System.Drawing.Size(69, 13);
-            this.lblWFMagPZ.TabIndex = 67;
-            this.lblWFMagPZ.Text = "lblWFMagPZ";
-            // 
             // FrmAgreement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,25 +840,20 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPositions.ResumeLayout(false);
             this.tabPositions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExPositions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).EndInit();
             this.tabPageLicensors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).EndInit();
             this.tabPageSchedule.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExSchedule)).EndInit();
-            this.groupModel.ResumeLayout(false);
-            this.groupModel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExArticles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -991,17 +896,10 @@
         private Janus.Windows.GridEX.GridEX gridExSchedule;
         private Janus.Windows.GridEX.GridEX gridExArticles;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupModel;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.NumericUpDown numModelPercent;
+        private System.Windows.Forms.NumericUpDown numModelFixedPrice;
+        private System.Windows.Forms.Label lblModelFixedPrice;
+        private System.Windows.Forms.Label lblModelPercent;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;

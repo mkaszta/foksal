@@ -4,6 +4,7 @@ using DAL.Repositories;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -119,28 +120,30 @@ namespace Foksal.Forms.Agreements
 
             txtKTM.Text = position.KTM;
             txtDescriptor.Text = position.Descriptor;
-            numFreeCopies.Value = position.FreeCopies;            
+            numFreeCopies.Value = position.FreeCopies;
             chkFirstSale.Checked = position.IsChargedFromFirstSale;
             chkIndefinitePeriod.Checked = position.IsIndifinitePeriod;
             cboCurrency.SelectedValue = position.CurrencyId;
             cboSettlementModel.SelectedValue = position.SettlementModelId;
-            cboBillingPeriod.SelectedValue = position.BillingPeriod;            
+            cboBillingPeriod.SelectedValue = position.BillingPeriod;
             lblWFMagDevileryDate.Text = position.WFMagDeliveryDate.GetValueOrDefault().ToShortDateString();
             lblWFMagFirstSaleDate.Text = position.WFMagFirstSaleDate.GetValueOrDefault().ToShortDateString();
             lblWFMagNetto.Text = position.WFMagNetto.ToString();
             lblWFMagBrutto.Text = position.WFMagBrutto.ToString();
             lblWFMagPZ.Text = position.WFMagPZ.ToString();
-            
+            numModelFixedPrice.Value = position.ModelFixedPrice;
+            numModelPercent.Value = position.ModelPercent;
+
             if (position.AgreementExpirationDate == null)
             {
-                dtAgreementExpiration.Format = DateTimePickerFormat.Custom;                
+                dtAgreementExpiration.Format = DateTimePickerFormat.Custom;
             }
             else
             {
                 dtAgreementExpiration.Format = DateTimePickerFormat.Short;
                 dtAgreementExpiration.Value = position.AgreementExpirationDate.GetValueOrDefault();
             }
-            
+
             if (position.BillingPeriodStart == null)
             {
                 dtBillingPeriodFrom.Format = DateTimePickerFormat.Custom;
@@ -150,7 +153,7 @@ namespace Foksal.Forms.Agreements
                 dtBillingPeriodFrom.Format = DateTimePickerFormat.Short;
                 dtBillingPeriodFrom.Value = position.BillingPeriodStart.GetValueOrDefault();
             }
-            
+
             if (position.BillingPeriodEnd == null)
             {
                 dtBillingPeriodTo.Format = DateTimePickerFormat.Custom;
@@ -167,6 +170,10 @@ namespace Foksal.Forms.Agreements
             GridAgreementRelatedProductsRepo gridRelatedProductsRepo = new GridAgreementRelatedProductsRepo();
             gridRelatedProductsRepo.BindDataSet(gridExRelatedProducts, positionId);
         }
+
+
+
+
 
         private void gridExPositions_SelectionChanged(object sender, EventArgs e)
         {
@@ -186,6 +193,51 @@ namespace Foksal.Forms.Agreements
                 gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
                 gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
             }
+        }
+
+        private void cboSettlementModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int.TryParse(cboSettlementModel.SelectedValue.ToString(), out int selectedModelId);
+
+            if (selectedModelId > 0)
+            {
+                Model selectedModel = ModelsRepo.GetByID(selectedModelId);
+
+                if (selectedModel.LabelPercent != string.Empty)
+                {
+                    lblModelPercent.Visible = true;
+                    numModelPercent.Visible = true;
+                    lblModelPercent.Text = string.Format("{0}:", selectedModel.LabelPercent);
+                }
+                else
+                {
+                    lblModelPercent.Visible = false;
+                    numModelPercent.Visible = false;
+                }
+
+                if (selectedModel.LabelFixedPrice != string.Empty)
+                {
+                    lblModelFixedPrice.Visible = true;
+                    numModelFixedPrice.Visible = true;
+                    lblModelFixedPrice.Text = string.Format("{0}:", selectedModel.LabelFixedPrice);
+
+                    if (!lblModelPercent.Visible)
+                    {
+                        lblModelFixedPrice.Location = lblModelPercent.Location;
+                        numModelFixedPrice.Location = numModelPercent.Location;
+                    }
+                    else
+                    {
+                        lblModelFixedPrice.Location = new Point(lblModelPercent.Location.X, lblModelPercent.Location.Y + 39);
+                        numModelFixedPrice.Location = new Point(numModelPercent.Location.X, numModelPercent.Location.Y + 39);
+                    }
+                }
+                else
+                {
+                    lblModelFixedPrice.Visible = false;
+                    numModelFixedPrice.Visible = false;
+                }                                    
+            }                        
         }
     }
 }

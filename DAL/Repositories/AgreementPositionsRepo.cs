@@ -39,12 +39,8 @@ namespace DAL.Repositories
                         position.WFMagNetto = reader.GetDecimal(reader.GetOrdinal("DetalNetto"));
                         position.WFMagBrutto = reader.GetDecimal(reader.GetOrdinal("DetalBrutto"));
                         position.WFMagPZ = reader.GetDecimal(reader.GetOrdinal("IloscPz"));
-                        
-                        //position.ModelMinimumPrice = reader.GetDateTime(reader.GetOrdinal("DataZakonczeniaKontraktu"));
-                        //position.ModelPercent = reader.GetDateTime(reader.GetOrdinal("DataZakonczeniaKontraktu"));
-                        //position.ModelWholesalePrice = reader.GetDateTime(reader.GetOrdinal("DataZakonczeniaKontraktu"));
-                        //position.ModelSinglePrice = reader.GetDateTime(reader.GetOrdinal("DataZakonczeniaKontraktu"));
-                        //position.ModelFixedPriceForCopy = reader.GetDateTime(reader.GetOrdinal("DataZakonczeniaKontraktu"));
+                        position.ModelPercent = reader.GetDecimal(reader.GetOrdinal("ProcentOdCeny"));
+                        position.ModelFixedPrice = reader.GetDecimal(reader.GetOrdinal("StalaCena"));
                     }
                 }
             }
