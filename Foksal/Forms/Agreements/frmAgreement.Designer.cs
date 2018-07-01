@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout gridExThresholds_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgreement));
+            Janus.Windows.GridEX.GridEXLayout gridExThresholds_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExPositions_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExRelatedProducts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExLicensors_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -46,14 +47,14 @@
             this.txtComments = new System.Windows.Forms.RichTextBox();
             this.numAdvance = new System.Windows.Forms.NumericUpDown();
             this.dtAdvanceDate = new System.Windows.Forms.DateTimePicker();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlAgreement = new System.Windows.Forms.TabControl();
             this.tabPositions = new System.Windows.Forms.TabPage();
+            this.btnRemovePosition = new System.Windows.Forms.Button();
+            this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
+            this.btnAddPosition = new System.Windows.Forms.Button();
+            this.btnSavePosition = new System.Windows.Forms.Button();
             this.chkIndefinitePeriod = new System.Windows.Forms.CheckBox();
             this.chkFirstSale = new System.Windows.Forms.CheckBox();
-            this.numModelPercent = new System.Windows.Forms.NumericUpDown();
-            this.numModelFixedPrice = new System.Windows.Forms.NumericUpDown();
-            this.lblModelPercent = new System.Windows.Forms.Label();
-            this.lblModelFixedPrice = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblWFMagPZ = new System.Windows.Forms.Label();
             this.lblWFMagBrutto = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtPositionComments = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -76,13 +77,17 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cboBillingPeriod = new System.Windows.Forms.ComboBox();
+            this.numModelPercent = new System.Windows.Forms.NumericUpDown();
             this.cboSettlementModel = new System.Windows.Forms.ComboBox();
+            this.numModelFixedPrice = new System.Windows.Forms.NumericUpDown();
+            this.lblModelPercent = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblModelFixedPrice = new System.Windows.Forms.Label();
             this.dtBillingPeriodTo = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.dtBillingPeriodFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtAgreementExpiration = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtExpiration = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.txtKTM = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -98,18 +103,19 @@
             this.gridExArticles = new Janus.Windows.GridEX.GridEX();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.btnSaveAgreement = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlAgreement.SuspendLayout();
             this.tabPositions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).BeginInit();
             this.tabPageLicensors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).BeginInit();
@@ -131,10 +137,12 @@
             // 
             // txtReportTitle
             // 
-            this.txtReportTitle.Location = new System.Drawing.Point(13, 32);
+            this.txtReportTitle.Location = new System.Drawing.Point(11, 71);
+            this.txtReportTitle.MaxLength = 256;
             this.txtReportTitle.Name = "txtReportTitle";
             this.txtReportTitle.Size = new System.Drawing.Size(253, 20);
-            this.txtReportTitle.TabIndex = 1;
+            this.txtReportTitle.TabIndex = 2;
+            this.txtReportTitle.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // lblAgreement
             // 
@@ -149,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 16);
+            this.label3.Location = new System.Drawing.Point(8, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 3;
@@ -158,7 +166,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 55);
+            this.label4.Location = new System.Drawing.Point(8, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 7;
@@ -166,15 +174,17 @@
             // 
             // txtReportAuthor
             // 
-            this.txtReportAuthor.Location = new System.Drawing.Point(13, 71);
+            this.txtReportAuthor.Location = new System.Drawing.Point(11, 110);
+            this.txtReportAuthor.MaxLength = 256;
             this.txtReportAuthor.Name = "txtReportAuthor";
             this.txtReportAuthor.Size = new System.Drawing.Size(253, 20);
-            this.txtReportAuthor.TabIndex = 6;
+            this.txtReportAuthor.TabIndex = 3;
+            this.txtReportAuthor.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 94);
+            this.label5.Location = new System.Drawing.Point(270, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 9;
@@ -183,7 +193,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(270, 16);
+            this.label7.Location = new System.Drawing.Point(270, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 13;
@@ -191,15 +201,17 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(273, 32);
+            this.txtComments.Location = new System.Drawing.Point(273, 72);
+            this.txtComments.MaxLength = 1000;
             this.txtComments.Name = "txtComments";
-            this.txtComments.Size = new System.Drawing.Size(358, 100);
-            this.txtComments.TabIndex = 14;
+            this.txtComments.Size = new System.Drawing.Size(216, 60);
+            this.txtComments.TabIndex = 6;
             this.txtComments.Text = "";
+            this.txtComments.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // numAdvance
             // 
-            this.numAdvance.Location = new System.Drawing.Point(13, 111);
+            this.numAdvance.Location = new System.Drawing.Point(273, 33);
             this.numAdvance.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -207,34 +219,39 @@
             0});
             this.numAdvance.Name = "numAdvance";
             this.numAdvance.Size = new System.Drawing.Size(101, 20);
-            this.numAdvance.TabIndex = 15;
+            this.numAdvance.TabIndex = 4;
+            this.numAdvance.ValueChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // dtAdvanceDate
             // 
             this.dtAdvanceDate.CustomFormat = " ";
             this.dtAdvanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtAdvanceDate.Location = new System.Drawing.Point(157, 111);
+            this.dtAdvanceDate.Location = new System.Drawing.Point(380, 32);
             this.dtAdvanceDate.Name = "dtAdvanceDate";
             this.dtAdvanceDate.Size = new System.Drawing.Size(109, 20);
-            this.dtAdvanceDate.TabIndex = 16;
+            this.dtAdvanceDate.TabIndex = 5;
+            this.dtAdvanceDate.ValueChanged += new System.EventHandler(this.dtAdvanceDate_ValueChanged);
             // 
-            // tabControl1
+            // tabControlAgreement
             // 
-            this.tabControl1.Controls.Add(this.tabPositions);
-            this.tabControl1.Controls.Add(this.tabPageLicensors);
-            this.tabControl1.Controls.Add(this.tabPageSchedule);
-            this.tabControl1.Location = new System.Drawing.Point(12, 199);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(980, 457);
-            this.tabControl1.TabIndex = 17;
+            this.tabControlAgreement.Controls.Add(this.tabPositions);
+            this.tabControlAgreement.Controls.Add(this.tabPageLicensors);
+            this.tabControlAgreement.Controls.Add(this.tabPageSchedule);
+            this.tabControlAgreement.Location = new System.Drawing.Point(12, 199);
+            this.tabControlAgreement.Name = "tabControlAgreement";
+            this.tabControlAgreement.SelectedIndex = 0;
+            this.tabControlAgreement.Size = new System.Drawing.Size(980, 457);
+            this.tabControlAgreement.TabIndex = 17;
             // 
             // tabPositions
             // 
+            this.tabPositions.Controls.Add(this.btnRemovePosition);
+            this.tabPositions.Controls.Add(this.btnAddPosition);
+            this.tabPositions.Controls.Add(this.btnSavePosition);
             this.tabPositions.Controls.Add(this.chkIndefinitePeriod);
             this.tabPositions.Controls.Add(this.chkFirstSale);
             this.tabPositions.Controls.Add(this.groupBox3);
-            this.tabPositions.Controls.Add(this.richTextBox1);
+            this.tabPositions.Controls.Add(this.txtPositionComments);
             this.tabPositions.Controls.Add(this.label16);
             this.tabPositions.Controls.Add(this.label18);
             this.tabPositions.Controls.Add(this.label19);
@@ -244,7 +261,7 @@
             this.tabPositions.Controls.Add(this.gridExRelatedProducts);
             this.tabPositions.Controls.Add(this.label11);
             this.tabPositions.Controls.Add(this.groupBox4);
-            this.tabPositions.Controls.Add(this.dtAgreementExpiration);
+            this.tabPositions.Controls.Add(this.dtExpiration);
             this.tabPositions.Controls.Add(this.label10);
             this.tabPositions.Controls.Add(this.txtKTM);
             this.tabPositions.Controls.Add(this.label17);
@@ -260,15 +277,58 @@
             this.tabPositions.Text = "Pozycje";
             this.tabPositions.UseVisualStyleBackColor = true;
             // 
+            // btnRemovePosition
+            // 
+            this.btnRemovePosition.ImageKey = "icon-delete.png";
+            this.btnRemovePosition.ImageList = this.imgLstIcons;
+            this.btnRemovePosition.Location = new System.Drawing.Point(925, 54);
+            this.btnRemovePosition.Name = "btnRemovePosition";
+            this.btnRemovePosition.Size = new System.Drawing.Size(41, 34);
+            this.btnRemovePosition.TabIndex = 60;
+            this.btnRemovePosition.UseVisualStyleBackColor = true;
+            this.btnRemovePosition.Click += new System.EventHandler(this.btnRemovePosition_Click);
+            // 
+            // imgLstIcons
+            // 
+            this.imgLstIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLstIcons.ImageStream")));
+            this.imgLstIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgLstIcons.Images.SetKeyName(0, "icon-add.png");
+            this.imgLstIcons.Images.SetKeyName(1, "icon-delete.png");
+            this.imgLstIcons.Images.SetKeyName(2, "icon-save.png");
+            // 
+            // btnAddPosition
+            // 
+            this.btnAddPosition.ImageKey = "icon-add.png";
+            this.btnAddPosition.ImageList = this.imgLstIcons;
+            this.btnAddPosition.Location = new System.Drawing.Point(925, 14);
+            this.btnAddPosition.Name = "btnAddPosition";
+            this.btnAddPosition.Size = new System.Drawing.Size(41, 34);
+            this.btnAddPosition.TabIndex = 59;
+            this.btnAddPosition.UseVisualStyleBackColor = true;
+            this.btnAddPosition.Click += new System.EventHandler(this.btnAddPosition_Click);
+            // 
+            // btnSavePosition
+            // 
+            this.btnSavePosition.Enabled = false;
+            this.btnSavePosition.ImageKey = "icon-save.png";
+            this.btnSavePosition.ImageList = this.imgLstIcons;
+            this.btnSavePosition.Location = new System.Drawing.Point(925, 94);
+            this.btnSavePosition.Name = "btnSavePosition";
+            this.btnSavePosition.Size = new System.Drawing.Size(41, 34);
+            this.btnSavePosition.TabIndex = 58;
+            this.btnSavePosition.UseVisualStyleBackColor = true;
+            this.btnSavePosition.Click += new System.EventHandler(this.btnSavePosition_Click);
+            // 
             // chkIndefinitePeriod
             // 
             this.chkIndefinitePeriod.AutoSize = true;
             this.chkIndefinitePeriod.Location = new System.Drawing.Point(457, 114);
             this.chkIndefinitePeriod.Name = "chkIndefinitePeriod";
             this.chkIndefinitePeriod.Size = new System.Drawing.Size(164, 17);
-            this.chkIndefinitePeriod.TabIndex = 40;
+            this.chkIndefinitePeriod.TabIndex = 16;
             this.chkIndefinitePeriod.Text = "Umowa na czas nieokreślony";
             this.chkIndefinitePeriod.UseVisualStyleBackColor = true;
+            this.chkIndefinitePeriod.CheckedChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // chkFirstSale
             // 
@@ -276,51 +336,10 @@
             this.chkFirstSale.Location = new System.Drawing.Point(457, 91);
             this.chkFirstSale.Name = "chkFirstSale";
             this.chkFirstSale.Size = new System.Drawing.Size(166, 17);
-            this.chkFirstSale.TabIndex = 43;
+            this.chkFirstSale.TabIndex = 15;
             this.chkFirstSale.Text = "Nalicz od pierwszej sprzedaży";
             this.chkFirstSale.UseVisualStyleBackColor = true;
-            // 
-            // numModelPercent
-            // 
-            this.numModelPercent.Location = new System.Drawing.Point(6, 71);
-            this.numModelPercent.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.numModelPercent.Name = "numModelPercent";
-            this.numModelPercent.Size = new System.Drawing.Size(101, 20);
-            this.numModelPercent.TabIndex = 58;
-            // 
-            // numModelFixedPrice
-            // 
-            this.numModelFixedPrice.Location = new System.Drawing.Point(6, 110);
-            this.numModelFixedPrice.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.numModelFixedPrice.Name = "numModelFixedPrice";
-            this.numModelFixedPrice.Size = new System.Drawing.Size(101, 20);
-            this.numModelFixedPrice.TabIndex = 60;
-            // 
-            // lblModelPercent
-            // 
-            this.lblModelPercent.AutoSize = true;
-            this.lblModelPercent.Location = new System.Drawing.Point(3, 55);
-            this.lblModelPercent.Name = "lblModelPercent";
-            this.lblModelPercent.Size = new System.Drawing.Size(83, 13);
-            this.lblModelPercent.TabIndex = 61;
-            this.lblModelPercent.Text = "lblModelPercent";
-            // 
-            // lblModelFixedPrice
-            // 
-            this.lblModelFixedPrice.AutoSize = true;
-            this.lblModelFixedPrice.Location = new System.Drawing.Point(3, 94);
-            this.lblModelFixedPrice.Name = "lblModelFixedPrice";
-            this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
-            this.lblModelFixedPrice.TabIndex = 63;
-            this.lblModelFixedPrice.Text = "lblModelFixedPrice";
+            this.chkFirstSale.CheckedChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // groupBox3
             // 
@@ -441,13 +460,14 @@
             this.label30.Text = "Ilość PZ:";
             this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // richTextBox1
+            // txtPositionComments
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(314, 142);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(318, 154);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "";
+            this.txtPositionComments.Location = new System.Drawing.Point(314, 142);
+            this.txtPositionComments.Name = "txtPositionComments";
+            this.txtPositionComments.Size = new System.Drawing.Size(318, 154);
+            this.txtPositionComments.TabIndex = 17;
+            this.txtPositionComments.Text = "";
+            this.txtPositionComments.TextChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // label16
             // 
@@ -482,7 +502,8 @@
             this.cboCurrency.Location = new System.Drawing.Point(508, 25);
             this.cboCurrency.Name = "cboCurrency";
             this.cboCurrency.Size = new System.Drawing.Size(124, 21);
-            this.cboCurrency.TabIndex = 49;
+            this.cboCurrency.TabIndex = 12;
+            this.cboCurrency.SelectedIndexChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // gridExThresholds
             // 
@@ -496,8 +517,12 @@
             this.gridExThresholds.GroupByBoxVisible = false;
             this.gridExThresholds.Location = new System.Drawing.Point(638, 193);
             this.gridExThresholds.Name = "gridExThresholds";
-            this.gridExThresholds.Size = new System.Drawing.Size(318, 103);
-            this.gridExThresholds.TabIndex = 51;
+            this.gridExThresholds.Size = new System.Drawing.Size(281, 103);
+            this.gridExThresholds.TabIndex = 50;
+            this.gridExThresholds.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.RecordUpdated += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.RecordAdded += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExThresholds_AddingRecord);
             // 
             // gridExPositions
             // 
@@ -509,10 +534,12 @@
             this.gridExPositions.DynamicFiltering = true;
             this.gridExPositions.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExPositions.GroupByBoxVisible = false;
-            this.gridExPositions.Location = new System.Drawing.Point(6, 6);
+            this.gridExPositions.Location = new System.Drawing.Point(7, 9);
             this.gridExPositions.Name = "gridExPositions";
-            this.gridExPositions.Size = new System.Drawing.Size(297, 409);
-            this.gridExPositions.TabIndex = 2;
+            this.gridExPositions.Size = new System.Drawing.Size(296, 406);
+            this.gridExPositions.TabIndex = 40;
+            this.gridExPositions.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExPositions.RecordAdded += new System.EventHandler(this.positionControl_ValueChanged);
             this.gridExPositions.SelectionChanged += new System.EventHandler(this.gridExPositions_SelectionChanged);
             // 
             // gridExRelatedProducts
@@ -527,8 +554,12 @@
             this.gridExRelatedProducts.GroupByBoxVisible = false;
             this.gridExRelatedProducts.Location = new System.Drawing.Point(638, 318);
             this.gridExRelatedProducts.Name = "gridExRelatedProducts";
-            this.gridExRelatedProducts.Size = new System.Drawing.Size(318, 97);
-            this.gridExRelatedProducts.TabIndex = 53;
+            this.gridExRelatedProducts.Size = new System.Drawing.Size(281, 97);
+            this.gridExRelatedProducts.TabIndex = 60;
+            this.gridExRelatedProducts.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExRelatedProducts.RecordUpdated += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExRelatedProducts.RecordAdded += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExRelatedProducts.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExRelatedProducts_AddingRecord);
             // 
             // label11
             // 
@@ -554,7 +585,7 @@
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Location = new System.Drawing.Point(638, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(318, 165);
+            this.groupBox4.Size = new System.Drawing.Size(281, 165);
             this.groupBox4.TabIndex = 57;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Model rozliczenia";
@@ -562,73 +593,122 @@
             // cboBillingPeriod
             // 
             this.cboBillingPeriod.FormattingEnabled = true;
-            this.cboBillingPeriod.Location = new System.Drawing.Point(198, 71);
+            this.cboBillingPeriod.ItemHeight = 13;
+            this.cboBillingPeriod.Location = new System.Drawing.Point(157, 71);
             this.cboBillingPeriod.Name = "cboBillingPeriod";
             this.cboBillingPeriod.Size = new System.Drawing.Size(102, 21);
             this.cboBillingPeriod.TabIndex = 48;
+            this.cboBillingPeriod.SelectedIndexChanged += new System.EventHandler(this.positionControl_ValueChanged);
+            // 
+            // numModelPercent
+            // 
+            this.numModelPercent.Location = new System.Drawing.Point(6, 71);
+            this.numModelPercent.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numModelPercent.Name = "numModelPercent";
+            this.numModelPercent.Size = new System.Drawing.Size(101, 20);
+            this.numModelPercent.TabIndex = 19;
+            this.numModelPercent.ValueChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // cboSettlementModel
             // 
             this.cboSettlementModel.FormattingEnabled = true;
             this.cboSettlementModel.Location = new System.Drawing.Point(6, 19);
             this.cboSettlementModel.Name = "cboSettlementModel";
-            this.cboSettlementModel.Size = new System.Drawing.Size(294, 21);
-            this.cboSettlementModel.TabIndex = 50;
+            this.cboSettlementModel.Size = new System.Drawing.Size(253, 21);
+            this.cboSettlementModel.TabIndex = 18;
             this.cboSettlementModel.SelectedIndexChanged += new System.EventHandler(this.cboSettlementModel_SelectedIndexChanged);
+            // 
+            // numModelFixedPrice
+            // 
+            this.numModelFixedPrice.Location = new System.Drawing.Point(6, 110);
+            this.numModelFixedPrice.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numModelFixedPrice.Name = "numModelFixedPrice";
+            this.numModelFixedPrice.Size = new System.Drawing.Size(101, 20);
+            this.numModelFixedPrice.TabIndex = 20;
+            this.numModelFixedPrice.ValueChanged += new System.EventHandler(this.positionControl_ValueChanged);
+            // 
+            // lblModelPercent
+            // 
+            this.lblModelPercent.AutoSize = true;
+            this.lblModelPercent.Location = new System.Drawing.Point(3, 55);
+            this.lblModelPercent.Name = "lblModelPercent";
+            this.lblModelPercent.Size = new System.Drawing.Size(83, 13);
+            this.lblModelPercent.TabIndex = 61;
+            this.lblModelPercent.Text = "lblModelPercent";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(170, 101);
+            this.label8.Location = new System.Drawing.Point(129, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(22, 13);
             this.label8.TabIndex = 42;
             this.label8.Text = "od:";
             // 
+            // lblModelFixedPrice
+            // 
+            this.lblModelFixedPrice.AutoSize = true;
+            this.lblModelFixedPrice.Location = new System.Drawing.Point(3, 94);
+            this.lblModelFixedPrice.Name = "lblModelFixedPrice";
+            this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
+            this.lblModelFixedPrice.TabIndex = 63;
+            this.lblModelFixedPrice.Text = "lblModelFixedPrice";
+            // 
             // dtBillingPeriodTo
             // 
             this.dtBillingPeriodTo.CustomFormat = " ";
             this.dtBillingPeriodTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBillingPeriodTo.Location = new System.Drawing.Point(198, 124);
+            this.dtBillingPeriodTo.Location = new System.Drawing.Point(157, 124);
             this.dtBillingPeriodTo.Name = "dtBillingPeriodTo";
             this.dtBillingPeriodTo.Size = new System.Drawing.Size(102, 20);
-            this.dtBillingPeriodTo.TabIndex = 45;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(197, 55);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 13);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "Okres rozliczeniowy:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(170, 130);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "do:";
+            this.dtBillingPeriodTo.TabIndex = 23;
+            this.dtBillingPeriodTo.ValueChanged += new System.EventHandler(this.dtBillingPeriodTo_ValueChanged);
             // 
             // dtBillingPeriodFrom
             // 
             this.dtBillingPeriodFrom.CustomFormat = " ";
             this.dtBillingPeriodFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBillingPeriodFrom.Location = new System.Drawing.Point(198, 98);
+            this.dtBillingPeriodFrom.Location = new System.Drawing.Point(157, 98);
             this.dtBillingPeriodFrom.Name = "dtBillingPeriodFrom";
             this.dtBillingPeriodFrom.Size = new System.Drawing.Size(102, 20);
-            this.dtBillingPeriodFrom.TabIndex = 44;
+            this.dtBillingPeriodFrom.TabIndex = 22;
+            this.dtBillingPeriodFrom.ValueChanged += new System.EventHandler(this.dtBillingPeriodFrom_ValueChanged);
             // 
-            // dtAgreementExpiration
+            // label14
             // 
-            this.dtAgreementExpiration.CustomFormat = " ";
-            this.dtAgreementExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtAgreementExpiration.Location = new System.Drawing.Point(314, 103);
-            this.dtAgreementExpiration.Name = "dtAgreementExpiration";
-            this.dtAgreementExpiration.Size = new System.Drawing.Size(117, 20);
-            this.dtAgreementExpiration.TabIndex = 46;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(129, 130);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "do:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(156, 55);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(103, 13);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Okres rozliczeniowy:";
+            // 
+            // dtExpiration
+            // 
+            this.dtExpiration.CustomFormat = " ";
+            this.dtExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtExpiration.Location = new System.Drawing.Point(314, 103);
+            this.dtExpiration.Name = "dtExpiration";
+            this.dtExpiration.Size = new System.Drawing.Size(117, 20);
+            this.dtExpiration.TabIndex = 14;
+            this.dtExpiration.ValueChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // label10
             // 
@@ -644,7 +724,8 @@
             this.txtKTM.Location = new System.Drawing.Point(314, 25);
             this.txtKTM.Name = "txtKTM";
             this.txtKTM.Size = new System.Drawing.Size(184, 20);
-            this.txtKTM.TabIndex = 22;
+            this.txtKTM.TabIndex = 10;
+            this.txtKTM.TextChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // label17
             // 
@@ -665,7 +746,8 @@
             0});
             this.numFreeCopies.Name = "numFreeCopies";
             this.numFreeCopies.Size = new System.Drawing.Size(124, 20);
-            this.numFreeCopies.TabIndex = 47;
+            this.numFreeCopies.TabIndex = 13;
+            this.numFreeCopies.ValueChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // label15
             // 
@@ -681,7 +763,8 @@
             this.txtDescriptor.Location = new System.Drawing.Point(314, 64);
             this.txtDescriptor.Name = "txtDescriptor";
             this.txtDescriptor.Size = new System.Drawing.Size(184, 20);
-            this.txtDescriptor.TabIndex = 24;
+            this.txtDescriptor.TabIndex = 11;
+            this.txtDescriptor.TextChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
             // label12
             // 
@@ -720,6 +803,7 @@
             this.gridExLicensors.Size = new System.Drawing.Size(959, 419);
             this.gridExLicensors.TabIndex = 3;
             this.gridExLicensors.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExLicensors_CellValueChanged);
+            this.gridExLicensors.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExLicensors_AddingRecord);
             // 
             // tabPageSchedule
             // 
@@ -748,11 +832,12 @@
             this.gridExSchedule.Name = "gridExSchedule";
             this.gridExSchedule.Size = new System.Drawing.Size(959, 419);
             this.gridExSchedule.TabIndex = 4;
+            this.gridExSchedule.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExSchedule_AddingRecord);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(154, 94);
+            this.label6.Location = new System.Drawing.Point(377, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 18;
@@ -767,15 +852,19 @@
             this.gridExArticles.DynamicFiltering = true;
             this.gridExArticles.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExArticles.GroupByBoxVisible = false;
-            this.gridExArticles.Location = new System.Drawing.Point(637, 32);
+            this.gridExArticles.Location = new System.Drawing.Point(495, 32);
             this.gridExArticles.Name = "gridExArticles";
-            this.gridExArticles.Size = new System.Drawing.Size(323, 100);
-            this.gridExArticles.TabIndex = 5;
+            this.gridExArticles.Size = new System.Drawing.Size(475, 100);
+            this.gridExArticles.TabIndex = 30;
+            this.gridExArticles.RecordsDeleted += new System.EventHandler(this.agreementControl_ValueChanged);
+            this.gridExArticles.RecordUpdated += new System.EventHandler(this.agreementControl_ValueChanged);
+            this.gridExArticles.RecordAdded += new System.EventHandler(this.agreementControl_ValueChanged);
+            this.gridExArticles.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExArticles_AddingRecord);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(634, 16);
+            this.label20.Location = new System.Drawing.Point(492, 15);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(99, 13);
             this.label20.TabIndex = 19;
@@ -783,6 +872,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtTitle);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.txtReportTitle);
@@ -801,47 +892,57 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
-            // lblTitle
+            // label2
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblTitle.Location = new System.Drawing.Point(99, 29);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(48, 16);
-            this.lblTitle.TabIndex = 59;
-            this.lblTitle.Text = "lblTitle";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Tytuł:";
             // 
-            // label31
+            // txtTitle
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label31.Location = new System.Drawing.Point(43, 29);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(49, 16);
-            this.label31.TabIndex = 58;
-            this.label31.Text = "Tytuł:";
+            this.txtTitle.Location = new System.Drawing.Point(11, 32);
+            this.txtTitle.MaxLength = 256;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(253, 20);
+            this.txtTitle.TabIndex = 1;
+            this.txtTitle.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
+            // 
+            // btnSaveAgreement
+            // 
+            this.btnSaveAgreement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSaveAgreement.ImageKey = "icon-save.png";
+            this.btnSaveAgreement.ImageList = this.imgLstIcons;
+            this.btnSaveAgreement.Location = new System.Drawing.Point(887, 9);
+            this.btnSaveAgreement.Name = "btnSaveAgreement";
+            this.btnSaveAgreement.Size = new System.Drawing.Size(98, 41);
+            this.btnSaveAgreement.TabIndex = 59;
+            this.btnSaveAgreement.Text = "Zapisz umowę";
+            this.btnSaveAgreement.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSaveAgreement.UseVisualStyleBackColor = true;
+            this.btnSaveAgreement.Click += new System.EventHandler(this.btnSaveAgreement_Click);
             // 
             // FrmAgreement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 662);
-            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnSaveAgreement);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label31);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlAgreement);
             this.Controls.Add(this.lblAgreement);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmAgreement";
             this.Text = "Umowa";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAgreement_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlAgreement.ResumeLayout(false);
             this.tabPositions.ResumeLayout(false);
             this.tabPositions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).EndInit();
@@ -849,6 +950,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).EndInit();
             this.tabPageLicensors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).EndInit();
@@ -875,7 +978,7 @@
         private System.Windows.Forms.RichTextBox txtComments;
         private System.Windows.Forms.NumericUpDown numAdvance;
         private System.Windows.Forms.DateTimePicker dtAdvanceDate;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlAgreement;
         private System.Windows.Forms.TabPage tabPositions;
         private System.Windows.Forms.TabPage tabPageLicensors;
         private System.Windows.Forms.TabPage tabPageSchedule;
@@ -911,7 +1014,7 @@
         private System.Windows.Forms.CheckBox chkIndefinitePeriod;
         private System.Windows.Forms.CheckBox chkFirstSale;
         private System.Windows.Forms.ComboBox cboCurrency;
-        private System.Windows.Forms.DateTimePicker dtAgreementExpiration;
+        private System.Windows.Forms.DateTimePicker dtExpiration;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDescriptor;
@@ -921,13 +1024,18 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtPositionComments;
         private System.Windows.Forms.Label lblWFMagPZ;
         private System.Windows.Forms.Label lblWFMagBrutto;
         private System.Windows.Forms.Label lblWFMagNetto;
         private System.Windows.Forms.Label lblWFMagFirstSaleDate;
         private System.Windows.Forms.Label lblWFMagDevileryDate;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Button btnSavePosition;
+        private System.Windows.Forms.Button btnSaveAgreement;
+        private System.Windows.Forms.Button btnRemovePosition;
+        private System.Windows.Forms.Button btnAddPosition;
+        private System.Windows.Forms.ImageList imgLstIcons;
     }
 }

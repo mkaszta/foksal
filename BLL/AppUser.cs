@@ -7,6 +7,7 @@ namespace BLL
 {
     public class AppUser
     {
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }    
         public bool IsLoggedIn { get; set; }
@@ -42,7 +43,7 @@ namespace BLL
 
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
-                string sqlQuery = string.Format("SELECT [Haslo] FROM [Uzytkownicy] WHERE [Login] = '{0}' ", this.UserName);
+                string sqlQuery = string.Format("SELECT [id], [Haslo] FROM [Uzytkownicy] WHERE [Login] = '{0}' ", this.UserName);
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
@@ -53,6 +54,7 @@ namespace BLL
                         if (RSACoder.Decryption(reader.GetString(reader.GetOrdinal("Haslo"))) == RSACoder.Decryption(this.Password))
                         {
                             AppUser.Instance.IsLoggedIn = true;
+                            this.UserId = reader.GetInt32(reader.GetOrdinal("id"));
                         }
                     }
                 }

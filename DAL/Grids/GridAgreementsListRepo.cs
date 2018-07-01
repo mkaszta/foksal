@@ -19,11 +19,24 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT id, Tytul, Autor, TytulOryginal, Zaliczka, ZaliczkaData, Uwagi FROM [dbo].[Umowa]";
-            dataAdapter.SelectCommand = cmdSelect;
+            cmdSelect.CommandText = "SELECT * FROM [dbo].[Umowa]";
+            this.dataAdapter.SelectCommand = cmdSelect;
+
+            SqlCommand cmdDelete = new SqlCommand();
+            cmdDelete.Connection = dbConnection.Connection;
+            cmdDelete.CommandType = CommandType.Text;
+            cmdDelete.CommandText = string.Format("DELETE FROM [Umowa] WHERE Id = @id");
+            cmdDelete.Parameters.Add("@id", SqlDbType.Int, 6, "Id");
+            this.dataAdapter.DeleteCommand = cmdDelete;
 
             dataAdapter.Fill(dataTable);
             grid.DataSource = dataTable;
+        }
+
+        public void DeleteRow(int rowPosition)
+        {
+            this.dataTable.Rows[rowPosition].Delete();
+            this.dataAdapter.Update(this.dataTable);
         }
     }
 }

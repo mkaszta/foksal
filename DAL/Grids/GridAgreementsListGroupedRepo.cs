@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace DAL.Grids
 {
-    public class GridAgreementsListTESTRepo
+    public class GridAgreementsListGroupedRepo
     {
         private DBConnection dbConnection = new DBConnection();
         private DataSet dataSet = new DataSet("dataSet");
@@ -19,7 +19,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT * FROM [vUmowyZPozycjami]";
+            cmdSelect.CommandText = "SELECT * FROM [vUmowyZPozycjamiLista]";
             dataAdapter.SelectCommand = cmdSelect;
 
             dataAdapter.Fill(dataTable);

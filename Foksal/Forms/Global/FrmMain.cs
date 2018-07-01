@@ -26,10 +26,26 @@ namespace Foksal
 
         private void UserLogOut()
         {
-            AppUser.Instance.LogOut();
+            if (MessageBox.Show("Czy na pewno chcesz się wylogować?\r\nWszelkie niezapisane zmiany zostaną utracone.", "Wyloguj", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                AppUser.Instance.LogOut();
+                this.CloseAllChildForms();
 
-            btnLogIn.Visible = true;
-            btnLogOut.Visible = false;
+                btnLogIn.Visible = true;
+                btnLogOut.Visible = false;
+            }
+        }
+
+        private void CloseAllChildForms()
+        {
+            foreach (var form in this.MdiChildren)
+            {
+                if (form != this)
+                {
+                    form.Dispose();
+                    form.Close();
+                }
+            }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -55,13 +71,6 @@ namespace Foksal
         private void btnAgreements_Click(object sender, EventArgs e)
         {
             FrmAgreementsList frmAgreementsList = new FrmAgreementsList();
-            frmAgreementsList.MdiParent = this;
-            frmAgreementsList.Show();
-        }
-
-        private void ribbonButton1_Click(object sender, EventArgs e)
-        {
-            agrList_TEST frmAgreementsList = new agrList_TEST();
             frmAgreementsList.MdiParent = this;
             frmAgreementsList.Show();
         }

@@ -118,6 +118,96 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="gridExAgreementsList_DesignTimeLayout.LayoutString" xml:space="preserve">
-    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="IdUmowy"&gt;&lt;Caption&gt;Id&lt;/Caption&gt;&lt;DataMember&gt;id&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;IdUmowy&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Width&gt;110&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="tytulDoRaportu"&gt;&lt;Caption&gt;Tytuł do raportu&lt;/Caption&gt;&lt;DataMember&gt;Tytul&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;tytulDoRaportu&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Width&gt;110&lt;/Width&gt;&lt;/Column1&gt;&lt;Column2 ID="Autor"&gt;&lt;Caption&gt;Autor do raportu&lt;/Caption&gt;&lt;DataMember&gt;Autor&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Autor&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Width&gt;110&lt;/Width&gt;&lt;/Column2&gt;&lt;Column3 ID="TytulOryginal"&gt;&lt;Caption&gt;Tytuł oryginału&lt;/Caption&gt;&lt;DataMember&gt;TytulOryginal&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;TytulOryginal&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;110&lt;/Width&gt;&lt;/Column3&gt;&lt;Column4 ID="Zaliczka"&gt;&lt;Caption&gt;Wypłacona zaliczka&lt;/Caption&gt;&lt;DataMember&gt;Zaliczka&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Zaliczka&lt;/Key&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;Width&gt;110&lt;/Width&gt;&lt;/Column4&gt;&lt;Column5 ID="ZaliczkaData"&gt;&lt;Caption&gt;Data wypłaty&lt;/Caption&gt;&lt;DataMember&gt;ZaliczkaData&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;CalendarDropDown&lt;/FilterEditType&gt;&lt;Key&gt;ZaliczkaData&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;Width&gt;111&lt;/Width&gt;&lt;/Column5&gt;&lt;Column6 ID="Uwagi"&gt;&lt;Caption&gt;Uwagi&lt;/Caption&gt;&lt;DataMember&gt;Uwagi&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Uwagi&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;Width&gt;111&lt;/Width&gt;&lt;/Column6&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="IdUmowy"&gt;&lt;Caption&gt;Id&lt;/Caption&gt;&lt;DataMember&gt;id&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;IdUmowy&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Width&gt;135&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="tytulDoRaportu"&gt;&lt;Caption&gt;Tytuł do raportu&lt;/Caption&gt;&lt;DataMember&gt;Tytul&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;tytulDoRaportu&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Width&gt;144&lt;/Width&gt;&lt;/Column1&gt;&lt;Column2 ID="Autor"&gt;&lt;Caption&gt;Autor do raportu&lt;/Caption&gt;&lt;DataMember&gt;Autor&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Autor&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Width&gt;137&lt;/Width&gt;&lt;/Column2&gt;&lt;Column3 ID="TytulOryginal"&gt;&lt;Caption&gt;Tytuł oryginału&lt;/Caption&gt;&lt;DataMember&gt;TytulOryginal&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;TytulOryginal&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;140&lt;/Width&gt;&lt;/Column3&gt;&lt;Column4 ID="Zaliczka"&gt;&lt;Caption&gt;Wypłacona zaliczka&lt;/Caption&gt;&lt;DataMember&gt;Zaliczka&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Zaliczka&lt;/Key&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;Width&gt;149&lt;/Width&gt;&lt;/Column4&gt;&lt;Column5 ID="ZaliczkaData"&gt;&lt;Caption&gt;Data wypłaty&lt;/Caption&gt;&lt;DataMember&gt;ZaliczkaData&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;CalendarDropDown&lt;/FilterEditType&gt;&lt;FormatString&gt;dd/MM/yyyy&lt;/FormatString&gt;&lt;InputMask&gt;00/00/0000&lt;/InputMask&gt;&lt;Key&gt;ZaliczkaData&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;Width&gt;136&lt;/Width&gt;&lt;/Column5&gt;&lt;Column6 ID="Uwagi"&gt;&lt;Caption&gt;Uwagi&lt;/Caption&gt;&lt;DataMember&gt;Uwagi&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;Uwagi&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;Width&gt;92&lt;/Width&gt;&lt;/Column6&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <metadata name="imgLstIcons.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="imgLstIcons.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAG
+        EgAAAk1TRnQBSQFMAgEBBQEAATABAAEwAQABHgEAAR4BAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABeAMAATwDAAEBAQABCAUAASABHBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
+        AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
+        AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
+        AwABZgMAAZkDAAHMAgABMwMAAjMCAAEzAWYCAAEzAZkCAAEzAcwCAAEzAf8CAAFmAwABZgEzAgACZgIA
+        AWYBmQIAAWYBzAIAAWYB/wIAAZkDAAGZATMCAAGZAWYCAAKZAgABmQHMAgABmQH/AgABzAMAAcwBMwIA
+        AcwBZgIAAcwBmQIAAswCAAHMAf8CAAH/AWYCAAH/AZkCAAH/AcwBAAEzAf8CAAH/AQABMwEAATMBAAFm
+        AQABMwEAAZkBAAEzAQABzAEAATMBAAH/AQAB/wEzAgADMwEAAjMBZgEAAjMBmQEAAjMBzAEAAjMB/wEA
+        ATMBZgIAATMBZgEzAQABMwJmAQABMwFmAZkBAAEzAWYBzAEAATMBZgH/AQABMwGZAgABMwGZATMBAAEz
+        AZkBZgEAATMCmQEAATMBmQHMAQABMwGZAf8BAAEzAcwCAAEzAcwBMwEAATMBzAFmAQABMwHMAZkBAAEz
+        AswBAAEzAcwB/wEAATMB/wEzAQABMwH/AWYBAAEzAf8BmQEAATMB/wHMAQABMwL/AQABZgMAAWYBAAEz
+        AQABZgEAAWYBAAFmAQABmQEAAWYBAAHMAQABZgEAAf8BAAFmATMCAAFmAjMBAAFmATMBZgEAAWYBMwGZ
+        AQABZgEzAcwBAAFmATMB/wEAAmYCAAJmATMBAANmAQACZgGZAQACZgHMAQABZgGZAgABZgGZATMBAAFm
+        AZkBZgEAAWYCmQEAAWYBmQHMAQABZgGZAf8BAAFmAcwCAAFmAcwBMwEAAWYBzAGZAQABZgLMAQABZgHM
+        Af8BAAFmAf8CAAFmAf8BMwEAAWYB/wGZAQABZgH/AcwBAAHMAQAB/wEAAf8BAAHMAQACmQIAAZkBMwGZ
+        AQABmQEAAZkBAAGZAQABzAEAAZkDAAGZAjMBAAGZAQABZgEAAZkBMwHMAQABmQEAAf8BAAGZAWYCAAGZ
+        AWYBMwEAAZkBMwFmAQABmQFmAZkBAAGZAWYBzAEAAZkBMwH/AQACmQEzAQACmQFmAQADmQEAApkBzAEA
+        ApkB/wEAAZkBzAIAAZkBzAEzAQABZgHMAWYBAAGZAcwBmQEAAZkCzAEAAZkBzAH/AQABmQH/AgABmQH/
+        ATMBAAGZAcwBZgEAAZkB/wGZAQABmQH/AcwBAAGZAv8BAAHMAwABmQEAATMBAAHMAQABZgEAAcwBAAGZ
+        AQABzAEAAcwBAAGZATMCAAHMAjMBAAHMATMBZgEAAcwBMwGZAQABzAEzAcwBAAHMATMB/wEAAcwBZgIA
+        AcwBZgEzAQABmQJmAQABzAFmAZkBAAHMAWYBzAEAAZkBZgH/AQABzAGZAgABzAGZATMBAAHMAZkBZgEA
+        AcwCmQEAAcwBmQHMAQABzAGZAf8BAALMAgACzAEzAQACzAFmAQACzAGZAQADzAEAAswB/wEAAcwB/wIA
+        AcwB/wEzAQABmQH/AWYBAAHMAf8BmQEAAcwB/wHMAQABzAL/AQABzAEAATMBAAH/AQABZgEAAf8BAAGZ
+        AQABzAEzAgAB/wIzAQAB/wEzAWYBAAH/ATMBmQEAAf8BMwHMAQAB/wEzAf8BAAH/AWYCAAH/AWYBMwEA
+        AcwCZgEAAf8BZgGZAQAB/wFmAcwBAAHMAWYB/wEAAf8BmQIAAf8BmQEzAQAB/wGZAWYBAAH/ApkBAAH/
+        AZkBzAEAAf8BmQH/AQAB/wHMAgAB/wHMATMBAAH/AcwBZgEAAf8BzAGZAQAB/wLMAQAB/wHMAf8BAAL/
+        ATMBAAHMAf8BZgEAAv8BmQEAAv8BzAEAAmYB/wEAAWYB/wFmAQABZgL/AQAB/wJmAQAB/wFmAf8BAAL/
+        AWYBAAEhAQABpQEAA18BAAN3AQADhgEAA5YBAAPLAQADsgEAA9cBAAPdAQAD4wEAA+oBAAPxAQAD+AEA
+        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP//wD/AF0AA/AB9AEA
+        AfQU8F0AAfQDAAHtAQAB7xQAAfRcAAH0AwAB7QEAAe8UAAH0XAAB9AMAAe0BAAHvFAAB9F0AA/AB9AEA
+        AfQU8NYAA20BBwEAAfEUbV0AAfQDAAHtAQAB7xQAAfRcAAH0AwAB7QEAAe8UAAH0YAABkgEAAQfrAAL0
+        AwAT9GIAAe0BAAEHcQAB9AMAAe0BAAHvFAAB9FwAAfQDAAHtAQAB7xQAAfRdAAPtAfABAAHyFO3WAAEH
+        Au8B8gEAAfMT7wEHXQAB9AMAAe0BAAHvFAAB9FwAAfQDAAHtAQAB7xQAAfRcAAH0AwAB7QEAAe8UAAH0
+        XQAB8wLyAwAT8gHz/wDRAAGYBFUBmA8AAfIBbwFGAZMB9A4AAfQBkwFGAW8B8koAAZgGVQGYDQABGgVG
+        AfQMAAH0BUYBGkkAAZcGVQGXDAABGgZGAW8B9AoAAfQBbwZGARpIAAGXBlUBlwsAAfIIRgFvAfQIAAH0
+        AW8IRgHyCwAB8wG7AbQBiwGsAa0BtAEJAfMeAAHzBfIB8w4AAZcGVQGXCwABbwlGAW8B9AYAAfQBbwlG
+        AW8DAAHzBQAB9AG0AqYCigWsAbsB9BsAARIHAAHsDQABlwZVAZcLAAtGAW8B9AQAAfQBbwtGAwABCQG1
+        AwAB8gGtA4oIrAGtAfEZAAHzAQABFQXtAREOAAGXBlUBlwsAARYLRgFvAfQCAAH0AW8LRgEWAwABCQGs
+        AbQBAAHyCawDigKmAYoBvBgAAfIBAAHtBQABbQEAAfQMAAGXBlUBlwsAAfQBbwtGAW8C9AFvC0YBbwH0
+        AwABCQKsAbQJrAG7AfMCAAH0AfEBtQGGAfAXAAHyAQAB7QUAAW0BAAH0DAABlwZVAZcMAAH0DBcCbwwX
+        AfQEAAEJA80HrAG0CQABvBcAAfIBAAHtBQABbQEAAfQMAAGXBlUBlw0AAfQYFwH0BQABCQHTBM0ErAG7
+        IgAB9wEAAe0FAAFtAQAB9AwAAZcGVQGXDgAB9AFvFBcBbwH0BgABCQLTA80DrAG7IQAB8wETAgAB7QUA
+        AW0BAAH0AgABCAmXAVYGVQFWCZcBCAUAAfQBbxIXAW8B9AcAAQkB2QLTAs0CrAG1FAAB8gHrBW0B6wHx
+        BAAB9wIAARIBAAERBW0BDwMAAZgcVQGYBQAB9AFvEBcBbwH0CAABCQLZAtMBzQKsAbQB9BMAAQ8IAAH0
+        AQAB8gEVAQABDwG8AQAB7AcAAZICAB5VBgAB9AFvDhcBbwH0CQABCQHaAtkC0wGyAqwBtAH0EQAB9AEA
+        AeoF9AHsAQAB8QGSAgAB7AUABfQEAB5VBwAB9AFvDBcBbwH0CgABGQHbA9oB2QHTArIBrAG0EQAB9AEA
+        AW0FAAHtAQABDgEAAREB8Q8AHlUHAAH0AW8MFwFvAfQXAAH0AfMH9AYAAfQBAAFtBQAB7QIAAewRAAFW
+        HFUBVgYAAfQBbw4XAW8B9BYAAbQJsgEJBAAB9AEAAW0FAAHtAgABbQH0EAABmBxWAZgFAAH0AW8QFwFv
+        AfQWAAG0BrIB0wHZAQkEAAH0AQABbQUAAe0BAAEQAQABDgEHEAABCAmXCFYJlwEIBQAB9AFvEhcBbwH0
+        FgABtAWyAtMBCQQAAfQBAAESBfIB6wEAAfIBBwEOAQABEgH0AwAB8wXyAfMOAAGXBlYBlw4AAfQBbxQX
+        AW8B9BUAAbsDrAKyAtMBCQUAAREHAAEOAgAB9AHqAQABDgHvAQAB6gcAAewNAAGXBlYBlw0AAfQBbxYX
+        AW8B9BMAAbsFrAPTAQkFAAH0AZIF7QGSAfMEAAEHAQ4BAAERAQABFQXtAREOAAGXBlYBlwwAAfQBbwsX
+        AuMLFwFvAfQRAAG7CawBCRMAAfQBbQIAAe0FAAFtAQAB9AwAAZcGVgGXCwAB9AFvCxcB4wL0AeMLFwFv
+        AfQFAAG8AfMHAAH0AbQKrAG7FQABBwEAAe0FAAFtAQAB9AwAAZcGVgGXCwABkwsXAeMB9AIAAfQB4wsX
+        AZMFAAH0AboBuwHwAfMC9AHyAbsBrQSsAs0CrAGzAqwBCRUAAfIBAAHtBQABbQEAAfQMAAGXBlYBlwsA
+        CxcB4wH0BAAB9AHjCxcGAAH0AtsB2gGzArIDrAXNAawB8gEAAbQBsgEJFQAB8gEAAe0FAAFtAQAB9AwA
+        AZcGVgGXCwABFgkXAeMB9AYAAfQB4wkXARYHAAH0AdwB2wPaCNMB8wMAAdsBCRUAAfIBAAHtBQABbQEA
+        AfQMAAF4BlYBeAsAAfMIFwHjAfQIAAH0AeMIFwHzCQABGQHcAtsF2gHUAdsB9AUAAfMVAAHzAQABEQVt
+        AQ8OAAF4BlYBeAwAARsGFwHjAfQKAAH0AeMGFwEbDAABGQEJAdwD2wEJAfQeAAHsBwABkg0AAQgGlwEI
+        DQABGwQXAeMB9AwAAfQB4wQXARs1AAX0EAABmASXAZgPAAHzARYBFwGUEAABlAEXARYB8z8AAUIBTQE+
+        BwABPgMAASgDAAF4AwABPAMAAQEBAAEBBQABwAEDFgAD/wEAA/8B/AwAA/8B/AwAA/8B/AwAA/8B/AwA
+        A/8B/AwAAcICAAEMDAABggIAAQQMAAGCAgABBAwAAYICAAEEDAABwgIAAQwMAAP/AfwMAAHCAgABDAwA
+        AYICAAEEDAABggIAAQQMAAHCAgABDAwAA/8B/AwAAecCAAEcDAABwgIAAQwMAAGCAgABBAwAAYICAAEE
+        DAABwgIAAQwMAAP/AfwMAAHCAgABDAwAAYICAAEEDAABggIAAQQMAAGCAgABBAwAAccCAAEMDAAD/wH8
+        DAAD/wH8DAAD/wH8DAAB/wHwAT8B/wGDAf8B8AF/B/8BAAH/AeABHwH/AQEB/wHgAT8H/wEAAf8B4AEf
+        Af4BAAH/AcABHwf/AQAB/wHgAR8B/AEAAX8BgAEPAf4BAAP/AfwBBwEAAf8B4AEfAfwBAAE/AQABDgH4
+        AQABPwL/AfgBAwEAAf8B4AEfAfwBAAEeAQABDgFwAQABHwL/AfABAwEAAf8B4AEfAfwBAAEMAQABDgEg
+        AQABDwL/AvEBAAH/AeABHwH8AwABDgEAAQMBBwL/AvEBAAH/AeABHwH+AwABHgEAAR8B9wL/AvEBAAH/
+        AeABHwH/AwABPgEAAT8D/wLxAQAB/wHgAR8B/wGAAgABfgEAAX8D/wHBAfEBAAGAAgABBwHAAgAB/gEA
+        Av8B8AEHAYABAwQAAQMB4AEAAQEB/gEAAX8B/wHwAQIBCAEDBAABAwHwAQABAwH+AQABPwH/AeABAAE+
+        AQ8EAAEDAfgBAAEHAf4BAAE/Af8B4wHgAX8B/wQAAQMB+AEAAQcC/wHwAQcB4wHhAv8EAAEDAfABAAED
+        Av8B8AEBAeMB4AL/BAABAwHgAQABAQL/AfgBAQHjAeABfwH/AQABgAIAAQcBwAIAAv8B/AEBAeABAAEc
+        AQcBAAH/AeABHwH/AYACAAF/Af8B/AEBAfABBgEIAQMBAAH/AeABHwH/AwABPwH/AfgBAQHwAQcBgAED
+        AQAB/wHgAR8B/gMAAR8B/wHwAQEC/wHBAfEBAAH/AeABHwH8AwABDwGfAcABAQL/AvEBAAH/AeABHwH8
+        AQABDAEAAQ8BgAEAAQEC/wLxAQAB/wHgAR8B/AEAAR4BAAEPAcABAAERAv8C8QEAAf8B4AEfAfwBAAE/
+        AQABDwHgAQABOQL/AvEBAAH/AeABHwH8AQABfwGAAQ8B+AEAAX0C/wHwAQMBAAH/AeABHwH+AQAB/wHA
+        AR8B/gEBA/8B+AEDAQAB/wHgAR8B/wEBAf8B4AE/Bf8B/gEPAQAB/wHwAT8B/wGHAf8B+AF/B/8BAAs=
+</value>
+  </data>
+  <data name="gridExAgreementsListGrouped_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="IdUmowy"&gt;&lt;Caption&gt;Umowa&lt;/Caption&gt;&lt;DataMember&gt;UmowaId&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FilterEditType&gt;TextBox&lt;/FilterEditType&gt;&lt;Key&gt;IdUmowy&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Width&gt;85&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="TytulUmowa"&gt;&lt;Caption&gt;Tytuł&lt;/Caption&gt;&lt;DataMember&gt;TytulUmowa&lt;/DataMember&gt;&lt;Key&gt;TytulUmowa&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Width&gt;76&lt;/Width&gt;&lt;/Column1&gt;&lt;Column2 ID="Autor"&gt;&lt;Caption&gt;Autor&lt;/Caption&gt;&lt;DataMember&gt;Autor&lt;/DataMember&gt;&lt;Key&gt;Autor&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Width&gt;76&lt;/Width&gt;&lt;/Column2&gt;&lt;Column3 ID="Deskryptor"&gt;&lt;Caption&gt;Deskryptor&lt;/Caption&gt;&lt;DataMember&gt;Deskryptor&lt;/DataMember&gt;&lt;Key&gt;Deskryptor&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;75&lt;/Width&gt;&lt;/Column3&gt;&lt;Column4 ID="KTM"&gt;&lt;Caption&gt;KTM&lt;/Caption&gt;&lt;DataMember&gt;KTM&lt;/DataMember&gt;&lt;Key&gt;KTM&lt;/Key&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;Width&gt;80&lt;/Width&gt;&lt;/Column4&gt;&lt;Column5 ID="Tytul"&gt;&lt;Caption&gt;Pozycja&lt;/Caption&gt;&lt;DataMember&gt;Tytul&lt;/DataMember&gt;&lt;Key&gt;Tytul&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;Width&gt;56&lt;/Width&gt;&lt;/Column5&gt;&lt;Column6 ID="Segment1"&gt;&lt;Caption&gt;Segment1&lt;/Caption&gt;&lt;DataMember&gt;Segment1&lt;/DataMember&gt;&lt;Key&gt;Segment1&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;Width&gt;52&lt;/Width&gt;&lt;/Column6&gt;&lt;Column7 ID="Segment2"&gt;&lt;Caption&gt;Segment2&lt;/Caption&gt;&lt;DataMember&gt;Segment2&lt;/DataMember&gt;&lt;Key&gt;Segment2&lt;/Key&gt;&lt;Position&gt;7&lt;/Position&gt;&lt;Width&gt;52&lt;/Width&gt;&lt;/Column7&gt;&lt;Column8 ID="Segment3"&gt;&lt;Caption&gt;Segment3&lt;/Caption&gt;&lt;DataMember&gt;Segment3&lt;/DataMember&gt;&lt;Key&gt;Segment3&lt;/Key&gt;&lt;Position&gt;8&lt;/Position&gt;&lt;Width&gt;52&lt;/Width&gt;&lt;/Column8&gt;&lt;Column9 ID="Segment4"&gt;&lt;Caption&gt;Segment4&lt;/Caption&gt;&lt;DataMember&gt;Segment4&lt;/DataMember&gt;&lt;Key&gt;Segment4&lt;/Key&gt;&lt;Position&gt;9&lt;/Position&gt;&lt;Width&gt;53&lt;/Width&gt;&lt;/Column9&gt;&lt;Column10 ID="PoczatekOkresuRozliczeniowego"&gt;&lt;Caption&gt;Początek okresu rozliczeniowego&lt;/Caption&gt;&lt;DataMember&gt;PoczatekOkresuRozliczeniowego&lt;/DataMember&gt;&lt;Key&gt;PoczatekOkresuRozliczeniowego&lt;/Key&gt;&lt;Position&gt;10&lt;/Position&gt;&lt;Width&gt;64&lt;/Width&gt;&lt;/Column10&gt;&lt;Column11 ID="Koniec okresu rozliczeniowego"&gt;&lt;Caption&gt;Koniec okresu rozliczeniowego&lt;/Caption&gt;&lt;DataMember&gt;Koniec okresu rozliczeniowego&lt;/DataMember&gt;&lt;Key&gt;Koniec okresu rozliczeniowego&lt;/Key&gt;&lt;Position&gt;11&lt;/Position&gt;&lt;Width&gt;84&lt;/Width&gt;&lt;/Column11&gt;&lt;Column12 ID="DataZakonczeniaKontraktu"&gt;&lt;Caption&gt;Data zakończenia kontraktu&lt;/Caption&gt;&lt;DataMember&gt;DataZakonczeniaKontraktu&lt;/DataMember&gt;&lt;Key&gt;DataZakonczeniaKontraktu&lt;/Key&gt;&lt;Position&gt;12&lt;/Position&gt;&lt;Width&gt;128&lt;/Width&gt;&lt;/Column12&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;GroupMode&gt;Expanded&lt;/GroupMode&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
   </data>
 </root>
