@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Foksal.Forms.Agreements;
+using Foksal.Forms.Settings;
 using System;
 using System.Windows.Forms;
 
@@ -19,9 +20,22 @@ namespace Foksal
 
             if (AppUser.Instance.IsLoggedIn)
             {
-                btnLogIn.Visible = false;
-                btnLogOut.Visible = true;
+                this.TransformControls();
             }
+        }
+
+        private void TransformControls()
+        {
+            bool isLoggedIn = AppUser.Instance.IsLoggedIn;
+
+            btnLogIn.Visible = !isLoggedIn;
+            btnLogOut.Visible = isLoggedIn;
+            ribbonPanelBasic.Enabled = isLoggedIn;
+            ribbonTabDictionaries.Visible = isLoggedIn;
+            ribbonTabReports.Visible = isLoggedIn;
+            ribbonTabSettings.Visible = isLoggedIn;
+
+            ribbonPanelSettings_Users.Enabled = AppUser.Instance.IsAdmin;
         }
 
         private void UserLogOut()
@@ -31,8 +45,7 @@ namespace Foksal
                 AppUser.Instance.LogOut();
                 this.CloseAllChildForms();
 
-                btnLogIn.Visible = true;
-                btnLogOut.Visible = false;
+                this.TransformControls();
             }
         }
 
@@ -53,26 +66,38 @@ namespace Foksal
             this.UserLogIn();
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private void BtnLogIn_Click(object sender, EventArgs e)
         {
-            this.UserLogOut();
             this.UserLogIn();
         }
-        private void btnLogOut_Click(object sender, EventArgs e)
+        private void BtnLogOut_Click(object sender, EventArgs e)
         {
             this.UserLogOut();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnAgreements_Click(object sender, EventArgs e)
+        private void BtnAgreements_Click(object sender, EventArgs e)
         {
-            FrmAgreementsList frmAgreementsList = new FrmAgreementsList();
-            frmAgreementsList.MdiParent = this;
+            FrmAgreementsList frmAgreementsList = new FrmAgreementsList
+            {
+                MdiParent = this
+            };
+
             frmAgreementsList.Show();
+        }
+
+        private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
+        {
+            FrmChangePassword frmChangePassword = new FrmChangePassword
+            {
+                MdiParent = this
+            };
+
+            frmChangePassword.Show();
         }
     }
 }

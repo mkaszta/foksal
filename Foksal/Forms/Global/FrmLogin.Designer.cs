@@ -91,8 +91,10 @@
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelLogin;
             this.ClientSize = new System.Drawing.Size(332, 149);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);

@@ -8,10 +8,7 @@ namespace Foksal
     {
         public FrmLogin()
         {
-            InitializeComponent();
-
-            this.AcceptButton = btnLogin;
-            this.CancelButton = btnCancelLogin;
+            InitializeComponent();            
         }
 
         private void btnCancelLogin_Click(object sender, EventArgs e)

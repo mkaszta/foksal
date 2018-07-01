@@ -16,10 +16,12 @@ namespace DAL.Grids
         {
             dataTable.Clear();
 
-            SqlCommand cmdSelect = new SqlCommand();
-            cmdSelect.Connection = dbConnection.Connection;
-            cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT * FROM [vUmowyZPozycjamiLista]";
+            SqlCommand cmdSelect = new SqlCommand
+            {
+                Connection = dbConnection.Connection,
+                CommandType = CommandType.Text,
+                CommandText = "SELECT * FROM [vUmowyZPozycjamiLista]"
+            };
             dataAdapter.SelectCommand = cmdSelect;
 
             dataAdapter.Fill(dataTable);
