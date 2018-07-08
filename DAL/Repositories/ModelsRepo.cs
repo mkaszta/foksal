@@ -24,7 +24,7 @@ namespace DAL.Repositories
                         model.Id = Id;
                         model.IsActive = Convert.ToBoolean(reader.GetByte(reader.GetOrdinal("active")));
                         model.IsPercent = Convert.ToBoolean(reader.GetByte(reader.GetOrdinal("procent")));
-                        model.IsThreshold = Convert.ToBoolean(reader.GetByte(reader.GetOrdinal("progi")));
+                        model.HasThresholds = Convert.ToBoolean(reader.GetByte(reader.GetOrdinal("progi")));
                         model.Name = reader.GetString(reader.GetOrdinal("name"));
                         model.LabelFixedPrice = reader.IsDBNull(reader.GetOrdinal("StalaCenaNazwa")) ? "" : reader.GetString(reader.GetOrdinal("StalaCenaNazwa"));
                         model.LabelPercent = reader.IsDBNull(reader.GetOrdinal("StawkaNazwa")) ? "" : reader.GetString(reader.GetOrdinal("StawkaNazwa"));

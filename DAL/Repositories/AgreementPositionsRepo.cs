@@ -25,7 +25,7 @@ namespace DAL.Repositories
                         position.Id = Id;
                         position.AgreementId = reader.GetInt32(reader.GetOrdinal("UmowaId"));
                         position.Title = reader.GetString(reader.GetOrdinal("Tytul")).Equals(string.Empty) ? "(...)" : reader.GetString(reader.GetOrdinal("Tytul"));
-                        position.SettlementModelId = reader.GetInt32(reader.GetOrdinal("ModelId"));
+                        position.ModelId = reader.GetInt32(reader.GetOrdinal("ModelId"));                        
                         position.KTM = reader.GetString(reader.GetOrdinal("KTM"));
                         position.Descriptor = reader.GetString(reader.GetOrdinal("Deskryptor"));
                         position.CurrencyId = reader.GetInt32(reader.GetOrdinal("WalutaId"));
@@ -82,7 +82,7 @@ namespace DAL.Repositories
                     command.Parameters.Add("@umowaId", SqlDbType.Int, 6).Value = position.AgreementId;
                     command.Parameters.Add("@ktm", SqlDbType.VarChar, 50).Value = position.KTM;
                     command.Parameters.Add("@deskryptor", SqlDbType.VarChar, 50).Value = position.Descriptor;
-                    command.Parameters.Add("@modelId", SqlDbType.Int, 6).Value = position.SettlementModelId;
+                    command.Parameters.Add("@modelId", SqlDbType.Int, 6).Value = position.ModelId;
                     command.Parameters.Add("@walutaId", SqlDbType.Int, 6).Value = position.CurrencyId;
                     command.Parameters.Add("@okresRozliczeniowy", SqlDbType.TinyInt, 6).Value = position.BillingPeriod;
                     command.Parameters.Add("@poczatekOkresuRozliczeniowego", SqlDbType.DateTime, 8).Value = position.BillingPeriodStart;
@@ -94,7 +94,7 @@ namespace DAL.Repositories
                     command.Parameters.Add("@stalaCena", SqlDbType.Decimal, 10).Value = position.ModelFixedPrice;
                     command.Parameters.Add("@procentOdCeny", SqlDbType.Decimal, 10).Value = position.ModelPercent;
                     command.Parameters.Add("@uwagi", SqlDbType.VarChar, 1000).Value = position.Comments;
-                    command.Parameters.Add("@uzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;                    
+                    command.Parameters.Add("@uzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
 
                     command.ExecuteNonQuery();
                 }

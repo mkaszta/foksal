@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Foksal.Forms.Agreements;
+using Foksal.Forms.Dictonaries;
 using Foksal.Forms.Settings;
 using System;
 using System.Windows.Forms;
@@ -92,12 +93,27 @@ namespace Foksal
 
         private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
         {
-            FrmChangePassword frmChangePassword = new FrmChangePassword
+            FrmChangePassword frmChangePassword = new FrmChangePassword();            
+            frmChangePassword.ShowDialog();
+        }
+
+        private void btnSettingsUsers_Click(object sender, EventArgs e)
+        {
+            FrmUsers frmUsers = new FrmUsers
             {
                 MdiParent = this
             };
 
-            frmChangePassword.Show();
+            frmUsers.Show();
+        }
+
+        private void btnDictCurrencies_Click(object sender, EventArgs e)
+        {
+            FrmDictCurrencies frmDictCurrencies = new FrmDictCurrencies(){
+                MdiParent = this
+            };
+
+            frmDictCurrencies.Show();
         }
     }
 }

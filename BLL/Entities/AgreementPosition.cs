@@ -7,7 +7,7 @@ namespace BLL.Entities
         public int Id { get; set; }
         public object AgreementId { get; set; }
         public string Title { get; set; }
-        public int SettlementModelId { get; set; }
+        public int ModelId { get; set; }        
         public string KTM { get; set; }
         public string Descriptor { get; set; }
         public int CurrencyId { get; set; }

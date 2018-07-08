@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.Entities;
 using Janus.Windows.GridEX;
 using System.Data;
 using System.Data.SqlClient;
@@ -60,6 +61,16 @@ namespace DAL.Grids
         public void Update()
         {
             this.dataAdapter.Update(this.dataTable);
+        }
+
+        public void AddRow(RelatedProduct newProduct)
+        {
+            DataRow newRow = dataTable.NewRow();
+            newRow.SetField("pozycjaUmowyId", newProduct.AgreementPositionId);
+            newRow.SetField("KTM", newProduct.KTM);
+            newRow.SetField("Deskryptor", newProduct.Descriptor);            
+
+            this.dataTable.Rows.Add(newRow);
         }
     }
 }

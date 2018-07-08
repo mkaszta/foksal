@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTabMain = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelMain_User = new System.Windows.Forms.RibbonPanel();
             this.btnLogIn = new System.Windows.Forms.RibbonButton();
@@ -40,56 +39,17 @@
             this.btnProducts = new System.Windows.Forms.RibbonButton();
             this.btnSettlements = new System.Windows.Forms.RibbonButton();
             this.btnDescriptorChanges = new System.Windows.Forms.RibbonButton();
+            this.ribbonTabDictionaries = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanelDictionaries = new System.Windows.Forms.RibbonPanel();
+            this.btnDictCurrencies = new System.Windows.Forms.RibbonButton();
+            this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
             this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelSettings_Mine = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsChangePassword = new System.Windows.Forms.RibbonButton();
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsUsers = new System.Windows.Forms.RibbonButton();
-            this.ribbonTabDictionaries = new System.Windows.Forms.RibbonTab();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
-            this.groupBox1.SuspendLayout();
+            this.ribbonMain = new System.Windows.Forms.Ribbon();
             this.SuspendLayout();
-            // 
-            // ribbon1
-            // 
-            this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ribbon1.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.Minimized = false;
-            this.ribbon1.Name = "ribbon1";
-            // 
-            // 
-            // 
-            this.ribbon1.OrbDropDown.BorderRoundness = 8;
-            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
-            this.ribbon1.OrbDropDown.Name = "";
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 447);
-            this.ribbon1.OrbDropDown.TabIndex = 0;
-            this.ribbon1.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon1.Size = new System.Drawing.Size(1225, 147);
-            this.ribbon1.TabIndex = 4;
-            this.ribbon1.Tabs.Add(this.ribbonTabMain);
-            this.ribbon1.Tabs.Add(this.ribbonTabDictionaries);
-            this.ribbon1.Tabs.Add(this.ribbonTabReports);
-            this.ribbon1.Tabs.Add(this.ribbonTabSettings);            
-            this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
-            this.ribbon1.Text = "ribbon1";
             // 
             // ribbonTabMain
             // 
@@ -100,6 +60,8 @@
             // 
             // ribbonPanelMain_User
             // 
+            this.ribbonPanelMain_User.ButtonMoreEnabled = false;
+            this.ribbonPanelMain_User.ButtonMoreVisible = false;
             this.ribbonPanelMain_User.Items.Add(this.btnLogIn);
             this.ribbonPanelMain_User.Items.Add(this.btnLogOut);
             this.ribbonPanelMain_User.Items.Add(this.btnExit);
@@ -110,18 +72,24 @@
             // 
             this.btnLogIn.Image = ((System.Drawing.Image)(resources.GetObject("btnLogIn.Image")));
             this.btnLogIn.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLogIn.LargeImage")));
+            this.btnLogIn.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnLogIn.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnLogIn.SmallImage")));
             this.btnLogIn.Text = "Zaloguj";
+            this.btnLogIn.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.btnLogIn.Click += new System.EventHandler(this.BtnLogIn_Click);
             // 
             // btnLogOut
             // 
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLogOut.LargeImage")));
+            this.btnLogOut.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnLogOut.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnLogOut.SmallImage")));
             this.btnLogOut.Text = "Wyloguj";
+            this.btnLogOut.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.btnLogOut.Visible = false;
             this.btnLogOut.Click += new System.EventHandler(this.BtnLogOut_Click);
             // 
@@ -129,13 +97,18 @@
             // 
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExit.LargeImage")));
+            this.btnExit.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnExit.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnExit.Name = "btnExit";
             this.btnExit.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnExit.SmallImage")));
             this.btnExit.Text = "Zamknij";
+            this.btnExit.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // ribbonPanelBasic
             // 
+            this.ribbonPanelBasic.ButtonMoreEnabled = false;
+            this.ribbonPanelBasic.ButtonMoreVisible = false;
             this.ribbonPanelBasic.Items.Add(this.btnAgreements);
             this.ribbonPanelBasic.Items.Add(this.btnProducts);
             this.ribbonPanelBasic.Items.Add(this.btnSettlements);
@@ -147,9 +120,12 @@
             // 
             this.btnAgreements.Image = ((System.Drawing.Image)(resources.GetObject("btnAgreements.Image")));
             this.btnAgreements.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgreements.LargeImage")));
+            this.btnAgreements.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnAgreements.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnAgreements.Name = "btnAgreements";
             this.btnAgreements.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnAgreements.SmallImage")));
             this.btnAgreements.Text = "Umowy";
+            this.btnAgreements.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.btnAgreements.Click += new System.EventHandler(this.BtnAgreements_Click);
             // 
             // btnProducts
@@ -157,27 +133,62 @@
             this.btnProducts.Enabled = false;
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.LargeImage")));
+            this.btnProducts.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnProducts.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.SmallImage")));
             this.btnProducts.Text = "Produkty i towary";
+            this.btnProducts.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             // 
             // btnSettlements
             // 
             this.btnSettlements.Enabled = false;
             this.btnSettlements.Image = ((System.Drawing.Image)(resources.GetObject("btnSettlements.Image")));
             this.btnSettlements.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettlements.LargeImage")));
+            this.btnSettlements.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnSettlements.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnSettlements.Name = "btnSettlements";
             this.btnSettlements.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSettlements.SmallImage")));
             this.btnSettlements.Text = "Rozliczenia";
+            this.btnSettlements.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             // 
             // btnDescriptorChanges
             // 
             this.btnDescriptorChanges.Enabled = false;
             this.btnDescriptorChanges.Image = ((System.Drawing.Image)(resources.GetObject("btnDescriptorChanges.Image")));
             this.btnDescriptorChanges.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDescriptorChanges.LargeImage")));
+            this.btnDescriptorChanges.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.btnDescriptorChanges.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnDescriptorChanges.Name = "btnDescriptorChanges";
             this.btnDescriptorChanges.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDescriptorChanges.SmallImage")));
             this.btnDescriptorChanges.Text = "Zmiany deskryptora";
+            this.btnDescriptorChanges.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
+            // 
+            // ribbonTabDictionaries
+            // 
+            this.ribbonTabDictionaries.Name = "ribbonTabDictionaries";
+            this.ribbonTabDictionaries.Panels.Add(this.ribbonPanelDictionaries);
+            this.ribbonTabDictionaries.Text = "Słowniki";
+            // 
+            // ribbonPanelDictionaries
+            // 
+            this.ribbonPanelDictionaries.Items.Add(this.btnDictCurrencies);
+            this.ribbonPanelDictionaries.Name = "ribbonPanelDictionaries";
+            this.ribbonPanelDictionaries.Text = "Słowniki";
+            // 
+            // btnDictCurrencies
+            // 
+            this.btnDictCurrencies.Image = ((System.Drawing.Image)(resources.GetObject("btnDictCurrencies.Image")));
+            this.btnDictCurrencies.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDictCurrencies.LargeImage")));
+            this.btnDictCurrencies.Name = "btnDictCurrencies";
+            this.btnDictCurrencies.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDictCurrencies.SmallImage")));
+            this.btnDictCurrencies.Text = "Waluty";
+            this.btnDictCurrencies.Click += new System.EventHandler(this.btnDictCurrencies_Click);
+            // 
+            // ribbonTabReports
+            // 
+            this.ribbonTabReports.Name = "ribbonTabReports";
+            this.ribbonTabReports.Text = "Raporty";
             // 
             // ribbonTabSettings
             // 
@@ -216,220 +227,55 @@
             this.btnSettingsUsers.Name = "btnSettingsUsers";
             this.btnSettingsUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsUsers.SmallImage")));
             this.btnSettingsUsers.Text = "Użytkownicy";
+            this.btnSettingsUsers.Click += new System.EventHandler(this.btnSettingsUsers_Click);
             // 
-            // ribbonTabDictionaries
+            // ribbonMain
             // 
-            this.ribbonTabDictionaries.Name = "ribbonTabDictionaries";
-            this.ribbonTabDictionaries.Text = "Słowniki";
+            this.ribbonMain.CaptionBarVisible = false;
+            this.ribbonMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ribbonMain.Location = new System.Drawing.Point(0, 0);
+            this.ribbonMain.Minimized = false;
+            this.ribbonMain.Name = "ribbonMain";
             // 
-            // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(831, 153);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(382, 233);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Development process";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label16.ForeColor = System.Drawing.Color.Blue;
-            this.label16.Location = new System.Drawing.Point(185, 179);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(15, 13);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "X";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.ForeColor = System.Drawing.Color.Green;
-            this.label15.Location = new System.Drawing.Point(267, 83);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 13);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "X";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.ForeColor = System.Drawing.Color.Green;
-            this.label14.Location = new System.Drawing.Point(267, 51);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 13);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "X";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(321, 25);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Odebrane";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(258, 25);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(33, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Testy";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(162, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Development";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(102, 195);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Raporty:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(20, 179);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(129, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Formularz administracyjny:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(29, 163);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Lista zmian deskryptora:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(72, 147);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Słownik walut:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(85, 115);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Rozliczenia:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 131);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Słownik licencjodawców:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Lista produktów i towarów:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(22, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Logowanie / autoryzacja:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Green;
-            this.label2.Location = new System.Drawing.Point(104, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Umowy:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Formularz z przypomnieniami:";
-            // 
-            // ribbonTabReports
-            // 
-            this.ribbonTabReports.Name = "ribbonTabReports";
-            this.ribbonTabReports.Text = "Raporty";
+            this.ribbonMain.OrbDropDown.BorderRoundness = 8;
+            this.ribbonMain.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbonMain.OrbDropDown.Name = "";
+            this.ribbonMain.OrbDropDown.Size = new System.Drawing.Size(527, 72);
+            this.ribbonMain.OrbDropDown.TabIndex = 0;
+            this.ribbonMain.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
+            this.ribbonMain.OrbVisible = false;
+            this.ribbonMain.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.ribbonMain.Size = new System.Drawing.Size(1225, 125);
+            this.ribbonMain.TabIndex = 4;
+            this.ribbonMain.Tabs.Add(this.ribbonTabMain);
+            this.ribbonMain.Tabs.Add(this.ribbonTabDictionaries);
+            this.ribbonMain.Tabs.Add(this.ribbonTabReports);
+            this.ribbonMain.Tabs.Add(this.ribbonTabSettings);
+            this.ribbonMain.TabsMargin = new System.Windows.Forms.Padding(6, 2, 20, 0);
+            this.ribbonMain.TabSpacing = 3;
+            this.ribbonMain.Text = "Ribbon";
+            this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1225, 581);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ribbon1);
+            this.Controls.Add(this.ribbonMain);
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.Name = "FrmMain";
-            this.Text = "Foksal project";
+            this.Text = "Foksal SNOL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Ribbon ribbon1;
         private System.Windows.Forms.RibbonTab ribbonTabMain;
-        private System.Windows.Forms.RibbonPanel ribbonPanelMain_User;
         private System.Windows.Forms.RibbonButton btnLogIn;
         private System.Windows.Forms.RibbonButton btnLogOut;
         private System.Windows.Forms.RibbonButton btnExit;
@@ -440,23 +286,6 @@
         private System.Windows.Forms.RibbonButton btnSettingsChangePassword;
         private System.Windows.Forms.RibbonPanel ribbonPanelSettings_Users;
         private System.Windows.Forms.RibbonButton btnSettingsUsers;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RibbonPanel ribbonPanelBasic;
         private System.Windows.Forms.RibbonButton btnAgreements;
         private System.Windows.Forms.RibbonButton btnProducts;
@@ -464,6 +293,10 @@
         private System.Windows.Forms.RibbonButton btnDescriptorChanges;
         private System.Windows.Forms.RibbonTab ribbonTabDictionaries;
         private System.Windows.Forms.RibbonTab ribbonTabReports;
+        internal System.Windows.Forms.RibbonPanel ribbonPanelMain_User;
+        private System.Windows.Forms.Ribbon ribbonMain;
+        private System.Windows.Forms.RibbonPanel ribbonPanelDictionaries;
+        private System.Windows.Forms.RibbonButton btnDictCurrencies;
     }
 }
 

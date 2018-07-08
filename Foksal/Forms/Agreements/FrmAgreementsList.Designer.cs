@@ -39,6 +39,7 @@
             this.btnSwitchGridMode = new System.Windows.Forms.Button();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.gridExAgreementsListGrouped = new Janus.Windows.GridEX.GridEX();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridExAgreementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExAgreementsListGrouped)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             this.gridExAgreementsList.DynamicFiltering = true;
             this.gridExAgreementsList.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.gridExAgreementsList.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.gridExAgreementsList.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExAgreementsList.GroupByBoxVisible = false;
             this.gridExAgreementsList.Location = new System.Drawing.Point(12, 61);
             this.gridExAgreementsList.Name = "gridExAgreementsList";
@@ -74,6 +76,7 @@
             this.btnAddAgreement.Name = "btnAddAgreement";
             this.btnAddAgreement.Size = new System.Drawing.Size(45, 43);
             this.btnAddAgreement.TabIndex = 1;
+            this.toolTip.SetToolTip(this.btnAddAgreement, "Dodaj umowę");
             this.btnAddAgreement.UseVisualStyleBackColor = false;
             this.btnAddAgreement.Click += new System.EventHandler(this.btnAddAgreement_Click);
             // 
@@ -97,6 +100,7 @@
             this.btnRemoveAgreement.Name = "btnRemoveAgreement";
             this.btnRemoveAgreement.Size = new System.Drawing.Size(45, 43);
             this.btnRemoveAgreement.TabIndex = 2;
+            this.toolTip.SetToolTip(this.btnRemoveAgreement, "Usuń umowę");
             this.btnRemoveAgreement.UseVisualStyleBackColor = false;
             this.btnRemoveAgreement.Click += new System.EventHandler(this.btnRemoveAgreement_Click);
             // 
@@ -110,6 +114,7 @@
             this.btnSwitchGridMode.Name = "btnSwitchGridMode";
             this.btnSwitchGridMode.Size = new System.Drawing.Size(45, 43);
             this.btnSwitchGridMode.TabIndex = 4;
+            this.toolTip.SetToolTip(this.btnSwitchGridMode, "Przełącz widok");
             this.btnSwitchGridMode.UseVisualStyleBackColor = false;
             this.btnSwitchGridMode.Click += new System.EventHandler(this.btnSwitchGridMode_Click);
             // 
@@ -124,6 +129,7 @@
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Size = new System.Drawing.Size(45, 43);
             this.btnRefreshList.TabIndex = 3;
+            this.toolTip.SetToolTip(this.btnRefreshList, "Odśwież listę");
             this.btnRefreshList.UseVisualStyleBackColor = false;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
@@ -140,6 +146,7 @@
             this.gridExAgreementsListGrouped.DynamicFiltering = true;
             this.gridExAgreementsListGrouped.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.gridExAgreementsListGrouped.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.gridExAgreementsListGrouped.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExAgreementsListGrouped.Location = new System.Drawing.Point(12, 61);
             this.gridExAgreementsListGrouped.Name = "gridExAgreementsListGrouped";
             this.gridExAgreementsListGrouped.Size = new System.Drawing.Size(937, 432);
@@ -157,6 +164,7 @@
             this.Controls.Add(this.btnRemoveAgreement);
             this.Controls.Add(this.btnAddAgreement);
             this.Controls.Add(this.gridExAgreementsList);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmAgreementsList";
             this.Text = "Umowy";
@@ -175,5 +183,6 @@
         private System.Windows.Forms.Button btnSwitchGridMode;
         private System.Windows.Forms.Button btnRefreshList;
         private Janus.Windows.GridEX.GridEX gridExAgreementsListGrouped;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

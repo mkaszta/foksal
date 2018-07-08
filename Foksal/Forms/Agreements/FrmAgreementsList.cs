@@ -60,9 +60,9 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void ShowAgreementForm(int agreementId)
+        private void ShowAgreementForm(int agreementId, int positionId = -1)
         {
-            FrmAgreement frmAgreement = new FrmAgreement(agreementId);
+            FrmAgreement frmAgreement = new FrmAgreement(agreementId, positionId);
 
             frmAgreement.MdiParent = this.MdiParent;
             frmAgreement.Show();
@@ -70,7 +70,21 @@ namespace Foksal.Forms.Agreements
 
         private void gridExCurrentList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
-            this.ShowAgreementForm(Convert.ToInt32(e.Row.Cells[0].Value));
+            if (e.Row.GroupValue != null)
+            {
+                this.ShowAgreementForm(Convert.ToInt32(e.Row.GroupValue));
+            }
+            else
+            {
+                if (sender == gridExAgreementsListGrouped)
+                {
+                    this.ShowAgreementForm(Convert.ToInt32(e.Row.Cells[0].Value), Convert.ToInt32(e.Row.Cells["PozycjaId"].Value));
+                }
+                else
+                {
+                    this.ShowAgreementForm(Convert.ToInt32(e.Row.Cells[0].Value), 0);
+                }
+            }
         }
 
         private void btnAddAgreement_Click(object sender, EventArgs e)

@@ -32,5 +32,26 @@ namespace DAL.Repositories
 
             return lstCurrencies;
         }
+
+        public static void InsertUpdateRate(CurrencyRate rate, int currencyId)
+        {
+            List<Currency> lstCurrencies = new List<Currency>();
+
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string formattedDate = rate.Date.ToString("yyyy-MM-dd");
+
+                string sqlQuery = string.Format("IF EXISTS (SELECT id FROM [Kurs] WHERE WalutaId = {0} AND Data = '{1}') " +
+                                                "UPDATE [Kurs] SET Kurs = {2}, EdycjaUzytkownik = {3} WHERE WalutaId = {0} AND Data = '{1}' " +
+                                                "ELSE " +
+                                                "INSERT INTO [Kurs] (WalutaId, Data, Kurs, WprowadzenieUzytkownik) VALUES ({0}, '{1}', {2}, {3}) ",
+                                                currencyId, formattedDate, rate.Rate.ToString().Replace(",", "."), AppUser.Instance.UserId);
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }            
+        }
     }
 }

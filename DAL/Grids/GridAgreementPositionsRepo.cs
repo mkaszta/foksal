@@ -62,5 +62,11 @@ namespace DAL.Grids
             this.dataTable.Rows[rowPosition].Delete();
             this.dataAdapter.Update(this.dataTable);
         }
+
+        public void DeleteLastRow()
+        {
+            this.dataTable.Rows[this.dataTable.Rows.Count - 1].Delete();
+            this.dataAdapter.Update(this.dataTable);
+        }
     }
 }

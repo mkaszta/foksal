@@ -10,7 +10,7 @@ namespace BLL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsThreshold { get; set; }
+        public bool HasThresholds { get; set; }
         public bool IsPercent { get; set; }
         public bool IsActive { get; set; }
         public string LabelPercent { get; set; }

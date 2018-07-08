@@ -70,6 +70,18 @@
     <Compile Include="Forms\Agreements\FrmAgreementsList.Designer.cs">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Agreements\FrmWFMagPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmWFMagPicker.Designer.cs">
+      <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dictonaries\FrmDictCurrencies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dictonaries\FrmDictCurrencies.Designer.cs">
+      <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Global\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,18 @@
     <Compile Include="Forms\Settings\FrmChangePassword.Designer.cs">
       <DependentUpon>FrmChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings\FrmUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\FrmUserDetails.Designer.cs">
+      <DependentUpon>FrmUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings\FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings\FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Agreements\frmAgreement.resx">
@@ -95,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmAgreementsList.resx">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agreements\FrmWFMagPicker.resx">
+      <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dictonaries\FrmDictCurrencies.resx">
+      <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Global\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -104,6 +134,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\FrmChangePassword.resx">
       <DependentUpon>FrmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\FrmUserDetails.resx">
+      <DependentUpon>FrmUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings\FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -133,7 +169,6 @@
   <ItemGroup>
     <None Include="Resources\icon-add.png" />
     <None Include="Resources\add-icon.png" />
-    <None Include="Resources\Image1.png" />
     <None Include="Resources\icon-save.png" />
     <Content Include="RibbonMarkup.xml" />
   </ItemGroup>
