@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grids\GridAgreementArticlesRepo.cs" />
+    <Compile Include="Grids\GridLicensorsRepo.cs" />
     <Compile Include="Grids\GridCurrencyRatesRepo.cs" />
     <Compile Include="Grids\GridCurrenciesRepo.cs" />
     <Compile Include="Grids\GridAgreementScheduleRepo.cs" />

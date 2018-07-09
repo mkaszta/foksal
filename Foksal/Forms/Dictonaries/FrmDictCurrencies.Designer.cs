@@ -36,6 +36,7 @@
             this.gridExCurrencyRates = new Janus.Windows.GridEX.GridEX();
             this.btnGetNBPRate = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridExCurrencies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExCurrencyRates)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +98,7 @@
             this.btnGetNBPRate.Name = "btnGetNBPRate";
             this.btnGetNBPRate.Size = new System.Drawing.Size(41, 34);
             this.btnGetNBPRate.TabIndex = 64;
+            this.toolTip.SetToolTip(this.btnGetNBPRate, "Pobierz kursy NBP");
             this.btnGetNBPRate.UseVisualStyleBackColor = true;
             this.btnGetNBPRate.Click += new System.EventHandler(this.btnGetNBPRate_Click);
             // 
@@ -130,5 +132,6 @@
         private Janus.Windows.GridEX.GridEX gridExCurrencyRates;
         private System.Windows.Forms.Button btnGetNBPRate;
         private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

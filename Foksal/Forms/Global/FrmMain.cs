@@ -71,6 +71,7 @@ namespace Foksal
         {
             this.UserLogIn();
         }
+
         private void BtnLogOut_Click(object sender, EventArgs e)
         {
             this.UserLogOut();
@@ -93,7 +94,7 @@ namespace Foksal
 
         private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
         {
-            FrmChangePassword frmChangePassword = new FrmChangePassword();            
+            FrmChangePassword frmChangePassword = new FrmChangePassword();
             frmChangePassword.ShowDialog();
         }
 
@@ -109,11 +110,22 @@ namespace Foksal
 
         private void btnDictCurrencies_Click(object sender, EventArgs e)
         {
-            FrmDictCurrencies frmDictCurrencies = new FrmDictCurrencies(){
+            FrmDictCurrencies frmDictCurrencies = new FrmDictCurrencies()
+            {
                 MdiParent = this
             };
 
             frmDictCurrencies.Show();
+        }
+
+        private void btnDictLicensors_Click(object sender, EventArgs e)
+        {
+            FrmDictLicensors frmDictLicensors = new FrmDictLicensors()
+            {
+                MdiParent = this
+            };
+
+            frmDictLicensors.Show();
         }
     }
 }

@@ -82,6 +82,12 @@
     <Compile Include="Forms\Dictonaries\FrmDictCurrencies.Designer.cs">
       <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dictonaries\FrmDictLicensors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dictonaries\FrmDictLicensors.Designer.cs">
+      <DependentUpon>FrmDictLicensors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Global\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dictonaries\FrmDictCurrencies.resx">
       <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dictonaries\FrmDictLicensors.resx">
+      <DependentUpon>FrmDictLicensors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Global\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

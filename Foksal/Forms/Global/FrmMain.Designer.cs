@@ -42,6 +42,7 @@
             this.ribbonTabDictionaries = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelDictionaries = new System.Windows.Forms.RibbonPanel();
             this.btnDictCurrencies = new System.Windows.Forms.RibbonButton();
+            this.btnDictLicensors = new System.Windows.Forms.RibbonButton();
             this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
             this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelSettings_Mine = new System.Windows.Forms.RibbonPanel();
@@ -173,6 +174,7 @@
             // ribbonPanelDictionaries
             // 
             this.ribbonPanelDictionaries.Items.Add(this.btnDictCurrencies);
+            this.ribbonPanelDictionaries.Items.Add(this.btnDictLicensors);
             this.ribbonPanelDictionaries.Name = "ribbonPanelDictionaries";
             this.ribbonPanelDictionaries.Text = "Słowniki";
             // 
@@ -184,6 +186,15 @@
             this.btnDictCurrencies.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDictCurrencies.SmallImage")));
             this.btnDictCurrencies.Text = "Waluty";
             this.btnDictCurrencies.Click += new System.EventHandler(this.btnDictCurrencies_Click);
+            // 
+            // btnDictLicensors
+            // 
+            this.btnDictLicensors.Image = ((System.Drawing.Image)(resources.GetObject("btnDictLicensors.Image")));
+            this.btnDictLicensors.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDictLicensors.LargeImage")));
+            this.btnDictLicensors.Name = "btnDictLicensors";
+            this.btnDictLicensors.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDictLicensors.SmallImage")));
+            this.btnDictLicensors.Text = "Licencjodawcy";
+            this.btnDictLicensors.Click += new System.EventHandler(this.btnDictLicensors_Click);
             // 
             // ribbonTabReports
             // 
@@ -297,6 +308,7 @@
         private System.Windows.Forms.Ribbon ribbonMain;
         private System.Windows.Forms.RibbonPanel ribbonPanelDictionaries;
         private System.Windows.Forms.RibbonButton btnDictCurrencies;
+        private System.Windows.Forms.RibbonButton btnDictLicensors;
     }
 }
 
