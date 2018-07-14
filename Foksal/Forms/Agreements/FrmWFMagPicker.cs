@@ -28,7 +28,7 @@ namespace Foksal.Forms.Agreements
         {
             this.ChosenDescriptor = (gridExWFMagPicker.CurrentRow.Cells["Deskryptor"].Value ?? string.Empty).ToString();
             this.ChosenKTM = (gridExWFMagPicker.CurrentRow.Cells["KTM"].Value ?? string.Empty).ToString();
-            this.ChosenTitle = (gridExWFMagPicker.CurrentRow.Cells["Tytul"].Value ?? string.Empty).ToString();
+            this.ChosenTitle = (gridExWFMagPicker.CurrentRow.Cells["Tytuł"].Value ?? string.Empty).ToString();
 
             this.DialogResult = DialogResult.OK;
             this.Close();

@@ -12,7 +12,7 @@ namespace BLL.Entities
         public string Descriptor { get; set; }
         public int CurrencyId { get; set; }
         public string Comments { get; set; }
-        public DateTime? BillingPeriodStart { get; set; }
+        public DateTime BillingPeriodStart { get; set; }
         public DateTime? BillingPeriodEnd { get; set; }
         public bool IsIndifinitePeriod { get; set; }
         public bool IsChargedFromFirstSale { get; set; }

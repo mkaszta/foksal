@@ -131,7 +131,6 @@
             // 
             // btnProducts
             // 
-            this.btnProducts.Enabled = false;
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.LargeImage")));
             this.btnProducts.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
@@ -140,6 +139,7 @@
             this.btnProducts.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.SmallImage")));
             this.btnProducts.Text = "Produkty i towary";
             this.btnProducts.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // btnSettlements
             // 

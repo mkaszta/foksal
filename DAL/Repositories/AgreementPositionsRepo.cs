@@ -3,6 +3,7 @@ using BLL.Entities;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace DAL.Repositories
 {
@@ -29,7 +30,7 @@ namespace DAL.Repositories
                         position.KTM = reader.GetString(reader.GetOrdinal("KTM"));
                         position.Descriptor = reader.GetString(reader.GetOrdinal("Deskryptor"));
                         position.CurrencyId = reader.GetInt32(reader.GetOrdinal("WalutaId"));
-                        position.BillingPeriodStart = reader.IsDBNull(reader.GetOrdinal("PoczatekOkresuRozliczeniowego")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("PoczatekOkresuRozliczeniowego"));
+                        position.BillingPeriodStart = reader.GetDateTime(reader.GetOrdinal("PoczatekOkresuRozliczeniowego"));
                         position.BillingPeriodEnd = reader.IsDBNull(reader.GetOrdinal("KoniecOkresuRozliczeniowego")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("KoniecOkresuRozliczeniowego"));
                         position.IsIndifinitePeriod = reader.GetBoolean(reader.GetOrdinal("UmowaNaCzasOkreslony"));
                         position.IsChargedFromFirstSale = reader.GetBoolean(reader.GetOrdinal("NaliczanieOdPierwszejSprzedazy"));
@@ -71,6 +72,7 @@ namespace DAL.Repositories
                     sqlQuery = string.Format("INSERT INTO [PozycjaUmowy] (UmowaId, KTM, Deskryptor, ModelId, WalutaId, PoczatekOkresuRozliczeniowego, " +
                     "UmowaNaCzasOkreslony, KoniecOkresuRozliczeniowego, OkresRozliczeniowy, NaliczanieOdPierwszejSprzedazy, LiczbaEgzemplarzyBezOplat, " +
                     "DataZakonczeniaKontraktu, StalaCena, ProcentOdCeny, Uwagi, WprowadzenieUzytkownik) " +
+                    "OUTPUT INSERTED.ID " +
                     "VALUES (@umowaId, @ktm, @deskryptor, @modelId, @walutaId, @poczatekOkresuRozliczeniowego, " +
                     "@umowaNaCzasOkreslony, @koniecOkresuRozliczeniowego, @okresRozliczeniowy, @naliczanieOdPierwszejSprzedazy, @liczbaEgzemplarzyBezOplat, " +
                     "@dataZakonczeniaKontraktu, @stalaCena, @procentOdCeny, @uwagi, @uzytkownik)");
@@ -86,17 +88,24 @@ namespace DAL.Repositories
                     command.Parameters.Add("@walutaId", SqlDbType.Int, 6).Value = position.CurrencyId;
                     command.Parameters.Add("@okresRozliczeniowy", SqlDbType.TinyInt, 6).Value = position.BillingPeriod;
                     command.Parameters.Add("@poczatekOkresuRozliczeniowego", SqlDbType.DateTime, 8).Value = position.BillingPeriodStart;
-                    command.Parameters.Add("@koniecOkresuRozliczeniowego", SqlDbType.DateTime, 8).Value = position.BillingPeriodEnd;
+                    command.Parameters.Add("@koniecOkresuRozliczeniowego", SqlDbType.DateTime, 8).Value = position.BillingPeriodEnd ?? SqlDateTime.Null;
                     command.Parameters.Add("@naliczanieOdPierwszejSprzedazy", SqlDbType.Bit, 6).Value = position.IsChargedFromFirstSale;
                     command.Parameters.Add("@umowaNaCzasOkreslony", SqlDbType.Bit, 6).Value = position.IsIndifinitePeriod;
                     command.Parameters.Add("@liczbaEgzemplarzyBezOplat", SqlDbType.Int, 6).Value = position.FreeCopies;
-                    command.Parameters.Add("@dataZakonczeniaKontraktu", SqlDbType.DateTime, 8).Value = position.ExpirationDate;
+                    command.Parameters.Add("@dataZakonczeniaKontraktu", SqlDbType.DateTime, 8).Value = position.ExpirationDate ?? SqlDateTime.Null;
                     command.Parameters.Add("@stalaCena", SqlDbType.Decimal, 10).Value = position.ModelFixedPrice;
                     command.Parameters.Add("@procentOdCeny", SqlDbType.Decimal, 10).Value = position.ModelPercent;
                     command.Parameters.Add("@uwagi", SqlDbType.VarChar, 1000).Value = position.Comments;
                     command.Parameters.Add("@uzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
 
-                    command.ExecuteNonQuery();
+                    if (position.Id > 0)
+                    {
+                        command.ExecuteNonQuery();
+                    }                    
+                    else
+                    {
+                        position.Id = (int)command.ExecuteScalar();
+                    }
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
+using Foksal.Forms.Dictonaries;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Foksal.Forms.Agreements
 {
     public partial class FrmAgreement : Form
     {
+        private FrmAgreementsList parentForm;
         private Agreement agreement;
         private AgreementPosition selectedPosition;
         private GridAgreementPositionsRepo gridPositionsRepo;
@@ -25,7 +27,7 @@ namespace Foksal.Forms.Agreements
         private bool isLoadingData;
         private bool isCancellingSelection;
 
-        public FrmAgreement(int agreementID, int positionId)
+        public FrmAgreement(int agreementID, int positionId, FrmAgreementsList parentForm)
         {
             InitializeComponent();
 
@@ -35,6 +37,7 @@ namespace Foksal.Forms.Agreements
             this.gridScheduleRepo = new GridAgreementScheduleRepo();
             this.gridThresholdsRepo = new GridAgreementThresholdsRepo();
             this.gridRelatedProductsRepo = new GridAgreementRelatedProductsRepo();
+            this.parentForm = parentForm;
 
             this.agreement = agreementID > 0 ? AgreementsRepo.GetByID(agreementID) : new Agreement();
 
@@ -46,12 +49,20 @@ namespace Foksal.Forms.Agreements
 
         private void SelectPositionById(int positionId)
         {
-            foreach (GridEXRow row in gridExPositions.GetRows())
+            if (positionId == 0)
             {
-                if ((int)row.Cells["id"].Value == positionId)
+                if (gridExPositions.RowCount > 0)
+                    gridExPositions.Row = 0;
+            }
+            else
+            {
+                foreach (GridEXRow row in gridExPositions.GetRows())
                 {
-                    gridExPositions.Row = row.RowIndex;
-                    return;
+                    if ((int)row.Cells["id"].Value == positionId)
+                    {
+                        gridExPositions.Row = row.AbsolutePosition - 1;
+                        return;
+                    }
                 }
             }
         }
@@ -73,6 +84,10 @@ namespace Foksal.Forms.Agreements
 
         private void LoadData()
         {
+            int previouslySelectedPositionId = 0;
+            if (this.selectedPosition != null)
+                previouslySelectedPositionId = this.selectedPosition.Id;
+
             this.isLoadingData = true;
 
             this.LoadHeader();
@@ -82,9 +97,19 @@ namespace Foksal.Forms.Agreements
             tabControlAgreement.Enabled = (this.agreement.Id > 0) ? true : false;
             this.gridPositionsRepo.BindDataSet(gridExPositions, this.agreement.Id);
 
+            if (gridExPositions.RowCount < 1)
+            {
+                this.selectedPosition = new AgreementPosition();
+                this.LoadPositionDetails();
+            }
+
             this.SetAgreementChangesPending(false);
             this.SetPositionChangesPending(false);
+            this.isPositionAddPending = false;
             this.isLoadingData = false;
+
+            if (previouslySelectedPositionId > 0)
+                this.SelectPositionById(previouslySelectedPositionId);
         }
 
         private void LoadHeader()
@@ -99,12 +124,12 @@ namespace Foksal.Forms.Agreements
             if (agreement.AdvanceDate == null)
             {
                 dtAdvanceDate.Format = DateTimePickerFormat.Custom;
-                dtAdvanceDate.Value = dtAdvanceDate.MinDate;
             }
             else
             {
                 dtAdvanceDate.Format = DateTimePickerFormat.Short;
-                dtAdvanceDate.Value = agreement.AdvanceDate.GetValueOrDefault();
+                if (this.agreement.AdvanceDate.HasValue)
+                    dtAdvanceDate.Value = this.agreement.AdvanceDate.GetValueOrDefault();
             }
 
             this.gridArticlesRepo.BindDataSet(gridExArticles, this.agreement.Id);
@@ -120,12 +145,12 @@ namespace Foksal.Forms.Agreements
             GridEXValueListItemCollection valuesCboLicensor = colLicensor.ValueList;
             GridEXValueListItemCollection valuesCboLicensorCareOf = colLicensorCareOf.ValueList;
 
-            List<Licensor> lstLicensors = LicensorsRepo.GetAll();
+            List<Licensor> lstLicensors = LicensorsRepo.GetAllForCombo();
 
             foreach (var licensor in lstLicensors)
             {
-                valuesCboLicensor.Add(licensor.Id, string.Format("{0} {1} {2}", licensor.LastName, licensor.FirstName, licensor.Name));
-                valuesCboLicensorCareOf.Add(licensor.Id, string.Format("{0} {1} {2}", licensor.LastName, licensor.FirstName, licensor.Name));
+                valuesCboLicensor.Add(licensor.Id, licensor.Name);
+                valuesCboLicensorCareOf.Add(licensor.Id, licensor.Name);
             }
 
             colLicensor.EditType = Janus.Windows.GridEX.EditType.DropDownList;
@@ -164,43 +189,41 @@ namespace Foksal.Forms.Agreements
             cboCurrency.SelectedValue = this.selectedPosition.CurrencyId;
             cboSettlementModel.SelectedValue = this.selectedPosition.ModelId;
             cboBillingPeriod.SelectedValue = this.selectedPosition.BillingPeriod;
-            lblWFMagDevileryDate.Text = this.selectedPosition.WFMagDeliveryDate.GetValueOrDefault().ToShortDateString();
-            lblWFMagFirstSaleDate.Text = this.selectedPosition.WFMagFirstSaleDate.GetValueOrDefault().ToShortDateString();
+            lblWFMagDevileryDate.Text = this.selectedPosition.WFMagDeliveryDate == null ? "-" : this.selectedPosition.WFMagDeliveryDate.GetValueOrDefault().ToShortDateString();
+            lblWFMagFirstSaleDate.Text = this.selectedPosition.WFMagFirstSaleDate == null ? "-" : this.selectedPosition.WFMagFirstSaleDate.GetValueOrDefault().ToShortDateString();
             lblWFMagNetto.Text = this.selectedPosition.WFMagNetto.ToString();
             lblWFMagBrutto.Text = this.selectedPosition.WFMagBrutto.ToString();
             lblWFMagPZ.Text = this.selectedPosition.WFMagPZ.ToString();
             numModelFixedPrice.Value = this.selectedPosition.ModelFixedPrice;
             numModelPercent.Value = this.selectedPosition.ModelPercent;
             txtPositionComments.Text = this.selectedPosition.Comments;
+            txtKTM.Text = this.selectedPosition.KTM;
+            txtDescriptor.Text = this.selectedPosition.Descriptor;
 
             if (this.selectedPosition.ExpirationDate == null)
             {
+                dtExpiration.Checked = false;
                 dtExpiration.Format = DateTimePickerFormat.Custom;
             }
             else
             {
+                dtExpiration.Checked = true;
                 dtExpiration.Format = DateTimePickerFormat.Short;
-                dtExpiration.Value = this.selectedPosition.ExpirationDate.GetValueOrDefault();
-            }
-
-            if (this.selectedPosition.BillingPeriodStart == null)
-            {
-                dtBillingPeriodFrom.Format = DateTimePickerFormat.Custom;
-            }
-            else
-            {
-                dtBillingPeriodFrom.Format = DateTimePickerFormat.Short;
-                dtBillingPeriodFrom.Value = this.selectedPosition.BillingPeriodStart.GetValueOrDefault();
+                if (this.selectedPosition.ExpirationDate.HasValue)
+                    dtExpiration.Value = this.selectedPosition.ExpirationDate.GetValueOrDefault();
             }
 
             if (this.selectedPosition.BillingPeriodEnd == null)
             {
+                dtBillingPeriodTo.Checked = false;
                 dtBillingPeriodTo.Format = DateTimePickerFormat.Custom;
             }
             else
             {
+                dtBillingPeriodTo.Checked = true;
                 dtBillingPeriodTo.Format = DateTimePickerFormat.Short;
-                dtBillingPeriodTo.Value = this.selectedPosition.BillingPeriodEnd.GetValueOrDefault();
+                if (this.selectedPosition.BillingPeriodEnd.HasValue)
+                    dtBillingPeriodTo.Value = this.selectedPosition.BillingPeriodEnd.GetValueOrDefault();
             }
 
             this.gridThresholdsRepo.BindDataSet(gridExThresholds, this.selectedPosition.Id);
@@ -208,6 +231,15 @@ namespace Foksal.Forms.Agreements
 
             this.LoadModelDetails();
             this.SetPositionChangesPending(false);
+
+            if (this.selectedPosition.Id > 0)
+            {
+                grbPositionDetails.Enabled = true;
+            }
+            else
+            {
+                grbPositionDetails.Enabled = false;
+            }
         }
 
         private void LoadModelDetails()
@@ -260,25 +292,19 @@ namespace Foksal.Forms.Agreements
 
                 if (selectedModel.HasThresholds)
                 {
-                    gridExThresholds.Visible = lblThresholds.Visible = true;
+                    grbThresholds.Visible = true;
 
                 }
                 else
                 {
-                    gridExThresholds.Visible = lblThresholds.Visible = false;
+                    grbThresholds.Visible = false;
                 }
             }
         }
 
         private bool IsAgreementDataValid()
         {
-            if (numAdvance.Value > 0 && dtAdvanceDate.Value == dtAdvanceDate.MinDate)
-            {
-                MessageBox.Show("Uzupełnij datę zaliczki.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-
-            if ((decimal)gridExLicensors.GetTotalRow().Cells["UdzialProcent"].Value != 100)
+            if ((gridExLicensors.RowCount - ((int)gridExLicensors.RootTable.AllowAddNew - 1)) > 0 && (decimal)gridExLicensors.GetTotalRow().Cells["UdzialProcent"].Value != 100)
             {
                 if (MessageBox.Show("Suma udziałów licencjodawców jest różna od 100%.\r\nCzy na pewno chcesz zapisać umowę?", "Walidacja danych", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 {
@@ -291,22 +317,31 @@ namespace Foksal.Forms.Agreements
 
         private bool IsPositionDataValid()
         {
-            if (cboCurrency.SelectedIndex == -1)
+            if (gridExPositions.RowCount > 0)
             {
-                MessageBox.Show("Wybierz walutę.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
+                if (cboCurrency.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Wybierz walutę.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
 
-            if (cboSettlementModel.SelectedIndex == -1)
-            {
-                MessageBox.Show("Wybierz model rozliczenia.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
+                if (cboSettlementModel.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Wybierz model rozliczenia.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
 
-            if (cboBillingPeriod.SelectedIndex == -1)
-            {
-                MessageBox.Show("Wybierz okres rozliczeniowy.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                if (cboBillingPeriod.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Wybierz okres rozliczeniowy.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
+                if (dtBillingPeriodFrom.Text == " ")
+                {
+                    MessageBox.Show("Wybierz początek okresu rozliczeniowego.", "Walidacja danych", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
 
             return true;
@@ -314,31 +349,34 @@ namespace Foksal.Forms.Agreements
 
         private void SaveAgreement()
         {
-            this.agreement.Title = txtTitle.Text;
-            this.agreement.ReportTitle = txtReportTitle.Text;
-            this.agreement.ReportAuthor = txtReportAuthor.Text;
-            this.agreement.Advance = numAdvance.Value;
-            this.agreement.Comments = txtComments.Text;
-            this.agreement.AdvanceDate = (dtAdvanceDate.Value == dtAdvanceDate.MinDate) ? (DateTime?)null : dtAdvanceDate.Value;
-
-            if (this.agreement.Id > 0)
+            if (this.isPositionSavePending)
             {
-                this.UpdateAgreement();
+                this.SavePosition();
             }
-            else
+
+            if (!this.isPositionSavePending)
             {
-                this.InsertAgreement();
+                this.agreement.Title = txtTitle.Text;
+                this.agreement.ReportTitle = txtReportTitle.Text;
+                this.agreement.ReportAuthor = txtReportAuthor.Text;
+                this.agreement.Advance = numAdvance.Value;
+                this.agreement.Comments = txtComments.Text;
+                this.agreement.AdvanceDate = (dtAdvanceDate.Text == " ") ? (DateTime?)null : dtAdvanceDate.Value;
+
+                if (this.agreement.Id > 0)
+                {
+                    this.UpdateAgreement();
+                }
+                else
+                {
+                    this.InsertAgreement();
+                }
             }
         }
 
         private void UpdateAgreement()
         {
             bool isFullySaved = true;
-
-            if (this.isPositionSavePending)
-            {
-                this.SavePosition();
-            }
 
             try
             {
@@ -383,6 +421,7 @@ namespace Foksal.Forms.Agreements
             if (isFullySaved)
             {
                 MessageBox.Show("Umowa została poprawnie zapisana.", "Zapis umowy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.SetAgreementChangesPending(false);
                 this.LoadData();
             }
         }
@@ -404,15 +443,15 @@ namespace Foksal.Forms.Agreements
         {
             if (this.IsPositionDataValid())
             {
+                int selectedPositionId = 0;
                 bool isFullySaved = true;
-                int selectedPositionId = selectedPosition.Id;
 
                 selectedPosition.AgreementId = (int)gridExPositions.CurrentRow.Cells["umowaId"].Value;
-                selectedPosition.KTM = gridExPositions.CurrentRow.Cells["KTM"].Value.ToString();
+                selectedPosition.KTM = txtKTM.Text;
                 selectedPosition.CurrencyId = (int)cboCurrency.SelectedValue;
-                selectedPosition.Descriptor = gridExPositions.CurrentRow.Cells["Deskryptor"].Value.ToString();
+                selectedPosition.Descriptor = txtDescriptor.Text;
                 selectedPosition.FreeCopies = (int)numFreeCopies.Value;
-                selectedPosition.ExpirationDate = dtExpiration.Value;
+                selectedPosition.ExpirationDate = dtExpiration.Text == " " ? (DateTime?)null : dtExpiration.Value;
                 selectedPosition.IsChargedFromFirstSale = chkFirstSale.Checked;
                 selectedPosition.IsIndifinitePeriod = chkIndefinitePeriod.Checked;
                 selectedPosition.Comments = txtPositionComments.Text;
@@ -421,12 +460,13 @@ namespace Foksal.Forms.Agreements
                 selectedPosition.ModelFixedPrice = numModelFixedPrice.Visible ? numModelFixedPrice.Value : 0;
                 selectedPosition.BillingPeriod = (int)cboBillingPeriod.SelectedValue;
                 selectedPosition.BillingPeriodStart = dtBillingPeriodFrom.Value;
-                selectedPosition.BillingPeriodEnd = dtBillingPeriodTo.Value;
+                selectedPosition.BillingPeriodEnd = dtBillingPeriodTo.Text == " " ? (DateTime?)null : dtBillingPeriodTo.Value;
 
                 try
                 {
                     // update podstawowych danych zaznaczonej pozycji
                     AgreementPositionsRepo.InsertUpdate(this.selectedPosition);
+                    selectedPositionId = selectedPosition.Id;
 
                     // update grida z programi dla zaznaczonej pozycji
                     this.gridThresholdsRepo.Update();
@@ -443,11 +483,12 @@ namespace Foksal.Forms.Agreements
                 if (isFullySaved)
                 {
                     this.SetPositionChangesPending(false);
-                    this.gridPositionsRepo.BindDataSet(gridExPositions, this.agreement.Id);
-                    this.SelectPositionById(selectedPositionId);
 
                     if (this.isPositionAddPending)
                         this.isPositionAddPending = false;
+
+                    this.LoadData();
+                    this.SelectPositionById(selectedPositionId);
                 }
             }
         }
@@ -467,10 +508,22 @@ namespace Foksal.Forms.Agreements
 
         private void SetPositionChangesPending(bool isChangePending)
         {
+            if (isChangePending)
+            {
+                btnSaveAgreement.Enabled = true;
+                btnDiscardChanges.Enabled = true;
+            }
+            else if (!this.isAgreementSavePending)
+            {
+                btnSaveAgreement.Enabled = false;
+                btnDiscardChanges.Enabled = false;
+            }
+
             this.isPositionSavePending = isChangePending;
             btnSavePosition.Enabled = isChangePending;
             btnDiscardChanges.Enabled = isChangePending;
             btnAddPosition.Enabled = !isChangePending;
+            btnPositionsWFMAG.Enabled = !isChangePending;
         }
 
         // CONTROLS EVENTS
@@ -485,7 +538,7 @@ namespace Foksal.Forms.Agreements
 
         private void btnSaveAgreement_Click(object sender, EventArgs e)
         {
-            if (this.IsAgreementDataValid())
+            if (this.IsAgreementDataValid() && this.IsPositionDataValid())
             {
                 this.SaveAgreement();
             }
@@ -500,32 +553,25 @@ namespace Foksal.Forms.Agreements
         {
             this.gridPositionsRepo.AddRow(this.agreement.Id);
             gridExPositions.Refetch();
-            gridExPositions.Row = 0;
+            gridExPositions.MoveLast();
             gridExPositions.Focus();
             this.SetPositionChangesPending(true);
-
-            if (MessageBox.Show("Czy chcesz pobrać dane z WF MAG?", "Nowa pozycja", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
-                if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
-                {
-                    gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
-                    gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
-                    gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
-                }
-            }
-
             this.isPositionAddPending = true;
+            grbPositionDetails.Enabled = true;
         }
 
         private void btnRemovePosition_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć zaznaczoną pozycję?\r\nTa operacja jest nieodwracalna!", "Uwaga", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (gridExPositions.Row > -1)
             {
-                this.SetPositionChangesPending(false);
-                this.isPositionAddPending = false;
-                this.gridPositionsRepo.DeleteRow(gridExPositions.CurrentRow.RowIndex);
-                gridExPositions.Refetch();
+                if (MessageBox.Show("Czy na pewno chcesz usunąć zaznaczoną pozycję?\r\nTa operacja jest nieodwracalna!", "Uwaga", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    this.SetPositionChangesPending(false);
+                    this.isPositionAddPending = false;
+                    this.gridPositionsRepo.DeleteRow(gridExPositions.CurrentRow.RowIndex);
+                    gridExPositions.Refetch();
+                    this.LoadData();
+                }
             }
         }
 
@@ -611,7 +657,7 @@ namespace Foksal.Forms.Agreements
                             else
                             {
                                 this.isCancellingSelection = true;
-                                gridExPositions.Row = 0;
+                                gridExPositions.MoveLast();
                                 this.isCancellingSelection = false;
                             }
                         }
@@ -626,9 +672,12 @@ namespace Foksal.Forms.Agreements
             }
             else
             {
-                int positionId = (int)gridExPositions.CurrentRow.Cells["id"].Value;
-                this.selectedPosition = AgreementPositionsRepo.GetByID(positionId);
-                this.LoadPositionDetails();
+                if (gridExPositions.CurrentRow != null && gridExPositions.CurrentRow.RowIndex > -1)
+                {
+                    int positionId = (int)gridExPositions.CurrentRow.Cells["id"].Value;
+                    this.selectedPosition = AgreementPositionsRepo.GetByID(positionId);
+                    this.LoadPositionDetails();
+                }
             }
         }
 
@@ -651,26 +700,31 @@ namespace Foksal.Forms.Agreements
         private void gridExArticles_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             gridExArticles.CurrentRow.Cells["UmowaId"].Value = this.agreement.Id;
+            gridExArticles.RootTable.AllowAddNew = InheritableBoolean.False;
         }
 
         private void gridExLicensors_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             gridExLicensors.CurrentRow.Cells["UmowaId"].Value = this.agreement.Id;
+            gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.False;
         }
 
         private void gridExSchedule_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             gridExSchedule.CurrentRow.Cells["UmowaId"].Value = this.agreement.Id;
+            gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.False;
         }
 
         private void gridExThresholds_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             gridExThresholds.CurrentRow.Cells["PozycjaUmowyId"].Value = this.selectedPosition.Id;
+            gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.False;
         }
 
         private void gridExRelatedProducts_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             gridExRelatedProducts.CurrentRow.Cells["PozycjaUmowyId"].Value = this.selectedPosition.Id;
+            gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.False;
         }
 
         private void gridExSchedule_CellValueChanged(object sender, ColumnActionEventArgs e)
@@ -708,13 +762,13 @@ namespace Foksal.Forms.Agreements
 
         private void dtAdvanceDate_ValueChanged(object sender, EventArgs e)
         {
-            if (dtAdvanceDate.Value == dtAdvanceDate.MinDate)
+            if (dtAdvanceDate.Checked)
             {
-                dtAdvanceDate.Format = DateTimePickerFormat.Custom;
+                dtAdvanceDate.Format = DateTimePickerFormat.Short;
             }
             else
             {
-                dtAdvanceDate.Format = DateTimePickerFormat.Short;
+                dtAdvanceDate.Format = DateTimePickerFormat.Custom;
             }
 
             this.SetAgreementChangesPending(true);
@@ -746,17 +800,144 @@ namespace Foksal.Forms.Agreements
 
         private void dtBillingPeriodTo_ValueChanged(object sender, EventArgs e)
         {
-            if (dtBillingPeriodTo.Value == dtBillingPeriodTo.MinDate)
-            {
-                dtBillingPeriodTo.Format = DateTimePickerFormat.Custom;
-            }
-            else
+            if (dtBillingPeriodTo.Checked)
             {
                 dtBillingPeriodTo.Format = DateTimePickerFormat.Short;
             }
+            else
+            {
+                dtBillingPeriodTo.Format = DateTimePickerFormat.Custom;
+            }
+
+            this.SetPositionChangesPending(true);
+        }
+        #endregion
+
+
+
+
+        private void FrmAgreement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.parentForm.LoadAgreementsList();
+        }
+
+        private void btnDictLicensors_Click(object sender, EventArgs e)
+        {
+            FrmDictLicensors frmDictLicensors = new FrmDictLicensors();
+            frmDictLicensors.ShowDialog();
+            this.LoadLicensorsTab();
+        }
+
+        private void btnAddArticle_Click(object sender, EventArgs e)
+        {
+            gridExArticles.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnAddThreshold_Click(object sender, EventArgs e)
+        {
+            gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveArticle_Click(object sender, EventArgs e)
+        {
+            if (gridExArticles.CurrentRow != null && gridExArticles.CurrentRow.RowIndex > -1)
+                gridExArticles.CurrentRow.Delete();
 
             this.SetAgreementChangesPending(true);
         }
-        #endregion
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            if (gridExRelatedProducts.CurrentRow != null && gridExRelatedProducts.CurrentRow.RowIndex > -1)
+            {
+                gridExRelatedProducts.CurrentRow.Delete();
+                this.SetPositionChangesPending(true);
+            }
+        }
+
+        private void btnRemoveThreshold_Click(object sender, EventArgs e)
+        {
+            if (gridExThresholds.CurrentRow != null && gridExThresholds.CurrentRow.RowIndex > -1)
+            {
+                this.SetPositionChangesPending(true);
+                gridExThresholds.CurrentRow.Delete();
+            }
+        }
+
+        private void tabControlAgreement_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (this.isPositionAddPending || this.isPositionSavePending)
+            {
+                MessageBox.Show("Masz niezapisane zmiany na pozycji umowy.\r\nDokończ edycję pozycji przed przejściem do kolejnej zakładki.", "Dane pozycji", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Cancel = true;
+            }
+        }
+
+        private void btnPositionsWFMAG_Click(object sender, EventArgs e)
+        {
+            this.gridPositionsRepo.AddRow(this.agreement.Id);
+            gridExPositions.Refetch();
+            gridExPositions.MoveLast();
+            gridExPositions.Focus();
+            this.SetPositionChangesPending(true);
+            this.isPositionAddPending = true;
+            grbPositionDetails.Enabled = true;
+
+            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
+            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
+            {
+                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
+                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
+                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
+
+                txtKTM.Text = frmWFMagPicker.ChosenKTM;
+                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
+            }
+        }
+
+        private void dtExpiration_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtExpiration.Checked)
+            {
+                dtExpiration.Format = DateTimePickerFormat.Short;
+            }
+            else
+            {
+                dtExpiration.Format = DateTimePickerFormat.Custom;
+            }
+
+            this.SetPositionChangesPending(true);
+        }
+
+        private void btnAddLicensor_Click(object sender, EventArgs e)
+        {
+            gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveLicensor_Click(object sender, EventArgs e)
+        {
+            if (gridExLicensors.CurrentRow != null && gridExLicensors.CurrentRow.RowIndex > -1)
+                gridExLicensors.CurrentRow.Delete();
+
+            this.SetAgreementChangesPending(true);
+        }
+
+        private void btnAddSchedule_Click(object sender, EventArgs e)
+        {
+            gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveSchedule_Click(object sender, EventArgs e)
+        {
+            if (gridExSchedule.CurrentRow != null && gridExSchedule.CurrentRow.RowIndex > -1)
+                gridExSchedule.CurrentRow.Delete();
+
+            this.SetAgreementChangesPending(true);
+        }
     }
 }

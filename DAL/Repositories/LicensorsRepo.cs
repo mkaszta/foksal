@@ -43,6 +43,32 @@ namespace DAL.Repositories
             return lstLicensors;
         }
 
+        public static List<Licensor> GetAllForCombo()
+        {
+            List<Licensor> lstLicensors = new List<Licensor>();
+
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("SELECT * FROM [vLicnecjodawcaCombo]");
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        lstLicensors.Add(new Licensor()
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            Name = reader.GetString(reader.GetOrdinal("licencjodawca"))
+                        });
+                    }
+                }
+            }
+
+            return lstLicensors;
+        }
+
         public static Licensor GetById(int licensorId)
         {
             Licensor licensor = new Licensor();
@@ -73,6 +99,26 @@ namespace DAL.Repositories
             }
 
             return licensor;
+        }
+
+        public static void Merge(int sourceLicensorId, int targetLicensorId)
+        {
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("UPDATE [UmowaLicencjodawca] SET LicencjodawcaId = {0}, EdycjaUzytkownik = {2} WHERE LicencjodawcaId = {1}", targetLicensorId, sourceLicensorId, AppUser.Instance.UserId);
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                sqlQuery = string.Format("DELETE FROM [Licencjodawca] WHERE id = {0}", sourceLicensorId);
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

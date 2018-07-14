@@ -127,5 +127,15 @@ namespace Foksal
 
             frmDictLicensors.Show();
         }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            FrmProductsAndArticles frmProductsAndArticles = new FrmProductsAndArticles()
+            {
+                MdiParent = this
+            };
+
+            frmProductsAndArticles.Show();
+        }
     }
 }

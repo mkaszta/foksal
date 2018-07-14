@@ -1,4 +1,5 @@
-﻿using DAL.Grids;
+﻿using BLL;
+using DAL.Grids;
 using Janus.Windows.GridEX;
 using System;
 using System.Windows.Forms;
@@ -11,12 +12,27 @@ namespace Foksal.Forms.Agreements
         private GridAgreementsListGroupedRepo gridListGroupedRepo;
         private GridEX gridExCurrentList;
         private bool isGridGrouped;
+
         public FrmAgreementsList()
         {
             InitializeComponent();
             this.SetGridMode(false);
 
             this.LoadAgreementsList();
+        }
+
+        public void LoadAgreementsList()
+        {
+            if (this.isGridGrouped)
+            {
+                this.gridListGroupedRepo = new GridAgreementsListGroupedRepo();
+                this.gridListGroupedRepo.BindDataSet(gridExCurrentList);
+            }
+            else
+            {
+                this.gridListRepo = new GridAgreementsListRepo();
+                this.gridListRepo.BindDataSet(gridExCurrentList);
+            }
         }
 
         private void SetGridMode(bool groupList)
@@ -45,24 +61,10 @@ namespace Foksal.Forms.Agreements
 
             btnSwitchGridMode.ImageIndex = this.isGridGrouped ? 4 : 3;
         }
-
-        private void LoadAgreementsList()
-        {
-            if (this.isGridGrouped)
-            {
-                this.gridListGroupedRepo = new GridAgreementsListGroupedRepo();
-                this.gridListGroupedRepo.BindDataSet(gridExCurrentList);
-            }
-            else
-            {
-                this.gridListRepo = new GridAgreementsListRepo();
-                this.gridListRepo.BindDataSet(gridExCurrentList);
-            }
-        }
-
+        
         private void ShowAgreementForm(int agreementId, int positionId = -1)
         {
-            FrmAgreement frmAgreement = new FrmAgreement(agreementId, positionId);
+            FrmAgreement frmAgreement = new FrmAgreement(agreementId, positionId, this);
 
             frmAgreement.MdiParent = this.MdiParent;
             frmAgreement.Show();
@@ -110,6 +112,16 @@ namespace Foksal.Forms.Agreements
         {
             this.SetGridMode(!this.isGridGrouped);
             this.LoadAgreementsList();
+        }
+
+        private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
+        {
+            gridExAgreementsListGrouped.ExpandGroups();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelGenerator.ExportGridEx(gridExAgreementsList);
         }
     }
 }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="gridExLicensors_DesignTimeLayout.LayoutString" xml:space="preserve">
-    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;AllowAddNew&gt;True&lt;/AllowAddNew&gt;&lt;NewRowPosition&gt;TopRow&lt;/NewRowPosition&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="id"&gt;&lt;Caption&gt;id&lt;/Caption&gt;&lt;DataMember&gt;id&lt;/DataMember&gt;&lt;FormatString&gt;dd/MM/yyyy&lt;/FormatString&gt;&lt;InputMask&gt;00/00/0000&lt;/InputMask&gt;&lt;Key&gt;id&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Visible&gt;False&lt;/Visible&gt;&lt;/Column0&gt;&lt;Column1 ID="Imie"&gt;&lt;Caption&gt;Imię&lt;/Caption&gt;&lt;DataMember&gt;Imie&lt;/DataMember&gt;&lt;Key&gt;Imie&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Width&gt;128&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column1&gt;&lt;Column2 ID="Nazwisko"&gt;&lt;Caption&gt;Nazwisko&lt;/Caption&gt;&lt;DataMember&gt;Nazwisko&lt;/DataMember&gt;&lt;Key&gt;Nazwisko&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Width&gt;128&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column2&gt;&lt;Column3 ID="Nazwa"&gt;&lt;Caption&gt;Nazwa&lt;/Caption&gt;&lt;DataMember&gt;Nazwa&lt;/DataMember&gt;&lt;Key&gt;Nazwa&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;280&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column3&gt;&lt;Column4 ID="AdresEmail"&gt;&lt;Caption&gt;Email&lt;/Caption&gt;&lt;DataMember&gt;AdresEmail&lt;/DataMember&gt;&lt;Key&gt;AdresEmail&lt;/Key&gt;&lt;MaxLength&gt;150&lt;/MaxLength&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;Width&gt;152&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column4&gt;&lt;Column5 ID="OsosbaFizyczna"&gt;&lt;Caption&gt;Osoba fizyczna&lt;/Caption&gt;&lt;ColumnType&gt;CheckBox&lt;/ColumnType&gt;&lt;DataMember&gt;OsosbaFizyczna&lt;/DataMember&gt;&lt;EditType&gt;CheckBox&lt;/EditType&gt;&lt;Key&gt;OsosbaFizyczna&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;Width&gt;127&lt;/Width&gt;&lt;/Column5&gt;&lt;Column6 ID="PodatekProcent"&gt;&lt;Caption&gt;% podatku u źródła&lt;/Caption&gt;&lt;DataMember&gt;PodatekProcent&lt;/DataMember&gt;&lt;InputMask&gt;Number2&lt;/InputMask&gt;&lt;Key&gt;PodatekProcent&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;Width&gt;120&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column6&gt;&lt;Column7 ID="PodatekVAT"&gt;&lt;Caption&gt;% VAT&lt;/Caption&gt;&lt;DataMember&gt;PodatekVAT&lt;/DataMember&gt;&lt;InputMask&gt;Number2&lt;/InputMask&gt;&lt;Key&gt;PodatekVAT&lt;/Key&gt;&lt;Position&gt;7&lt;/Position&gt;&lt;Width&gt;58&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column7&gt;&lt;Column8 ID="DataObowiazywaniaCertyfikatu"&gt;&lt;Caption&gt;Data ważności certyfikatu&lt;/Caption&gt;&lt;DataMember&gt;DataObowiazywaniaCertyfikatu&lt;/DataMember&gt;&lt;EditType&gt;CalendarDropDown&lt;/EditType&gt;&lt;FormatString&gt;dd/MM/yyyy&lt;/FormatString&gt;&lt;Key&gt;DataObowiazywaniaCertyfikatu&lt;/Key&gt;&lt;Position&gt;8&lt;/Position&gt;&lt;Width&gt;142&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column8&gt;&lt;/Columns&gt;&lt;AllowDelete&gt;True&lt;/AllowDelete&gt;&lt;AllowEdit&gt;True&lt;/AllowEdit&gt;&lt;GroupCondition /&gt;&lt;NewRowFormatStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/NewRowFormatStyle&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;AllowAddNew&gt;False&lt;/AllowAddNew&gt;&lt;NewRowPosition&gt;TopRow&lt;/NewRowPosition&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="id"&gt;&lt;Caption&gt;id&lt;/Caption&gt;&lt;DataMember&gt;id&lt;/DataMember&gt;&lt;FormatString&gt;dd/MM/yyyy&lt;/FormatString&gt;&lt;InputMask&gt;00/00/0000&lt;/InputMask&gt;&lt;Key&gt;id&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Visible&gt;False&lt;/Visible&gt;&lt;/Column0&gt;&lt;Column1 ID="Imie"&gt;&lt;Caption&gt;Imię&lt;/Caption&gt;&lt;DataMember&gt;Imie&lt;/DataMember&gt;&lt;Key&gt;Imie&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Width&gt;128&lt;/Width&gt;&lt;DefaultValue /&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column1&gt;&lt;Column2 ID="Nazwisko"&gt;&lt;Caption&gt;Nazwisko&lt;/Caption&gt;&lt;DataMember&gt;Nazwisko&lt;/DataMember&gt;&lt;Key&gt;Nazwisko&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Width&gt;128&lt;/Width&gt;&lt;DefaultValue /&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column2&gt;&lt;Column3 ID="Nazwa"&gt;&lt;Caption&gt;Nazwa&lt;/Caption&gt;&lt;DataMember&gt;Nazwa&lt;/DataMember&gt;&lt;Key&gt;Nazwa&lt;/Key&gt;&lt;MaxLength&gt;50&lt;/MaxLength&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;280&lt;/Width&gt;&lt;DefaultValue /&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column3&gt;&lt;Column4 ID="AdresEmail"&gt;&lt;Caption&gt;Email&lt;/Caption&gt;&lt;DataMember&gt;AdresEmail&lt;/DataMember&gt;&lt;Key&gt;AdresEmail&lt;/Key&gt;&lt;MaxLength&gt;150&lt;/MaxLength&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;Width&gt;152&lt;/Width&gt;&lt;DefaultValue /&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column4&gt;&lt;Column5 ID="OsosbaFizyczna"&gt;&lt;Caption&gt;Osoba fizyczna&lt;/Caption&gt;&lt;ColumnType&gt;CheckBox&lt;/ColumnType&gt;&lt;DataMember&gt;OsosbaFizyczna&lt;/DataMember&gt;&lt;EditType&gt;CheckBox&lt;/EditType&gt;&lt;Key&gt;OsosbaFizyczna&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;Width&gt;127&lt;/Width&gt;&lt;DefaultValue&gt;True&lt;/DefaultValue&gt;&lt;DefaultValueType&gt;System.Boolean&lt;/DefaultValueType&gt;&lt;/Column5&gt;&lt;Column6 ID="PodatekProcent"&gt;&lt;Caption&gt;% podatku u źródła&lt;/Caption&gt;&lt;DataMember&gt;PodatekProcent&lt;/DataMember&gt;&lt;InputMask&gt;Number2&lt;/InputMask&gt;&lt;Key&gt;PodatekProcent&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;Width&gt;120&lt;/Width&gt;&lt;DefaultValue&gt;0&lt;/DefaultValue&gt;&lt;DefaultValueType&gt;System.Decimal&lt;/DefaultValueType&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column6&gt;&lt;Column7 ID="PodatekVAT"&gt;&lt;Caption&gt;% VAT&lt;/Caption&gt;&lt;DataMember&gt;PodatekVAT&lt;/DataMember&gt;&lt;InputMask&gt;Number2&lt;/InputMask&gt;&lt;Key&gt;PodatekVAT&lt;/Key&gt;&lt;Position&gt;7&lt;/Position&gt;&lt;Width&gt;58&lt;/Width&gt;&lt;DefaultValue&gt;0&lt;/DefaultValue&gt;&lt;DefaultValueType&gt;System.Decimal&lt;/DefaultValueType&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column7&gt;&lt;Column8 ID="DataObowiazywaniaCertyfikatu"&gt;&lt;Caption&gt;Data ważności certyfikatu&lt;/Caption&gt;&lt;DataMember&gt;DataObowiazywaniaCertyfikatu&lt;/DataMember&gt;&lt;EditType&gt;CalendarDropDown&lt;/EditType&gt;&lt;FormatString&gt;dd/MM/yyyy&lt;/FormatString&gt;&lt;Key&gt;DataObowiazywaniaCertyfikatu&lt;/Key&gt;&lt;Position&gt;8&lt;/Position&gt;&lt;Width&gt;142&lt;/Width&gt;&lt;CellStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/CellStyle&gt;&lt;/Column8&gt;&lt;/Columns&gt;&lt;AllowDelete&gt;True&lt;/AllowDelete&gt;&lt;AllowEdit&gt;True&lt;/AllowEdit&gt;&lt;GroupCondition /&gt;&lt;NewRowFormatStyle&gt;&lt;ForeColor&gt;Black&lt;/ForeColor&gt;&lt;/NewRowFormatStyle&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
   </data>
   <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -127,8 +127,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DgAAAk1TRnQBSQFMAgEBBgEAAQgBAAEIAQABFAEAARQBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACc
+        DwAAAk1TRnQBSQFMAgEBBwEAARgBAAEYAQABFAEAARQBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABUAMAASgDAAEBAQABCAUAAYABDBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
         AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
         AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
@@ -156,41 +156,45 @@
         AZkBzAEAAf8BmQH/AQAB/wHMAgAB/wHMATMBAAH/AcwBZgEAAf8BzAGZAQAB/wLMAQAB/wHMAf8BAAL/
         ATMBAAHMAf8BZgEAAv8BmQEAAv8BzAEAAmYB/wEAAWYB/wFmAQABZgL/AQAB/wJmAQAB/wFmAf8BAAL/
         AWYBAAEhAQABpQEAA18BAAN3AQADhgEAA5YBAAPLAQADsgEAA9cBAAPdAQAD4wEAA+oBAAPxAQAD+AEA
-        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP/ZwAQ/yoAAewQAAH/
-        AgAB/wEREAABEQH/OQAB9AIAAfMSAAHzKgAB9AwAARABAAH0AgAB8RIAAfEqAAH0DgAB9AIAAbwSAAG8
-        KgAB9A4AAf8CAAEHEgABByoAAfQDAAH3BwAB/wUAAfcSAAH3KgAB9AQAAf8HAAEHBAAB7BIAAewqAAH0
-        AwABFQEAAf8LAAFtEgABbSoAAfQHAAHtAfQIAAEUEgABFCoAAfQEAAEHCwAB/wEPEgABDyoAAfQFAAHt
-        CwABQxIAAUMtAAEODwAS/zoAARMDAAH0EJIB8TkAAf8EAAHzDwABEAHzPgAB/wYAARIB8wj/PwAB/wFt
-        AwABDgHsAf9KAAT/hQAB/wHxA4sBkQH3AbUB7wS1Ae0BkQSLAbQBAAH/AZMBRgGTAf8IAAH/AZMBRgGT
-        Af8YAAG8EAAB/wGKA4sBkQEHAWwBawH0Av8B9QHwAe8BiwGKA4sB/wGTA0YBbwH/BgAB/wFvA0YBkwH/
-        BwAG/wsAAfAPAAHxBK0BkQHvAooB8AP/AfMB7gGLAYoBiwGtAYsBkwVGAW8B/wQAAf8BbwVGAZMCAAH/
-        AwAB/wHwAbQBiwGsAbMBuwH0Af8HAAEVEQAB8QStAZEB7wFrAYoBvAH0A/8B8QGLAYoBiwGtAYsHRgFv
-        Af8CAAH/AW8HRgIAAQkB9QEAAfQBtAGmAYoFrAG7Af8GAAFDEQAB8QGtA4sBkQEHAWsBiwEHAfMB9AL/
-        AfQBrgSLAZMHRgFvAv8BbwdGAZMCAAG0AbMB8wGtBawBrQK0AYsBkQH/BwAB9A8AAfEEiwH3AQcBZQGL
-        Ae8B8gH0A/8BkQSLAf8BFgcXAm8HFwEWAf8CAAG0Ac0FrAGtAfIB/wIAAf8B8gHwAf8FAAFDAQAB9A4A
-        AfEEiwG1AfAB9wHtAQcB8AH0A/8BrgSLAQAB/wEWDhcBFgH/AwAB2wHTAs0CrAGzAf8GAAH/BwABQwEA
-        AfMNAAHyBYsJhgWLAgAB/wEWDBcBFgH/BAAB2wLTAc0BrAGzAf8QAAEQAQAB9AEAAfQB/wMAAf8FAAHy
-        AosBkQ21A4sDAAH/ARYKFwEWAf8FAAHbAdkC0wGsAa0B9AH/EAABFQEAAfMDAAH/AQAB/wUAAfICiwTy
-        AvMC9APzA/IBtQKLBAAB/wEWCBcBFgH/BgABCQLaAtMBsgGzAfQBAAH/DwABEAEAAfQKAAHyAosB8gHx
-        AfII8wPyAbUCiwQAAf8BFggXARYB/wYACP8B9AK8BPAB8wgAAfcBAAFDAgABEQIAAf8FAAHyAosC8gLz
-        AvQC/wP0AvMB8gG1AosDAAH/AW8KFwFvAf8NAAH/AboEsgHTAdsIAAH3AgAB/wEAAQ8B/wcAAfICiwPy
-        AvME9APzAvIBtQKLAgAB/wFvDBcBbwH/DQAB/wG0A7IB0wHbCgAB7AcAAf8DAAHyAosC8gHzAvQE/wP0
-        AfMB8gG1AosBAAH/ARYOFwEWAf8LAAH/AfIDrAGyAdMBtAkAAe8BAAHtBwAB/wIAAfICiwLyA/ME9APz
-        AvIBtQKLAf8BFgcXAhYHFwEWAf8CAAH/AfQB/wQAAf8B8QasAbQKAAEHAQAB6wkAAfEBiwGKAvIC8wL0
-        A/8C9ALzAfIBuwKLAZMHFwEWAv8BFgcXAZMDAAH0AbsB8gL0AfMBtQOsAc0BrAGtAawBtAsAAe8BAAHt
-        BgAB/wEAAfECswP0AvUF/wL1AvQBuwGzAZAHFwEWAf8CAAH/ARYHFwQAAfMB2wHaAbMBsgKsA80BtAH/
-        AbsBugwAAQcBAAHsBQAB8gEAAfECtQpGBEUB6wEbAZABlAUXARYB/wQAAf8BFgUXAZQFAAH0AQkB2wLa
-        AdQB0wHUAQkB/wEAAf8B8w0AAe8BAAHsAgAB9wMAAfMCswxGAkUB+AKzAf8BlAMXARYB/wYAAf8BFgMX
-        AZQB/wYAAf8B9AEZAgkBGQH1EwAB7wQAAfcCABT/AQAB/wGUAeMBlAH/CAAB/wGUAeMBlAH/IwABbQES
-        BAABQgFNAT4HAAE+AwABKAMAAVADAAEoAwABAQEAAQEFAAHgAQEWAAP/AQAF/wcAAv8B/AEAAQMJAAEw
-        CwABMAkAAR8B/gEwCQABHwH/ATAJAAEfAf8BsAkAAR0B/QHwCQABHAH8AfAJAAEcAXwBcAkAAR4BDAEw
-        CQABHgsAAR8LAAEDAcABGAEAAQEHAAGBAfwBOAEAAQEHAAH/AfwBeAEAAQEHAAH/Af0B+AEAAQMHAAL/
-        AfgBBwH/BwAC/wH+AR8B/wcABf8JAAEIAT8BwQL/Af4BDwH/BQABHwGAAf4BBwH+AWcB/wUAAQ8BAAHc
-        AQEB/AHzAf8FAAEGAQAByAEAAfwB+QH/BwABwAEAAX4BfAH/BwABwAEMAj4BfwQAAQgBAAEBAcABPwF/
-        AR8BPwQAAQwBAAEDAcABfwH/AYkBnwQAAQ4BAAEHAcABPwH/AcABHwQAAQ8BAAEPAcABLwH/AeIBfwQA
-        AQ8BAAEPAcABAAE/AcABHwQAAQ4BAAEHAf8BwAE/AcgBHwQAAQwBAAEDAf8B4AE/AecBxwQAAQgBAAEB
-        Af8BwAE/AuMHAAHHAYABPwHxAfMHAAHgAQABPwH4AfkFAAEGAQAB8AEAAT8B/AF5BQABDwEAAfgBAQE/
-        Af4BMwUAAR8BgAH8AQcC/wEDBAABCAE/AcEE/wHPAgAL
+        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP/MAAB9QGXAlUBlwH1
+        MQAQ/wkAAQgEVQEIGwAB7BAAAf8CAAH/AREQAAERAf8HAAEIBFUBCCwAAfQCAAHzEgAB8wcAAQgEVQEI
+        HQAB9AwAARABAAH0AgAB8RIAAfEHAAEIBFUBCB0AAfQOAAH0AgABvBIAAbwHAAEIBFUBCB0AAfQOAAH/
+        AgABBxIAAQcHAAEIBFUBCB0AAfQDAAH3BwAB/wUAAfcSAAH3AfUGCAGXBFUBlwYIAfUWAAH0BAAB/wcA
+        AQcEAAHsEgAB7AGXElUBlxYAAfQDAAEVAQAB/wsAAW0SAAFtFFUWAAH0BwAB7QH0CAABFBIAARQUVRYA
+        AfQEAAEHCwAB/wEPEgABDwGXElYBlxYAAfQFAAHtCwABQxIAAUMB9QYIAZgEVgGYBggB9RkAAQ4PABL/
+        CAABCARWAQgsAAETAwAB9BCSAfEIAAEIBFYBCCsAAf8EAAHzDwABEAHzCAABCARWAQgwAAH/BgABEgHz
+        CP8JAAEIBFYBCDAAAf8BbQMAAQ4B7AH/EgABCARWAQgyAAT/FAABCARWAQhKAAH1BJcB9RsAAf8B8QOL
+        AZEB9wG1Ae8EtQHtAZEEiwG0AQAB/wGTAUYBkwH/CAAB/wGTAUYBkwH/GAABvBAAAf8BigOLAZEBBwFs
+        AWsB9AP/AfAB7wGLAYoDiwH/AZMDRgFvAf8GAAH/AW8DRgGTAf8HAAb/CwAB8A8AAfEErQGRAe8CigHw
+        A/8B8wG8AYsBigGLAa0BiwGTBUYBbwH/BAAB/wFvBUYBkwIAAf8DAAH/AfABtAGLAawBswG7AfQB/wcA
+        ARURAAHxBK0BkQHvAWsBigG8AfQD/wHxAYsBigGLAa0BiwdGAW8B/wIAAf8BbwdGAgABCQH/AQAB9AG0
+        AaYBigWsAbsB/wYAAUMRAAHxAa0DiwGRAQcBawGLAQcB8wH0Av8B9AGuBIsBkwdGAW8C/wFvB0YBkwIA
+        AbQBswHzAa0FrAGtArQBiwGRAf8HAAH0DwAB8QSLAfcBBwFlAYsB7wHyAfQD/wGRBIsB/wEWBxcCbwcX
+        ARYB/wIAAbQBzQWsAa0B8gH/AgAB/wHyAfAB/wUAAUMBAAH0DgAB8QSLAbUB8AH3Ae0BBwHwAfQD/wGu
+        BIsBAAH/ARYOFwEWAf8DAAHbAdMCzQKsAbMB/wYAAf8HAAFDAQAB8w0AAfIFiwmGBYsCAAH/ARYMFwEW
+        Af8EAAHbAtMBzQGsAbMB/xAAARABAAH0AQAB9AH/AwAB/wUAAfICiwGRDbUDiwMAAf8BFgoXARYB/wUA
+        AdsB2QLTAawBrQH0Af8QAAEVAQAB8wMAAf8BAAH/BQAB8gKLBPIC8wL0A/MD8gG1AosEAAH/ARYIFwEW
+        Af8GAAEJAtoC0wGyAbMB9AEAAf8PAAEQAQAB9AoAAfICiwHyAfEB8gjzA/IBtQKLBAAB/wEWCBcBFgH/
+        BgAI/wH0ArwE8AHzCAAB9wEAAUMCAAERAgAB/wUAAfICiwLyAvMC9AL/A/QC8wHyAbUCiwMAAf8BbwoX
+        AW8B/w0AAf8BugSyAdMB2wgAAfcCAAH/AQABDwH/BwAB8gKLA/IC8wT0A/MC8gG1AosCAAH/AW8MFwFv
+        Af8NAAH/AbQDsgHTAdsKAAHsBwAB/wMAAfICiwLyAfMC9AT/A/QB8wHyAbUCiwEAAf8BFg4XARYB/wsA
+        Af8B8gOsAbIB0wG0CQAB7wEAAe0HAAH/AgAB8gKLAvID8wT0A/MC8gG1AosB/wEWBxcCFgcXARYB/wIA
+        Af8B9AH/BAAB/wHxBqwBtAoAAQcBAAHrCQAB8QGLAYoC8gLzAvQD/wL0AvMB8gG7AosBkwcXARYC/wEW
+        BxcBkwMAAfQBuwHyAvQB8wG1A6wBzQGsAa0BrAG0CwAB7wEAAe0GAAH/AQAB8QKzA/QJ/wL0AbsBswGQ
+        BxcBFgH/AgAB/wEWBxcEAAHzAdsB2gGzAbICrAPNAbQB/wG7AboMAAEHAQAB7AUAAfIBAAHxArUKRgRF
+        AesBGwGQAZQFFwEWAf8EAAH/ARYFFwGUBQAB9AEJAdsC2gHUAdMB1AEJAf8BAAH/AfMNAAHvAQAB7AIA
+        AfcDAAHzArMMRgJFAewCswH/AZQDFwEWAf8GAAH/ARYDFwGUAf8GAAH/AfQBGQIJARkB/xMAAe8EAAH3
+        AgAU/wEAAf8BlAHjAZQB/wgAAf8BlAHjAZQB/yMAAW0BEgQAAUIBTQE+BwABPgMAASgDAAFQAwABKAMA
+        AQEBAAEBBQAB4AEBFgAD/wEABf8B/gEHAfAEAAL/AfwBAAEDAf4BBwHwBgABMAIAAf4BBwHwBgABMAIA
+        Af4BBwHwBAABHwH+ATACAAH+AQcB8AQAAR8B/wEwAgAB/gEHAfAEAAEfAf8BsAIAAf4BBwHwBAABHQH9
+        AfAJAAEcAfwB8AkAARwBfAFwCQABHgEMATAJAAEeCwABHwsAAQMBwAEYAQABAQH+AQcB8AQAAYEB/AE4
+        AQABAQH+AQcB8AQAAf8B/AF4AQABAQH+AQcB8AQAAf8B/QH4AQABAwH+AQcB8AQAAv8B+AEHAf8B/gEH
+        AfAEAAL/Af4BHwH/Af4BBwHwBAAF/wH+AQcB8AYAAQgBPwHBAv8B/gEPAf8FAAEfAYAB/gEHAf4BZwH/
+        BQABDwEAAdwBAQH8AfMB/wUAAQYBAAHIAQAB/AH5Af8HAAHAAQABfgF8Af8HAAHAAQwCPgF/BAABCAEA
+        AQEBwAE/AX8BHwE/BAABDAEAAQMBwAF/Af8BiQGfBAABDgEAAQcBwAE/Af8BwAEfBAABDwEAAQ8BwAEv
+        Af8B4gF/BAABDwEAAQ8BwAEAAT8BwAEfBAABDgEAAQcB/wHAAT8ByAEfBAABDAEAAQMB/wHgAT8B5wHH
+        BAABCAEAAQEB/wHAAT8C4wcAAccBgAE/AfEB8wcAAeABAAE/AfgB+QUAAQYBAAHwAQABPwH8AXkFAAEP
+        AQAB+AEBAT8B/gEzBQABHwGAAfwBBwL/AQMEAAEIAT8BwQT/Ac8CAAs=
 </value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
