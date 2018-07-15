@@ -62,8 +62,12 @@
             this.gridExProductsAndArticles.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExProductsAndArticles.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExProductsAndArticles.GroupByBoxVisible = false;
+            this.gridExProductsAndArticles.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExProductsAndArticles.Location = new System.Drawing.Point(12, 12);
             this.gridExProductsAndArticles.Name = "gridExProductsAndArticles";
+            this.gridExProductsAndArticles.SelectedInactiveFormatStyle.BackColor = System.Drawing.SystemColors.Highlight;
+            this.gridExProductsAndArticles.SelectedInactiveFormatStyle.BackColorGradient = System.Drawing.SystemColors.Highlight;
+            this.gridExProductsAndArticles.SelectedInactiveFormatStyle.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.gridExProductsAndArticles.Size = new System.Drawing.Size(1150, 278);
             this.gridExProductsAndArticles.TabIndex = 1;
             // 
@@ -82,6 +86,7 @@
             this.gridExAgreementsListGrouped.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExAgreementsListGrouped.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExAgreementsListGrouped.GroupExpandBoxStyle = Janus.Windows.GridEX.ExpandBoxStyle.Arrows;
+            this.gridExAgreementsListGrouped.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExAgreementsListGrouped.Location = new System.Drawing.Point(12, 347);
             this.gridExAgreementsListGrouped.Name = "gridExAgreementsListGrouped";
             this.gridExAgreementsListGrouped.Size = new System.Drawing.Size(1150, 302);

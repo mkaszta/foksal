@@ -868,8 +868,12 @@
             this.gridExPositions.EnterKeyBehavior = Janus.Windows.GridEX.EnterKeyBehavior.None;
             this.gridExPositions.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExPositions.GroupByBoxVisible = false;
+            this.gridExPositions.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExPositions.Location = new System.Drawing.Point(6, 3);
             this.gridExPositions.Name = "gridExPositions";
+            this.gridExPositions.SelectedInactiveFormatStyle.BackColor = System.Drawing.SystemColors.Highlight;
+            this.gridExPositions.SelectedInactiveFormatStyle.BackColorGradient = System.Drawing.SystemColors.Highlight;
+            this.gridExPositions.SelectedInactiveFormatStyle.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.gridExPositions.Size = new System.Drawing.Size(804, 114);
             this.gridExPositions.TabIndex = 40;
             this.gridExPositions.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExPositions_CellValueChanged);

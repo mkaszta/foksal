@@ -566,7 +566,7 @@ namespace Foksal.Forms.Agreements
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
             this.AddPosition();
-        }        
+        }
 
         private void btnRemovePosition_Click(object sender, EventArgs e)
         {

@@ -60,6 +60,7 @@
             this.gridExCurrencies.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExCurrencies.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExCurrencies.GroupByBoxVisible = false;
+            this.gridExCurrencies.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExCurrencies.Location = new System.Drawing.Point(6, 55);
             this.gridExCurrencies.Name = "gridExCurrencies";
             this.gridExCurrencies.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
@@ -85,6 +86,7 @@
             this.gridExCurrencyRates.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExCurrencyRates.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExCurrencyRates.GroupByBoxVisible = false;
+            this.gridExCurrencyRates.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExCurrencyRates.Location = new System.Drawing.Point(6, 55);
             this.gridExCurrencyRates.Name = "gridExCurrencyRates";
             this.gridExCurrencyRates.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;

@@ -19,7 +19,7 @@ namespace Foksal.Forms.Agreements
             this.gridProductsAndArticlesRepo = new GridProductsAndArticlesRepo();
             this.gridAgreementsListGroupedRepo = new GridAgreementsListGroupedRepo();
 
-            this.LoadData();
+            this.LoadData();            
         }
 
         private void LoadData()

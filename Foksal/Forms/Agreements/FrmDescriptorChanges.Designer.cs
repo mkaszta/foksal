@@ -51,6 +51,7 @@
             this.gridExDescriptorChanges.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExDescriptorChanges.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExDescriptorChanges.GroupByBoxVisible = false;
+            this.gridExDescriptorChanges.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExDescriptorChanges.Location = new System.Drawing.Point(12, 12);
             this.gridExDescriptorChanges.Name = "gridExDescriptorChanges";
             this.gridExDescriptorChanges.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
@@ -76,6 +77,7 @@
             this.gridExAgreementsListGrouped.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExAgreementsListGrouped.GroupByBoxVisible = false;
             this.gridExAgreementsListGrouped.GroupExpandBoxStyle = Janus.Windows.GridEX.ExpandBoxStyle.Arrows;
+            this.gridExAgreementsListGrouped.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExAgreementsListGrouped.Location = new System.Drawing.Point(12, 271);
             this.gridExAgreementsListGrouped.Name = "gridExAgreementsListGrouped";
             this.gridExAgreementsListGrouped.Size = new System.Drawing.Size(931, 325);
