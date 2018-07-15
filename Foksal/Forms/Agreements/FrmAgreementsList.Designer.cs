@@ -40,7 +40,6 @@
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.gridExAgreementsListGrouped = new Janus.Windows.GridEX.GridEX();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridExAgreementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExAgreementsListGrouped)).BeginInit();
             this.SuspendLayout();
@@ -156,27 +155,11 @@
             this.gridExAgreementsListGrouped.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.gridExCurrentList_RowDoubleClick);
             this.gridExAgreementsListGrouped.DoubleClick += new System.EventHandler(this.gridExAgreementsListGrouped_DoubleClick);
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImageList = this.imgLstIcons;
-            this.button1.Location = new System.Drawing.Point(441, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 43);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "excel test";
-            this.toolTip.SetToolTip(this.button1, "Dodaj umowę");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmAgreementsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 505);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.gridExAgreementsListGrouped);
             this.Controls.Add(this.btnSwitchGridMode);
             this.Controls.Add(this.btnRefreshList);
@@ -201,6 +184,5 @@
         private System.Windows.Forms.Button btnRefreshList;
         private Janus.Windows.GridEX.GridEX gridExAgreementsListGrouped;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Button button1;
     }
 }

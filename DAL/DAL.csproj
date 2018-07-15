@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grids\GridAgreementArticlesRepo.cs" />
+    <Compile Include="Grids\GridDescriptorChangesRepo.cs" />
+    <Compile Include="Grids\GridReportFlexibleRepo.cs" />
     <Compile Include="Grids\GridProductsAndArticlesRepo.cs" />
     <Compile Include="Grids\GridLicensorsRepo.cs" />
     <Compile Include="Grids\GridCurrencyRatesRepo.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Grids\GridAgreementsListRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AgreementPositionsRepo.cs" />
+    <Compile Include="Repositories\ReportsRepo.cs" />
     <Compile Include="Repositories\LicensorsRepo.cs" />
     <Compile Include="Repositories\UsersRepo.cs" />
     <Compile Include="Repositories\ModelsRepo.cs" />

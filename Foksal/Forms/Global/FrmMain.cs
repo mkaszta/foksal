@@ -1,8 +1,12 @@
 ﻿using BLL;
+using BLL.Entities;
+using DAL.Repositories;
 using Foksal.Forms.Agreements;
 using Foksal.Forms.Dictonaries;
+using Foksal.Forms.Reports;
 using Foksal.Forms.Settings;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Foksal
@@ -37,6 +41,26 @@ namespace Foksal
             ribbonTabSettings.Visible = isLoggedIn;
 
             ribbonPanelSettings_Users.Enabled = AppUser.Instance.IsAdmin;
+
+            this.CreateReportsList();
+        }
+
+        private void CreateReportsList()
+        {
+            List<Report> lstReports = ReportsRepo.GetAll();
+
+            foreach (var report in lstReports)
+            {
+                RibbonButton newButton = new RibbonButton()
+                {
+                    Name = string.Format("btnReport{0}", report.Name),
+                    Text = report.Name,
+                    Value = report.Id.ToString()
+                };
+                newButton.Click += new EventHandler(this.btnReport_Click);
+
+                ribbonPanelReports.Items.Add(newButton);
+            }
         }
 
         private void UserLogOut()
@@ -136,6 +160,29 @@ namespace Foksal
             };
 
             frmProductsAndArticles.Show();
+        }
+
+        private void btnDescriptorChanges_Click(object sender, EventArgs e)
+        {
+            FrmDescriptorChanges frmDescriptorChanges = new FrmDescriptorChanges()
+            {
+                MdiParent = this
+            };
+
+            frmDescriptorChanges.Show();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            RibbonButton senderButton = sender as RibbonButton;
+            Report report = ReportsRepo.GetById(Convert.ToInt16(senderButton.Value));
+
+            FrmReportFlexible frmReportFlexible = new FrmReportFlexible(report)
+            {
+                MdiParent = this
+            };
+
+            frmReportFlexible.Show();
         }
     }
 }

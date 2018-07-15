@@ -26,7 +26,7 @@ namespace DAL.Repositories
                         position.Id = Id;
                         position.AgreementId = reader.GetInt32(reader.GetOrdinal("UmowaId"));
                         position.Title = reader.GetString(reader.GetOrdinal("Tytul")).Equals(string.Empty) ? "(...)" : reader.GetString(reader.GetOrdinal("Tytul"));
-                        position.ModelId = reader.GetInt32(reader.GetOrdinal("ModelId"));                        
+                        position.ModelId = reader.GetInt32(reader.GetOrdinal("ModelId"));
                         position.KTM = reader.GetString(reader.GetOrdinal("KTM"));
                         position.Descriptor = reader.GetString(reader.GetOrdinal("Deskryptor"));
                         position.CurrencyId = reader.GetInt32(reader.GetOrdinal("WalutaId"));
@@ -44,6 +44,7 @@ namespace DAL.Repositories
                         position.WFMagPZ = reader.GetDecimal(reader.GetOrdinal("IloscPz"));
                         position.ModelPercent = reader.GetDecimal(reader.GetOrdinal("ProcentOdCeny"));
                         position.ModelFixedPrice = reader.GetDecimal(reader.GetOrdinal("StalaCena"));
+                        position.Comments = reader.GetString(reader.GetOrdinal("Tytul"));
                     }
                 }
             }
@@ -101,11 +102,30 @@ namespace DAL.Repositories
                     if (position.Id > 0)
                     {
                         command.ExecuteNonQuery();
-                    }                    
+                    }
                     else
                     {
                         position.Id = (int)command.ExecuteScalar();
                     }
+                }
+            }
+        }
+
+        public static void InsertRelatedProduct(RelatedProduct relatedProduct)
+        {
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("INSERT INTO [ProduktPowiazany] (PozycjaUmowyId, Deskryptor, KTM, WprowadzenieUzytkownik) " +
+                    "VALUES (@pozycjaUmowyId, @deskryptor, @ktm, @wprowadzenieUzytkownik) ");
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.Parameters.Add("@pozycjaUmowyId", SqlDbType.Int, 10).Value = relatedProduct.AgreementPositionId;
+                    command.Parameters.Add("@deskryptor", SqlDbType.VarChar, 50).Value = relatedProduct.Descriptor;
+                    command.Parameters.Add("@ktm", SqlDbType.VarChar, 50).Value = relatedProduct.KTM;
+                    command.Parameters.Add("@wprowadzenieUzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
+
+                    command.ExecuteNonQuery();
                 }
             }
         }

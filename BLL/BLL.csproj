@@ -67,6 +67,7 @@
     <Compile Include="Entities\Agreement.cs" />
     <Compile Include="Entities\AgreementPosition.cs" />
     <Compile Include="Entities\CurrencyRate.cs" />
+    <Compile Include="Entities\Report.cs" />
     <Compile Include="Entities\RelatedProduct.cs" />
     <Compile Include="Entities\RelatedArticle.cs" />
     <Compile Include="Entities\BillingPeriod.cs" />

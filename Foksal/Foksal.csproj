@@ -70,6 +70,12 @@
     <Compile Include="Forms\Agreements\FrmAgreementsList.Designer.cs">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Agreements\FrmDescriptorChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmDescriptorChanges.Designer.cs">
+      <DependentUpon>FrmDescriptorChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmProductsAndArticles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
     <Compile Include="Forms\Global\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\FrmReportFlexible.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmReportFlexible.Designer.cs">
+      <DependentUpon>FrmReportFlexible.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings\FrmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +144,9 @@
     <EmbeddedResource Include="Forms\Agreements\FrmAgreementsList.resx">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agreements\FrmDescriptorChanges.resx">
+      <DependentUpon>FrmDescriptorChanges.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmProductsAndArticles.resx">
       <DependentUpon>FrmProductsAndArticles.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Global\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\FrmReportFlexible.resx">
+      <DependentUpon>FrmReportFlexible.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings\FrmChangePassword.resx">
       <DependentUpon>FrmChangePassword.cs</DependentUpon>

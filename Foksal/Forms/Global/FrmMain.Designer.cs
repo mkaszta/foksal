@@ -50,6 +50,7 @@
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsUsers = new System.Windows.Forms.RibbonButton();
             this.ribbonMain = new System.Windows.Forms.Ribbon();
+            this.ribbonPanelReports = new System.Windows.Forms.RibbonPanel();
             this.SuspendLayout();
             // 
             // ribbonTabMain
@@ -119,6 +120,7 @@
             // 
             // btnAgreements
             // 
+            this.btnAgreements.Enabled = false;
             this.btnAgreements.Image = ((System.Drawing.Image)(resources.GetObject("btnAgreements.Image")));
             this.btnAgreements.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAgreements.LargeImage")));
             this.btnAgreements.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
@@ -131,6 +133,7 @@
             // 
             // btnProducts
             // 
+            this.btnProducts.Enabled = false;
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.LargeImage")));
             this.btnProducts.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
@@ -164,6 +167,7 @@
             this.btnDescriptorChanges.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDescriptorChanges.SmallImage")));
             this.btnDescriptorChanges.Text = "Zmiany deskryptora";
             this.btnDescriptorChanges.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
+            this.btnDescriptorChanges.Click += new System.EventHandler(this.btnDescriptorChanges_Click);
             // 
             // ribbonTabDictionaries
             // 
@@ -199,6 +203,7 @@
             // ribbonTabReports
             // 
             this.ribbonTabReports.Name = "ribbonTabReports";
+            this.ribbonTabReports.Panels.Add(this.ribbonPanelReports);
             this.ribbonTabReports.Text = "Raporty";
             // 
             // ribbonTabSettings
@@ -269,6 +274,11 @@
             this.ribbonMain.Text = "Ribbon";
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
             // 
+            // ribbonPanelReports
+            // 
+            this.ribbonPanelReports.Name = "ribbonPanelReports";
+            this.ribbonPanelReports.Text = "Dostepne raporty";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,6 +319,7 @@
         private System.Windows.Forms.RibbonPanel ribbonPanelDictionaries;
         private System.Windows.Forms.RibbonButton btnDictCurrencies;
         private System.Windows.Forms.RibbonButton btnDictLicensors;
+        private System.Windows.Forms.RibbonPanel ribbonPanelReports;
     }
 }
 

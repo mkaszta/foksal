@@ -27,7 +27,7 @@ namespace Foksal.Forms.Agreements
         private bool isLoadingData;
         private bool isCancellingSelection;
 
-        public FrmAgreement(int agreementID, int positionId, FrmAgreementsList parentForm)
+        public FrmAgreement(int agreementID, int positionId, FrmAgreementsList parentForm = null)
         {
             InitializeComponent();
 
@@ -45,6 +45,20 @@ namespace Foksal.Forms.Agreements
             this.LoadData();
 
             this.SelectPositionById(positionId);
+        }
+
+        public void AddPosition(string ktm = "", string descriptor = "")
+        {
+            this.gridPositionsRepo.AddRow(this.agreement.Id);
+            gridExPositions.Refetch();
+            gridExPositions.MoveLast();
+            gridExPositions.Focus();
+            this.SetPositionChangesPending(true);
+            this.isPositionAddPending = true;
+            grbPositionDetails.Enabled = true;
+
+            txtKTM.Text = ktm;
+            txtDescriptor.Text = descriptor;
         }
 
         private void SelectPositionById(int positionId)
@@ -551,14 +565,8 @@ namespace Foksal.Forms.Agreements
 
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
-            this.gridPositionsRepo.AddRow(this.agreement.Id);
-            gridExPositions.Refetch();
-            gridExPositions.MoveLast();
-            gridExPositions.Focus();
-            this.SetPositionChangesPending(true);
-            this.isPositionAddPending = true;
-            grbPositionDetails.Enabled = true;
-        }
+            this.AddPosition();
+        }        
 
         private void btnRemovePosition_Click(object sender, EventArgs e)
         {
@@ -614,6 +622,80 @@ namespace Foksal.Forms.Agreements
             }
 
             this.SetPositionChangesPending(true);
+        }
+
+        private void btnDictLicensors_Click(object sender, EventArgs e)
+        {
+            FrmDictLicensors frmDictLicensors = new FrmDictLicensors();
+            frmDictLicensors.ShowDialog();
+            this.LoadLicensorsTab();
+        }
+
+        private void btnAddArticle_Click(object sender, EventArgs e)
+        {
+            gridExArticles.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnAddThreshold_Click(object sender, EventArgs e)
+        {
+            gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveArticle_Click(object sender, EventArgs e)
+        {
+            if (gridExArticles.CurrentRow != null && gridExArticles.CurrentRow.RowIndex > -1)
+                gridExArticles.CurrentRow.Delete();
+
+            this.SetAgreementChangesPending(true);
+        }
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            if (gridExRelatedProducts.CurrentRow != null && gridExRelatedProducts.CurrentRow.RowIndex > -1)
+            {
+                gridExRelatedProducts.CurrentRow.Delete();
+                this.SetPositionChangesPending(true);
+            }
+        }
+
+        private void btnRemoveThreshold_Click(object sender, EventArgs e)
+        {
+            if (gridExThresholds.CurrentRow != null && gridExThresholds.CurrentRow.RowIndex > -1)
+            {
+                this.SetPositionChangesPending(true);
+                gridExThresholds.CurrentRow.Delete();
+            }
+        }
+
+        private void btnAddLicensor_Click(object sender, EventArgs e)
+        {
+            gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveLicensor_Click(object sender, EventArgs e)
+        {
+            if (gridExLicensors.CurrentRow != null && gridExLicensors.CurrentRow.RowIndex > -1)
+                gridExLicensors.CurrentRow.Delete();
+
+            this.SetAgreementChangesPending(true);
+        }
+
+        private void btnAddSchedule_Click(object sender, EventArgs e)
+        {
+            gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.True;
+        }
+
+        private void btnRemoveSchedule_Click(object sender, EventArgs e)
+        {
+            if (gridExSchedule.CurrentRow != null && gridExSchedule.CurrentRow.RowIndex > -1)
+                gridExSchedule.CurrentRow.Delete();
+
+            this.SetAgreementChangesPending(true);
         }
         #endregion
 
@@ -751,6 +833,51 @@ namespace Foksal.Forms.Agreements
             }
         }
 
+        private void FrmAgreement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.parentForm != null)
+                this.parentForm.LoadAgreementsList();
+        }
+
+        private void tabControlAgreement_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (this.isPositionAddPending || this.isPositionSavePending)
+            {
+                MessageBox.Show("Masz niezapisane zmiany na pozycji umowy.\r\nDokończ edycję pozycji przed przejściem do kolejnej zakładki.", "Dane pozycji", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Cancel = true;
+            }
+        }
+
+        private void btnPositionsWFMAG_Click(object sender, EventArgs e)
+        {
+            this.AddPosition();
+
+            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
+            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
+            {
+                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
+                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
+                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
+
+                txtKTM.Text = frmWFMagPicker.ChosenKTM;
+                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
+            }
+        }
+
+        private void dtExpiration_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtExpiration.Checked)
+            {
+                dtExpiration.Format = DateTimePickerFormat.Short;
+            }
+            else
+            {
+                dtExpiration.Format = DateTimePickerFormat.Custom;
+            }
+
+            this.SetPositionChangesPending(true);
+        }
+
         private void cboSettlementModel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboSettlementModel.SelectedIndex > -1)
@@ -811,133 +938,6 @@ namespace Foksal.Forms.Agreements
 
             this.SetPositionChangesPending(true);
         }
-        #endregion
-
-
-
-
-        private void FrmAgreement_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.parentForm.LoadAgreementsList();
-        }
-
-        private void btnDictLicensors_Click(object sender, EventArgs e)
-        {
-            FrmDictLicensors frmDictLicensors = new FrmDictLicensors();
-            frmDictLicensors.ShowDialog();
-            this.LoadLicensorsTab();
-        }
-
-        private void btnAddArticle_Click(object sender, EventArgs e)
-        {
-            gridExArticles.RootTable.AllowAddNew = InheritableBoolean.True;
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.True;
-        }
-
-        private void btnAddThreshold_Click(object sender, EventArgs e)
-        {
-            gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.True;
-        }
-
-        private void btnRemoveArticle_Click(object sender, EventArgs e)
-        {
-            if (gridExArticles.CurrentRow != null && gridExArticles.CurrentRow.RowIndex > -1)
-                gridExArticles.CurrentRow.Delete();
-
-            this.SetAgreementChangesPending(true);
-        }
-
-        private void btnRemoveProduct_Click(object sender, EventArgs e)
-        {
-            if (gridExRelatedProducts.CurrentRow != null && gridExRelatedProducts.CurrentRow.RowIndex > -1)
-            {
-                gridExRelatedProducts.CurrentRow.Delete();
-                this.SetPositionChangesPending(true);
-            }
-        }
-
-        private void btnRemoveThreshold_Click(object sender, EventArgs e)
-        {
-            if (gridExThresholds.CurrentRow != null && gridExThresholds.CurrentRow.RowIndex > -1)
-            {
-                this.SetPositionChangesPending(true);
-                gridExThresholds.CurrentRow.Delete();
-            }
-        }
-
-        private void tabControlAgreement_Selecting(object sender, TabControlCancelEventArgs e)
-        {
-            if (this.isPositionAddPending || this.isPositionSavePending)
-            {
-                MessageBox.Show("Masz niezapisane zmiany na pozycji umowy.\r\nDokończ edycję pozycji przed przejściem do kolejnej zakładki.", "Dane pozycji", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                e.Cancel = true;
-            }
-        }
-
-        private void btnPositionsWFMAG_Click(object sender, EventArgs e)
-        {
-            this.gridPositionsRepo.AddRow(this.agreement.Id);
-            gridExPositions.Refetch();
-            gridExPositions.MoveLast();
-            gridExPositions.Focus();
-            this.SetPositionChangesPending(true);
-            this.isPositionAddPending = true;
-            grbPositionDetails.Enabled = true;
-
-            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
-            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
-            {
-                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
-                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
-                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
-
-                txtKTM.Text = frmWFMagPicker.ChosenKTM;
-                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
-            }
-        }
-
-        private void dtExpiration_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtExpiration.Checked)
-            {
-                dtExpiration.Format = DateTimePickerFormat.Short;
-            }
-            else
-            {
-                dtExpiration.Format = DateTimePickerFormat.Custom;
-            }
-
-            this.SetPositionChangesPending(true);
-        }
-
-        private void btnAddLicensor_Click(object sender, EventArgs e)
-        {
-            gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.True;
-        }
-
-        private void btnRemoveLicensor_Click(object sender, EventArgs e)
-        {
-            if (gridExLicensors.CurrentRow != null && gridExLicensors.CurrentRow.RowIndex > -1)
-                gridExLicensors.CurrentRow.Delete();
-
-            this.SetAgreementChangesPending(true);
-        }
-
-        private void btnAddSchedule_Click(object sender, EventArgs e)
-        {
-            gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.True;
-        }
-
-        private void btnRemoveSchedule_Click(object sender, EventArgs e)
-        {
-            if (gridExSchedule.CurrentRow != null && gridExSchedule.CurrentRow.RowIndex > -1)
-                gridExSchedule.CurrentRow.Delete();
-
-            this.SetAgreementChangesPending(true);
-        }
+        #endregion        
     }
 }

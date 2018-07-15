@@ -117,11 +117,6 @@ namespace Foksal.Forms.Agreements
         private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
         {
             gridExAgreementsListGrouped.ExpandGroups();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ExcelGenerator.ExportGridEx(gridExAgreementsList);
-        }
+        }        
     }
 }

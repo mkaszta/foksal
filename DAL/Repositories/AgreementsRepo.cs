@@ -87,5 +87,25 @@ namespace DAL.Repositories
                 }
             }
         }
+
+        public static void InsertRelatedArticle(RelatedArticle article)
+        {
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("INSERT INTO [Towary] (UmowaId, Deskryptor, KTM, Uwagi, WprowadzenieUzytkownik) " +
+                    "VALUES (@umowaId, @deskryptor, @ktm, @uwagi, @wprowadzenieUzytkownik) ");
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.Parameters.Add("@umowaId", SqlDbType.Int, 10).Value = article.AgreementId;
+                    command.Parameters.Add("@deskryptor", SqlDbType.VarChar, 50).Value = article.Descriptor;
+                    command.Parameters.Add("@ktm", SqlDbType.VarChar, 50).Value = article.KTM;
+                    command.Parameters.Add("@uwagi", SqlDbType.VarChar, 1000).Value = article.Comments;                    
+                    command.Parameters.Add("@wprowadzenieUzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
