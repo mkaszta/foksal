@@ -1,6 +1,7 @@
 ﻿using DAL.Grids;
 using DAL.Repositories;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Dictonaries
@@ -11,6 +12,8 @@ namespace Foksal.Forms.Dictonaries
         private bool isChangesPending;
         private int mergeSourceId;
         private int mergeTargetId;
+        private int mergeSourceRowId;
+        private int mergeTargetRowId;
 
         public FrmDictLicensors()
         {
@@ -125,8 +128,13 @@ namespace Foksal.Forms.Dictonaries
         private void btnMergeSource_Click(object sender, EventArgs e)
         {
             this.mergeSourceId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
+
             lblSource.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
 
+            gridExLicensors.GetRow(this.mergeSourceRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
+            gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.PaleTurquoise };
+
+            this.mergeSourceRowId = gridExLicensors.CurrentRow.RowIndex;
             this.ActivateMergeButton();
         }
 
@@ -135,6 +143,10 @@ namespace Foksal.Forms.Dictonaries
             this.mergeTargetId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
             lblTarget.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
 
+            gridExLicensors.GetRow(this.mergeTargetRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
+            gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.LightGreen };
+
+            this.mergeTargetRowId = gridExLicensors.CurrentRow.RowIndex;
             this.ActivateMergeButton();
         }
 
@@ -152,7 +164,7 @@ namespace Foksal.Forms.Dictonaries
         private void gridExLicensors_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.isChangesPending = true;
-            gridExLicensors.RootTable.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.False;            
+            gridExLicensors.RootTable.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.False;
         }
     }
 }

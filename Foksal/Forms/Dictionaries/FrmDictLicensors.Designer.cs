@@ -40,6 +40,7 @@
             this.btnMergeSource = new System.Windows.Forms.Button();
             this.btnMergeTarget = new System.Windows.Forms.Button();
             this.btnMergeStart = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTarget = new System.Windows.Forms.Label();
             this.lblSource = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,7 +69,7 @@
             this.gridExLicensors.GroupByBoxVisible = false;
             this.gridExLicensors.Location = new System.Drawing.Point(12, 88);
             this.gridExLicensors.Name = "gridExLicensors";
-            this.gridExLicensors.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExLicensors.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExLicensors.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExLicensors.NewRowFormatStyle.ForeColor = System.Drawing.Color.White;
             this.gridExLicensors.Size = new System.Drawing.Size(1139, 425);
@@ -175,6 +175,18 @@
             this.btnMergeStart.UseVisualStyleBackColor = true;
             this.btnMergeStart.Click += new System.EventHandler(this.btnMergeStart_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.ImageKey = "icon-add.png";
+            this.btnAdd.ImageList = this.imageList;
+            this.btnAdd.Location = new System.Drawing.Point(6, 22);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(41, 42);
+            this.btnAdd.TabIndex = 63;
+            this.toolTip.SetToolTip(this.btnAdd, "Usuń");
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -255,18 +267,6 @@
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Słownik";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.ImageKey = "icon-add.png";
-            this.btnAdd.ImageList = this.imageList;
-            this.btnAdd.Location = new System.Drawing.Point(6, 22);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(41, 42);
-            this.btnAdd.TabIndex = 63;
-            this.toolTip.SetToolTip(this.btnAdd, "Usuń");
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FrmDictLicensors
             // 

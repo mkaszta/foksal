@@ -9,13 +9,13 @@ namespace BLL
 {
     public class NBPHelper
     {
-        public static CurrencyRate GetRate(string currency)
+        public static CurrencyRate GetRate(string currency, DateTime forDate)
         {
             string dateParam = "";
             string jsonResponse = "";
-            DateTime todayMinusMonth = DateTime.Now.AddMonths(-1);
-            DateTime baseDate = new DateTime(todayMinusMonth.Year, todayMinusMonth.Month, DateTime.DaysInMonth(todayMinusMonth.Year, todayMinusMonth.Month));
-
+            DateTime dateMinusMonth = forDate.AddMonths(-1);
+            DateTime baseDate = new DateTime(dateMinusMonth.Year, dateMinusMonth.Month, DateTime.DaysInMonth(dateMinusMonth.Year, dateMinusMonth.Month));
+            
             while (string.IsNullOrEmpty(jsonResponse))
             {
                 dateParam = baseDate.ToString("yyyy-MM-dd");

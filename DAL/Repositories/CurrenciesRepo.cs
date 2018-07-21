@@ -51,5 +51,25 @@ namespace DAL.Repositories
                 }
             }            
         }
+
+        public static bool CheckIfCurrencyExists(string currencyName)
+        {            
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("SELECT TOP 1 * FROM [Waluta] WHERE Waluta = '{0}' ", currencyName);
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

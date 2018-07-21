@@ -2,6 +2,7 @@
 using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
+using Foksal.Forms.Dictionaries;
 using Janus.Data;
 using Janus.Windows.GridEX;
 using System;
@@ -40,26 +41,40 @@ namespace Foksal.Forms.Dictonaries
 
         private void GetNBPRates()
         {
-            DateTime currencyDate = new DateTime();
+            FrmDictCurrenciesNBPPicker frmDictCurrenciesNBPPicker = new FrmDictCurrenciesNBPPicker();
 
-            foreach (GridEXRow row in gridExCurrencies.GetRows())
-            {
-                string currencyName = row.Cells["Waluta"].Value.ToString();
+            if (frmDictCurrenciesNBPPicker.ShowDialog() == DialogResult.OK)
+            {                
+                DateTime dateFrom = frmDictCurrenciesNBPPicker.dateFrom;
+                DateTime dateTo = frmDictCurrenciesNBPPicker.dateTo;
 
-                if (NBPHelper.CurrencyExists(currencyName))
+                dateFrom = new DateTime(dateFrom.Year, dateFrom.Month, 1);
+                dateTo = new DateTime(dateTo.Year, dateTo.Month, 1);
+
+                foreach (GridEXRow row in gridExCurrencies.GetRows())
                 {
-                    CurrencyRate currencyRate = NBPHelper.GetRate(currencyName);
-                    currencyDate = currencyRate.Date;
-                    CurrenciesRepo.Insert(currencyRate, (int)row.Cells["Id"].Value);
-                }
-                else
-                {
-                    MessageBox.Show(string.Format("Waluta {0} nie została odnaleziona w NBP!", currencyName), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+                    string currencyName = row.Cells["Waluta"].Value.ToString();
 
-            this.LoadRates((int)gridExCurrencies.CurrentRow.Cells["id"].Value);
-            MessageBox.Show(string.Format("Pobrano kursy na dzień {0}", currencyDate.ToShortDateString()), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (NBPHelper.CurrencyExists(currencyName))
+                    {
+                        do
+                        {
+                            CurrencyRate currencyRate = NBPHelper.GetRate(currencyName, dateFrom);                            
+                            CurrenciesRepo.Insert(currencyRate, (int)row.Cells["Id"].Value);
+
+                            dateFrom = dateFrom.AddMonths(1);
+                        }
+                        while (dateFrom <= dateTo);                       
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Waluta {0} nie została odnaleziona w NBP!", currencyName), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                this.LoadRates((int)gridExCurrencies.CurrentRow.Cells["id"].Value);
+                MessageBox.Show(string.Format("Pobrano kursy dla zadanego okresu."), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
         private void gridExCurrencies_SelectionChanged(object sender, System.EventArgs e)
@@ -77,8 +92,18 @@ namespace Foksal.Forms.Dictonaries
 
         private void gridExCurrencies_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.isCurrencyUpdatePending = true;
-            gridExCurrencies.RootTable.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.False;
+            bool currencyExists = CurrenciesRepo.CheckIfCurrencyExists(gridExCurrencies.CurrentRow.Cells["Waluta"].Value.ToString());
+
+            if (currencyExists)
+            {
+                MessageBox.Show(string.Format("Waluta '{0}' już istnieje.", gridExCurrencies.CurrentRow.Cells["Waluta"].Value.ToString()), "Nowa waluta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+            else
+            {
+                this.isCurrencyUpdatePending = true;
+                gridExCurrencies.RootTable.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.False;
+            }
         }
 
         private void gridExCurrencies_UpdatingRecord(object sender, System.ComponentModel.CancelEventArgs e)

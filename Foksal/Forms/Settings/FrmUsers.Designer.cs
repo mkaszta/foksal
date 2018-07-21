@@ -51,7 +51,7 @@
             this.gridExUsers.GroupByBoxVisible = false;
             this.gridExUsers.Location = new System.Drawing.Point(12, 12);
             this.gridExUsers.Name = "gridExUsers";
-            this.gridExUsers.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExUsers.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExUsers.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExUsers.NewRowFormatStyle.ForeColor = System.Drawing.Color.White;
             this.gridExUsers.Size = new System.Drawing.Size(262, 432);

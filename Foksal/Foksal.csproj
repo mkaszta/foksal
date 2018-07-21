@@ -88,16 +88,22 @@
     <Compile Include="Forms\Agreements\FrmWFMagPicker.Designer.cs">
       <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dictonaries\FrmDictCurrencies.cs">
+    <Compile Include="Forms\Dictionaries\FrmDictCurrencies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dictonaries\FrmDictCurrencies.Designer.cs">
+    <Compile Include="Forms\Dictionaries\FrmDictCurrencies.Designer.cs">
       <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dictonaries\FrmDictLicensors.cs">
+    <Compile Include="Forms\Dictionaries\FrmDictCurrenciesNBPPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dictonaries\FrmDictLicensors.Designer.cs">
+    <Compile Include="Forms\Dictionaries\FrmDictCurrenciesNBPPicker.Designer.cs">
+      <DependentUpon>FrmDictCurrenciesNBPPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dictionaries\FrmDictLicensors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dictionaries\FrmDictLicensors.Designer.cs">
       <DependentUpon>FrmDictLicensors.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Global\FrmLogin.cs">
@@ -140,6 +146,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Agreements\frmAgreement.resx">
       <DependentUpon>FrmAgreement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmAgreementsList.resx">
       <DependentUpon>FrmAgreementsList.cs</DependentUpon>
@@ -153,10 +160,13 @@
     <EmbeddedResource Include="Forms\Agreements\FrmWFMagPicker.resx">
       <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dictonaries\FrmDictCurrencies.resx">
+    <EmbeddedResource Include="Forms\Dictionaries\FrmDictCurrencies.resx">
       <DependentUpon>FrmDictCurrencies.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dictonaries\FrmDictLicensors.resx">
+    <EmbeddedResource Include="Forms\Dictionaries\FrmDictCurrenciesNBPPicker.resx">
+      <DependentUpon>FrmDictCurrenciesNBPPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dictionaries\FrmDictLicensors.resx">
       <DependentUpon>FrmDictLicensors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Global\FrmLogin.resx">

@@ -80,6 +80,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnWFMAG = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtDescriptor = new System.Windows.Forms.TextBox();
@@ -489,7 +490,7 @@
             this.gridExThresholds.GroupByBoxVisible = false;
             this.gridExThresholds.Location = new System.Drawing.Point(6, 19);
             this.gridExThresholds.Name = "gridExThresholds";
-            this.gridExThresholds.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExThresholds.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExThresholds.Size = new System.Drawing.Size(487, 103);
             this.gridExThresholds.TabIndex = 50;
             this.gridExThresholds.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
@@ -630,6 +631,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnWFMAG);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.txtDescriptor);
@@ -650,6 +652,19 @@
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Dane pozycji";
+            // 
+            // btnWFMAG
+            // 
+            this.btnWFMAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnWFMAG.ForeColor = System.Drawing.Color.Black;
+            this.btnWFMAG.Location = new System.Drawing.Point(228, 12);
+            this.btnWFMAG.Name = "btnWFMAG";
+            this.btnWFMAG.Size = new System.Drawing.Size(53, 20);
+            this.btnWFMAG.TabIndex = 67;
+            this.btnWFMAG.Text = "WF MAG";
+            this.toolTip.SetToolTip(this.btnWFMAG, "Dodaj pozycję z WF MAG");
+            this.btnWFMAG.UseVisualStyleBackColor = true;
+            this.btnWFMAG.Click += new System.EventHandler(this.btnWFMAG_Click);
             // 
             // label10
             // 
@@ -742,9 +757,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 146);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 13);
+            this.label12.Size = new System.Drawing.Size(103, 13);
             this.label12.TabIndex = 33;
-            this.label12.Text = "Ilość bez opłat:";
+            this.label12.Text = "Ilość egz. bez opłat:";
             // 
             // txtPositionComments
             // 
@@ -823,7 +838,7 @@
             this.gridExRelatedProducts.GroupByBoxVisible = false;
             this.gridExRelatedProducts.Location = new System.Drawing.Point(6, 21);
             this.gridExRelatedProducts.Name = "gridExRelatedProducts";
-            this.gridExRelatedProducts.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExRelatedProducts.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExRelatedProducts.NewRowFormatStyle.ForeColor = System.Drawing.Color.Black;
             this.gridExRelatedProducts.Size = new System.Drawing.Size(487, 97);
             this.gridExRelatedProducts.TabIndex = 60;
@@ -992,7 +1007,7 @@
             this.gridExLicensors.GroupByBoxVisible = false;
             this.gridExLicensors.Location = new System.Drawing.Point(0, 6);
             this.gridExLicensors.Name = "gridExLicensors";
-            this.gridExLicensors.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExLicensors.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExLicensors.Size = new System.Drawing.Size(803, 545);
             this.gridExLicensors.TabIndex = 3;
             this.gridExLicensors.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
@@ -1052,7 +1067,7 @@
             this.gridExSchedule.GroupByBoxVisible = false;
             this.gridExSchedule.Location = new System.Drawing.Point(7, 6);
             this.gridExSchedule.Name = "gridExSchedule";
-            this.gridExSchedule.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExSchedule.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExSchedule.Size = new System.Drawing.Size(793, 545);
             this.gridExSchedule.TabIndex = 4;
             this.gridExSchedule.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExSchedule_CellValueChanged);
@@ -1078,7 +1093,7 @@
             this.gridExArticles.GroupByBoxVisible = false;
             this.gridExArticles.Location = new System.Drawing.Point(460, 32);
             this.gridExArticles.Name = "gridExArticles";
-            this.gridExArticles.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExArticles.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExArticles.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExArticles.NewRowFormatStyle.ForeColor = System.Drawing.Color.Black;
             this.gridExArticles.Size = new System.Drawing.Size(381, 100);
@@ -1213,6 +1228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(875, 790);
             this.Controls.Add(this.btnDiscardChanges);
             this.Controls.Add(this.btnSaveAgreement);
@@ -1347,5 +1363,6 @@
         private System.Windows.Forms.Button btnRemoveSchedule;
         private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button btnWFMAG;
     }
 }

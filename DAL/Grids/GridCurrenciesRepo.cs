@@ -19,7 +19,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = string.Format("SELECT * FROM [Waluta] WHERE Waluta <> 'PLN' ");
+            cmdSelect.CommandText = string.Format("SELECT * FROM [Waluta] ");
             dataAdapter.SelectCommand = cmdSelect;
 
             SqlCommand cmdUpdate = new SqlCommand();

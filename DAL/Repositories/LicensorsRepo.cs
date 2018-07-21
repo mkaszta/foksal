@@ -49,7 +49,7 @@ namespace DAL.Repositories
 
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
-                string sqlQuery = string.Format("SELECT * FROM [vLicnecjodawcaCombo]");
+                string sqlQuery = string.Format("SELECT * FROM [vLicnecjodawcaCombo] ORDER BY licencjodawca");
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {

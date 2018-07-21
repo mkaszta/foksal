@@ -63,7 +63,7 @@
             this.gridExCurrencies.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExCurrencies.Location = new System.Drawing.Point(6, 55);
             this.gridExCurrencies.Name = "gridExCurrencies";
-            this.gridExCurrencies.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExCurrencies.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExCurrencies.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExCurrencies.NewRowFormatStyle.ForeColor = System.Drawing.Color.Black;
             this.gridExCurrencies.Size = new System.Drawing.Size(72, 396);
@@ -89,7 +89,7 @@
             this.gridExCurrencyRates.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
             this.gridExCurrencyRates.Location = new System.Drawing.Point(6, 55);
             this.gridExCurrencyRates.Name = "gridExCurrencyRates";
-            this.gridExCurrencyRates.NewRowFormatStyle.BackColor = System.Drawing.Color.Honeydew;
+            this.gridExCurrencyRates.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExCurrencyRates.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExCurrencyRates.NewRowFormatStyle.ForeColor = System.Drawing.Color.White;
             this.gridExCurrencyRates.Size = new System.Drawing.Size(216, 396);

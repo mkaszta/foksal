@@ -19,7 +19,7 @@ namespace Foksal.Forms.Agreements
             this.gridProductsAndArticlesRepo = new GridProductsAndArticlesRepo();
             this.gridAgreementsListGroupedRepo = new GridAgreementsListGroupedRepo();
 
-            this.LoadData();            
+            this.LoadData();
         }
 
         private void LoadData()
@@ -51,6 +51,11 @@ namespace Foksal.Forms.Agreements
             {
                 column = gridExAgreementsListGrouped.RootTable.Columns["Deskryptor"];
                 condition = new GridEXFilterCondition(column, ConditionOperator.Equal, gridExProductsAndArticles.CurrentRow.Cells["Deskryptor"].Text);
+            }
+            else if (rdbTitle.Checked)
+            {
+                column = gridExAgreementsListGrouped.RootTable.Columns["Tytul"];
+                condition = new GridEXFilterCondition(column, ConditionOperator.Equal, gridExProductsAndArticles.CurrentRow.Cells["Tytuł"].Text);
             }
 
             gridExAgreementsListGrouped.RootTable.ApplyFilter(condition);
@@ -215,6 +220,17 @@ namespace Foksal.Forms.Agreements
         private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
         {
             gridExAgreementsListGrouped.ExpandGroups();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.LoadData();
+        }
+
+        private void gridExProductsAndArticles_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gridExProductsAndArticles.CurrentRow != null && gridExProductsAndArticles.CurrentRow.RowIndex > -1)
+                this.ApplyFilters();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT * FROM Uzytkownicy";
+            cmdSelect.CommandText = "SELECT * FROM Uzytkownicy WHERE id > 0";
             this.dataAdapter.SelectCommand = cmdSelect;            
 
             dataAdapter.Fill(dataTable);

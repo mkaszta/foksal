@@ -23,6 +23,10 @@ namespace Foksal.Forms.Agreements
 
         public void LoadAgreementsList()
         {
+            int previouslySelectedIndex = 0;
+            if (gridExCurrentList.CurrentRow != null && gridExCurrentList.CurrentRow.RowIndex > -1)
+                previouslySelectedIndex = gridExCurrentList.CurrentRow.RowIndex;
+
             if (this.isGridGrouped)
             {
                 this.gridListGroupedRepo = new GridAgreementsListGroupedRepo();
@@ -33,6 +37,9 @@ namespace Foksal.Forms.Agreements
                 this.gridListRepo = new GridAgreementsListRepo();
                 this.gridListRepo.BindDataSet(gridExCurrentList);
             }
+
+            if (previouslySelectedIndex > 0)
+                gridExCurrentList.MoveToRowIndex(previouslySelectedIndex);
         }
 
         private void SetGridMode(bool groupList)
@@ -61,7 +68,7 @@ namespace Foksal.Forms.Agreements
 
             btnSwitchGridMode.ImageIndex = this.isGridGrouped ? 4 : 3;
         }
-        
+
         private void ShowAgreementForm(int agreementId, int positionId = -1)
         {
             FrmAgreement frmAgreement = new FrmAgreement(agreementId, positionId, this);
@@ -117,6 +124,6 @@ namespace Foksal.Forms.Agreements
         private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
         {
             gridExAgreementsListGrouped.ExpandGroups();
-        }        
+        }
     }
 }

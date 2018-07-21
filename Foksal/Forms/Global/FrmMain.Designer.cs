@@ -44,13 +44,13 @@
             this.btnDictCurrencies = new System.Windows.Forms.RibbonButton();
             this.btnDictLicensors = new System.Windows.Forms.RibbonButton();
             this.ribbonTabReports = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanelReports = new System.Windows.Forms.RibbonPanel();
             this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
             this.ribbonPanelSettings_Mine = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsChangePassword = new System.Windows.Forms.RibbonButton();
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsUsers = new System.Windows.Forms.RibbonButton();
             this.ribbonMain = new System.Windows.Forms.Ribbon();
-            this.ribbonPanelReports = new System.Windows.Forms.RibbonPanel();
             this.SuspendLayout();
             // 
             // ribbonTabMain
@@ -140,7 +140,7 @@
             this.btnProducts.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnProducts.SmallImage")));
-            this.btnProducts.Text = "Produkty i towary";
+            this.btnProducts.Text = "Niepowiązane WF MAG";
             this.btnProducts.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
@@ -205,6 +205,11 @@
             this.ribbonTabReports.Name = "ribbonTabReports";
             this.ribbonTabReports.Panels.Add(this.ribbonPanelReports);
             this.ribbonTabReports.Text = "Raporty";
+            // 
+            // ribbonPanelReports
+            // 
+            this.ribbonPanelReports.Name = "ribbonPanelReports";
+            this.ribbonPanelReports.Text = "Dostepne raporty";
             // 
             // ribbonTabSettings
             // 
@@ -273,11 +278,6 @@
             this.ribbonMain.TabSpacing = 3;
             this.ribbonMain.Text = "Ribbon";
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
-            // 
-            // ribbonPanelReports
-            // 
-            this.ribbonPanelReports.Name = "ribbonPanelReports";
-            this.ribbonPanelReports.Text = "Dostepne raporty";
             // 
             // FrmMain
             // 

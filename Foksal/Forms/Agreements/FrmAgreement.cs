@@ -3,9 +3,11 @@ using DAL.Grids;
 using DAL.Repositories;
 using Foksal.Forms.Dictonaries;
 using Janus.Windows.GridEX;
+using Janus.Windows.GridEX.EditControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -93,7 +95,7 @@ namespace Foksal.Forms.Agreements
 
             cboSettlementModel.DataSource = SettlementModelsRepo.GetAll();
             cboSettlementModel.DisplayMember = "Name";
-            cboSettlementModel.ValueMember = "Id";
+            cboSettlementModel.ValueMember = "Id";            
         }
 
         private void LoadData()
@@ -624,6 +626,18 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
+        private void btnWFMAG_Click(object sender, EventArgs e)
+        {
+            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
+            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
+            {
+                txtKTM.Text = frmWFMagPicker.ChosenKTM;
+                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
+            }
+
+            this.SetPositionChangesPending(true);
+        }
+
         private void btnDictLicensors_Click(object sender, EventArgs e)
         {
             FrmDictLicensors frmDictLicensors = new FrmDictLicensors();
@@ -766,7 +780,7 @@ namespace Foksal.Forms.Agreements
         private void gridExLicensors_CellValueChanged(object sender, ColumnActionEventArgs e)
         {
             if (e.Column.DataMember == "LicencjodawcaId")
-            {
+            {                
                 gridExLicensors.UpdateData();
                 int selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
 
@@ -939,5 +953,29 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
         #endregion        
+    }
+
+    public partial class MultiColumnSearchCombo : MultiColumnCombo
+    {
+        protected override void OnTextBoxTextChanged(EventArgs e)
+        {
+            GridEXFilterCondition internalFilter = new GridEXFilterCondition();
+
+            String str = TextBox.Text;
+
+            foreach (GridEXColumn column in DropDownList.Columns)
+            {
+                if (!column.Visible)
+                    continue;
+
+                GridEXFilterCondition filterCondition = new GridEXFilterCondition(column, ConditionOperator.Contains, str);
+
+                internalFilter.AddCondition(LogicalOperator.Or, filterCondition);
+            }
+
+            DropDownList.ApplyFilter(internalFilter);
+
+        }
+
     }
 }
