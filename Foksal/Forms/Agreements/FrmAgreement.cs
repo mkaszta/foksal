@@ -95,7 +95,7 @@ namespace Foksal.Forms.Agreements
 
             cboSettlementModel.DataSource = SettlementModelsRepo.GetAll();
             cboSettlementModel.DisplayMember = "Name";
-            cboSettlementModel.ValueMember = "Id";            
+            cboSettlementModel.ValueMember = "Id";
         }
 
         private void LoadData()
@@ -167,11 +167,7 @@ namespace Foksal.Forms.Agreements
             {
                 valuesCboLicensor.Add(licensor.Id, licensor.Name);
                 valuesCboLicensorCareOf.Add(licensor.Id, licensor.Name);
-            }
-
-            colLicensor.EditType = Janus.Windows.GridEX.EditType.DropDownList;
-            colLicensor.CompareTarget = Janus.Windows.GridEX.ColumnCompareTarget.Text;
-            colLicensor.DefaultGroupInterval = Janus.Windows.GridEX.GroupInterval.Text;
+            }            
 
             this.gridLicensorsRepo.BindDataSet(gridExLicensors, agreement.Id);
         }
@@ -780,14 +776,24 @@ namespace Foksal.Forms.Agreements
         private void gridExLicensors_CellValueChanged(object sender, ColumnActionEventArgs e)
         {
             if (e.Column.DataMember == "LicencjodawcaId")
-            {                
+            {
                 gridExLicensors.UpdateData();
-                int selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
 
-                Licensor selectedLicensor = LicensorsRepo.GetById(selectedId);
-                gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = selectedLicensor.Email;
-                gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
-                gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
+                if (gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value != null)
+                {
+                    int selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
+
+                    Licensor selectedLicensor = LicensorsRepo.GetById(selectedId);
+                    gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = selectedLicensor.Email;
+                    gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
+                    gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
+                }
+                else
+                {
+                    gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = "";
+                    gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = null;
+                    gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = 0;
+                }
             }
 
             this.SetAgreementChangesPending(true);
@@ -953,29 +959,5 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
         #endregion        
-    }
-
-    public partial class MultiColumnSearchCombo : MultiColumnCombo
-    {
-        protected override void OnTextBoxTextChanged(EventArgs e)
-        {
-            GridEXFilterCondition internalFilter = new GridEXFilterCondition();
-
-            String str = TextBox.Text;
-
-            foreach (GridEXColumn column in DropDownList.Columns)
-            {
-                if (!column.Visible)
-                    continue;
-
-                GridEXFilterCondition filterCondition = new GridEXFilterCondition(column, ConditionOperator.Contains, str);
-
-                internalFilter.AddCondition(LogicalOperator.Or, filterCondition);
-            }
-
-            DropDownList.ApplyFilter(internalFilter);
-
-        }
-
     }
 }

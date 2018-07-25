@@ -19,7 +19,7 @@ namespace BLL
             this.dbUser = ConfigurationSettings.AppSettings["SQL_User"];
             this.dbPassword = ConfigurationSettings.AppSettings["SQL_Password"];
 
-            this.Connection = new SqlConnection(string.Format("server={0};database={1};user id={2};password={3};Trusted_Connection=yes;Persist Security Info=False;Integrated Security=false;",
+            this.Connection = new SqlConnection(string.Format("server={0};database={1};Trusted_Connection=yes;Persist Security Info=False;Integrated Security=true;",
                 this.dbServer, this.dbName, this.dbUser, this.dbPassword));
 
             this.Connection.Open();
