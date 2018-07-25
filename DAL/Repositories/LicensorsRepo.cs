@@ -105,7 +105,8 @@ namespace DAL.Repositories
         {
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
-                string sqlQuery = string.Format("UPDATE [UmowaLicencjodawca] SET LicencjodawcaId = {0}, EdycjaUzytkownik = {2} WHERE LicencjodawcaId = {1}", targetLicensorId, sourceLicensorId, AppUser.Instance.UserId);
+                string sqlQuery = string.Format("UPDATE [UmowaLicencjodawca] SET LicencjodawcaId = {0}, EdycjaUzytkownik = {2} WHERE LicencjodawcaId = {1}; ", targetLicensorId, sourceLicensorId, AppUser.Instance.UserId);
+                sqlQuery += string.Format("UPDATE [UmowaLicencjodawca] SET LicencjodawcaIdCareOf = {0}, EdycjaUzytkownik = {2} WHERE LicencjodawcaIdCareOf = {1}; ", targetLicensorId, sourceLicensorId, AppUser.Instance.UserId);                
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {

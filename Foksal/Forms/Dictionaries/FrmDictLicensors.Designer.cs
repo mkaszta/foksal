@@ -275,8 +275,7 @@
             this.ClientSize = new System.Drawing.Size(1163, 525);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gridExLicensors);
-            this.MaximizeBox = false;
+            this.Controls.Add(this.gridExLicensors);            
             this.Name = "FrmDictLicensors";
             this.Text = "Licencjodawcy";
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).EndInit();
