@@ -167,7 +167,7 @@ namespace Foksal.Forms.Agreements
             {
                 valuesCboLicensor.Add(licensor.Id, licensor.Name);
                 valuesCboLicensorCareOf.Add(licensor.Id, licensor.Name);
-            }            
+            }
 
             this.gridLicensorsRepo.BindDataSet(gridExLicensors, agreement.Id);
         }
