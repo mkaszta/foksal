@@ -290,8 +290,8 @@ namespace Foksal.Forms.Agreements
                     }
                     else
                     {
-                        lblModelFixedPrice.Location = new Point(lblModelPercent.Location.X, lblModelPercent.Location.Y + 39);
-                        numModelFixedPrice.Location = new Point(numModelPercent.Location.X, numModelPercent.Location.Y + 39);
+                        lblModelFixedPrice.Location = new Point(lblModelPercent.Location.X +  85, lblModelPercent.Location.Y);
+                        numModelFixedPrice.Location = new Point(numModelPercent.Location.X + 85, numModelPercent.Location.Y);
                     }
                 }
                 else
@@ -957,6 +957,11 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
-        #endregion        
+        #endregion
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

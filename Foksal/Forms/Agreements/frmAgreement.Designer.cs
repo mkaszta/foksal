@@ -36,7 +36,6 @@
             Janus.Windows.GridEX.GridEXLayout gridExLicensors_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExSchedule_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout gridExArticles_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtReportTitle = new System.Windows.Forms.TextBox();
             this.lblAgreement = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -149,34 +148,26 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(19, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Umowa:";
-            // 
             // txtReportTitle
             // 
             this.txtReportTitle.Location = new System.Drawing.Point(11, 32);
             this.txtReportTitle.MaxLength = 256;
             this.txtReportTitle.Name = "txtReportTitle";
-            this.txtReportTitle.Size = new System.Drawing.Size(216, 20);
+            this.txtReportTitle.Size = new System.Drawing.Size(385, 20);
             this.txtReportTitle.TabIndex = 1;
             this.txtReportTitle.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // lblAgreement
             // 
             this.lblAgreement.AutoSize = true;
-            this.lblAgreement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblAgreement.Location = new System.Drawing.Point(98, 9);
+            this.lblAgreement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblAgreement.ForeColor = System.Drawing.Color.Blue;
+            this.lblAgreement.Location = new System.Drawing.Point(1138, 12);
             this.lblAgreement.Name = "lblAgreement";
-            this.lblAgreement.Size = new System.Drawing.Size(103, 20);
+            this.lblAgreement.Size = new System.Drawing.Size(115, 20);
             this.lblAgreement.TabIndex = 2;
             this.lblAgreement.Text = "lblAgreement";
+            this.lblAgreement.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
             // 
@@ -201,14 +192,14 @@
             this.txtReportAuthor.Location = new System.Drawing.Point(11, 71);
             this.txtReportAuthor.MaxLength = 256;
             this.txtReportAuthor.Name = "txtReportAuthor";
-            this.txtReportAuthor.Size = new System.Drawing.Size(216, 20);
+            this.txtReportAuthor.Size = new System.Drawing.Size(385, 20);
             this.txtReportAuthor.TabIndex = 2;
             this.txtReportAuthor.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(235, 16);
+            this.label5.Location = new System.Drawing.Point(399, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 9;
@@ -217,7 +208,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(235, 56);
+            this.label7.Location = new System.Drawing.Point(399, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 13;
@@ -225,24 +216,24 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(238, 72);
+            this.txtComments.Location = new System.Drawing.Point(402, 72);
             this.txtComments.MaxLength = 1000;
             this.txtComments.Name = "txtComments";
-            this.txtComments.Size = new System.Drawing.Size(216, 60);
+            this.txtComments.Size = new System.Drawing.Size(289, 60);
             this.txtComments.TabIndex = 6;
             this.txtComments.Text = "";
             this.txtComments.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
             // numAdvance
             // 
-            this.numAdvance.Location = new System.Drawing.Point(238, 32);
+            this.numAdvance.Location = new System.Drawing.Point(402, 32);
             this.numAdvance.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.numAdvance.Name = "numAdvance";
-            this.numAdvance.Size = new System.Drawing.Size(101, 20);
+            this.numAdvance.Size = new System.Drawing.Size(151, 20);
             this.numAdvance.TabIndex = 4;
             this.numAdvance.ValueChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
@@ -251,10 +242,10 @@
             this.dtAdvanceDate.Checked = false;
             this.dtAdvanceDate.CustomFormat = " ";
             this.dtAdvanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtAdvanceDate.Location = new System.Drawing.Point(345, 32);
+            this.dtAdvanceDate.Location = new System.Drawing.Point(559, 32);
             this.dtAdvanceDate.Name = "dtAdvanceDate";
             this.dtAdvanceDate.ShowCheckBox = true;
-            this.dtAdvanceDate.Size = new System.Drawing.Size(109, 20);
+            this.dtAdvanceDate.Size = new System.Drawing.Size(132, 20);
             this.dtAdvanceDate.TabIndex = 5;
             this.dtAdvanceDate.ValueChanged += new System.EventHandler(this.dtAdvanceDate_ValueChanged);
             // 
@@ -263,17 +254,19 @@
             this.tabControlAgreement.Controls.Add(this.tabPositions);
             this.tabControlAgreement.Controls.Add(this.tabPageLicensors);
             this.tabControlAgreement.Controls.Add(this.tabPageSchedule);
-            this.tabControlAgreement.Location = new System.Drawing.Point(12, 200);
+            this.tabControlAgreement.Location = new System.Drawing.Point(12, 165);
             this.tabControlAgreement.Name = "tabControlAgreement";
             this.tabControlAgreement.SelectedIndex = 0;
-            this.tabControlAgreement.Size = new System.Drawing.Size(850, 583);
+            this.tabControlAgreement.Size = new System.Drawing.Size(1229, 401);
             this.tabControlAgreement.TabIndex = 17;
             this.tabControlAgreement.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControlAgreement_Selecting);
             // 
             // tabPositions
             // 
             this.tabPositions.Controls.Add(this.btnPositionsWFMAG);
+            this.tabPositions.Controls.Add(this.grbThresholds);
             this.tabPositions.Controls.Add(this.grbPositionDetails);
+            this.tabPositions.Controls.Add(this.groupBox3);
             this.tabPositions.Controls.Add(this.gridExPositions);
             this.tabPositions.Controls.Add(this.btnSavePosition);
             this.tabPositions.Controls.Add(this.btnAddPosition);
@@ -281,7 +274,7 @@
             this.tabPositions.Location = new System.Drawing.Point(4, 22);
             this.tabPositions.Name = "tabPositions";
             this.tabPositions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPositions.Size = new System.Drawing.Size(842, 557);
+            this.tabPositions.Size = new System.Drawing.Size(1221, 375);
             this.tabPositions.TabIndex = 1;
             this.tabPositions.Text = "Pozycje";
             this.tabPositions.UseVisualStyleBackColor = true;
@@ -290,7 +283,7 @@
             // 
             this.btnPositionsWFMAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnPositionsWFMAG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnPositionsWFMAG.Location = new System.Drawing.Point(816, 32);
+            this.btnPositionsWFMAG.Location = new System.Drawing.Point(1195, 32);
             this.btnPositionsWFMAG.Name = "btnPositionsWFMAG";
             this.btnPositionsWFMAG.Size = new System.Drawing.Size(20, 20);
             this.btnPositionsWFMAG.TabIndex = 66;
@@ -302,13 +295,11 @@
             // grbPositionDetails
             // 
             this.grbPositionDetails.Controls.Add(this.groupBox4);
-            this.grbPositionDetails.Controls.Add(this.grbThresholds);
-            this.grbPositionDetails.Controls.Add(this.groupBox3);
             this.grbPositionDetails.Controls.Add(this.groupBox5);
             this.grbPositionDetails.Controls.Add(this.grbProducts);
-            this.grbPositionDetails.Location = new System.Drawing.Point(7, 125);
+            this.grbPositionDetails.Location = new System.Drawing.Point(6, 110);
             this.grbPositionDetails.Name = "grbPositionDetails";
-            this.grbPositionDetails.Size = new System.Drawing.Size(829, 423);
+            this.grbPositionDetails.Size = new System.Drawing.Size(829, 261);
             this.grbPositionDetails.TabIndex = 0;
             this.grbPositionDetails.TabStop = false;
             // 
@@ -325,9 +316,9 @@
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.lblModelFixedPrice);
-            this.groupBox4.Location = new System.Drawing.Point(6, 19);
+            this.groupBox4.Location = new System.Drawing.Point(298, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(525, 128);
+            this.groupBox4.Size = new System.Drawing.Size(525, 105);
             this.groupBox4.TabIndex = 57;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Model rozliczenia";
@@ -344,14 +335,14 @@
             // 
             // numModelPercent
             // 
-            this.numModelPercent.Location = new System.Drawing.Point(418, 63);
+            this.numModelPercent.Location = new System.Drawing.Point(331, 67);
             this.numModelPercent.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.numModelPercent.Name = "numModelPercent";
-            this.numModelPercent.Size = new System.Drawing.Size(101, 20);
+            this.numModelPercent.Size = new System.Drawing.Size(78, 20);
             this.numModelPercent.TabIndex = 19;
             this.numModelPercent.ValueChanged += new System.EventHandler(this.positionControl_ValueChanged);
             // 
@@ -375,7 +366,7 @@
             // 
             // numModelFixedPrice
             // 
-            this.numModelFixedPrice.Location = new System.Drawing.Point(418, 102);
+            this.numModelFixedPrice.Location = new System.Drawing.Point(415, 68);
             this.numModelFixedPrice.Minimum = new decimal(new int[] {
             100,
             0,
@@ -389,7 +380,7 @@
             // lblModelPercent
             // 
             this.lblModelPercent.AutoSize = true;
-            this.lblModelPercent.Location = new System.Drawing.Point(415, 47);
+            this.lblModelPercent.Location = new System.Drawing.Point(328, 51);
             this.lblModelPercent.Name = "lblModelPercent";
             this.lblModelPercent.Size = new System.Drawing.Size(83, 13);
             this.lblModelPercent.TabIndex = 61;
@@ -438,7 +429,7 @@
             // lblModelFixedPrice
             // 
             this.lblModelFixedPrice.AutoSize = true;
-            this.lblModelFixedPrice.Location = new System.Drawing.Point(415, 86);
+            this.lblModelFixedPrice.Location = new System.Drawing.Point(412, 52);
             this.lblModelFixedPrice.Name = "lblModelFixedPrice";
             this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
             this.lblModelFixedPrice.TabIndex = 63;
@@ -449,9 +440,9 @@
             this.grbThresholds.Controls.Add(this.btnRemoveThreshold);
             this.grbThresholds.Controls.Add(this.gridExThresholds);
             this.grbThresholds.Controls.Add(this.btnAddThreshold);
-            this.grbThresholds.Location = new System.Drawing.Point(6, 283);
+            this.grbThresholds.Location = new System.Drawing.Point(838, 234);
             this.grbThresholds.Name = "grbThresholds";
-            this.grbThresholds.Size = new System.Drawing.Size(525, 128);
+            this.grbThresholds.Size = new System.Drawing.Size(377, 137);
             this.grbThresholds.TabIndex = 65;
             this.grbThresholds.TabStop = false;
             this.grbThresholds.Text = "Progi";
@@ -460,7 +451,7 @@
             // 
             this.btnRemoveThreshold.ImageKey = "icon-delete.png";
             this.btnRemoveThreshold.ImageList = this.imgListIconsMin;
-            this.btnRemoveThreshold.Location = new System.Drawing.Point(499, 40);
+            this.btnRemoveThreshold.Location = new System.Drawing.Point(350, 40);
             this.btnRemoveThreshold.Name = "btnRemoveThreshold";
             this.btnRemoveThreshold.Size = new System.Drawing.Size(20, 20);
             this.btnRemoveThreshold.TabIndex = 70;
@@ -491,7 +482,7 @@
             this.gridExThresholds.Location = new System.Drawing.Point(6, 19);
             this.gridExThresholds.Name = "gridExThresholds";
             this.gridExThresholds.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
-            this.gridExThresholds.Size = new System.Drawing.Size(487, 103);
+            this.gridExThresholds.Size = new System.Drawing.Size(338, 109);
             this.gridExThresholds.TabIndex = 50;
             this.gridExThresholds.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
             this.gridExThresholds.RecordUpdated += new System.EventHandler(this.positionControl_ValueChanged);
@@ -502,7 +493,7 @@
             // 
             this.btnAddThreshold.ImageKey = "icon-add.png";
             this.btnAddThreshold.ImageList = this.imgListIconsMin;
-            this.btnAddThreshold.Location = new System.Drawing.Point(499, 19);
+            this.btnAddThreshold.Location = new System.Drawing.Point(350, 19);
             this.btnAddThreshold.Name = "btnAddThreshold";
             this.btnAddThreshold.Size = new System.Drawing.Size(20, 20);
             this.btnAddThreshold.TabIndex = 69;
@@ -522,9 +513,9 @@
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Location = new System.Drawing.Point(537, 274);
+            this.groupBox3.Location = new System.Drawing.Point(841, 114);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(286, 137);
+            this.groupBox3.Size = new System.Drawing.Size(374, 114);
             this.groupBox3.TabIndex = 55;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "WF MAG";
@@ -646,9 +637,9 @@
             this.groupBox5.Controls.Add(this.chkIndefinitePeriod);
             this.groupBox5.Controls.Add(this.chkFirstSale);
             this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Location = new System.Drawing.Point(537, 19);
+            this.groupBox5.Location = new System.Drawing.Point(6, 13);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(286, 247);
+            this.groupBox5.Size = new System.Drawing.Size(286, 239);
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Dane pozycji";
@@ -807,7 +798,7 @@
             this.grbProducts.Controls.Add(this.gridExRelatedProducts);
             this.grbProducts.Controls.Add(this.btnProductsWFMAG);
             this.grbProducts.Controls.Add(this.btnAddProduct);
-            this.grbProducts.Location = new System.Drawing.Point(6, 153);
+            this.grbProducts.Location = new System.Drawing.Point(298, 124);
             this.grbProducts.Name = "grbProducts";
             this.grbProducts.Size = new System.Drawing.Size(525, 128);
             this.grbProducts.TabIndex = 61;
@@ -889,7 +880,7 @@
             this.gridExPositions.SelectedInactiveFormatStyle.BackColor = System.Drawing.SystemColors.Highlight;
             this.gridExPositions.SelectedInactiveFormatStyle.BackColorGradient = System.Drawing.SystemColors.Highlight;
             this.gridExPositions.SelectedInactiveFormatStyle.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gridExPositions.Size = new System.Drawing.Size(804, 114);
+            this.gridExPositions.Size = new System.Drawing.Size(1182, 101);
             this.gridExPositions.TabIndex = 40;
             this.gridExPositions.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExPositions_CellValueChanged);
             this.gridExPositions.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
@@ -901,7 +892,7 @@
             this.btnSavePosition.Enabled = false;
             this.btnSavePosition.ImageKey = "icon-save.png";
             this.btnSavePosition.ImageList = this.imgListIconsMin;
-            this.btnSavePosition.Location = new System.Drawing.Point(816, 84);
+            this.btnSavePosition.Location = new System.Drawing.Point(1195, 84);
             this.btnSavePosition.Name = "btnSavePosition";
             this.btnSavePosition.Size = new System.Drawing.Size(20, 20);
             this.btnSavePosition.TabIndex = 58;
@@ -913,7 +904,7 @@
             // 
             this.btnAddPosition.ImageKey = "icon-add.png";
             this.btnAddPosition.ImageList = this.imgListIconsMin;
-            this.btnAddPosition.Location = new System.Drawing.Point(816, 6);
+            this.btnAddPosition.Location = new System.Drawing.Point(1195, 6);
             this.btnAddPosition.Name = "btnAddPosition";
             this.btnAddPosition.Size = new System.Drawing.Size(20, 20);
             this.btnAddPosition.TabIndex = 59;
@@ -925,7 +916,7 @@
             // 
             this.btnRemovePosition.ImageKey = "icon-delete.png";
             this.btnRemovePosition.ImageList = this.imgListIconsMin;
-            this.btnRemovePosition.Location = new System.Drawing.Point(816, 58);
+            this.btnRemovePosition.Location = new System.Drawing.Point(1195, 58);
             this.btnRemovePosition.Name = "btnRemovePosition";
             this.btnRemovePosition.Size = new System.Drawing.Size(20, 20);
             this.btnRemovePosition.TabIndex = 60;
@@ -942,7 +933,7 @@
             this.tabPageLicensors.Location = new System.Drawing.Point(4, 22);
             this.tabPageLicensors.Name = "tabPageLicensors";
             this.tabPageLicensors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLicensors.Size = new System.Drawing.Size(842, 557);
+            this.tabPageLicensors.Size = new System.Drawing.Size(1221, 375);
             this.tabPageLicensors.TabIndex = 2;
             this.tabPageLicensors.Text = "Licencjodawcy";
             this.tabPageLicensors.UseVisualStyleBackColor = true;
@@ -951,7 +942,7 @@
             // 
             this.btnRemoveLicensor.ImageKey = "icon-delete.png";
             this.btnRemoveLicensor.ImageList = this.imgLstIcons;
-            this.btnRemoveLicensor.Location = new System.Drawing.Point(809, 78);
+            this.btnRemoveLicensor.Location = new System.Drawing.Point(1185, 78);
             this.btnRemoveLicensor.Name = "btnRemoveLicensor";
             this.btnRemoveLicensor.Size = new System.Drawing.Size(30, 30);
             this.btnRemoveLicensor.TabIndex = 74;
@@ -973,7 +964,7 @@
             // 
             this.btnAddLicensor.ImageKey = "icon-add.png";
             this.btnAddLicensor.ImageList = this.imgLstIcons;
-            this.btnAddLicensor.Location = new System.Drawing.Point(809, 6);
+            this.btnAddLicensor.Location = new System.Drawing.Point(1185, 6);
             this.btnAddLicensor.Name = "btnAddLicensor";
             this.btnAddLicensor.Size = new System.Drawing.Size(30, 30);
             this.btnAddLicensor.TabIndex = 73;
@@ -985,7 +976,7 @@
             // 
             this.btnDictLicensors.ImageKey = "icon-edit.png";
             this.btnDictLicensors.ImageList = this.imgLstIcons;
-            this.btnDictLicensors.Location = new System.Drawing.Point(809, 42);
+            this.btnDictLicensors.Location = new System.Drawing.Point(1185, 42);
             this.btnDictLicensors.Name = "btnDictLicensors";
             this.btnDictLicensors.Size = new System.Drawing.Size(30, 30);
             this.btnDictLicensors.TabIndex = 4;
@@ -1005,16 +996,16 @@
             this.gridExLicensors.DynamicFiltering = true;
             this.gridExLicensors.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExLicensors.GroupByBoxVisible = false;
-            this.gridExLicensors.Location = new System.Drawing.Point(0, 6);
+            this.gridExLicensors.Location = new System.Drawing.Point(6, 6);
             this.gridExLicensors.Name = "gridExLicensors";
             this.gridExLicensors.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
-            this.gridExLicensors.Size = new System.Drawing.Size(803, 545);
+            this.gridExLicensors.Size = new System.Drawing.Size(1176, 363);
             this.gridExLicensors.TabIndex = 3;
             this.gridExLicensors.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.gridExLicensors.TotalRowFormatStyle.BackColor = System.Drawing.Color.GhostWhite;
-            this.gridExLicensors.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White;            
+            this.gridExLicensors.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExLicensors.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExLicensors_CellEdited);
-            this.gridExLicensors.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExLicensors_AddingRecord);            
+            this.gridExLicensors.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExLicensors_AddingRecord);
             // 
             // tabPageSchedule
             // 
@@ -1024,7 +1015,7 @@
             this.tabPageSchedule.Location = new System.Drawing.Point(4, 22);
             this.tabPageSchedule.Name = "tabPageSchedule";
             this.tabPageSchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSchedule.Size = new System.Drawing.Size(842, 557);
+            this.tabPageSchedule.Size = new System.Drawing.Size(1221, 375);
             this.tabPageSchedule.TabIndex = 3;
             this.tabPageSchedule.Text = "Harmonogram";
             this.tabPageSchedule.UseVisualStyleBackColor = true;
@@ -1033,7 +1024,7 @@
             // 
             this.btnRemoveSchedule.ImageKey = "icon-delete.png";
             this.btnRemoveSchedule.ImageList = this.imgLstIcons;
-            this.btnRemoveSchedule.Location = new System.Drawing.Point(806, 42);
+            this.btnRemoveSchedule.Location = new System.Drawing.Point(1185, 42);
             this.btnRemoveSchedule.Name = "btnRemoveSchedule";
             this.btnRemoveSchedule.Size = new System.Drawing.Size(30, 30);
             this.btnRemoveSchedule.TabIndex = 76;
@@ -1045,7 +1036,7 @@
             // 
             this.btnAddSchedule.ImageKey = "icon-add.png";
             this.btnAddSchedule.ImageList = this.imgLstIcons;
-            this.btnAddSchedule.Location = new System.Drawing.Point(806, 6);
+            this.btnAddSchedule.Location = new System.Drawing.Point(1185, 6);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(30, 30);
             this.btnAddSchedule.TabIndex = 75;
@@ -1068,7 +1059,7 @@
             this.gridExSchedule.Location = new System.Drawing.Point(7, 6);
             this.gridExSchedule.Name = "gridExSchedule";
             this.gridExSchedule.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
-            this.gridExSchedule.Size = new System.Drawing.Size(793, 545);
+            this.gridExSchedule.Size = new System.Drawing.Size(1172, 363);
             this.gridExSchedule.TabIndex = 4;
             this.gridExSchedule.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExSchedule_CellValueChanged);
             this.gridExSchedule.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExSchedule_AddingRecord);
@@ -1076,7 +1067,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(342, 15);
+            this.label6.Location = new System.Drawing.Point(556, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 18;
@@ -1091,7 +1082,7 @@
             this.gridExArticles.DynamicFiltering = true;
             this.gridExArticles.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.gridExArticles.GroupByBoxVisible = false;
-            this.gridExArticles.Location = new System.Drawing.Point(460, 32);
+            this.gridExArticles.Location = new System.Drawing.Point(701, 32);
             this.gridExArticles.Name = "gridExArticles";
             this.gridExArticles.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExArticles.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
@@ -1106,7 +1097,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(457, 15);
+            this.label20.Location = new System.Drawing.Point(698, 15);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(99, 13);
             this.label20.TabIndex = 19;
@@ -1132,9 +1123,9 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtComments);
             this.groupBox1.Controls.Add(this.numAdvance);
-            this.groupBox1.Location = new System.Drawing.Point(12, 48);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(850, 150);
+            this.groupBox1.Size = new System.Drawing.Size(1092, 147);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
@@ -1142,7 +1133,7 @@
             // 
             this.btnRemoveArticle.ImageKey = "icon-delete.png";
             this.btnRemoveArticle.ImageList = this.imgListIconsMin;
-            this.btnRemoveArticle.Location = new System.Drawing.Point(821, 12);
+            this.btnRemoveArticle.Location = new System.Drawing.Point(1062, 12);
             this.btnRemoveArticle.Name = "btnRemoveArticle";
             this.btnRemoveArticle.Size = new System.Drawing.Size(20, 20);
             this.btnRemoveArticle.TabIndex = 68;
@@ -1154,7 +1145,7 @@
             // 
             this.btnAddArticle.ImageKey = "icon-add.png";
             this.btnAddArticle.ImageList = this.imgListIconsMin;
-            this.btnAddArticle.Location = new System.Drawing.Point(776, 12);
+            this.btnAddArticle.Location = new System.Drawing.Point(1017, 12);
             this.btnAddArticle.Name = "btnAddArticle";
             this.btnAddArticle.Size = new System.Drawing.Size(20, 20);
             this.btnAddArticle.TabIndex = 67;
@@ -1175,7 +1166,7 @@
             // 
             this.btnArticlesWFMAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnArticlesWFMAG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnArticlesWFMAG.Location = new System.Drawing.Point(799, 12);
+            this.btnArticlesWFMAG.Location = new System.Drawing.Point(1040, 12);
             this.btnArticlesWFMAG.Name = "btnArticlesWFMAG";
             this.btnArticlesWFMAG.Size = new System.Drawing.Size(20, 20);
             this.btnArticlesWFMAG.TabIndex = 66;
@@ -1189,7 +1180,7 @@
             this.txtTitle.Location = new System.Drawing.Point(11, 112);
             this.txtTitle.MaxLength = 256;
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(216, 20);
+            this.txtTitle.Size = new System.Drawing.Size(385, 20);
             this.txtTitle.TabIndex = 3;
             this.txtTitle.TextChanged += new System.EventHandler(this.agreementControl_ValueChanged);
             // 
@@ -1198,7 +1189,7 @@
             this.btnSaveAgreement.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSaveAgreement.ImageKey = "icon-save.png";
             this.btnSaveAgreement.ImageList = this.imgLstIcons;
-            this.btnSaveAgreement.Location = new System.Drawing.Point(660, 1);
+            this.btnSaveAgreement.Location = new System.Drawing.Point(1126, 68);
             this.btnSaveAgreement.Name = "btnSaveAgreement";
             this.btnSaveAgreement.Size = new System.Drawing.Size(98, 41);
             this.btnSaveAgreement.TabIndex = 59;
@@ -1214,7 +1205,7 @@
             this.btnDiscardChanges.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDiscardChanges.ImageKey = "icon-refresh.png";
             this.btnDiscardChanges.ImageList = this.imgLstIcons;
-            this.btnDiscardChanges.Location = new System.Drawing.Point(764, 1);
+            this.btnDiscardChanges.Location = new System.Drawing.Point(1126, 118);
             this.btnDiscardChanges.Name = "btnDiscardChanges";
             this.btnDiscardChanges.Size = new System.Drawing.Size(98, 41);
             this.btnDiscardChanges.TabIndex = 60;
@@ -1229,13 +1220,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(875, 790);
+            this.ClientSize = new System.Drawing.Size(1253, 570);
             this.Controls.Add(this.btnDiscardChanges);
             this.Controls.Add(this.btnSaveAgreement);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControlAgreement);
             this.Controls.Add(this.lblAgreement);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmAgreement";
             this.Text = "Umowa";
@@ -1273,8 +1263,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtReportTitle;
         private System.Windows.Forms.Label lblAgreement;
         private System.Windows.Forms.Label label3;
