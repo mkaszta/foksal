@@ -3,11 +3,9 @@ using DAL.Grids;
 using DAL.Repositories;
 using Foksal.Forms.Dictonaries;
 using Janus.Windows.GridEX;
-using Janus.Windows.GridEX.EditControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -773,30 +771,30 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void gridExLicensors_CellValueChanged(object sender, ColumnActionEventArgs e)
+        private void gridExLicensors_CellEdited(object sender, ColumnActionEventArgs e)
         {
-            //if (e.Column.DataMember == "LicencjodawcaId")
-            //{
-            //    gridExLicensors.UpdateData();                
+            if (gridExLicensors.CurrentColumn != null && gridExLicensors.CurrentColumn.Key == "LicencjodawcaId")
+            {
+                gridExLicensors.UpdateData();
 
-            //    if (int.TryParse(gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value.ToString(), out int selectedId))
-            //    {
-            //        selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
+                if (int.TryParse(gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value.ToString(), out int selectedId))
+                {
+                    selectedId = (int)gridExLicensors.CurrentRow.Cells["LicencjodawcaId"].Value;
 
-            //        Licensor selectedLicensor = LicensorsRepo.GetById(selectedId);
-            //        gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = selectedLicensor.Email;
-            //        gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
-            //        gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
-            //    }
-            //    else
-            //    {
-            //        gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = "";
-            //        gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = false;
-            //        gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = 0;
-            //    }
-            //}
+                    Licensor selectedLicensor = LicensorsRepo.GetById(selectedId);
+                    gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = selectedLicensor.Email;
+                    gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = selectedLicensor.IsNaturalPerson;
+                    gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = selectedLicensor.TaxPercentage;
+                }
+                else
+                {
+                    gridExLicensors.CurrentRow.Cells["AdresEmail"].Text = "";
+                    gridExLicensors.CurrentRow.Cells["OsobaFizyczna"].Value = false;
+                    gridExLicensors.CurrentRow.Cells["PodatekProcent"].Value = 0;
+                }
+            }
 
-            //this.SetAgreementChangesPending(true);
+            this.SetAgreementChangesPending(true);
         }
 
         private void gridExArticles_AddingRecord(object sender, System.ComponentModel.CancelEventArgs e)
@@ -958,6 +956,7 @@ namespace Foksal.Forms.Agreements
 
             this.SetPositionChangesPending(true);
         }
+
         #endregion        
     }
 }

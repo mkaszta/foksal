@@ -1012,9 +1012,9 @@
             this.gridExLicensors.TabIndex = 3;
             this.gridExLicensors.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.gridExLicensors.TotalRowFormatStyle.BackColor = System.Drawing.Color.GhostWhite;
-            this.gridExLicensors.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
-            this.gridExLicensors.CellValueChanged += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExLicensors_CellValueChanged);
-            this.gridExLicensors.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExLicensors_AddingRecord);
+            this.gridExLicensors.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White;            
+            this.gridExLicensors.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.gridExLicensors_CellEdited);
+            this.gridExLicensors.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExLicensors_AddingRecord);            
             // 
             // tabPageSchedule
             // 
