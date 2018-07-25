@@ -30,6 +30,9 @@ namespace Foksal.Forms.Dictonaries
             isChangesPending = false;
 
             this.SetChangesPending(false);
+
+            this.mergeSourceRowId = -1;
+            this.mergeTargetRowId = -1;
         }
 
         private void SetChangesPending(bool changesPending)

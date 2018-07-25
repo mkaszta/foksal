@@ -44,37 +44,44 @@ namespace Foksal.Forms.Dictonaries
             FrmDictCurrenciesNBPPicker frmDictCurrenciesNBPPicker = new FrmDictCurrenciesNBPPicker();
 
             if (frmDictCurrenciesNBPPicker.ShowDialog() == DialogResult.OK)
-            {                
+            {
                 DateTime dateFrom = frmDictCurrenciesNBPPicker.dateFrom;
                 DateTime dateTo = frmDictCurrenciesNBPPicker.dateTo;
 
                 dateFrom = new DateTime(dateFrom.Year, dateFrom.Month, 1);
                 dateTo = new DateTime(dateTo.Year, dateTo.Month, 1);
+                if (dateTo.Month == DateTime.Now.Month && dateTo.Year == DateTime.Now.Year)
+                    dateTo.AddMonths(-1);
 
                 foreach (GridEXRow row in gridExCurrencies.GetRows())
                 {
                     string currencyName = row.Cells["Waluta"].Value.ToString();
 
-                    if (NBPHelper.CurrencyExists(currencyName))
+                    if (currencyName != "PLN")
                     {
-                        do
+                        if (NBPHelper.CurrencyExists(currencyName))
                         {
-                            CurrencyRate currencyRate = NBPHelper.GetRate(currencyName, dateFrom);                            
-                            CurrenciesRepo.Insert(currencyRate, (int)row.Cells["Id"].Value);
+                            DateTime dateIterator = dateFrom;
 
-                            dateFrom = dateFrom.AddMonths(1);
+                            do
+                            {
+                                CurrencyRate currencyRate = NBPHelper.GetRate(currencyName, dateIterator);
+                                CurrenciesRepo.Insert(currencyRate, (int)row.Cells["Id"].Value);
+
+                                dateIterator = dateIterator.AddMonths(1);
+                            }
+                            while (dateIterator <= dateTo);
                         }
-                        while (dateFrom <= dateTo);                       
-                    }
-                    else
-                    {
-                        MessageBox.Show(string.Format("Waluta {0} nie została odnaleziona w NBP!", currencyName), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                        {
+                            MessageBox.Show(string.Format("Waluta {0} nie została odnaleziona w NBP!", currencyName), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
 
                 this.LoadRates((int)gridExCurrencies.CurrentRow.Cells["id"].Value);
                 MessageBox.Show(string.Format("Pobrano kursy dla zadanego okresu."), "Kurs NBP", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }            
+            }
         }
 
         private void gridExCurrencies_SelectionChanged(object sender, System.EventArgs e)

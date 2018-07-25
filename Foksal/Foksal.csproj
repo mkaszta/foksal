@@ -34,9 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Janus.Data.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.Common.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Data.v4">
+      <HintPath>..\..\..\..\Downloads\Janus Systems\Controls for Microsoft .NET\Windows Forms Controls v4\Bin\v4.0.51\Janus.Data.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v4">
+      <HintPath>..\..\..\..\Downloads\Janus Systems\Controls for Microsoft .NET\Windows Forms Controls v4\Bin\v4.0.51\Janus.Windows.Common.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v4">
+      <HintPath>..\..\..\..\Downloads\Janus Systems\Controls for Microsoft .NET\Windows Forms Controls v4\Bin\v4.0.51\Janus.Windows.GridEX.v4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -44,7 +50,7 @@
     </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Windows.Forms.Ribbon">
-      <HintPath>..\..\..\..\Downloads\Ribbon_Release_2018-03-19\Ribbon_Release_2018-03-19_NET461\System.Windows.Forms.Ribbon.dll</HintPath>
+      <HintPath>..\System.Windows.Forms.Ribbon.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Xml.Linq" />

@@ -14,7 +14,7 @@ namespace BLL
             
             try
             {
-                var saveDialog = new SaveFileDialog { Filter = "Excel File (*.xls)|*.xls|All Files (*.*)|*.*" };
+                var saveDialog = new SaveFileDialog { Filter = "Xml File (*.xml)|*.xml|All Files (*.*)|*.*" };
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {                    
@@ -24,7 +24,7 @@ namespace BLL
                     gridExporter.IncludeFormatStyle = true;
                     gridExporter.IncludeHeaders = true;                    
                     gridExporter.GridEX = gridEx;
-
+                    
                     gridExporter.Export(streamWrite);
 
                     MessageBox.Show("Eksport danych do pliku został zakończony.", "Eksport do pliku", MessageBoxButtons.OK, MessageBoxIcon.Information);
