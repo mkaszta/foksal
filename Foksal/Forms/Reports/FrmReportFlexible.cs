@@ -13,27 +13,20 @@ namespace Foksal.Forms.Reports
         private DateTime? dateFrom;
         private DateTime? dateTo;
 
-        public FrmReportFlexible(Report reportType)
+        public FrmReportFlexible(Report reportType, DateTime? dateFrom, DateTime? dateTo)
         {
-            InitializeComponent();                    
+            InitializeComponent();
+
+            this.dateFrom = dateFrom;
+            this.dateTo = dateTo;
 
             this.Name = string.Format("Raport: {0}", reportType.Name);
 
             this.gridReportFlexibleRepo = new GridReportFlexibleRepo();
             this.reportType = reportType;
-
-            this.GetDateRange();
+         
             this.LoadData();
-        }
-
-        private void GetDateRange()
-        {
-            FrmReportDatePicker frmReportDatePicker = new FrmReportDatePicker();
-            frmReportDatePicker.ShowDialog();
-
-            this.dateFrom = frmReportDatePicker.dateFrom;
-            this.dateTo = frmReportDatePicker.dateTo;
-        }
+        }        
 
         private void LoadData()
         {
