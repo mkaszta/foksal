@@ -38,12 +38,10 @@ namespace Foksal.Forms.Agreements
 
             string ktm = gridExDescriptorChanges.CurrentRow.Cells["KTM"].Value.ToString();
             string descriptorOld = gridExDescriptorChanges.CurrentRow.Cells["DESKRYPOTR_OLD"].Value.ToString();
+            string findString = string.Format("{0}|{1};", ktm, descriptorOld);
 
-            column = gridExAgreementsListGrouped.RootTable.Columns["KTM"];
-            condition.AddCondition(new GridEXFilterCondition(column, ConditionOperator.Equal, ktm));
-
-            column = gridExAgreementsListGrouped.RootTable.Columns["Deskryptor"];
-            condition.AddCondition(new GridEXFilterCondition(column, ConditionOperator.Equal, descriptorOld));
+            column = gridExAgreementsListGrouped.RootTable.Columns["Find"];
+            condition.AddCondition(new GridEXFilterCondition(column, ConditionOperator.Contains, findString));            
 
             gridExAgreementsListGrouped.RootTable.ApplyFilter(condition);
         }
@@ -60,12 +58,14 @@ namespace Foksal.Forms.Agreements
                     if (MessageBox.Show(string.Format("Dla zaznaczonych pozycji zostanie zastosowana poniższa zmiana deskryptora:\r\n\r\nStary:\t\t{0}\r\nNowy:\t\t{1}", oldDescriptor, newDescriptor),
                         "Zmiana", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
+                        DescriptorsRepo descriptorsRepo = new DescriptorsRepo();
+
                         foreach (GridEXRow row in gridExAgreementsListGrouped.GetCheckedRows())
                         {
-                            AgreementPosition agreementPosition = AgreementPositionsRepo.GetByID((int)row.Cells["PozycjaId"].Value);
-                            agreementPosition.Descriptor = newDescriptor;
+                            int positionID = (int)row.Cells["PozycjaId"].Value;
+                            int descriptorChangeID = (int)gridExDescriptorChanges.CurrentRow.Cells["id"].Value;
 
-                            AgreementPositionsRepo.InsertUpdate(agreementPosition);
+                            descriptorsRepo.ChangeDescriptor(positionID, descriptorChangeID);
                         }
 
                         MessageBox.Show("Deskryptor został zmieniony dla zaznaczonych pozycji.", "Zmiana", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Entities;
 using DAL.Grids;
+using System;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Reports
@@ -9,22 +10,34 @@ namespace Foksal.Forms.Reports
     {
         private GridReportFlexibleRepo gridReportFlexibleRepo;
         private Report reportType;
+        private DateTime? dateFrom;
+        private DateTime? dateTo;
 
         public FrmReportFlexible(Report reportType)
         {
-            InitializeComponent();
+            InitializeComponent();                    
 
             this.Name = string.Format("Raport: {0}", reportType.Name);
 
             this.gridReportFlexibleRepo = new GridReportFlexibleRepo();
             this.reportType = reportType;
 
+            this.GetDateRange();
             this.LoadData();
+        }
+
+        private void GetDateRange()
+        {
+            FrmReportDatePicker frmReportDatePicker = new FrmReportDatePicker();
+            frmReportDatePicker.ShowDialog();
+
+            this.dateFrom = frmReportDatePicker.dateFrom;
+            this.dateTo = frmReportDatePicker.dateTo;
         }
 
         private void LoadData()
         {
-            this.gridReportFlexibleRepo.BindDataSet(gridExReport, this.reportType);
+            this.gridReportFlexibleRepo.BindDataSet(gridExReport, this.reportType, this.dateFrom, this.dateTo);
             gridExReport.RetrieveStructure();
         }
 

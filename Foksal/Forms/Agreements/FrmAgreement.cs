@@ -290,7 +290,7 @@ namespace Foksal.Forms.Agreements
                     }
                     else
                     {
-                        lblModelFixedPrice.Location = new Point(lblModelPercent.Location.X +  85, lblModelPercent.Location.Y);
+                        lblModelFixedPrice.Location = new Point(lblModelPercent.Location.X + 85, lblModelPercent.Location.Y);
                         numModelFixedPrice.Location = new Point(numModelPercent.Location.X + 85, numModelPercent.Location.Y);
                     }
                 }
@@ -705,6 +705,62 @@ namespace Foksal.Forms.Agreements
 
             this.SetAgreementChangesPending(true);
         }
+
+        private void btnPositionsWFMAG_Click(object sender, EventArgs e)
+        {
+            this.AddPosition();
+
+            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
+            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
+            {
+                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
+                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
+                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
+
+                txtKTM.Text = frmWFMagPicker.ChosenKTM;
+                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
+            }
+        }
+
+        private void btnRefreshArticle_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                gridArticlesRepo.BindDataSet(gridExArticles, this.agreement.Id);
+            }
+        }
+
+        private void btnRefreshProduct_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                gridRelatedProductsRepo.BindDataSet(gridExRelatedProducts, this.selectedPosition.Id);
+            }
+        }
+
+        private void btnRefreshThreshold_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                gridThresholdsRepo.BindDataSet(gridExThresholds, this.selectedPosition.Id);
+            }
+        }
+
+        private void btnRefreshLicensor_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                gridLicensorsRepo.BindDataSet(gridExLicensors, this.agreement.Id);
+            }
+        }
+
+        private void btnRefreshSchedule_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                gridScheduleRepo.BindDataSet(gridExSchedule, this.agreement.Id);
+            }
+        }
         #endregion
 
         // GRIDS
@@ -866,22 +922,6 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void btnPositionsWFMAG_Click(object sender, EventArgs e)
-        {
-            this.AddPosition();
-
-            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
-            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
-            {
-                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
-                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
-                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
-
-                txtKTM.Text = frmWFMagPicker.ChosenKTM;
-                txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
-            }
-        }
-
         private void dtExpiration_ValueChanged(object sender, EventArgs e)
         {
             if (dtExpiration.Checked)
@@ -957,11 +997,6 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
-        #endregion
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion        
     }
 }

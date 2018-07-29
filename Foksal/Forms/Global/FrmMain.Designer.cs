@@ -209,7 +209,7 @@
             // ribbonPanelReports
             // 
             this.ribbonPanelReports.Name = "ribbonPanelReports";
-            this.ribbonPanelReports.Text = "Dostepne raporty";
+            this.ribbonPanelReports.Text = "Dostępne raporty";
             // 
             // ribbonTabSettings
             // 

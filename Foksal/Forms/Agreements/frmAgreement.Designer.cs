@@ -49,6 +49,12 @@
             this.tabControlAgreement = new System.Windows.Forms.TabControl();
             this.tabPositions = new System.Windows.Forms.TabPage();
             this.btnPositionsWFMAG = new System.Windows.Forms.Button();
+            this.grbThresholds = new System.Windows.Forms.GroupBox();
+            this.btnRefreshThreshold = new System.Windows.Forms.Button();
+            this.imgListIconsMin = new System.Windows.Forms.ImageList(this.components);
+            this.btnRemoveThreshold = new System.Windows.Forms.Button();
+            this.gridExThresholds = new Janus.Windows.GridEX.GridEX();
+            this.btnAddThreshold = new System.Windows.Forms.Button();
             this.grbPositionDetails = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cboBillingPeriod = new System.Windows.Forms.ComboBox();
@@ -62,22 +68,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblModelFixedPrice = new System.Windows.Forms.Label();
-            this.grbThresholds = new System.Windows.Forms.GroupBox();
-            this.btnRemoveThreshold = new System.Windows.Forms.Button();
-            this.imgListIconsMin = new System.Windows.Forms.ImageList(this.components);
-            this.gridExThresholds = new Janus.Windows.GridEX.GridEX();
-            this.btnAddThreshold = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblWFMagPZ = new System.Windows.Forms.Label();
-            this.lblWFMagBrutto = new System.Windows.Forms.Label();
-            this.lblWFMagNetto = new System.Windows.Forms.Label();
-            this.lblWFMagFirstSaleDate = new System.Windows.Forms.Label();
-            this.lblWFMagDevileryDate = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnWFMAG = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -95,21 +85,35 @@
             this.chkFirstSale = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.grbProducts = new System.Windows.Forms.GroupBox();
+            this.btnRefreshProduct = new System.Windows.Forms.Button();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.gridExRelatedProducts = new Janus.Windows.GridEX.GridEX();
             this.btnProductsWFMAG = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblWFMagPZ = new System.Windows.Forms.Label();
+            this.lblWFMagBrutto = new System.Windows.Forms.Label();
+            this.lblWFMagNetto = new System.Windows.Forms.Label();
+            this.lblWFMagFirstSaleDate = new System.Windows.Forms.Label();
+            this.lblWFMagDevileryDate = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.gridExPositions = new Janus.Windows.GridEX.GridEX();
             this.btnSavePosition = new System.Windows.Forms.Button();
             this.btnAddPosition = new System.Windows.Forms.Button();
             this.btnRemovePosition = new System.Windows.Forms.Button();
             this.tabPageLicensors = new System.Windows.Forms.TabPage();
-            this.btnRemoveLicensor = new System.Windows.Forms.Button();
+            this.btnRefreshLicensor = new System.Windows.Forms.Button();
             this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
+            this.btnRemoveLicensor = new System.Windows.Forms.Button();
             this.btnAddLicensor = new System.Windows.Forms.Button();
             this.btnDictLicensors = new System.Windows.Forms.Button();
             this.gridExLicensors = new Janus.Windows.GridEX.GridEX();
             this.tabPageSchedule = new System.Windows.Forms.TabPage();
+            this.btnRefreshSchedule = new System.Windows.Forms.Button();
             this.btnRemoveSchedule = new System.Windows.Forms.Button();
             this.btnAddSchedule = new System.Windows.Forms.Button();
             this.gridExSchedule = new Janus.Windows.GridEX.GridEX();
@@ -117,6 +121,7 @@
             this.gridExArticles = new Janus.Windows.GridEX.GridEX();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRefreshArticle = new System.Windows.Forms.Button();
             this.btnRemoveArticle = new System.Windows.Forms.Button();
             this.btnAddArticle = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -128,17 +133,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).BeginInit();
             this.tabControlAgreement.SuspendLayout();
             this.tabPositions.SuspendLayout();
+            this.grbThresholds.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).BeginInit();
             this.grbPositionDetails.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).BeginInit();
-            this.grbThresholds.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).BeginInit();
             this.grbProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExPositions)).BeginInit();
             this.tabPageLicensors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).BeginInit();
@@ -162,7 +167,7 @@
             this.lblAgreement.AutoSize = true;
             this.lblAgreement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblAgreement.ForeColor = System.Drawing.Color.Blue;
-            this.lblAgreement.Location = new System.Drawing.Point(1138, 12);
+            this.lblAgreement.Location = new System.Drawing.Point(1122, 12);
             this.lblAgreement.Name = "lblAgreement";
             this.lblAgreement.Size = new System.Drawing.Size(115, 20);
             this.lblAgreement.TabIndex = 2;
@@ -291,6 +296,86 @@
             this.toolTip.SetToolTip(this.btnPositionsWFMAG, "Dodaj pozycję z WF MAG");
             this.btnPositionsWFMAG.UseVisualStyleBackColor = true;
             this.btnPositionsWFMAG.Click += new System.EventHandler(this.btnPositionsWFMAG_Click);
+            // 
+            // grbThresholds
+            // 
+            this.grbThresholds.Controls.Add(this.btnRefreshThreshold);
+            this.grbThresholds.Controls.Add(this.btnRemoveThreshold);
+            this.grbThresholds.Controls.Add(this.gridExThresholds);
+            this.grbThresholds.Controls.Add(this.btnAddThreshold);
+            this.grbThresholds.Location = new System.Drawing.Point(838, 234);
+            this.grbThresholds.Name = "grbThresholds";
+            this.grbThresholds.Size = new System.Drawing.Size(377, 137);
+            this.grbThresholds.TabIndex = 65;
+            this.grbThresholds.TabStop = false;
+            this.grbThresholds.Text = "Progi";
+            // 
+            // btnRefreshThreshold
+            // 
+            this.btnRefreshThreshold.ImageKey = "icon-refresh.png";
+            this.btnRefreshThreshold.ImageList = this.imgListIconsMin;
+            this.btnRefreshThreshold.Location = new System.Drawing.Point(350, 63);
+            this.btnRefreshThreshold.Name = "btnRefreshThreshold";
+            this.btnRefreshThreshold.Size = new System.Drawing.Size(20, 20);
+            this.btnRefreshThreshold.TabIndex = 73;
+            this.toolTip.SetToolTip(this.btnRefreshThreshold, "Odśwież listę progów");
+            this.btnRefreshThreshold.UseVisualStyleBackColor = true;
+            this.btnRefreshThreshold.Click += new System.EventHandler(this.btnRefreshThreshold_Click);
+            // 
+            // imgListIconsMin
+            // 
+            this.imgListIconsMin.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListIconsMin.ImageStream")));
+            this.imgListIconsMin.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListIconsMin.Images.SetKeyName(0, "icon-add.png");
+            this.imgListIconsMin.Images.SetKeyName(1, "icon-delete.png");
+            this.imgListIconsMin.Images.SetKeyName(2, "icon-save.png");
+            this.imgListIconsMin.Images.SetKeyName(3, "icon-bookpng.png");
+            this.imgListIconsMin.Images.SetKeyName(4, "icon-refresh.png");
+            // 
+            // btnRemoveThreshold
+            // 
+            this.btnRemoveThreshold.ImageKey = "icon-delete.png";
+            this.btnRemoveThreshold.ImageList = this.imgListIconsMin;
+            this.btnRemoveThreshold.Location = new System.Drawing.Point(350, 41);
+            this.btnRemoveThreshold.Name = "btnRemoveThreshold";
+            this.btnRemoveThreshold.Size = new System.Drawing.Size(20, 20);
+            this.btnRemoveThreshold.TabIndex = 70;
+            this.toolTip.SetToolTip(this.btnRemoveThreshold, "Usuń próg");
+            this.btnRemoveThreshold.UseVisualStyleBackColor = true;
+            this.btnRemoveThreshold.Click += new System.EventHandler(this.btnRemoveThreshold_Click);
+            // 
+            // gridExThresholds
+            // 
+            this.gridExThresholds.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExThresholds.AlternatingRowFormatStyle.ForeColor = System.Drawing.SystemColors.Window;
+            this.gridExThresholds.ColumnAutoResize = true;
+            this.gridExThresholds.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            gridExThresholds_DesignTimeLayout.LayoutString = resources.GetString("gridExThresholds_DesignTimeLayout.LayoutString");
+            this.gridExThresholds.DesignTimeLayout = gridExThresholds_DesignTimeLayout;
+            this.gridExThresholds.DynamicFiltering = true;
+            this.gridExThresholds.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.gridExThresholds.GroupByBoxVisible = false;
+            this.gridExThresholds.Location = new System.Drawing.Point(6, 19);
+            this.gridExThresholds.Name = "gridExThresholds";
+            this.gridExThresholds.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
+            this.gridExThresholds.Size = new System.Drawing.Size(338, 109);
+            this.gridExThresholds.TabIndex = 50;
+            this.gridExThresholds.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.RecordUpdated += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.RecordAdded += new System.EventHandler(this.positionControl_ValueChanged);
+            this.gridExThresholds.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExThresholds_AddingRecord);
+            // 
+            // btnAddThreshold
+            // 
+            this.btnAddThreshold.ImageKey = "icon-add.png";
+            this.btnAddThreshold.ImageList = this.imgListIconsMin;
+            this.btnAddThreshold.Location = new System.Drawing.Point(350, 19);
+            this.btnAddThreshold.Name = "btnAddThreshold";
+            this.btnAddThreshold.Size = new System.Drawing.Size(20, 20);
+            this.btnAddThreshold.TabIndex = 69;
+            this.toolTip.SetToolTip(this.btnAddThreshold, "Dodaj próg");
+            this.btnAddThreshold.UseVisualStyleBackColor = true;
+            this.btnAddThreshold.Click += new System.EventHandler(this.btnAddThreshold_Click);
             // 
             // grbPositionDetails
             // 
@@ -434,191 +519,6 @@
             this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
             this.lblModelFixedPrice.TabIndex = 63;
             this.lblModelFixedPrice.Text = "lblModelFixedPrice";
-            // 
-            // grbThresholds
-            // 
-            this.grbThresholds.Controls.Add(this.btnRemoveThreshold);
-            this.grbThresholds.Controls.Add(this.gridExThresholds);
-            this.grbThresholds.Controls.Add(this.btnAddThreshold);
-            this.grbThresholds.Location = new System.Drawing.Point(838, 234);
-            this.grbThresholds.Name = "grbThresholds";
-            this.grbThresholds.Size = new System.Drawing.Size(377, 137);
-            this.grbThresholds.TabIndex = 65;
-            this.grbThresholds.TabStop = false;
-            this.grbThresholds.Text = "Progi";
-            // 
-            // btnRemoveThreshold
-            // 
-            this.btnRemoveThreshold.ImageKey = "icon-delete.png";
-            this.btnRemoveThreshold.ImageList = this.imgListIconsMin;
-            this.btnRemoveThreshold.Location = new System.Drawing.Point(350, 40);
-            this.btnRemoveThreshold.Name = "btnRemoveThreshold";
-            this.btnRemoveThreshold.Size = new System.Drawing.Size(20, 20);
-            this.btnRemoveThreshold.TabIndex = 70;
-            this.toolTip.SetToolTip(this.btnRemoveThreshold, "Usuń próg");
-            this.btnRemoveThreshold.UseVisualStyleBackColor = true;
-            this.btnRemoveThreshold.Click += new System.EventHandler(this.btnRemoveThreshold_Click);
-            // 
-            // imgListIconsMin
-            // 
-            this.imgListIconsMin.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListIconsMin.ImageStream")));
-            this.imgListIconsMin.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListIconsMin.Images.SetKeyName(0, "icon-add.png");
-            this.imgListIconsMin.Images.SetKeyName(1, "icon-delete.png");
-            this.imgListIconsMin.Images.SetKeyName(2, "icon-save.png");
-            this.imgListIconsMin.Images.SetKeyName(3, "icon-bookpng.png");
-            // 
-            // gridExThresholds
-            // 
-            this.gridExThresholds.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExThresholds.AlternatingRowFormatStyle.ForeColor = System.Drawing.SystemColors.Window;
-            this.gridExThresholds.ColumnAutoResize = true;
-            this.gridExThresholds.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            gridExThresholds_DesignTimeLayout.LayoutString = resources.GetString("gridExThresholds_DesignTimeLayout.LayoutString");
-            this.gridExThresholds.DesignTimeLayout = gridExThresholds_DesignTimeLayout;
-            this.gridExThresholds.DynamicFiltering = true;
-            this.gridExThresholds.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.gridExThresholds.GroupByBoxVisible = false;
-            this.gridExThresholds.Location = new System.Drawing.Point(6, 19);
-            this.gridExThresholds.Name = "gridExThresholds";
-            this.gridExThresholds.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
-            this.gridExThresholds.Size = new System.Drawing.Size(338, 109);
-            this.gridExThresholds.TabIndex = 50;
-            this.gridExThresholds.RecordsDeleted += new System.EventHandler(this.positionControl_ValueChanged);
-            this.gridExThresholds.RecordUpdated += new System.EventHandler(this.positionControl_ValueChanged);
-            this.gridExThresholds.RecordAdded += new System.EventHandler(this.positionControl_ValueChanged);
-            this.gridExThresholds.AddingRecord += new System.ComponentModel.CancelEventHandler(this.gridExThresholds_AddingRecord);
-            // 
-            // btnAddThreshold
-            // 
-            this.btnAddThreshold.ImageKey = "icon-add.png";
-            this.btnAddThreshold.ImageList = this.imgListIconsMin;
-            this.btnAddThreshold.Location = new System.Drawing.Point(350, 19);
-            this.btnAddThreshold.Name = "btnAddThreshold";
-            this.btnAddThreshold.Size = new System.Drawing.Size(20, 20);
-            this.btnAddThreshold.TabIndex = 69;
-            this.toolTip.SetToolTip(this.btnAddThreshold, "Dodaj próg");
-            this.btnAddThreshold.UseVisualStyleBackColor = true;
-            this.btnAddThreshold.Click += new System.EventHandler(this.btnAddThreshold_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lblWFMagPZ);
-            this.groupBox3.Controls.Add(this.lblWFMagBrutto);
-            this.groupBox3.Controls.Add(this.lblWFMagNetto);
-            this.groupBox3.Controls.Add(this.lblWFMagFirstSaleDate);
-            this.groupBox3.Controls.Add(this.lblWFMagDevileryDate);
-            this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Controls.Add(this.label28);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.label29);
-            this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Location = new System.Drawing.Point(841, 114);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(374, 114);
-            this.groupBox3.TabIndex = 55;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "WF MAG";
-            // 
-            // lblWFMagPZ
-            // 
-            this.lblWFMagPZ.AutoSize = true;
-            this.lblWFMagPZ.Location = new System.Drawing.Point(163, 85);
-            this.lblWFMagPZ.Name = "lblWFMagPZ";
-            this.lblWFMagPZ.Size = new System.Drawing.Size(69, 13);
-            this.lblWFMagPZ.TabIndex = 67;
-            this.lblWFMagPZ.Text = "lblWFMagPZ";
-            // 
-            // lblWFMagBrutto
-            // 
-            this.lblWFMagBrutto.AutoSize = true;
-            this.lblWFMagBrutto.Location = new System.Drawing.Point(163, 72);
-            this.lblWFMagBrutto.Name = "lblWFMagBrutto";
-            this.lblWFMagBrutto.Size = new System.Drawing.Size(83, 13);
-            this.lblWFMagBrutto.TabIndex = 66;
-            this.lblWFMagBrutto.Text = "lblWFMagBrutto";
-            // 
-            // lblWFMagNetto
-            // 
-            this.lblWFMagNetto.AutoSize = true;
-            this.lblWFMagNetto.Location = new System.Drawing.Point(163, 59);
-            this.lblWFMagNetto.Name = "lblWFMagNetto";
-            this.lblWFMagNetto.Size = new System.Drawing.Size(81, 13);
-            this.lblWFMagNetto.TabIndex = 65;
-            this.lblWFMagNetto.Text = "lblWFMagNetto";
-            // 
-            // lblWFMagFirstSaleDate
-            // 
-            this.lblWFMagFirstSaleDate.AutoSize = true;
-            this.lblWFMagFirstSaleDate.Location = new System.Drawing.Point(163, 46);
-            this.lblWFMagFirstSaleDate.Name = "lblWFMagFirstSaleDate";
-            this.lblWFMagFirstSaleDate.Size = new System.Drawing.Size(118, 13);
-            this.lblWFMagFirstSaleDate.TabIndex = 64;
-            this.lblWFMagFirstSaleDate.Text = "lblWFMagFirstSaleDate";
-            // 
-            // lblWFMagDevileryDate
-            // 
-            this.lblWFMagDevileryDate.AutoSize = true;
-            this.lblWFMagDevileryDate.Location = new System.Drawing.Point(163, 33);
-            this.lblWFMagDevileryDate.Name = "lblWFMagDevileryDate";
-            this.lblWFMagDevileryDate.Size = new System.Drawing.Size(116, 13);
-            this.lblWFMagDevileryDate.TabIndex = 56;
-            this.lblWFMagDevileryDate.Text = "lblWFMagDevileryDate";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label27.Location = new System.Drawing.Point(3, 46);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(154, 13);
-            this.label27.TabIndex = 59;
-            this.label27.Text = "Data pierwszej sprzedaży:";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label28.Location = new System.Drawing.Point(83, 59);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(74, 13);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "Detal netto:";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label26.Location = new System.Drawing.Point(69, 33);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(88, 13);
-            this.label26.TabIndex = 57;
-            this.label26.Text = "Data dostawy:";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label29.Location = new System.Drawing.Point(79, 72);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(78, 13);
-            this.label29.TabIndex = 61;
-            this.label29.Text = "Detal brutto:";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label30.Location = new System.Drawing.Point(99, 85);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(58, 13);
-            this.label30.TabIndex = 63;
-            this.label30.Text = "Ilość PZ:";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBox5
             // 
@@ -794,6 +694,7 @@
             // 
             // grbProducts
             // 
+            this.grbProducts.Controls.Add(this.btnRefreshProduct);
             this.grbProducts.Controls.Add(this.btnRemoveProduct);
             this.grbProducts.Controls.Add(this.gridExRelatedProducts);
             this.grbProducts.Controls.Add(this.btnProductsWFMAG);
@@ -804,6 +705,18 @@
             this.grbProducts.TabIndex = 61;
             this.grbProducts.TabStop = false;
             this.grbProducts.Text = "Produkty powiązane";
+            // 
+            // btnRefreshProduct
+            // 
+            this.btnRefreshProduct.ImageKey = "icon-refresh.png";
+            this.btnRefreshProduct.ImageList = this.imgListIconsMin;
+            this.btnRefreshProduct.Location = new System.Drawing.Point(499, 90);
+            this.btnRefreshProduct.Name = "btnRefreshProduct";
+            this.btnRefreshProduct.Size = new System.Drawing.Size(20, 20);
+            this.btnRefreshProduct.TabIndex = 70;
+            this.toolTip.SetToolTip(this.btnRefreshProduct, "Odśwież listę produktów");
+            this.btnRefreshProduct.UseVisualStyleBackColor = true;
+            this.btnRefreshProduct.Click += new System.EventHandler(this.btnRefreshProduct_Click);
             // 
             // btnRemoveProduct
             // 
@@ -862,6 +775,125 @@
             this.toolTip.SetToolTip(this.btnAddProduct, "Dodaj produkt");
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblWFMagPZ);
+            this.groupBox3.Controls.Add(this.lblWFMagBrutto);
+            this.groupBox3.Controls.Add(this.lblWFMagNetto);
+            this.groupBox3.Controls.Add(this.lblWFMagFirstSaleDate);
+            this.groupBox3.Controls.Add(this.lblWFMagDevileryDate);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Location = new System.Drawing.Point(841, 114);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(374, 114);
+            this.groupBox3.TabIndex = 55;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "WF MAG";
+            // 
+            // lblWFMagPZ
+            // 
+            this.lblWFMagPZ.AutoSize = true;
+            this.lblWFMagPZ.Location = new System.Drawing.Point(163, 85);
+            this.lblWFMagPZ.Name = "lblWFMagPZ";
+            this.lblWFMagPZ.Size = new System.Drawing.Size(69, 13);
+            this.lblWFMagPZ.TabIndex = 67;
+            this.lblWFMagPZ.Text = "lblWFMagPZ";
+            // 
+            // lblWFMagBrutto
+            // 
+            this.lblWFMagBrutto.AutoSize = true;
+            this.lblWFMagBrutto.Location = new System.Drawing.Point(163, 72);
+            this.lblWFMagBrutto.Name = "lblWFMagBrutto";
+            this.lblWFMagBrutto.Size = new System.Drawing.Size(83, 13);
+            this.lblWFMagBrutto.TabIndex = 66;
+            this.lblWFMagBrutto.Text = "lblWFMagBrutto";
+            // 
+            // lblWFMagNetto
+            // 
+            this.lblWFMagNetto.AutoSize = true;
+            this.lblWFMagNetto.Location = new System.Drawing.Point(163, 59);
+            this.lblWFMagNetto.Name = "lblWFMagNetto";
+            this.lblWFMagNetto.Size = new System.Drawing.Size(81, 13);
+            this.lblWFMagNetto.TabIndex = 65;
+            this.lblWFMagNetto.Text = "lblWFMagNetto";
+            // 
+            // lblWFMagFirstSaleDate
+            // 
+            this.lblWFMagFirstSaleDate.AutoSize = true;
+            this.lblWFMagFirstSaleDate.Location = new System.Drawing.Point(163, 46);
+            this.lblWFMagFirstSaleDate.Name = "lblWFMagFirstSaleDate";
+            this.lblWFMagFirstSaleDate.Size = new System.Drawing.Size(118, 13);
+            this.lblWFMagFirstSaleDate.TabIndex = 64;
+            this.lblWFMagFirstSaleDate.Text = "lblWFMagFirstSaleDate";
+            // 
+            // lblWFMagDevileryDate
+            // 
+            this.lblWFMagDevileryDate.AutoSize = true;
+            this.lblWFMagDevileryDate.Location = new System.Drawing.Point(163, 33);
+            this.lblWFMagDevileryDate.Name = "lblWFMagDevileryDate";
+            this.lblWFMagDevileryDate.Size = new System.Drawing.Size(116, 13);
+            this.lblWFMagDevileryDate.TabIndex = 56;
+            this.lblWFMagDevileryDate.Text = "lblWFMagDevileryDate";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label27.Location = new System.Drawing.Point(3, 46);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(154, 13);
+            this.label27.TabIndex = 59;
+            this.label27.Text = "Data pierwszej sprzedaży:";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(83, 59);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(74, 13);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "Detal netto:";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label26.Location = new System.Drawing.Point(69, 33);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 13);
+            this.label26.TabIndex = 57;
+            this.label26.Text = "Data dostawy:";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label29.Location = new System.Drawing.Point(79, 72);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(78, 13);
+            this.label29.TabIndex = 61;
+            this.label29.Text = "Detal brutto:";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label30.Location = new System.Drawing.Point(99, 85);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(58, 13);
+            this.label30.TabIndex = 63;
+            this.label30.Text = "Ilość PZ:";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // gridExPositions
             // 
@@ -926,6 +958,7 @@
             // 
             // tabPageLicensors
             // 
+            this.tabPageLicensors.Controls.Add(this.btnRefreshLicensor);
             this.tabPageLicensors.Controls.Add(this.btnRemoveLicensor);
             this.tabPageLicensors.Controls.Add(this.btnAddLicensor);
             this.tabPageLicensors.Controls.Add(this.btnDictLicensors);
@@ -938,6 +971,28 @@
             this.tabPageLicensors.Text = "Licencjodawcy";
             this.tabPageLicensors.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshLicensor
+            // 
+            this.btnRefreshLicensor.ImageKey = "icon-refresh.png";
+            this.btnRefreshLicensor.ImageList = this.imgLstIcons;
+            this.btnRefreshLicensor.Location = new System.Drawing.Point(1185, 114);
+            this.btnRefreshLicensor.Name = "btnRefreshLicensor";
+            this.btnRefreshLicensor.Size = new System.Drawing.Size(30, 30);
+            this.btnRefreshLicensor.TabIndex = 75;
+            this.toolTip.SetToolTip(this.btnRefreshLicensor, "Odśwież listę licencjodawców");
+            this.btnRefreshLicensor.UseVisualStyleBackColor = true;
+            this.btnRefreshLicensor.Click += new System.EventHandler(this.btnRefreshLicensor_Click);
+            // 
+            // imgLstIcons
+            // 
+            this.imgLstIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLstIcons.ImageStream")));
+            this.imgLstIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgLstIcons.Images.SetKeyName(0, "icon-add.png");
+            this.imgLstIcons.Images.SetKeyName(1, "icon-delete.png");
+            this.imgLstIcons.Images.SetKeyName(2, "icon-save.png");
+            this.imgLstIcons.Images.SetKeyName(3, "icon-refresh.png");
+            this.imgLstIcons.Images.SetKeyName(4, "icon-edit.png");
+            // 
             // btnRemoveLicensor
             // 
             this.btnRemoveLicensor.ImageKey = "icon-delete.png";
@@ -949,16 +1004,6 @@
             this.toolTip.SetToolTip(this.btnRemoveLicensor, "Usuń licencjodawcę");
             this.btnRemoveLicensor.UseVisualStyleBackColor = true;
             this.btnRemoveLicensor.Click += new System.EventHandler(this.btnRemoveLicensor_Click);
-            // 
-            // imgLstIcons
-            // 
-            this.imgLstIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLstIcons.ImageStream")));
-            this.imgLstIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgLstIcons.Images.SetKeyName(0, "icon-add.png");
-            this.imgLstIcons.Images.SetKeyName(1, "icon-delete.png");
-            this.imgLstIcons.Images.SetKeyName(2, "icon-save.png");
-            this.imgLstIcons.Images.SetKeyName(3, "icon-refresh.png");
-            this.imgLstIcons.Images.SetKeyName(4, "icon-edit.png");
             // 
             // btnAddLicensor
             // 
@@ -1009,6 +1054,7 @@
             // 
             // tabPageSchedule
             // 
+            this.tabPageSchedule.Controls.Add(this.btnRefreshSchedule);
             this.tabPageSchedule.Controls.Add(this.btnRemoveSchedule);
             this.tabPageSchedule.Controls.Add(this.btnAddSchedule);
             this.tabPageSchedule.Controls.Add(this.gridExSchedule);
@@ -1019,6 +1065,18 @@
             this.tabPageSchedule.TabIndex = 3;
             this.tabPageSchedule.Text = "Harmonogram";
             this.tabPageSchedule.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshSchedule
+            // 
+            this.btnRefreshSchedule.ImageKey = "icon-refresh.png";
+            this.btnRefreshSchedule.ImageList = this.imgLstIcons;
+            this.btnRefreshSchedule.Location = new System.Drawing.Point(1185, 78);
+            this.btnRefreshSchedule.Name = "btnRefreshSchedule";
+            this.btnRefreshSchedule.Size = new System.Drawing.Size(30, 30);
+            this.btnRefreshSchedule.TabIndex = 77;
+            this.toolTip.SetToolTip(this.btnRefreshSchedule, "Odśwież harmonogram");
+            this.btnRefreshSchedule.UseVisualStyleBackColor = true;
+            this.btnRefreshSchedule.Click += new System.EventHandler(this.btnRefreshSchedule_Click);
             // 
             // btnRemoveSchedule
             // 
@@ -1106,6 +1164,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.Controls.Add(this.btnRefreshArticle);
             this.groupBox1.Controls.Add(this.btnRemoveArticle);
             this.groupBox1.Controls.Add(this.btnAddArticle);
             this.groupBox1.Controls.Add(this.label2);
@@ -1129,11 +1188,23 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
+            // btnRefreshArticle
+            // 
+            this.btnRefreshArticle.ImageKey = "icon-refresh.png";
+            this.btnRefreshArticle.ImageList = this.imgListIconsMin;
+            this.btnRefreshArticle.Location = new System.Drawing.Point(1062, 12);
+            this.btnRefreshArticle.Name = "btnRefreshArticle";
+            this.btnRefreshArticle.Size = new System.Drawing.Size(20, 20);
+            this.btnRefreshArticle.TabIndex = 69;
+            this.toolTip.SetToolTip(this.btnRefreshArticle, "Odśwież listę towarów");
+            this.btnRefreshArticle.UseVisualStyleBackColor = true;
+            this.btnRefreshArticle.Click += new System.EventHandler(this.btnRefreshArticle_Click);
+            // 
             // btnRemoveArticle
             // 
             this.btnRemoveArticle.ImageKey = "icon-delete.png";
             this.btnRemoveArticle.ImageList = this.imgListIconsMin;
-            this.btnRemoveArticle.Location = new System.Drawing.Point(1062, 12);
+            this.btnRemoveArticle.Location = new System.Drawing.Point(1040, 12);
             this.btnRemoveArticle.Name = "btnRemoveArticle";
             this.btnRemoveArticle.Size = new System.Drawing.Size(20, 20);
             this.btnRemoveArticle.TabIndex = 68;
@@ -1145,7 +1216,7 @@
             // 
             this.btnAddArticle.ImageKey = "icon-add.png";
             this.btnAddArticle.ImageList = this.imgListIconsMin;
-            this.btnAddArticle.Location = new System.Drawing.Point(1017, 12);
+            this.btnAddArticle.Location = new System.Drawing.Point(995, 12);
             this.btnAddArticle.Name = "btnAddArticle";
             this.btnAddArticle.Size = new System.Drawing.Size(20, 20);
             this.btnAddArticle.TabIndex = 67;
@@ -1166,7 +1237,7 @@
             // 
             this.btnArticlesWFMAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnArticlesWFMAG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnArticlesWFMAG.Location = new System.Drawing.Point(1040, 12);
+            this.btnArticlesWFMAG.Location = new System.Drawing.Point(1018, 12);
             this.btnArticlesWFMAG.Name = "btnArticlesWFMAG";
             this.btnArticlesWFMAG.Size = new System.Drawing.Size(20, 20);
             this.btnArticlesWFMAG.TabIndex = 66;
@@ -1235,20 +1306,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).EndInit();
             this.tabControlAgreement.ResumeLayout(false);
             this.tabPositions.ResumeLayout(false);
+            this.grbThresholds.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).EndInit();
             this.grbPositionDetails.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numModelPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numModelFixedPrice)).EndInit();
-            this.grbThresholds.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridExThresholds)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFreeCopies)).EndInit();
             this.grbProducts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExRelatedProducts)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridExPositions)).EndInit();
             this.tabPageLicensors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).EndInit();
@@ -1352,5 +1423,10 @@
         private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button btnWFMAG;
+        private System.Windows.Forms.Button btnRefreshArticle;
+        private System.Windows.Forms.Button btnRefreshThreshold;
+        private System.Windows.Forms.Button btnRefreshProduct;
+        private System.Windows.Forms.Button btnRefreshLicensor;
+        private System.Windows.Forms.Button btnRefreshSchedule;
     }
 }
