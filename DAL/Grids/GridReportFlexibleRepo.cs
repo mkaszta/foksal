@@ -23,11 +23,11 @@ namespace DAL.Grids
             {
                 if (dateFrom == null || dateTo == null)
                 {
-                    whereClause = string.Format("DataFiltr = '{0}'", dateFrom == null ? dateTo.GetValueOrDefault().ToShortDateString() : dateFrom.GetValueOrDefault().ToShortDateString());
+                    whereClause = string.Format("DataFiltr = '{0}'", dateFrom == null ? dateTo.GetValueOrDefault().ToString("yyyy-MM-dd") : dateFrom.GetValueOrDefault().ToString("yyyy-MM-dd"));
                 }
                 else
                 {
-                    whereClause = string.Format("DataFiltr BETWEEN '{0}' AND '{1}'", dateFrom.GetValueOrDefault().ToShortDateString(), dateTo.GetValueOrDefault().ToShortDateString());
+                    whereClause = string.Format("DataFiltr BETWEEN '{0}' AND '{1}'", dateFrom.GetValueOrDefault().ToString("yyyy-MM-dd"), dateTo.GetValueOrDefault().ToString("yyyy-MM-dd"));
                 }
             }
 
