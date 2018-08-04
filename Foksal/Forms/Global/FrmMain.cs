@@ -175,23 +175,24 @@ namespace Foksal
         private void btnReport_Click(object sender, EventArgs e)
         {
             RibbonButton senderButton = sender as RibbonButton;
+            Report report = ReportsRepo.GetById(Convert.ToInt16(senderButton.Value));
 
-            FrmReportDatePicker frmReportDatePicker = new FrmReportDatePicker();
-
-            if (frmReportDatePicker.ShowDialog() == DialogResult.OK)
+            FrmReportFlexible frmReportFlexible = new FrmReportFlexible(report)
             {
-                DateTime? dateFrom = frmReportDatePicker.dateFrom;
-                DateTime? dateTo = frmReportDatePicker.dateTo;
+                MdiParent = this
+            };
 
-                Report report = ReportsRepo.GetById(Convert.ToInt16(senderButton.Value));
+            frmReportFlexible.Show();
+        }
 
-                FrmReportFlexible frmReportFlexible = new FrmReportFlexible(report, dateFrom, dateTo)
-                {
-                    MdiParent = this
-                };
+        private void btnSettlements_Click(object sender, EventArgs e)
+        {
+            FrmSettlements frmSettlements = new FrmSettlements()
+            {
+                MdiParent = this
+            };
 
-                frmReportFlexible.Show();
-            }
+            frmSettlements.Show();
         }
     }
 }

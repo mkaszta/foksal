@@ -22,7 +22,7 @@ namespace BLL
                     var gridExporter = new GridEXExporter();
                     gridExporter.IncludeExcelProcessingInstruction = true;
                     gridExporter.IncludeFormatStyle = true;
-                    gridExporter.IncludeHeaders = true;                    
+                    gridExporter.IncludeHeaders = true;                     
                     gridExporter.GridEX = gridEx;
                     
                     gridExporter.Export(streamWrite);

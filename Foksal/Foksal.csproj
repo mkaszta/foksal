@@ -88,6 +88,12 @@
     <Compile Include="Forms\Agreements\FrmProductsAndArticles.Designer.cs">
       <DependentUpon>FrmProductsAndArticles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlements.Designer.cs">
+      <DependentUpon>FrmSettlements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmWFMagPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,12 +129,6 @@
     </Compile>
     <Compile Include="Forms\Global\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\FrmReportDatePicker.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\FrmReportDatePicker.Designer.cs">
-      <DependentUpon>FrmReportDatePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\FrmReportFlexible.cs">
       <SubType>Form</SubType>
@@ -169,6 +169,9 @@
     <EmbeddedResource Include="Forms\Agreements\FrmProductsAndArticles.resx">
       <DependentUpon>FrmProductsAndArticles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agreements\FrmSettlements.resx">
+      <DependentUpon>FrmSettlements.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmWFMagPicker.resx">
       <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,9 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Global\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\FrmReportDatePicker.resx">
-      <DependentUpon>FrmReportDatePicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\FrmReportFlexible.resx">
       <DependentUpon>FrmReportFlexible.cs</DependentUpon>

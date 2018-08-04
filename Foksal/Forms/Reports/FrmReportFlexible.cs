@@ -13,20 +13,20 @@ namespace Foksal.Forms.Reports
         private DateTime? dateFrom;
         private DateTime? dateTo;
 
-        public FrmReportFlexible(Report reportType, DateTime? dateFrom, DateTime? dateTo)
+        public FrmReportFlexible(Report reportType)
         {
             InitializeComponent();
 
-            this.dateFrom = dateFrom;
-            this.dateTo = dateTo;
+            this.dateFrom = DateTime.Now.AddMonths(-1);
+            this.dateTo = DateTime.Now;
 
             this.Name = string.Format("Raport: {0}", reportType.Name);
 
             this.gridReportFlexibleRepo = new GridReportFlexibleRepo();
             this.reportType = reportType;
-         
+
             this.LoadData();
-        }        
+        }
 
         private void LoadData()
         {
@@ -34,9 +34,37 @@ namespace Foksal.Forms.Reports
             gridExReport.RetrieveStructure();
         }
 
-        private void btnExportToExcel_Click(object sender, System.EventArgs e)
+        private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             ExcelGenerator.ExportGridEx(gridExReport);
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtFrom.Checked)
+            {
+                this.dateFrom = dtFrom.Value;
+            }
+            else
+            {
+                this.dateFrom = null;
+            }
+
+            this.LoadData();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtTo.Checked)
+            {
+                this.dateTo = dtTo.Value;
+            }
+            else
+            {
+                this.dateTo = null;
+            }
+
+            this.LoadData();
         }
     }
 }

@@ -155,6 +155,7 @@
             this.btnSettlements.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSettlements.SmallImage")));
             this.btnSettlements.Text = "Rozliczenia";
             this.btnSettlements.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
+            this.btnSettlements.Click += new System.EventHandler(this.btnSettlements_Click);
             // 
             // btnDescriptorChanges
             // 

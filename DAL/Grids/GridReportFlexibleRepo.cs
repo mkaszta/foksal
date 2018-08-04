@@ -21,9 +21,13 @@ namespace DAL.Grids
             string whereClause = "";
             if (dateFrom != null || dateTo != null)
             {
-                if (dateFrom == null || dateTo == null)
+                if (dateFrom == null && dateTo != null)
                 {
-                    whereClause = string.Format("DataFiltr = '{0}'", dateFrom == null ? dateTo.GetValueOrDefault().ToString("yyyy-MM-dd") : dateFrom.GetValueOrDefault().ToString("yyyy-MM-dd"));
+                    whereClause = string.Format("DataFiltr <= '{0}'", dateFrom == null ? dateTo.GetValueOrDefault().ToString("yyyy-MM-dd") : dateFrom.GetValueOrDefault().ToString("yyyy-MM-dd"));
+                }
+                else if (dateFrom != null && dateTo == null)
+                {
+                    whereClause = string.Format("DataFiltr >= '{0}'", dateFrom == null ? dateTo.GetValueOrDefault().ToString("yyyy-MM-dd") : dateFrom.GetValueOrDefault().ToString("yyyy-MM-dd"));
                 }
                 else
                 {
@@ -41,7 +45,7 @@ namespace DAL.Grids
 
 
             dataAdapter.SelectCommand = cmdSelect;
-           
+
             dataAdapter.Fill(dataTable);
             grid.DataSource = dataTable;
         }

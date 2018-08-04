@@ -35,6 +35,10 @@
             this.btnExportToExcel = new System.Windows.Forms.Button();
             this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtTo = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtFrom = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.gridExReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,17 +82,62 @@
             this.imgLstIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imgLstIcons.Images.SetKeyName(0, "icon-excel.png");
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(123, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "do:";
+            // 
+            // dtTo
+            // 
+            this.dtTo.CustomFormat = "dd MM yyyy";
+            this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtTo.Location = new System.Drawing.Point(126, 33);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.ShowCheckBox = true;
+            this.dtTo.Size = new System.Drawing.Size(108, 20);
+            this.dtTo.TabIndex = 65;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "od:";
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.CustomFormat = "dd MM yyyy";
+            this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtFrom.Location = new System.Drawing.Point(12, 33);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.ShowCheckBox = true;
+            this.dtFrom.Size = new System.Drawing.Size(108, 20);
+            this.dtFrom.TabIndex = 63;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
+            // 
             // FrmReportFlexible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 614);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtTo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtFrom);
             this.Controls.Add(this.btnExportToExcel);
             this.Controls.Add(this.gridExReport);
             this.Name = "FrmReportFlexible";
             this.Text = "Raport";
             ((System.ComponentModel.ISupportInitialize)(this.gridExReport)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,5 +147,9 @@
         private System.Windows.Forms.Button btnExportToExcel;
         private System.Windows.Forms.ImageList imgLstIcons;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtTo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtFrom;
     }
 }

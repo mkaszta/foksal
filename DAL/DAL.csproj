@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grids\GridAgreementArticlesRepo.cs" />
+    <Compile Include="Grids\GridSettlementsDetailsRepo.cs" />
+    <Compile Include="Grids\GridSettlementsListRepo.cs" />
     <Compile Include="Grids\GridDescriptorChangesRepo.cs" />
     <Compile Include="Grids\GridReportFlexibleRepo.cs" />
     <Compile Include="Grids\GridProductsAndArticlesRepo.cs" />
