@@ -36,7 +36,7 @@ namespace Foksal.Forms.Reports
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            ExcelGenerator.ExportGridEx(gridExReport);
+            ExcelHelper.ExportGridEx(gridExReport);
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)

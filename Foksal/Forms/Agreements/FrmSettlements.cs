@@ -3,6 +3,7 @@ using DAL.Grids;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -17,8 +18,7 @@ namespace Foksal.Forms.Agreements
             InitializeComponent();
 
             this.LoadSettlementsList();
-            this.LoadSettlementsDetails();
-            this.ApplyFilters();
+            this.LoadSettlementsDetails();            
         }
 
         private void LoadSettlementsList()
@@ -29,46 +29,50 @@ namespace Foksal.Forms.Agreements
 
         private void LoadSettlementsDetails()
         {
-            this.gridSettlementsDetailsRepo = new GridSettlementsDetailsRepo();
-            gridSettlementsDetailsRepo.BindDataSet(gridExSettlementsDetails);
-            //gridExSettlementsDetails.RootTable.Groups.Clear();
-            //gridExSettlementsDetails.RootTable.Groups.Add(new GridEXGroup(this.gridExSettlementsDetails.RootTable.Columns["tRozliczenieUmowyId"]));
-        }
-
-        private void ApplyFilters()
-        {
-            GridEXFilterCondition condition = new GridEXFilterCondition();
-            GridEXColumn column = new GridEXColumn();
-            List<int> lstId = new List<int>();
+            List<int> lstRozliczenieUmowyID = new List<int>();
 
             if (gridExSettlementsList.HasCheckedRows)
             {
                 foreach (var checkedRow in gridExSettlementsList.GetCheckedRows())
                 {
-                    lstId.Add((int)checkedRow.Cells["id"].Value);
+                    lstRozliczenieUmowyID.Add((int)checkedRow.Cells["id"].Value);
                 }
             }
             else
             {
-                lstId.Add(-1);
+                lstRozliczenieUmowyID.Add(-1);
             }
 
-            gridExSettlementsDetails.RemoveFilters();
+            this.gridSettlementsDetailsRepo = new GridSettlementsDetailsRepo();
+            gridSettlementsDetailsRepo.BindDataSet(gridExSettlementsDetails, lstRozliczenieUmowyID);
 
-            column = gridExSettlementsDetails.RootTable.Columns["tRozliczenieUmowyId"];
-            condition = new GridEXFilterCondition(column, ConditionOperator.In, lstId);
+            this.ApplyRowFormatting();
+        }        
 
-            gridExSettlementsDetails.RootTable.ApplyFilter(condition);
+        private void ApplyRowFormatting()
+        {
+            foreach (var row in gridExSettlementsDetails.GetDataRows())
+            {
+                if ((int)row.Cells["typ"].Value == 1)
+                {
+                    row.RowStyle = new GridEXFormatStyle() { BackColor = Color.Honeydew };
+                }
+            }
         }
 
         private void gridExSettlementsList_RowCheckStateChanged(object sender, Janus.Windows.GridEX.RowCheckStateChangeEventArgs e)
         {
-            this.ApplyFilters();
+            this.LoadSettlementsDetails();
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            ExcelGenerator.ExportGridEx(gridExSettlementsDetails);
+            ExcelHelper.ExportGridEx(gridExSettlementsDetails);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExportWorkbookToPdf(@"C:\Users\MegaBit\Downloads\testinterop.xls", @"C:\Users\MegaBit\Downloads\testinterop.pdf");
         }
     }
 }
