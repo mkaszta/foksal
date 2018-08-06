@@ -12,19 +12,29 @@ namespace Foksal.Forms.Agreements
     {
         private GridSettlementsListRepo gridSettlementsListRepo;
         private GridSettlementsDetailsRepo gridSettlementsDetailsRepo;
+        private DateTime? datePeriodFrom;
+        private DateTime? datePeriodTo;
 
         public FrmSettlements()
         {
             InitializeComponent();
 
+            datePeriodFrom = null;
+            datePeriodTo = null;
+
+            this.LoadData();            
+        }
+
+        private void LoadData()
+        {
             this.LoadSettlementsList();
-            this.LoadSettlementsDetails();            
+            this.LoadSettlementsDetails();
         }
 
         private void LoadSettlementsList()
         {
             this.gridSettlementsListRepo = new GridSettlementsListRepo();
-            gridSettlementsListRepo.BindDataSet(gridExSettlementsList);
+            gridSettlementsListRepo.BindDataSet(gridExSettlementsList, this.datePeriodFrom, this.datePeriodTo);
         }
 
         private void LoadSettlementsDetails()
@@ -73,6 +83,18 @@ namespace Foksal.Forms.Agreements
         private void button1_Click(object sender, EventArgs e)
         {
             ExcelHelper.ExportWorkbookToPdf(@"C:\Users\MegaBit\Downloads\testinterop.xls", @"C:\Users\MegaBit\Downloads\testinterop.pdf");
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            this.datePeriodFrom = dtFrom.Checked ? dtFrom.Value : (DateTime?)null;
+            this.LoadData();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
+            this.LoadData();
         }
     }
 }
