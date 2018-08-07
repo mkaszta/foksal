@@ -88,6 +88,12 @@
     <Compile Include="Forms\Agreements\FrmProductsAndArticles.Designer.cs">
       <DependentUpon>FrmProductsAndArticles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlementEdit.Designer.cs">
+      <DependentUpon>FrmSettlementEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmSettlements.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmProductsAndArticles.resx">
       <DependentUpon>FrmProductsAndArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agreements\FrmSettlementEdit.resx">
+      <DependentUpon>FrmSettlementEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmSettlements.resx">
       <DependentUpon>FrmSettlements.cs</DependentUpon>

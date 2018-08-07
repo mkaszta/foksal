@@ -1,5 +1,7 @@
 ﻿using BLL;
+using BLL.Entities;
 using DAL.Grids;
+using DAL.Repositories;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace Foksal.Forms.Agreements
             datePeriodFrom = null;
             datePeriodTo = null;
 
-            this.LoadData();            
+            this.LoadData();
         }
 
         private void LoadData()
@@ -57,7 +59,21 @@ namespace Foksal.Forms.Agreements
             gridSettlementsDetailsRepo.BindDataSet(gridExSettlementsDetails, lstRozliczenieUmowyID);
 
             this.ApplyRowFormatting();
-        }        
+        }
+
+        private void ShowSettlementEditForm()
+        {
+            int agreementId = (int)gridExSettlementsList.CurrentRow.Cells["Umowa"].Value;
+            int settlemenetId = (int)gridExSettlementsList.CurrentRow.Cells["id"].Value;
+            Settlement settlement = SettlementsRepo.GetById(settlemenetId);
+
+            FrmSettlementEdit frmSettlementEdit = new FrmSettlementEdit(settlement, agreementId);
+            frmSettlementEdit.ShowDialog();
+
+            int currentRowId = (int)gridExSettlementsList.CurrentRow.RowIndex;
+            this.LoadSettlementsList();
+            gridExSettlementsList.MoveTo(currentRowId);
+        }
 
         private void ApplyRowFormatting()
         {
@@ -80,11 +96,6 @@ namespace Foksal.Forms.Agreements
             ExcelHelper.ExportGridEx(gridExSettlementsDetails);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ExcelHelper.ExportWorkbookToPdf(@"C:\Users\MegaBit\Downloads\testinterop.xls", @"C:\Users\MegaBit\Downloads\testinterop.pdf");
-        }
-
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
             this.datePeriodFrom = dtFrom.Checked ? dtFrom.Value : (DateTime?)null;
@@ -95,6 +106,16 @@ namespace Foksal.Forms.Agreements
         {
             this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
             this.LoadData();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            this.ShowSettlementEditForm();
+        }
+
+        private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
+        {
+            this.ShowSettlementEditForm();
         }
     }
 }

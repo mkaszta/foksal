@@ -76,6 +76,7 @@
     <Compile Include="Entities\Currency.cs" />
     <Compile Include="Entities\Licensor.cs" />
     <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Settlement.cs" />
     <Compile Include="Entities\SettlementModel.cs" />
     <Compile Include="Entities\Threshold.cs" />
     <Compile Include="Entities\User.cs" />

@@ -65,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AgreementPositionsRepo.cs" />
     <Compile Include="Repositories\DescriptorsRepo.cs" />
+    <Compile Include="Repositories\SettlementsRepo.cs" />
     <Compile Include="Repositories\ReportsRepo.cs" />
     <Compile Include="Repositories\LicensorsRepo.cs" />
     <Compile Include="Repositories\UsersRepo.cs" />
