@@ -93,7 +93,13 @@ namespace Foksal.Forms.Agreements
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            ExcelHelper.ExportGridEx(gridExSettlementsDetails);
+            string filePath = ExcelHelper.CreateReport_SettlemetsDetails(gridExSettlementsDetails);
+            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetRows()[1].Cells["tLicencjodawcaId"].Value);
+
+            if (chkEmail.Checked)
+            {
+                OutlookHelper.SaveDraft(filePath, licensor.Email);
+            }
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -116,6 +122,17 @@ namespace Foksal.Forms.Agreements
         private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
             this.ShowSettlementEditForm();
+        }
+
+        private void btnRecalculate_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy chcesz rozpocząć przeliczanie rozliczeń?\r\nMoże to zająć kilka minut.", "Rozliczenia", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                FrmSettlementsRecalculate frmSettlementsRecalculate = new FrmSettlementsRecalculate();
+                frmSettlementsRecalculate.ShowDialog();
+
+                this.LoadData();
+            }
         }
     }
 }

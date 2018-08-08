@@ -75,5 +75,18 @@ namespace DAL.Repositories
                 }
             }
         }
+
+        public static void RecalculateSettlements()
+        {
+            using (SqlConnection dbConnection = new DBConnection().Connection)
+            {
+                string sqlQuery = string.Format("EXEC [dbo].[DodajRozliczenia] ");
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

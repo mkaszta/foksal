@@ -37,12 +37,14 @@
             this.btnExportToExcel = new System.Windows.Forms.Button();
             this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRecalculate = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.chkEmail = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -95,14 +97,14 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportToExcel.Enabled = false;
             this.btnExportToExcel.ImageKey = "icon-excel.png";
             this.btnExportToExcel.ImageList = this.imgLstIcons;
-            this.btnExportToExcel.Location = new System.Drawing.Point(1292, 28);
+            this.btnExportToExcel.Location = new System.Drawing.Point(1235, 28);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(51, 41);
             this.btnExportToExcel.TabIndex = 62;
             this.btnExportToExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnExportToExcel, "Generuj raport");
             this.btnExportToExcel.UseVisualStyleBackColor = true;
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
@@ -112,6 +114,35 @@
             this.imgLstIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imgLstIcons.Images.SetKeyName(0, "icon-excel.png");
             this.imgLstIcons.Images.SetKeyName(1, "icon-edit.png");
+            this.imgLstIcons.Images.SetKeyName(2, "icon-refresh.png");
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.ImageKey = "icon-edit.png";
+            this.btnEdit.ImageList = this.imgLstIcons;
+            this.btnEdit.Location = new System.Drawing.Point(1178, 28);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(51, 41);
+            this.btnEdit.TabIndex = 72;
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnEdit, "Edytuj rozliczenie");
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnRecalculate
+            // 
+            this.btnRecalculate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRecalculate.ImageKey = "icon-refresh.png";
+            this.btnRecalculate.ImageList = this.imgLstIcons;
+            this.btnRecalculate.Location = new System.Drawing.Point(1292, 28);
+            this.btnRecalculate.Name = "btnRecalculate";
+            this.btnRecalculate.Size = new System.Drawing.Size(51, 41);
+            this.btnRecalculate.TabIndex = 73;
+            this.btnRecalculate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnRecalculate, "Przelicz");
+            this.btnRecalculate.UseVisualStyleBackColor = true;
+            this.btnRecalculate.Click += new System.EventHandler(this.btnRecalculate_Click);
             // 
             // label4
             // 
@@ -168,24 +199,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Okres";
             // 
-            // btnEdit
+            // chkEmail
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.ImageKey = "icon-edit.png";
-            this.btnEdit.ImageList = this.imgLstIcons;
-            this.btnEdit.Location = new System.Drawing.Point(1235, 28);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(51, 41);
-            this.btnEdit.TabIndex = 72;
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.chkEmail.AutoSize = true;
+            this.chkEmail.Location = new System.Drawing.Point(1235, 12);
+            this.chkEmail.Name = "chkEmail";
+            this.chkEmail.Size = new System.Drawing.Size(51, 17);
+            this.chkEmail.TabIndex = 74;
+            this.chkEmail.Text = "Email";
+            this.chkEmail.UseVisualStyleBackColor = true;
             // 
             // FrmSettlements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1355, 555);
+            this.Controls.Add(this.chkEmail);
+            this.Controls.Add(this.btnRecalculate);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExportToExcel);
@@ -198,6 +228,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -214,5 +245,7 @@
         private System.Windows.Forms.DateTimePicker dtFrom;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRecalculate;
+        private System.Windows.Forms.CheckBox chkEmail;
     }
 }

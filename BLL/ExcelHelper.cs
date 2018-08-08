@@ -46,49 +46,72 @@ namespace BLL
             }
         }
 
-        public static void CreateReport_SettlemetsDetails(GridEX gridEx)
-        {
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
+        public static string CreateReport_SettlemetsDetails(GridEX gridEx)
+        {            
+            var saveDialog = new SaveFileDialog { Filter = "Xls File (*.xls)|*.xls|All Files (*.*)|*.*" };
 
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {                
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
 
-            // header
+                xlApp.DisplayAlerts = false;
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            var headerRow = gridEx.GetDataRows()[0];
-            int cellId = 1;
-            foreach (GridEXCell cell in headerRow.Cells)
-            {
-                xlWorkSheet.Cells[1, cellId] = cell.Column.Caption;
-                cellId++;
-            }
+                // header
 
-            int rowId = 2;
-            cellId = 1;
-            foreach (GridEXRow row in gridEx.GetDataRows())
-            {
-                foreach (GridEXCell cell in row.Cells)
+                var headerRow = gridEx.GetDataRows()[0];
+                int cellId = 1;
+                foreach (GridEXCell cell in headerRow.Cells)
                 {
-                    xlWorkSheet.Cells[rowId, cellId] = cell.Text;
-                    cellId++;
+                    if (cell.Column.Visible)
+                    {
+                        xlWorkSheet.Cells[1, cellId] = cell.Column.Caption;
+                        cellId++;
+                    }
+                }
+                xlWorkSheet.UsedRange.Columns.AutoFit();
+
+
+                int rowId = 2;
+                cellId = 1;
+                foreach (GridEXRow row in gridEx.GetDataRows())
+                {
+                    foreach (GridEXCell cell in row.Cells)
+                    {
+                        if (cell.Column.Visible)
+                        {
+                            xlWorkSheet.Cells[rowId, cellId] = cell.Text;
+                            cellId++;
+                        }
+                    }
+
+                    if ((int)row.Cells["typ"].Value == 1)
+                    {                        
+                        xlWorkSheet.Range[xlWorkSheet.Rows[rowId].Cells[1], xlWorkSheet.Rows[rowId].Cells[cellId]].Interior.Color = System.Drawing.Color.LightCyan;
+                    }
+
+                    rowId++;
+                    cellId = 1;
                 }
 
-                rowId++;
-                cellId = 1;
+                xlWorkBook.SaveAs(saveDialog.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlApp);                
+
+                MessageBox.Show("Eksport danych do pliku został zakończony.", "Eksport do pliku", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return saveDialog.FileName;
             }
 
-            xlWorkBook.SaveAs(@"C:\Users\MegaBit\Downloads\testinterop.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            Marshal.ReleaseComObject(xlWorkSheet);
-            Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);
-
-            MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xls");
+            return "";
         }
 
         public static bool ExportWorkbookToPdf(string workbookPath, string outputPath)

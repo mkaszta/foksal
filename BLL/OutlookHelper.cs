@@ -6,7 +6,7 @@ namespace BLL
 {
     public class OutlookHelper
     {
-        public static void SaveDraft()
+        public static void SaveDraft(string attachmentFilePath, string emailTo)
         {
             Outlook.Application olApp = new Outlook.Application();
             Outlook.NameSpace olNameSpace = olApp.GetNamespace("MAPI");
@@ -15,9 +15,10 @@ namespace BLL
             Outlook.MailItem newMail = olApp.CreateItem(OlItemType.olMailItem);
             newMail.Subject = "temat";
             newMail.Body = "treść";
-            newMail.Attachments.Add(@"C:\Users\MegaBit\Downloads\drazek1.jpg", Outlook.OlAttachmentType.olByValue, Type.Missing, Type.Missing);
+            newMail.Attachments.Add(attachmentFilePath, Outlook.OlAttachmentType.olByValue, Type.Missing, Type.Missing);
+            newMail.To = emailTo;
 
-            newMail.Save();            
+            newMail.Save();                             
         }
     }
 }

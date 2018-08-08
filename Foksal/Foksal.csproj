@@ -100,6 +100,12 @@
     <Compile Include="Forms\Agreements\FrmSettlements.Designer.cs">
       <DependentUpon>FrmSettlements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlementsRecalculate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agreements\FrmSettlementsRecalculate.Designer.cs">
+      <DependentUpon>FrmSettlementsRecalculate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Agreements\FrmWFMagPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmSettlements.resx">
       <DependentUpon>FrmSettlements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agreements\FrmSettlementsRecalculate.resx">
+      <DependentUpon>FrmSettlementsRecalculate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agreements\FrmWFMagPicker.resx">
       <DependentUpon>FrmWFMagPicker.cs</DependentUpon>
