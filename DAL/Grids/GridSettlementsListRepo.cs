@@ -38,6 +38,7 @@ namespace DAL.Grids
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
             cmdSelect.CommandText = string.Format("SELECT * FROM [dbo].[vListaRozliczen] {0} ", whereClause);
+            cmdSelect.CommandTimeout = 10000;
             this.dataAdapter.SelectCommand = cmdSelect;
 
             dataAdapter.Fill(dataTable);

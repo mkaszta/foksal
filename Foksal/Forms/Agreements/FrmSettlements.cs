@@ -5,6 +5,7 @@ using DAL.Repositories;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -86,20 +87,62 @@ namespace Foksal.Forms.Agreements
             }
         }
 
+        private void GenerateReport_Settlement()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog { Filter = "Xls File (*.xls)|*.xls|All Files (*.*)|*.*" };
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, saveDialog.FileName);
+                MessageBox.Show("Eksport danych do pliku został zakończony.", "Eksport do pliku", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void GenerateReport_Short()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog { Filter = "PDF File (*.pdf)|*.pdf|All Files (*.*)|*.*" };
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExcelHelper.CreateReport_Short(gridExSettlementsDetails, saveDialog.FileName);
+                MessageBox.Show("Eksport danych do pliku został zakończony.", "Eksport do pliku", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void PrepareDraftMail()
+        {            
+            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[1].Cells["tLicencjodawcaId"].Value);
+
+            string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string detailsReportPath = string.Format("{0}{1}_RaportZbiorczy.xls", ConfigurationSettings.AppSettings["mail_attachmentDirectory"], timeStamp);
+            string shortReportPath = string.Format("{0}{1}_RaportSkrocony.pdf", ConfigurationSettings.AppSettings["mail_attachmentDirectory"], timeStamp);
+
+            List<string> attachments = new List<string>();
+            attachments.Add(detailsReportPath);
+            attachments.Add(shortReportPath);
+
+            ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, detailsReportPath);
+            ExcelHelper.CreateReport_Short(gridExSettlementsDetails, shortReportPath);
+
+            OutlookHelper.SaveDraft(attachments, licensor.Email);
+
+            MessageBox.Show("Szkic maila zostal przygotowany wraz załącznikami.", "Eksport do email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void gridExSettlementsList_RowCheckStateChanged(object sender, Janus.Windows.GridEX.RowCheckStateChangeEventArgs e)
         {
+            btnReportSettlement.Enabled = gridExSettlementsList.GetCheckedRows().Length == 1;
+
+            btnReportShort.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
+            btnReportSettlementDetails.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
+            btnMail.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
+
             this.LoadSettlementsDetails();
         }
 
-        private void btnExportToExcel_Click(object sender, EventArgs e)
+        private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
-            string filePath = ExcelHelper.CreateReport_SettlemetsDetails(gridExSettlementsDetails);
-            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetRows()[1].Cells["tLicencjodawcaId"].Value);
-
-            if (chkEmail.Checked)
-            {
-                OutlookHelper.SaveDraft(filePath, licensor.Email);
-            }
+            this.ShowSettlementEditForm();
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -114,12 +157,12 @@ namespace Foksal.Forms.Agreements
             this.LoadData();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnReportSettlementDetails_Click(object sender, EventArgs e)
         {
-            this.ShowSettlementEditForm();
+            this.GenerateReport_Settlement();
         }
 
-        private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             this.ShowSettlementEditForm();
         }
@@ -133,6 +176,16 @@ namespace Foksal.Forms.Agreements
 
                 this.LoadData();
             }
+        }
+
+        private void btnReportShort_Click(object sender, EventArgs e)
+        {
+            this.GenerateReport_Short();
+        }
+
+        private void btnMail_Click(object sender, EventArgs e)
+        {
+            this.PrepareDraftMail();
         }
     }
 }

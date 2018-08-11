@@ -34,17 +34,19 @@
             Janus.Windows.GridEX.GridEXLayout gridExSettlementsDetails_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.gridExSettlementsList = new Janus.Windows.GridEX.GridEX();
             this.gridExSettlementsDetails = new Janus.Windows.GridEX.GridEX();
-            this.btnExportToExcel = new System.Windows.Forms.Button();
+            this.btnReportSettlement = new System.Windows.Forms.Button();
             this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRecalculate = new System.Windows.Forms.Button();
+            this.btnReportSettlementDetails = new System.Windows.Forms.Button();
+            this.btnReportShort = new System.Windows.Forms.Button();
+            this.btnMail = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkEmail = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -66,7 +68,7 @@
             this.gridExSettlementsList.GroupByBoxVisible = false;
             this.gridExSettlementsList.Location = new System.Drawing.Point(12, 75);
             this.gridExSettlementsList.Name = "gridExSettlementsList";
-            this.gridExSettlementsList.Size = new System.Drawing.Size(1331, 184);
+            this.gridExSettlementsList.Size = new System.Drawing.Size(1274, 184);
             this.gridExSettlementsList.TabIndex = 1;
             this.gridExSettlementsList.RowCheckStateChanged += new Janus.Windows.GridEX.RowCheckStateChangeEventHandler(this.gridExSettlementsList_RowCheckStateChanged);
             this.gridExSettlementsList.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.gridExSettlementsList_RowDoubleClick);
@@ -90,23 +92,24 @@
             this.gridExSettlementsDetails.GroupTotalRowFormatStyle.BackColor = System.Drawing.Color.Cyan;
             this.gridExSettlementsDetails.Location = new System.Drawing.Point(12, 265);
             this.gridExSettlementsDetails.Name = "gridExSettlementsDetails";
-            this.gridExSettlementsDetails.Size = new System.Drawing.Size(1331, 278);
+            this.gridExSettlementsDetails.Size = new System.Drawing.Size(1274, 278);
             this.gridExSettlementsDetails.TabIndex = 2;
             this.gridExSettlementsDetails.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             // 
-            // btnExportToExcel
+            // btnReportSettlement
             // 
-            this.btnExportToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportToExcel.ImageKey = "icon-excel.png";
-            this.btnExportToExcel.ImageList = this.imgLstIcons;
-            this.btnExportToExcel.Location = new System.Drawing.Point(1235, 28);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(51, 41);
-            this.btnExportToExcel.TabIndex = 62;
-            this.btnExportToExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnExportToExcel, "Generuj raport");
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            this.btnReportSettlement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportSettlement.Enabled = false;
+            this.btnReportSettlement.ImageKey = "icon-excel.png";
+            this.btnReportSettlement.ImageList = this.imgLstIcons;
+            this.btnReportSettlement.Location = new System.Drawing.Point(1292, 75);
+            this.btnReportSettlement.Name = "btnReportSettlement";
+            this.btnReportSettlement.Size = new System.Drawing.Size(51, 41);
+            this.btnReportSettlement.TabIndex = 62;
+            this.btnReportSettlement.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnReportSettlement, "Generuj raport");
+            this.btnReportSettlement.UseVisualStyleBackColor = true;
+            this.btnReportSettlement.Click += new System.EventHandler(this.btnReportSettlementDetails_Click);
             // 
             // imgLstIcons
             // 
@@ -115,6 +118,8 @@
             this.imgLstIcons.Images.SetKeyName(0, "icon-excel.png");
             this.imgLstIcons.Images.SetKeyName(1, "icon-edit.png");
             this.imgLstIcons.Images.SetKeyName(2, "icon-refresh.png");
+            this.imgLstIcons.Images.SetKeyName(3, "icon-pdf.png");
+            this.imgLstIcons.Images.SetKeyName(4, "icon-mail.png");
             // 
             // btnEdit
             // 
@@ -135,7 +140,7 @@
             this.btnRecalculate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRecalculate.ImageKey = "icon-refresh.png";
             this.btnRecalculate.ImageList = this.imgLstIcons;
-            this.btnRecalculate.Location = new System.Drawing.Point(1292, 28);
+            this.btnRecalculate.Location = new System.Drawing.Point(1235, 28);
             this.btnRecalculate.Name = "btnRecalculate";
             this.btnRecalculate.Size = new System.Drawing.Size(51, 41);
             this.btnRecalculate.TabIndex = 73;
@@ -143,6 +148,50 @@
             this.toolTip.SetToolTip(this.btnRecalculate, "Przelicz");
             this.btnRecalculate.UseVisualStyleBackColor = true;
             this.btnRecalculate.Click += new System.EventHandler(this.btnRecalculate_Click);
+            // 
+            // btnReportSettlementDetails
+            // 
+            this.btnReportSettlementDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportSettlementDetails.Enabled = false;
+            this.btnReportSettlementDetails.ImageKey = "icon-excel.png";
+            this.btnReportSettlementDetails.ImageList = this.imgLstIcons;
+            this.btnReportSettlementDetails.Location = new System.Drawing.Point(1292, 265);
+            this.btnReportSettlementDetails.Name = "btnReportSettlementDetails";
+            this.btnReportSettlementDetails.Size = new System.Drawing.Size(51, 41);
+            this.btnReportSettlementDetails.TabIndex = 76;
+            this.btnReportSettlementDetails.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnReportSettlementDetails, "Generuj raport");
+            this.btnReportSettlementDetails.UseVisualStyleBackColor = true;
+            // 
+            // btnReportShort
+            // 
+            this.btnReportShort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportShort.Enabled = false;
+            this.btnReportShort.ImageKey = "icon-pdf.png";
+            this.btnReportShort.ImageList = this.imgLstIcons;
+            this.btnReportShort.Location = new System.Drawing.Point(1292, 312);
+            this.btnReportShort.Name = "btnReportShort";
+            this.btnReportShort.Size = new System.Drawing.Size(51, 41);
+            this.btnReportShort.TabIndex = 77;
+            this.btnReportShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnReportShort, "Generuj raport");
+            this.btnReportShort.UseVisualStyleBackColor = true;
+            this.btnReportShort.Click += new System.EventHandler(this.btnReportShort_Click);
+            // 
+            // btnMail
+            // 
+            this.btnMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMail.Enabled = false;
+            this.btnMail.ImageKey = "icon-mail.png";
+            this.btnMail.ImageList = this.imgLstIcons;
+            this.btnMail.Location = new System.Drawing.Point(1292, 359);
+            this.btnMail.Name = "btnMail";
+            this.btnMail.Size = new System.Drawing.Size(51, 41);
+            this.btnMail.TabIndex = 78;
+            this.btnMail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnMail, "Generuj raport");
+            this.btnMail.UseVisualStyleBackColor = true;
+            this.btnMail.Click += new System.EventHandler(this.btnMail_Click);
             // 
             // label4
             // 
@@ -199,26 +248,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Okres";
             // 
-            // chkEmail
-            // 
-            this.chkEmail.AutoSize = true;
-            this.chkEmail.Location = new System.Drawing.Point(1235, 12);
-            this.chkEmail.Name = "chkEmail";
-            this.chkEmail.Size = new System.Drawing.Size(51, 17);
-            this.chkEmail.TabIndex = 74;
-            this.chkEmail.Text = "Email";
-            this.chkEmail.UseVisualStyleBackColor = true;
-            // 
             // FrmSettlements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1355, 555);
-            this.Controls.Add(this.chkEmail);
+            this.Controls.Add(this.btnMail);
+            this.Controls.Add(this.btnReportShort);
+            this.Controls.Add(this.btnReportSettlementDetails);
             this.Controls.Add(this.btnRecalculate);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnExportToExcel);
+            this.Controls.Add(this.btnReportSettlement);
             this.Controls.Add(this.gridExSettlementsDetails);
             this.Controls.Add(this.gridExSettlementsList);
             this.Name = "FrmSettlements";
@@ -228,7 +269,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -236,7 +276,7 @@
 
         private Janus.Windows.GridEX.GridEX gridExSettlementsList;
         private Janus.Windows.GridEX.GridEX gridExSettlementsDetails;
-        private System.Windows.Forms.Button btnExportToExcel;
+        private System.Windows.Forms.Button btnReportSettlement;
         private System.Windows.Forms.ImageList imgLstIcons;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label label4;
@@ -246,6 +286,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRecalculate;
-        private System.Windows.Forms.CheckBox chkEmail;
+        private System.Windows.Forms.Button btnReportSettlementDetails;
+        private System.Windows.Forms.Button btnReportShort;
+        private System.Windows.Forms.Button btnMail;
     }
 }
