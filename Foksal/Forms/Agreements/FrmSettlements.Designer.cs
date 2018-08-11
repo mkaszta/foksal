@@ -34,19 +34,22 @@
             Janus.Windows.GridEX.GridEXLayout gridExSettlementsDetails_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.gridExSettlementsList = new Janus.Windows.GridEX.GridEX();
             this.gridExSettlementsDetails = new Janus.Windows.GridEX.GridEX();
-            this.btnReportSettlement = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.imgLstIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRecalculate = new System.Windows.Forms.Button();
-            this.btnReportSettlementDetails = new System.Windows.Forms.Button();
-            this.btnReportShort = new System.Windows.Forms.Button();
+            this.btnCollectiveReport = new System.Windows.Forms.Button();
+            this.btnCollectiveShort = new System.Windows.Forms.Button();
+            this.btnCollectiveMail = new System.Windows.Forms.Button();
             this.btnMail = new System.Windows.Forms.Button();
+            this.btnShort = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSum = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -72,6 +75,7 @@
             this.gridExSettlementsList.TabIndex = 1;
             this.gridExSettlementsList.RowCheckStateChanged += new Janus.Windows.GridEX.RowCheckStateChangeEventHandler(this.gridExSettlementsList_RowCheckStateChanged);
             this.gridExSettlementsList.RowDoubleClick += new Janus.Windows.GridEX.RowActionEventHandler(this.gridExSettlementsList_RowDoubleClick);
+            this.gridExSettlementsList.RowCountChanged += new System.EventHandler(this.gridExSettlementsList_RowCountChanged);
             // 
             // gridExSettlementsDetails
             // 
@@ -96,20 +100,19 @@
             this.gridExSettlementsDetails.TabIndex = 2;
             this.gridExSettlementsDetails.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             // 
-            // btnReportSettlement
+            // btnReport
             // 
-            this.btnReportSettlement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportSettlement.Enabled = false;
-            this.btnReportSettlement.ImageKey = "icon-excel.png";
-            this.btnReportSettlement.ImageList = this.imgLstIcons;
-            this.btnReportSettlement.Location = new System.Drawing.Point(1292, 75);
-            this.btnReportSettlement.Name = "btnReportSettlement";
-            this.btnReportSettlement.Size = new System.Drawing.Size(51, 41);
-            this.btnReportSettlement.TabIndex = 62;
-            this.btnReportSettlement.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnReportSettlement, "Generuj raport");
-            this.btnReportSettlement.UseVisualStyleBackColor = true;
-            this.btnReportSettlement.Click += new System.EventHandler(this.btnReportSettlementDetails_Click);
+            this.btnReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReport.ImageKey = "icon-excel.png";
+            this.btnReport.ImageList = this.imgLstIcons;
+            this.btnReport.Location = new System.Drawing.Point(1292, 75);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(51, 41);
+            this.btnReport.TabIndex = 62;
+            this.btnReport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnReport, "Generuj raport");
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // imgLstIcons
             // 
@@ -149,49 +152,75 @@
             this.btnRecalculate.UseVisualStyleBackColor = true;
             this.btnRecalculate.Click += new System.EventHandler(this.btnRecalculate_Click);
             // 
-            // btnReportSettlementDetails
+            // btnCollectiveReport
             // 
-            this.btnReportSettlementDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportSettlementDetails.Enabled = false;
-            this.btnReportSettlementDetails.ImageKey = "icon-excel.png";
-            this.btnReportSettlementDetails.ImageList = this.imgLstIcons;
-            this.btnReportSettlementDetails.Location = new System.Drawing.Point(1292, 265);
-            this.btnReportSettlementDetails.Name = "btnReportSettlementDetails";
-            this.btnReportSettlementDetails.Size = new System.Drawing.Size(51, 41);
-            this.btnReportSettlementDetails.TabIndex = 76;
-            this.btnReportSettlementDetails.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnReportSettlementDetails, "Generuj raport");
-            this.btnReportSettlementDetails.UseVisualStyleBackColor = true;
+            this.btnCollectiveReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCollectiveReport.ImageKey = "icon-excel.png";
+            this.btnCollectiveReport.ImageList = this.imgLstIcons;
+            this.btnCollectiveReport.Location = new System.Drawing.Point(1292, 288);
+            this.btnCollectiveReport.Name = "btnCollectiveReport";
+            this.btnCollectiveReport.Size = new System.Drawing.Size(51, 41);
+            this.btnCollectiveReport.TabIndex = 76;
+            this.btnCollectiveReport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnCollectiveReport, "Generuj raport");
+            this.btnCollectiveReport.UseVisualStyleBackColor = true;
+            this.btnCollectiveReport.Click += new System.EventHandler(this.btnCollectiveReport_Click);
             // 
-            // btnReportShort
+            // btnCollectiveShort
             // 
-            this.btnReportShort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReportShort.Enabled = false;
-            this.btnReportShort.ImageKey = "icon-pdf.png";
-            this.btnReportShort.ImageList = this.imgLstIcons;
-            this.btnReportShort.Location = new System.Drawing.Point(1292, 312);
-            this.btnReportShort.Name = "btnReportShort";
-            this.btnReportShort.Size = new System.Drawing.Size(51, 41);
-            this.btnReportShort.TabIndex = 77;
-            this.btnReportShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnReportShort, "Generuj raport");
-            this.btnReportShort.UseVisualStyleBackColor = true;
-            this.btnReportShort.Click += new System.EventHandler(this.btnReportShort_Click);
+            this.btnCollectiveShort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCollectiveShort.ImageKey = "icon-pdf.png";
+            this.btnCollectiveShort.ImageList = this.imgLstIcons;
+            this.btnCollectiveShort.Location = new System.Drawing.Point(1292, 335);
+            this.btnCollectiveShort.Name = "btnCollectiveShort";
+            this.btnCollectiveShort.Size = new System.Drawing.Size(51, 41);
+            this.btnCollectiveShort.TabIndex = 77;
+            this.btnCollectiveShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnCollectiveShort, "Generuj raport");
+            this.btnCollectiveShort.UseVisualStyleBackColor = true;
+            this.btnCollectiveShort.Click += new System.EventHandler(this.btnCollectiveShort_Click);
+            // 
+            // btnCollectiveMail
+            // 
+            this.btnCollectiveMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCollectiveMail.ImageKey = "icon-mail.png";
+            this.btnCollectiveMail.ImageList = this.imgLstIcons;
+            this.btnCollectiveMail.Location = new System.Drawing.Point(1292, 382);
+            this.btnCollectiveMail.Name = "btnCollectiveMail";
+            this.btnCollectiveMail.Size = new System.Drawing.Size(51, 41);
+            this.btnCollectiveMail.TabIndex = 78;
+            this.btnCollectiveMail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnCollectiveMail, "Generuj raport");
+            this.btnCollectiveMail.UseVisualStyleBackColor = true;
+            this.btnCollectiveMail.Click += new System.EventHandler(this.btnCollectiveMail_Click);
             // 
             // btnMail
             // 
             this.btnMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMail.Enabled = false;
             this.btnMail.ImageKey = "icon-mail.png";
             this.btnMail.ImageList = this.imgLstIcons;
-            this.btnMail.Location = new System.Drawing.Point(1292, 359);
+            this.btnMail.Location = new System.Drawing.Point(1292, 169);
             this.btnMail.Name = "btnMail";
             this.btnMail.Size = new System.Drawing.Size(51, 41);
-            this.btnMail.TabIndex = 78;
+            this.btnMail.TabIndex = 80;
             this.btnMail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnMail, "Generuj raport");
             this.btnMail.UseVisualStyleBackColor = true;
             this.btnMail.Click += new System.EventHandler(this.btnMail_Click);
+            // 
+            // btnShort
+            // 
+            this.btnShort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShort.ImageKey = "icon-pdf.png";
+            this.btnShort.ImageList = this.imgLstIcons;
+            this.btnShort.Location = new System.Drawing.Point(1292, 122);
+            this.btnShort.Name = "btnShort";
+            this.btnShort.Size = new System.Drawing.Size(51, 41);
+            this.btnShort.TabIndex = 79;
+            this.btnShort.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnShort, "Generuj raport");
+            this.btnShort.UseVisualStyleBackColor = true;
+            this.btnShort.Click += new System.EventHandler(this.btnShort_Click);
             // 
             // label4
             // 
@@ -248,18 +277,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Okres";
             // 
+            // chkSum
+            // 
+            this.chkSum.AutoSize = true;
+            this.chkSum.Location = new System.Drawing.Point(1292, 265);
+            this.chkSum.Name = "chkSum";
+            this.chkSum.Size = new System.Drawing.Size(53, 17);
+            this.chkSum.TabIndex = 81;
+            this.chkSum.Text = "Suma";
+            this.chkSum.UseVisualStyleBackColor = true;
+            // 
             // FrmSettlements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1355, 555);
+            this.Controls.Add(this.chkSum);
             this.Controls.Add(this.btnMail);
-            this.Controls.Add(this.btnReportShort);
-            this.Controls.Add(this.btnReportSettlementDetails);
+            this.Controls.Add(this.btnShort);
+            this.Controls.Add(this.btnCollectiveMail);
+            this.Controls.Add(this.btnCollectiveShort);
+            this.Controls.Add(this.btnCollectiveReport);
             this.Controls.Add(this.btnRecalculate);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnReportSettlement);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.gridExSettlementsDetails);
             this.Controls.Add(this.gridExSettlementsList);
             this.Name = "FrmSettlements";
@@ -269,6 +311,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -276,7 +319,7 @@
 
         private Janus.Windows.GridEX.GridEX gridExSettlementsList;
         private Janus.Windows.GridEX.GridEX gridExSettlementsDetails;
-        private System.Windows.Forms.Button btnReportSettlement;
+        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.ImageList imgLstIcons;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label label4;
@@ -286,8 +329,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRecalculate;
-        private System.Windows.Forms.Button btnReportSettlementDetails;
-        private System.Windows.Forms.Button btnReportShort;
+        private System.Windows.Forms.Button btnCollectiveReport;
+        private System.Windows.Forms.Button btnCollectiveShort;
+        private System.Windows.Forms.Button btnCollectiveMail;
         private System.Windows.Forms.Button btnMail;
+        private System.Windows.Forms.Button btnShort;
+        private System.Windows.Forms.CheckBox chkSum;
     }
 }

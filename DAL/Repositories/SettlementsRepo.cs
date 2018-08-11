@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 namespace DAL.Repositories
 {
     public class SettlementsRepo
-    {        
+    {
         public static Settlement GetById(int settlementId)
         {
             Settlement settlement = new Settlement();
@@ -30,10 +30,10 @@ namespace DAL.Repositories
                         settlement.Email = reader.GetString(reader.GetOrdinal("AdresEmail"));
                         settlement.GenerationDate = reader.GetDateTime(reader.GetOrdinal("DataGenerowania"));
                         settlement.InvoiceAmount = reader.IsDBNull(reader.GetOrdinal("KwotaFaktury")) ? (decimal?)null : reader.GetDecimal(reader.GetOrdinal("KwotaFaktury"));
-                        settlement.InvoiceNumber = reader.IsDBNull(reader.GetOrdinal("NumerFaktury")) ? "" : reader.GetString(reader.GetOrdinal("NumerFaktury"));                        
+                        settlement.InvoiceNumber = reader.IsDBNull(reader.GetOrdinal("NumerFaktury")) ? "" : reader.GetString(reader.GetOrdinal("NumerFaktury"));
                         settlement.IsLocked = reader.GetBoolean(reader.GetOrdinal("Zablokowane"));
                         settlement.PurchaseOrder = reader.IsDBNull(reader.GetOrdinal("PurchaseOrder")) ? "" : reader.GetString(reader.GetOrdinal("PurchaseOrder"));
-                        settlement.TaxPercent = reader.GetDecimal(reader.GetOrdinal("PodatekProcent"));   
+                        settlement.TaxPercent = reader.GetDecimal(reader.GetOrdinal("PodatekProcent"));
                         settlement.Period = reader.GetDateTime(reader.GetOrdinal("Okres"));
                     }
                 }
@@ -84,6 +84,7 @@ namespace DAL.Repositories
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
+                    command.CommandTimeout = 10000;
                     command.ExecuteNonQuery();
                 }
             }

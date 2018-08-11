@@ -48,7 +48,7 @@ namespace BLL
             }
         }
 
-        public static void CreateReport_SettlementsDetails(GridEX gridEx, string filePath)
+        public static void CreateReport_SettlementsDetails(GridEX gridEx, string filePath, bool createSumRow)
         {
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkBook;
@@ -58,6 +58,11 @@ namespace BLL
             xlApp.DisplayAlerts = false;
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            decimal sumAdvance = 0;
+            decimal sumUnearnedAdvance = 0;
+            decimal sumReckoning = 0;
+            decimal sumPayment = 0;
 
             // header
 
@@ -87,13 +92,30 @@ namespace BLL
                     }
                 }
 
+                // IF SUBSUM
                 if ((int)row.Cells["typ"].Value == 1)
-                {
+                {                    
+                    sumAdvance += (decimal)row.Cells["Zaliczka"].Value;
+                    sumUnearnedAdvance += (decimal)row.Cells["NiewypracowanaZaliczka"].Value;
+                    sumReckoning += (decimal)row.Cells["KwotaRozliczenia"].Value;
+                    sumPayment += (decimal)row.Cells["DoWyplaty"].Value;
+
                     xlWorkSheet.Range[xlWorkSheet.Rows[rowId].Cells[1], xlWorkSheet.Rows[rowId].Cells[cellId - 1]].Interior.Color = System.Drawing.Color.LightCyan;
                 }
 
                 rowId++;
                 cellId = 1;
+            }
+
+            if (createSumRow)
+            {
+                xlWorkSheet.Cells[rowId, 1] = "SUMA";
+                xlWorkSheet.Cells[rowId, 22] = sumAdvance.ToString();
+                xlWorkSheet.Cells[rowId, 23] = sumUnearnedAdvance.ToString();
+                xlWorkSheet.Cells[rowId, 24] = sumReckoning.ToString();
+                xlWorkSheet.Cells[rowId, 25] = sumPayment.ToString();
+
+                xlWorkSheet.Range[xlWorkSheet.Rows[rowId].Cells[1], xlWorkSheet.Rows[rowId].Cells[25]].Interior.Color = System.Drawing.Color.Bisque;
             }
 
             xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -102,7 +124,7 @@ namespace BLL
 
             Marshal.ReleaseComObject(xlWorkSheet);
             Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);            
+            Marshal.ReleaseComObject(xlApp);
         }
 
         public static void CreateReport_Short(GridEX gridEx, string filePath)
@@ -116,7 +138,7 @@ namespace BLL
             xlApp.DisplayAlerts = false;
             xlWorkBook = xlApp.Workbooks.Open(ConfigurationSettings.AppSettings["shortReport_template"], misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue);
             xlWorkSheetReport = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            xlWorkSheetTemplate = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);            
+            xlWorkSheetTemplate = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);
 
             var templateHeaderRow = xlWorkSheetTemplate.Rows[1];
             var templateLineRow = xlWorkSheetTemplate.Rows[2];
@@ -152,7 +174,7 @@ namespace BLL
                     // SUM
                     templateSumRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
                     xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();                    
+                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();
                 }
                 else
                 {
@@ -173,33 +195,33 @@ namespace BLL
                     xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value.ToString();
                     xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();
                 }
-                
+
                 reportRowId++;
                 reportPageRowId++;
             }
 
             ExcelHelper.ExportWorkbookToPdf(xlWorkSheetReport, filePath);
-            
+
             xlWorkBook.Close(false, misValue, misValue);
             xlApp.Quit();
 
             Marshal.ReleaseComObject(xlWorkSheetReport);
             Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);            
+            Marshal.ReleaseComObject(xlApp);
         }
 
         private static bool ExportWorkbookToPdf(Worksheet xlWorkSheet, string outputPath)
-        {            
+        {
             var exportSuccessful = true;
 
             try
             {
-                xlWorkSheet.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF, outputPath, XlFixedFormatQuality.xlQualityStandard, true, true);                    
+                xlWorkSheet.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF, outputPath, XlFixedFormatQuality.xlQualityStandard, true, true);
             }
             catch (System.Exception ex)
             {
                 exportSuccessful = false;
-            }            
+            }
 
             return exportSuccessful;
         }

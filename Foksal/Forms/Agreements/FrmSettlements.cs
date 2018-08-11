@@ -73,7 +73,7 @@ namespace Foksal.Forms.Agreements
 
             int currentRowId = (int)gridExSettlementsList.CurrentRow.RowIndex;
             this.LoadSettlementsList();
-            gridExSettlementsList.MoveTo(currentRowId);
+            gridExSettlementsList.MoveToRowIndex(currentRowId);
         }
 
         private void ApplyRowFormatting()
@@ -87,13 +87,13 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void GenerateReport_Settlement()
+        private void GenerateReport_Settlement(bool createSumRow)
         {
             SaveFileDialog saveDialog = new SaveFileDialog { Filter = "Xls File (*.xls)|*.xls|All Files (*.*)|*.*" };
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, saveDialog.FileName);
+                ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, saveDialog.FileName, createSumRow);
                 MessageBox.Show("Eksport danych do pliku został zakończony.", "Eksport do pliku", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -109,9 +109,9 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void PrepareDraftMail()
-        {            
-            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[1].Cells["tLicencjodawcaId"].Value);
+        private void PrepareDraftMail(bool reportHasSumRow)
+        {
+            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[1].Cells["tLicencjodawcaCafreOfId"].Value);
 
             string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
             string detailsReportPath = string.Format("{0}{1}_RaportZbiorczy.xls", ConfigurationSettings.AppSettings["mail_attachmentDirectory"], timeStamp);
@@ -121,7 +121,7 @@ namespace Foksal.Forms.Agreements
             attachments.Add(detailsReportPath);
             attachments.Add(shortReportPath);
 
-            ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, detailsReportPath);
+            ExcelHelper.CreateReport_SettlementsDetails(gridExSettlementsDetails, detailsReportPath, reportHasSumRow);
             ExcelHelper.CreateReport_Short(gridExSettlementsDetails, shortReportPath);
 
             OutlookHelper.SaveDraft(attachments, licensor.Email);
@@ -131,18 +131,24 @@ namespace Foksal.Forms.Agreements
 
         private void gridExSettlementsList_RowCheckStateChanged(object sender, Janus.Windows.GridEX.RowCheckStateChangeEventArgs e)
         {
-            btnReportSettlement.Enabled = gridExSettlementsList.GetCheckedRows().Length == 1;
-
-            btnReportShort.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
-            btnReportSettlementDetails.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
-            btnMail.Enabled = gridExSettlementsList.GetCheckedRows().Length > 0;
-
             this.LoadSettlementsDetails();
         }
 
         private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
             this.ShowSettlementEditForm();
+        }
+
+        private void gridExSettlementsList_RowCountChanged(object sender, EventArgs e)
+        {
+            if (gridExSettlementsList.GetDataRows().Length <= 20)
+            {
+                gridExSettlementsList.RootTable.Columns["Selector"].UseHeaderSelector = true;
+            }
+            else
+            {
+                gridExSettlementsList.RootTable.Columns["Selector"].UseHeaderSelector = false;
+            }
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -155,11 +161,6 @@ namespace Foksal.Forms.Agreements
         {
             this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
             this.LoadData();
-        }
-
-        private void btnReportSettlementDetails_Click(object sender, EventArgs e)
-        {
-            this.GenerateReport_Settlement();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -178,14 +179,55 @@ namespace Foksal.Forms.Agreements
             }
         }
 
-        private void btnReportShort_Click(object sender, EventArgs e)
+        private void btnCollectiveShort_Click(object sender, EventArgs e)
         {
+            this.GenerateReport_Short();
+        }
+
+        private void btnCollectiveMail_Click(object sender, EventArgs e)
+        {
+            this.PrepareDraftMail(chkSum.Checked);
+        }
+
+        private void btnCollectiveReport_Click(object sender, EventArgs e)
+        {
+            this.GenerateReport_Settlement(chkSum.Checked);
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            gridExSettlementsList.UnCheckAllRecords();
+            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+            this.LoadSettlementsDetails();
+
+            this.GenerateReport_Settlement(false);
+        }
+
+        private void btnShort_Click(object sender, EventArgs e)
+        {
+            gridExSettlementsList.UnCheckAllRecords();
+            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+            this.LoadSettlementsDetails();
+
             this.GenerateReport_Short();
         }
 
         private void btnMail_Click(object sender, EventArgs e)
         {
-            this.PrepareDraftMail();
+            gridExSettlementsList.UnCheckAllRecords();
+            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+            this.LoadSettlementsDetails();
+
+            this.PrepareDraftMail(false);
+
+            Settlement settlement = SettlementsRepo.GetById((int)gridExSettlementsList.GetCheckedRows()[0].Cells["id"].Value);
+            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[0].Cells["tLicencjodawcaCafreOfId"].Value);
+
+            settlement.Email = licensor.Email;
+            settlement.DispatchDate = DateTime.Now;
+            SettlementsRepo.Update(settlement);
+
+            this.ShowSettlementEditForm();
         }
     }
 }
