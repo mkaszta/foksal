@@ -129,6 +129,16 @@ namespace Foksal.Forms.Agreements
             MessageBox.Show("Szkic maila zostal przygotowany wraz załącznikami.", "Eksport do email", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void UpdateDispatchInfo()
+        {
+            Settlement settlement = SettlementsRepo.GetById((int)gridExSettlementsList.GetCheckedRows()[0].Cells["id"].Value);
+            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[0].Cells["tLicencjodawcaCafreOfId"].Value);
+
+            settlement.Email = licensor.Email;
+            settlement.DispatchDate = DateTime.Now;
+            SettlementsRepo.Update(settlement);
+        }
+
         private void gridExSettlementsList_RowCheckStateChanged(object sender, Janus.Windows.GridEX.RowCheckStateChangeEventArgs e)
         {
             this.LoadSettlementsDetails();
@@ -201,6 +211,9 @@ namespace Foksal.Forms.Agreements
             this.LoadSettlementsDetails();
 
             this.GenerateReport_Settlement(false);
+
+            this.UpdateDispatchInfo();
+            this.ShowSettlementEditForm();
         }
 
         private void btnShort_Click(object sender, EventArgs e)
@@ -210,6 +223,9 @@ namespace Foksal.Forms.Agreements
             this.LoadSettlementsDetails();
 
             this.GenerateReport_Short();
+
+            this.UpdateDispatchInfo();
+            this.ShowSettlementEditForm();
         }
 
         private void btnMail_Click(object sender, EventArgs e)
@@ -220,13 +236,7 @@ namespace Foksal.Forms.Agreements
 
             this.PrepareDraftMail(false);
 
-            Settlement settlement = SettlementsRepo.GetById((int)gridExSettlementsList.GetCheckedRows()[0].Cells["id"].Value);
-            Licensor licensor = LicensorsRepo.GetById((int)gridExSettlementsDetails.GetDataRows()[0].Cells["tLicencjodawcaCafreOfId"].Value);
-
-            settlement.Email = licensor.Email;
-            settlement.DispatchDate = DateTime.Now;
-            SettlementsRepo.Update(settlement);
-
+            this.UpdateDispatchInfo();
             this.ShowSettlementEditForm();
         }
     }
