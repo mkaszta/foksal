@@ -39,6 +39,7 @@
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridExReport)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,8 +100,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.ShowCheckBox = true;
             this.dtTo.Size = new System.Drawing.Size(108, 20);
-            this.dtTo.TabIndex = 65;
-            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
+            this.dtTo.TabIndex = 65;            
             // 
             // label2
             // 
@@ -119,14 +119,24 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.ShowCheckBox = true;
             this.dtFrom.Size = new System.Drawing.Size(108, 20);
-            this.dtFrom.TabIndex = 63;
-            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
+            this.dtFrom.TabIndex = 63;            
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(240, 33);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 20);
+            this.btnFilter.TabIndex = 67;
+            this.btnFilter.Text = "Filtruj";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // FrmReportFlexible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 614);
+            this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtTo);
             this.Controls.Add(this.label2);
@@ -151,5 +161,6 @@
         private System.Windows.Forms.DateTimePicker dtTo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtFrom;
+        private System.Windows.Forms.Button btnFilter;
     }
 }

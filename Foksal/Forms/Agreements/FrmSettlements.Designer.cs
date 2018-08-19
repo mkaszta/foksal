@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.chkSum = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsDetails)).BeginInit();
@@ -62,6 +63,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExSettlementsList.ColumnAutoResize = true;
             this.gridExSettlementsList.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExSettlementsList.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExSettlementsList_DesignTimeLayout.LayoutString = resources.GetString("gridExSettlementsList_DesignTimeLayout.LayoutString");
             this.gridExSettlementsList.DesignTimeLayout = gridExSettlementsList_DesignTimeLayout;
             this.gridExSettlementsList.DynamicFiltering = true;
@@ -229,7 +231,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 13);
             this.label4.TabIndex = 67;
-            this.label4.Text = "od:";
+            this.label4.Text = "do:";
             // 
             // dtTo
             // 
@@ -241,7 +243,6 @@
             this.dtTo.ShowCheckBox = true;
             this.dtTo.Size = new System.Drawing.Size(108, 20);
             this.dtTo.TabIndex = 66;
-            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label2
             // 
@@ -262,20 +263,30 @@
             this.dtFrom.ShowCheckBox = true;
             this.dtFrom.Size = new System.Drawing.Size(108, 20);
             this.dtFrom.TabIndex = 64;
-            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dtFrom);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtTo);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 57);
+            this.groupBox1.Size = new System.Drawing.Size(318, 57);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Okres";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(236, 32);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 20);
+            this.btnFilter.TabIndex = 68;
+            this.btnFilter.Text = "Filtruj";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // chkSum
             // 
@@ -335,5 +346,6 @@
         private System.Windows.Forms.Button btnMail;
         private System.Windows.Forms.Button btnShort;
         private System.Windows.Forms.CheckBox chkSum;
+        private System.Windows.Forms.Button btnFilter;
     }
 }

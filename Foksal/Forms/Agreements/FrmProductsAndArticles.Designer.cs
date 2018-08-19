@@ -35,6 +35,7 @@
             this.gridExProductsAndArticles = new Janus.Windows.GridEX.GridEX();
             this.gridExAgreementsListGrouped = new Janus.Windows.GridEX.GridEX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbTitle = new System.Windows.Forms.RadioButton();
             this.rdbAll = new System.Windows.Forms.RadioButton();
             this.rdbDescriptor = new System.Windows.Forms.RadioButton();
             this.rdbKTM = new System.Windows.Forms.RadioButton();
@@ -46,7 +47,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.rdbTitle = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridExProductsAndArticles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExAgreementsListGrouped)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -61,6 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExProductsAndArticles.ColumnAutoResize = true;
             this.gridExProductsAndArticles.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExProductsAndArticles.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExProductsAndArticles_DesignTimeLayout.LayoutString = resources.GetString("gridExProductsAndArticles_DesignTimeLayout.LayoutString");
             this.gridExProductsAndArticles.DesignTimeLayout = gridExProductsAndArticles_DesignTimeLayout;
             this.gridExProductsAndArticles.DynamicFiltering = true;
@@ -86,6 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExAgreementsListGrouped.ColumnAutoResize = true;
             this.gridExAgreementsListGrouped.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExAgreementsListGrouped.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExAgreementsListGrouped_DesignTimeLayout.LayoutString = resources.GetString("gridExAgreementsListGrouped_DesignTimeLayout.LayoutString");
             this.gridExAgreementsListGrouped.DesignTimeLayout = gridExAgreementsListGrouped_DesignTimeLayout;
             this.gridExAgreementsListGrouped.DynamicFiltering = true;
@@ -113,6 +115,16 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtruj umowy";
+            // 
+            // rdbTitle
+            // 
+            this.rdbTitle.AutoSize = true;
+            this.rdbTitle.Location = new System.Drawing.Point(145, 19);
+            this.rdbTitle.Name = "rdbTitle";
+            this.rdbTitle.Size = new System.Drawing.Size(50, 17);
+            this.rdbTitle.TabIndex = 8;
+            this.rdbTitle.Text = "Tytuł";
+            this.rdbTitle.UseVisualStyleBackColor = true;
             // 
             // rdbAll
             // 
@@ -234,16 +246,6 @@
             this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList.Images.SetKeyName(0, "icon-refresh.png");
-            // 
-            // rdbTitle
-            // 
-            this.rdbTitle.AutoSize = true;
-            this.rdbTitle.Location = new System.Drawing.Point(145, 19);
-            this.rdbTitle.Name = "rdbTitle";
-            this.rdbTitle.Size = new System.Drawing.Size(50, 17);
-            this.rdbTitle.TabIndex = 8;
-            this.rdbTitle.Text = "Tytuł";
-            this.rdbTitle.UseVisualStyleBackColor = true;
             // 
             // FrmProductsAndArticles
             // 

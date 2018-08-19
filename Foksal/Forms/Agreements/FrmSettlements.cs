@@ -159,19 +159,7 @@ namespace Foksal.Forms.Agreements
             {
                 gridExSettlementsList.RootTable.Columns["Selector"].UseHeaderSelector = false;
             }
-        }
-
-        private void dtFrom_ValueChanged(object sender, EventArgs e)
-        {
-            this.datePeriodFrom = dtFrom.Checked ? dtFrom.Value : (DateTime?)null;
-            this.LoadData();
-        }
-
-        private void dtTo_ValueChanged(object sender, EventArgs e)
-        {
-            this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
-            this.LoadData();
-        }
+        }     
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -238,6 +226,13 @@ namespace Foksal.Forms.Agreements
 
             this.UpdateDispatchInfo();
             this.ShowSettlementEditForm();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            this.datePeriodFrom = dtFrom.Checked ? dtFrom.Value : (DateTime?)null;
+            this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
+            this.LoadData();
         }
     }
 }

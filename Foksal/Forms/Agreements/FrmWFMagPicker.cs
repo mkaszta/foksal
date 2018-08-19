@@ -21,7 +21,14 @@ namespace Foksal.Forms.Agreements
 
         private void LoadData()
         {
-            this.gridWFMagPickerRepo.BindDataSet(gridExWFMagPicker);
+            if (rdbRelated.Checked)
+            {
+                this.gridWFMagPickerRepo.BindDataSet_Related(gridExWFMagPicker);
+            }
+            else
+            {
+                this.gridWFMagPickerRepo.BindDataSet_Unrelated(gridExWFMagPicker, dtFrom.Value, dtTo.Value);
+            }            
         }
 
         private void ReturnData()
@@ -48,6 +55,17 @@ namespace Foksal.Forms.Agreements
         private void gridExWFMagPicker_DoubleClick(object sender, System.EventArgs e)
         {
             this.ReturnData();
+        }
+
+        private void rdb_CheckedChanged(object sender, System.EventArgs e)
+        {
+            grpDates.Visible = rdbUnrelated.Checked;
+            this.LoadData();
+        }
+
+        private void btnFilter_Click(object sender, System.EventArgs e)
+        {
+            this.LoadData();
         }
     }
 }

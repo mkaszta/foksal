@@ -66,8 +66,9 @@ namespace BLL
 
             // header
 
-            var headerRow = gridEx.GetDataRows()[0];
-            int cellId = 1;
+            var headerRow = gridEx.GetDataRows()[0];               
+            int cellId = 1;            
+
             foreach (GridEXCell cell in headerRow.Cells)
             {
                 if (cell.Column.Visible)
@@ -75,9 +76,7 @@ namespace BLL
                     xlWorkSheet.Cells[1, cellId] = cell.Column.Caption;
                     cellId++;
                 }
-            }
-            xlWorkSheet.UsedRange.Columns.AutoFit();
-
+            }                      
 
             int rowId = 2;
             cellId = 1;
@@ -94,7 +93,7 @@ namespace BLL
 
                 // IF SUBSUM
                 if ((int)row.Cells["typ"].Value == 1)
-                {                    
+                {
                     sumAdvance += (decimal)row.Cells["Zaliczka"].Value;
                     sumUnearnedAdvance += (decimal)row.Cells["NiewypracowanaZaliczka"].Value;
                     sumReckoning += (decimal)row.Cells["KwotaRozliczenia"].Value;
@@ -117,6 +116,9 @@ namespace BLL
 
                 xlWorkSheet.Range[xlWorkSheet.Rows[rowId].Cells[1], xlWorkSheet.Rows[rowId].Cells[25]].Interior.Color = System.Drawing.Color.Bisque;
             }
+
+            xlWorkSheet.Columns.ColumnWidth = 15;
+            xlWorkSheet.Rows[1].WrapText = true;
 
             xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
@@ -150,12 +152,17 @@ namespace BLL
             int reportRowId = 6;
             int reportPageRowId = 1;
             int reportPage = 1;
+            
+            decimal sumPayment = 0;
 
             // DATE
             xlWorkSheetReport.Cells[3, 13] = string.Format("Warszawa, {0}", DateTime.Now.ToShortDateString());
 
             // HEADER
-            templateHeaderRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+            //templateHeaderRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+            templateHeaderRow.Copy(System.Type.Missing);
+            xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
+
             reportRowId++;
 
             foreach (GridEXRow gridexRow in gridEx.GetDataRows())
@@ -163,7 +170,9 @@ namespace BLL
                 if ((reportPage == 1 && reportRowId > firstPageRows) || (reportPage > 1 && reportPageRowId > nextPageRows))
                 {
                     // HEADER
-                    templateHeaderRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+                    templateHeaderRow.Copy(System.Type.Missing);
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
+
                     reportPageRowId = 2;
                     reportRowId++;
                     reportPage++;
@@ -172,14 +181,19 @@ namespace BLL
                 if ((int)gridexRow.Cells["typ"].Value == 1)
                 {
                     // SUM
-                    templateSumRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+                    templateSumRow.Copy(System.Type.Missing);
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
+
                     xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value.ToString();
                     xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();
+                    
+                    sumPayment += (decimal)gridexRow.Cells["DoWyplaty"].Value;
                 }
                 else
                 {
                     // LINE
-                    templateLineRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+                    templateLineRow.Copy(System.Type.Missing);
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
 
                     xlWorkSheetReport.Cells[reportRowId, 1] = gridexRow.Cells["lp"].Value.ToString();
                     xlWorkSheetReport.Cells[reportRowId, 2] = gridexRow.Cells["Tytul"].Value.ToString();
@@ -199,6 +213,11 @@ namespace BLL
                 reportRowId++;
                 reportPageRowId++;
             }
+
+            // FOOTER
+            templateFooterRow.Copy(System.Type.Missing);
+            xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);            
+            xlWorkSheetReport.Cells[reportRowId, 13] = sumPayment.ToString();
 
             ExcelHelper.ExportWorkbookToPdf(xlWorkSheetReport, filePath);
 

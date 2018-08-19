@@ -130,27 +130,41 @@ namespace Foksal.Forms.Dictonaries
 
         private void btnMergeSource_Click(object sender, EventArgs e)
         {
-            this.mergeSourceId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
+            if (gridExLicensors.CurrentRow.RowIndex > -1)
+            {
+                this.mergeSourceId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
 
-            lblSource.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
+                lblSource.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
 
-            gridExLicensors.GetRow(this.mergeSourceRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
-            gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.PaleTurquoise };
+                gridExLicensors.GetRow(this.mergeSourceRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
+                gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.PaleTurquoise };
 
-            this.mergeSourceRowId = gridExLicensors.CurrentRow.RowIndex;
-            this.ActivateMergeButton();
+                this.mergeSourceRowId = gridExLicensors.CurrentRow.Position;
+                this.ActivateMergeButton();
+            }
+            else
+            {
+                MessageBox.Show("Proszę ustawić się na wierszu z danymi.", "Zaznaczanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
         private void btnMergeTarget_Click(object sender, EventArgs e)
         {
-            this.mergeTargetId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
-            lblTarget.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
+            if (gridExLicensors.CurrentRow.RowIndex > -1)
+            {
+                this.mergeTargetId = (int)gridExLicensors.CurrentRow.Cells["id"].Value;
+                lblTarget.Text = string.Format("{0} {1} {2}", gridExLicensors.CurrentRow.Cells["Imie"].Value, gridExLicensors.CurrentRow.Cells["Nazwisko"].Value, gridExLicensors.CurrentRow.Cells["Nazwa"].Value);
 
-            gridExLicensors.GetRow(this.mergeTargetRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
-            gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.LightGreen };
+                gridExLicensors.GetRow(this.mergeTargetRowId).RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle();
+                gridExLicensors.CurrentRow.RowStyle = new Janus.Windows.GridEX.GridEXFormatStyle() { BackColor = Color.LightGreen };
 
-            this.mergeTargetRowId = gridExLicensors.CurrentRow.RowIndex;
-            this.ActivateMergeButton();
+                this.mergeTargetRowId = gridExLicensors.CurrentRow.Position;
+                this.ActivateMergeButton();
+            }
+            else
+            {
+                MessageBox.Show("Proszę ustawić się na wierszu z danymi.", "Zaznaczanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
         private void btnMergeStart_Click(object sender, EventArgs e)

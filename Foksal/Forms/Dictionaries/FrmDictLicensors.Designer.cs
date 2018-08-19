@@ -60,6 +60,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExLicensors.ColumnAutoResize = true;
             this.gridExLicensors.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExLicensors.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExLicensors_DesignTimeLayout.LayoutString = resources.GetString("gridExLicensors_DesignTimeLayout.LayoutString");
             this.gridExLicensors.DesignTimeLayout = gridExLicensors_DesignTimeLayout;
             this.gridExLicensors.DynamicFiltering = true;
@@ -140,7 +141,7 @@
             this.btnMergeSource.TabIndex = 63;
             this.btnMergeSource.Text = "źródło";
             this.btnMergeSource.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnMergeSource, "Usuń");
+            this.toolTip.SetToolTip(this.btnMergeSource, "Ustaw źródło");
             this.btnMergeSource.UseVisualStyleBackColor = true;
             this.btnMergeSource.Click += new System.EventHandler(this.btnMergeSource_Click);
             // 
@@ -155,7 +156,7 @@
             this.btnMergeTarget.TabIndex = 64;
             this.btnMergeTarget.Text = "cel";
             this.btnMergeTarget.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnMergeTarget, "Usuń");
+            this.toolTip.SetToolTip(this.btnMergeTarget, "Ustaw cel");
             this.btnMergeTarget.UseVisualStyleBackColor = true;
             this.btnMergeTarget.Click += new System.EventHandler(this.btnMergeTarget_Click);
             // 
@@ -171,7 +172,7 @@
             this.btnMergeStart.TabIndex = 65;
             this.btnMergeStart.Text = "scalaj!";
             this.btnMergeStart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.btnMergeStart, "Usuń");
+            this.toolTip.SetToolTip(this.btnMergeStart, "Scalaj licencjodawców");
             this.btnMergeStart.UseVisualStyleBackColor = true;
             this.btnMergeStart.Click += new System.EventHandler(this.btnMergeStart_Click);
             // 
@@ -183,7 +184,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(41, 42);
             this.btnAdd.TabIndex = 63;
-            this.toolTip.SetToolTip(this.btnAdd, "Usuń");
+            this.toolTip.SetToolTip(this.btnAdd, "Dodaj");
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -275,7 +276,7 @@
             this.ClientSize = new System.Drawing.Size(1163, 525);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gridExLicensors);            
+            this.Controls.Add(this.gridExLicensors);
             this.Name = "FrmDictLicensors";
             this.Text = "Licencjodawcy";
             ((System.ComponentModel.ISupportInitialize)(this.gridExLicensors)).EndInit();

@@ -19,7 +19,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT * FROM [dbo].[Umowa]";
+            cmdSelect.CommandText = "SELECT * FROM [dbo].[vUmowa]";
             this.dataAdapter.SelectCommand = cmdSelect;
 
             SqlCommand cmdDelete = new SqlCommand();

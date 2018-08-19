@@ -99,7 +99,7 @@ namespace Foksal.Forms.Agreements
         private void btnAddAgreement_Click(object sender, EventArgs e)
         {
             this.ShowAgreementForm(0);
-        }
+        }        
 
         private void btnRemoveAgreement_Click(object sender, EventArgs e)
         {
@@ -124,6 +124,6 @@ namespace Foksal.Forms.Agreements
         private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
         {
             gridExAgreementsListGrouped.ExpandGroups();
-        }
+        }        
     }
 }

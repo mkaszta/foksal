@@ -121,6 +121,7 @@
             this.gridExArticles = new Janus.Windows.GridEX.GridEX();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAgreementWFMAG = new System.Windows.Forms.Button();
             this.btnRefreshArticle = new System.Windows.Forms.Button();
             this.btnRemoveArticle = new System.Windows.Forms.Button();
             this.btnAddArticle = new System.Windows.Forms.Button();
@@ -467,9 +468,8 @@
             this.lblModelPercent.AutoSize = true;
             this.lblModelPercent.Location = new System.Drawing.Point(328, 51);
             this.lblModelPercent.Name = "lblModelPercent";
-            this.lblModelPercent.Size = new System.Drawing.Size(83, 13);
+            this.lblModelPercent.Size = new System.Drawing.Size(0, 13);
             this.lblModelPercent.TabIndex = 61;
-            this.lblModelPercent.Text = "lblModelPercent";
             // 
             // dtBillingPeriodTo
             // 
@@ -516,9 +516,8 @@
             this.lblModelFixedPrice.AutoSize = true;
             this.lblModelFixedPrice.Location = new System.Drawing.Point(412, 52);
             this.lblModelFixedPrice.Name = "lblModelFixedPrice";
-            this.lblModelFixedPrice.Size = new System.Drawing.Size(95, 13);
+            this.lblModelFixedPrice.Size = new System.Drawing.Size(0, 13);
             this.lblModelFixedPrice.TabIndex = 63;
-            this.lblModelFixedPrice.Text = "lblModelFixedPrice";
             // 
             // groupBox5
             // 
@@ -585,6 +584,8 @@
             // 
             // cboCurrency
             // 
+            this.cboCurrency.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCurrency.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboCurrency.FormattingEnabled = true;
             this.cboCurrency.Location = new System.Drawing.Point(6, 84);
             this.cboCurrency.Name = "cboCurrency";
@@ -1164,6 +1165,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.Controls.Add(this.btnAgreementWFMAG);
             this.groupBox1.Controls.Add(this.btnRefreshArticle);
             this.groupBox1.Controls.Add(this.btnRemoveArticle);
             this.groupBox1.Controls.Add(this.btnAddArticle);
@@ -1187,6 +1189,19 @@
             this.groupBox1.Size = new System.Drawing.Size(1092, 147);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAgreementWFMAG
+            // 
+            this.btnAgreementWFMAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAgreementWFMAG.ForeColor = System.Drawing.Color.Black;
+            this.btnAgreementWFMAG.Location = new System.Drawing.Point(340, 8);
+            this.btnAgreementWFMAG.Name = "btnAgreementWFMAG";
+            this.btnAgreementWFMAG.Size = new System.Drawing.Size(53, 20);
+            this.btnAgreementWFMAG.TabIndex = 68;
+            this.btnAgreementWFMAG.Text = "WF MAG";
+            this.toolTip.SetToolTip(this.btnAgreementWFMAG, "Dodaj pozycję z WF MAG");
+            this.btnAgreementWFMAG.UseVisualStyleBackColor = true;
+            this.btnAgreementWFMAG.Click += new System.EventHandler(this.btnAgreementWFMAG_Click);
             // 
             // btnRefreshArticle
             // 
@@ -1428,5 +1443,6 @@
         private System.Windows.Forms.Button btnRefreshProduct;
         private System.Windows.Forms.Button btnRefreshLicensor;
         private System.Windows.Forms.Button btnRefreshSchedule;
+        private System.Windows.Forms.Button btnAgreementWFMAG;
     }
 }

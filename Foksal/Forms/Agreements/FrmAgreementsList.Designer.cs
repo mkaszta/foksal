@@ -52,6 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExAgreementsList.ColumnAutoResize = true;
             this.gridExAgreementsList.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExAgreementsList.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExAgreementsList_DesignTimeLayout.LayoutString = resources.GetString("gridExAgreementsList_DesignTimeLayout.LayoutString");
             this.gridExAgreementsList.DesignTimeLayout = gridExAgreementsList_DesignTimeLayout;
             this.gridExAgreementsList.DynamicFiltering = true;
@@ -141,6 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExAgreementsListGrouped.ColumnAutoResize = true;
             this.gridExAgreementsListGrouped.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
+            this.gridExAgreementsListGrouped.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExAgreementsListGrouped_DesignTimeLayout.LayoutString = resources.GetString("gridExAgreementsListGrouped_DesignTimeLayout.LayoutString");
             this.gridExAgreementsListGrouped.DesignTimeLayout = gridExAgreementsListGrouped_DesignTimeLayout;
             this.gridExAgreementsListGrouped.DynamicFiltering = true;

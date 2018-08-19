@@ -43,7 +43,6 @@ namespace DAL.Grids
             if (!string.IsNullOrEmpty(whereClause))
                 cmdSelect.Parameters.AddWithValue("@where", whereClause);
 
-
             dataAdapter.SelectCommand = cmdSelect;
 
             dataAdapter.Fill(dataTable);

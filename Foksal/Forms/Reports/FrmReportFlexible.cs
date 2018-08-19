@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Entities;
 using DAL.Grids;
+using Janus.Windows.GridEX;
 using System;
 using System.Windows.Forms;
 
@@ -20,6 +21,9 @@ namespace Foksal.Forms.Reports
             this.dateFrom = DateTime.Now.AddMonths(-1);
             this.dateTo = DateTime.Now;
 
+            dtFrom.Value = DateTime.Now.AddMonths(-1);
+            dtTo.Value = DateTime.Now;
+
             this.Name = string.Format("Raport: {0}", reportType.Name);
 
             this.gridReportFlexibleRepo = new GridReportFlexibleRepo();
@@ -31,7 +35,20 @@ namespace Foksal.Forms.Reports
         private void LoadData()
         {
             this.gridReportFlexibleRepo.BindDataSet(gridExReport, this.reportType, this.dateFrom, this.dateTo);
+
             gridExReport.RetrieveStructure();
+            this.FormatGrid();
+        }
+
+        private void FormatGrid()
+        {
+            gridExReport.RootTable.Columns["DataFiltr"].Visible = false;
+
+            foreach (GridEXColumn column in gridExReport.RootTable.Columns)
+            {
+                if (column.FormatString == "c")
+                    column.FormatString = "";
+            }
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
@@ -39,21 +56,7 @@ namespace Foksal.Forms.Reports
             ExcelHelper.ExportGridEx(gridExReport);
         }
 
-        private void dtFrom_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtFrom.Checked)
-            {
-                this.dateFrom = dtFrom.Value;
-            }
-            else
-            {
-                this.dateFrom = null;
-            }
-
-            this.LoadData();
-        }
-
-        private void dtTo_ValueChanged(object sender, EventArgs e)
+        private void btnFilter_Click(object sender, EventArgs e)
         {
             if (dtTo.Checked)
             {
@@ -62,6 +65,15 @@ namespace Foksal.Forms.Reports
             else
             {
                 this.dateTo = null;
+            }
+
+            if (dtFrom.Checked)
+            {
+                this.dateFrom = dtFrom.Value;
+            }
+            else
+            {
+                this.dateFrom = null;
             }
 
             this.LoadData();

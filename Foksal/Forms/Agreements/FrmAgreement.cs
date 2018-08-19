@@ -93,7 +93,7 @@ namespace Foksal.Forms.Agreements
 
             cboSettlementModel.DataSource = SettlementModelsRepo.GetAll();
             cboSettlementModel.DisplayMember = "Name";
-            cboSettlementModel.ValueMember = "Id";
+            cboSettlementModel.ValueMember = "Id";            
         }
 
         private void LoadData()
@@ -124,6 +124,15 @@ namespace Foksal.Forms.Agreements
 
             if (previouslySelectedPositionId > 0)
                 this.SelectPositionById(previouslySelectedPositionId);
+
+            gridExArticles.RootTable.AllowAddNew = InheritableBoolean.False;
+            gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.False;
+            gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.False;
+            gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.False;
+            gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.False;
+
+            if (this.agreement.Id > 0)
+                btnAgreementWFMAG.Enabled = false;
         }
 
         private void LoadHeader()
@@ -620,6 +629,20 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
+        private void btnAgreementWFMAG_Click(object sender, EventArgs e)
+        {
+            FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
+            if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
+            {
+                txtReportTitle.Text = frmWFMagPicker.ChosenTitle;
+                this.SaveAgreement();
+
+                this.AddPosition(frmWFMagPicker.ChosenKTM, frmWFMagPicker.ChosenDescriptor);
+            }
+
+            this.SetPositionChangesPending(true);
+        }
+
         private void btnWFMAG_Click(object sender, EventArgs e)
         {
             FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
@@ -727,6 +750,7 @@ namespace Foksal.Forms.Agreements
             if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 gridArticlesRepo.BindDataSet(gridExArticles, this.agreement.Id);
+                gridExArticles.RootTable.AllowAddNew = InheritableBoolean.False;
             }
         }
 
@@ -735,6 +759,7 @@ namespace Foksal.Forms.Agreements
             if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 gridRelatedProductsRepo.BindDataSet(gridExRelatedProducts, this.selectedPosition.Id);
+                gridExRelatedProducts.RootTable.AllowAddNew = InheritableBoolean.False;
             }
         }
 
@@ -743,6 +768,7 @@ namespace Foksal.Forms.Agreements
             if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 gridThresholdsRepo.BindDataSet(gridExThresholds, this.selectedPosition.Id);
+                gridExThresholds.RootTable.AllowAddNew = InheritableBoolean.False;
             }
         }
 
@@ -751,6 +777,7 @@ namespace Foksal.Forms.Agreements
             if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 gridLicensorsRepo.BindDataSet(gridExLicensors, this.agreement.Id);
+                gridExLicensors.RootTable.AllowAddNew = InheritableBoolean.False;
             }
         }
 
@@ -759,6 +786,7 @@ namespace Foksal.Forms.Agreements
             if (MessageBox.Show("Czy na pewno chcesz odświeżyć listę?\r\nUtracisz wszelkie niezapisane zmiany.", "Odśwież listę", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 gridScheduleRepo.BindDataSet(gridExSchedule, this.agreement.Id);
+                gridExSchedule.RootTable.AllowAddNew = InheritableBoolean.False;
             }
         }
         #endregion
@@ -997,6 +1025,7 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
-        #endregion        
+        #endregion
+        
     }
 }
