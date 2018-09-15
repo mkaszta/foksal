@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Janus.Windows.GridEX;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,15 +13,18 @@ namespace DAL.Grids
         private DataTable dataTable = new DataTable("dataTable");
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-        public void BindDataSet(GridEX grid)
+        public void BindDataSet(GridEX grid, DateTime? dateFrom, DateTime? dateTo)
         {
             dataTable.Clear();
 
-            SqlCommand cmdSelect = new SqlCommand();
+            SqlCommand cmdSelect = new SqlCommand("[dbo].[ProcProduktyNiepowiazane]");
             cmdSelect.Connection = dbConnection.Connection;
-            cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = "SELECT * FROM [dbo].[vProduktyNiepowiazane]";
-            this.dataAdapter.SelectCommand = cmdSelect;           
+            cmdSelect.CommandType = CommandType.StoredProcedure;
+
+            cmdSelect.Parameters.AddWithValue("@DataOd", dateFrom);
+            cmdSelect.Parameters.AddWithValue("@DataDo", dateTo);
+
+            this.dataAdapter.SelectCommand = cmdSelect;
 
             dataAdapter.Fill(dataTable);
             grid.DataSource = dataTable;

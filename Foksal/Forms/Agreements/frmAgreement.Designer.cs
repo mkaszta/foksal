@@ -422,6 +422,11 @@
             // numModelPercent
             // 
             this.numModelPercent.Location = new System.Drawing.Point(331, 67);
+            this.numModelPercent.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numModelPercent.Minimum = new decimal(new int[] {
             100,
             0,

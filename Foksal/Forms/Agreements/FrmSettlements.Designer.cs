@@ -63,7 +63,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExSettlementsList.ColumnAutoResize = true;
             this.gridExSettlementsList.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExSettlementsList.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExSettlementsList_DesignTimeLayout.LayoutString = resources.GetString("gridExSettlementsList_DesignTimeLayout.LayoutString");
             this.gridExSettlementsList.DesignTimeLayout = gridExSettlementsList_DesignTimeLayout;
             this.gridExSettlementsList.DynamicFiltering = true;
@@ -101,6 +100,7 @@
             this.gridExSettlementsDetails.Size = new System.Drawing.Size(1274, 278);
             this.gridExSettlementsDetails.TabIndex = 2;
             this.gridExSettlementsDetails.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.gridExSettlementsDetails.LoadingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.gridExSettlementsDetails_LoadingRow);            
             // 
             // btnReport
             // 
@@ -290,6 +290,7 @@
             // 
             // chkSum
             // 
+            this.chkSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkSum.AutoSize = true;
             this.chkSum.Location = new System.Drawing.Point(1292, 265);
             this.chkSum.Name = "chkSum";

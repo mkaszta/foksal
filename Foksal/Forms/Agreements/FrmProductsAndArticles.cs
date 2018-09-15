@@ -24,7 +24,7 @@ namespace Foksal.Forms.Agreements
 
         private void LoadData()
         {
-            this.gridProductsAndArticlesRepo.BindDataSet(gridExProductsAndArticles);
+            this.gridProductsAndArticlesRepo.BindDataSet(gridExProductsAndArticles, dtFrom.Value, dtTo.Value);
 
             this.gridAgreementsListGroupedRepo.BindDataSet(gridExAgreementsListGrouped);
             gridExAgreementsListGrouped.RootTable.Groups.Clear();
@@ -231,6 +231,11 @@ namespace Foksal.Forms.Agreements
         {
             if (gridExProductsAndArticles.CurrentRow != null && gridExProductsAndArticles.CurrentRow.RowIndex > -1)
                 this.ApplyFilters();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            this.LoadData();
         }
     }
 }

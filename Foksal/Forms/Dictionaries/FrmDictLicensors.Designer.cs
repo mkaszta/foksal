@@ -60,7 +60,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExLicensors.ColumnAutoResize = true;
             this.gridExLicensors.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExLicensors.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExLicensors_DesignTimeLayout.LayoutString = resources.GetString("gridExLicensors_DesignTimeLayout.LayoutString");
             this.gridExLicensors.DesignTimeLayout = gridExLicensors_DesignTimeLayout;
             this.gridExLicensors.DynamicFiltering = true;

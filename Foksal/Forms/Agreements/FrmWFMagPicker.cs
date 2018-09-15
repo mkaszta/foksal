@@ -27,7 +27,7 @@ namespace Foksal.Forms.Agreements
             }
             else
             {
-                this.gridWFMagPickerRepo.BindDataSet_Unrelated(gridExWFMagPicker, dtFrom.Value, dtTo.Value);
+                this.gridWFMagPickerRepo.BindDataSet_Unrelated(gridExWFMagPicker);
             }            
         }
 
@@ -52,20 +52,14 @@ namespace Foksal.Forms.Agreements
             this.Close();
         }
 
-        private void gridExWFMagPicker_DoubleClick(object sender, System.EventArgs e)
+        private void rdb_CheckedChanged(object sender, System.EventArgs e)
+        {            
+            this.LoadData();
+        }
+
+        private void gridExWFMagPicker_RowDoubleClick(object sender, Janus.Windows.GridEX.RowActionEventArgs e)
         {
             this.ReturnData();
-        }
-
-        private void rdb_CheckedChanged(object sender, System.EventArgs e)
-        {
-            grpDates.Visible = rdbUnrelated.Checked;
-            this.LoadData();
-        }
-
-        private void btnFilter_Click(object sender, System.EventArgs e)
-        {
-            this.LoadData();
         }
     }
 }

@@ -53,6 +53,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.numInvoiceAmount = new System.Windows.Forms.NumericUpDown();
             this.numTaxPercent = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPurchaseOrder = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numInvoiceAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTaxPercent)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +152,7 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(20, 254);
+            this.txtComments.Location = new System.Drawing.Point(20, 293);
             this.txtComments.Name = "txtComments";
             this.txtComments.Size = new System.Drawing.Size(299, 96);
             this.txtComments.TabIndex = 85;
@@ -238,7 +240,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 238);
+            this.label11.Location = new System.Drawing.Point(17, 277);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 98;
@@ -246,7 +248,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(163, 372);
+            this.btnSave.Location = new System.Drawing.Point(163, 395);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 99;
@@ -257,7 +259,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(244, 372);
+            this.btnCancel.Location = new System.Drawing.Point(244, 395);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 100;
@@ -268,11 +270,11 @@
             // numInvoiceAmount
             // 
             this.numInvoiceAmount.Location = new System.Drawing.Point(151, 137);
-            this.numInvoiceAmount.Minimum = new decimal(new int[] {
-            100,
+            this.numInvoiceAmount.Maximum = new decimal(new int[] {
+            100000000,
             0,
             0,
-            -2147483648});
+            0});
             this.numInvoiceAmount.Name = "numInvoiceAmount";
             this.numInvoiceAmount.Size = new System.Drawing.Size(168, 20);
             this.numInvoiceAmount.TabIndex = 101;
@@ -289,13 +291,31 @@
             this.numTaxPercent.Size = new System.Drawing.Size(168, 20);
             this.numTaxPercent.TabIndex = 102;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 238);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.TabIndex = 104;
+            this.label12.Text = "Purchase order:";
+            // 
+            // txtPurchaseOrder
+            // 
+            this.txtPurchaseOrder.Location = new System.Drawing.Point(20, 254);
+            this.txtPurchaseOrder.Name = "txtPurchaseOrder";
+            this.txtPurchaseOrder.Size = new System.Drawing.Size(299, 20);
+            this.txtPurchaseOrder.TabIndex = 103;
+            // 
             // FrmSettlementEdit
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(338, 418);
+            this.ClientSize = new System.Drawing.Size(338, 428);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtPurchaseOrder);
             this.Controls.Add(this.numTaxPercent);
             this.Controls.Add(this.numInvoiceAmount);
             this.Controls.Add(this.btnCancel);
@@ -361,5 +381,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.NumericUpDown numInvoiceAmount;
         private System.Windows.Forms.NumericUpDown numTaxPercent;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPurchaseOrder;
     }
 }

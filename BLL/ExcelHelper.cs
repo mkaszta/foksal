@@ -66,17 +66,23 @@ namespace BLL
 
             // header
 
-            var headerRow = gridEx.GetDataRows()[0];               
-            int cellId = 1;            
+            var headerRow = gridEx.GetDataRows()[0];
+            int cellId = 1;
 
             foreach (GridEXCell cell in headerRow.Cells)
             {
                 if (cell.Column.Visible)
                 {
                     xlWorkSheet.Cells[1, cellId] = cell.Column.Caption;
+
+                    if (cell.Column.DataTypeCode == TypeCode.Decimal)
+                    {
+                        xlWorkSheet.Columns[cellId].NumberFormat = "# ##0,00";
+                    }
+
                     cellId++;
-                }
-            }                      
+                }                
+            }
 
             int rowId = 2;
             cellId = 1;
@@ -86,7 +92,7 @@ namespace BLL
                 {
                     if (cell.Column.Visible)
                     {
-                        xlWorkSheet.Cells[rowId, cellId] = cell.Value.ToString();
+                        xlWorkSheet.Cells[rowId, cellId] = cell.Value;
                         cellId++;
                     }
                 }
@@ -109,10 +115,10 @@ namespace BLL
             if (createSumRow)
             {
                 xlWorkSheet.Cells[rowId, 1] = "SUMA";
-                xlWorkSheet.Cells[rowId, 22] = sumAdvance.ToString();
-                xlWorkSheet.Cells[rowId, 23] = sumUnearnedAdvance.ToString();
-                xlWorkSheet.Cells[rowId, 24] = sumReckoning.ToString();
-                xlWorkSheet.Cells[rowId, 25] = sumPayment.ToString();
+                xlWorkSheet.Cells[rowId, 22] = sumAdvance;
+                xlWorkSheet.Cells[rowId, 23] = sumUnearnedAdvance;
+                xlWorkSheet.Cells[rowId, 24] = sumReckoning;
+                xlWorkSheet.Cells[rowId, 25] = sumPayment;
 
                 xlWorkSheet.Range[xlWorkSheet.Rows[rowId].Cells[1], xlWorkSheet.Rows[rowId].Cells[25]].Interior.Color = System.Drawing.Color.Bisque;
             }
@@ -152,14 +158,13 @@ namespace BLL
             int reportRowId = 6;
             int reportPageRowId = 1;
             int reportPage = 1;
-            
+
             decimal sumPayment = 0;
 
             // DATE
             xlWorkSheetReport.Cells[3, 13] = string.Format("Warszawa, {0}", DateTime.Now.ToShortDateString());
 
-            // HEADER
-            //templateHeaderRow.Copy(xlWorkSheetReport.Rows[reportRowId]);
+            // HEADER            
             templateHeaderRow.Copy(System.Type.Missing);
             xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
 
@@ -171,7 +176,7 @@ namespace BLL
                 {
                     // HEADER
                     templateHeaderRow.Copy(System.Type.Missing);
-                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
 
                     reportPageRowId = 2;
                     reportRowId++;
@@ -182,32 +187,32 @@ namespace BLL
                 {
                     // SUM
                     templateSumRow.Copy(System.Type.Missing);
-                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
 
-                    xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();
-                    
+                    xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
+
                     sumPayment += (decimal)gridexRow.Cells["DoWyplaty"].Value;
                 }
                 else
                 {
                     // LINE
                     templateLineRow.Copy(System.Type.Missing);
-                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);                    
+                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
 
-                    xlWorkSheetReport.Cells[reportRowId, 1] = gridexRow.Cells["lp"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 2] = gridexRow.Cells["Tytul"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 3] = gridexRow.Cells["autor"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 4] = gridexRow.Cells["naklad"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 5] = gridexRow.Cells["CenaDetaliczna"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 6] = gridexRow.Cells["CenaNetto"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 7] = gridexRow.Cells["Okres"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 8] = gridexRow.Cells["sprzedaz"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 9] = gridexRow.Cells["PodstawaDoRozliczen"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["Honorarium"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["HonorariumWaluta"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value.ToString();
-                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value.ToString();
+                    xlWorkSheetReport.Cells[reportRowId, 1] = gridexRow.Cells["lp"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 2] = gridexRow.Cells["Tytul"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 3] = gridexRow.Cells["autor"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 4] = gridexRow.Cells["naklad"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 5] = gridexRow.Cells["CenaDetaliczna"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 6] = gridexRow.Cells["CenaNetto"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 7] = gridexRow.Cells["Okres"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 8] = gridexRow.Cells["sprzedaz"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 9] = gridexRow.Cells["PodstawaDoRozliczen"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["Honorarium"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["HonorariumWaluta"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
                 }
 
                 reportRowId++;
@@ -216,8 +221,17 @@ namespace BLL
 
             // FOOTER
             templateFooterRow.Copy(System.Type.Missing);
-            xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);            
-            xlWorkSheetReport.Cells[reportRowId, 13] = sumPayment.ToString();
+            xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
+            xlWorkSheetReport.Cells[reportRowId, 13] = sumPayment;
+
+            // FORMATTING
+            //xlWorkSheetReport.Columns[5].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[6].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[9].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[10].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[11].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[12].NumberFormat = "# ##0,00";
+            //xlWorkSheetReport.Columns[13].NumberFormat = "# ##0,00";
 
             ExcelHelper.ExportWorkbookToPdf(xlWorkSheetReport, filePath);
 

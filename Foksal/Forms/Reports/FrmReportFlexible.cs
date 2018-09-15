@@ -46,8 +46,15 @@ namespace Foksal.Forms.Reports
 
             foreach (GridEXColumn column in gridExReport.RootTable.Columns)
             {
-                if (column.FormatString == "c")
-                    column.FormatString = "";
+                if (column.DataTypeCode == TypeCode.Decimal)
+                {
+                    column.FormatString = "# ##0.00";
+                    column.TextAlignment = TextAlignment.Far;
+                }
+                else if (column.DataTypeCode == TypeCode.String)
+                {
+                    column.DefaultFilterRowComparison = FilterConditionOperator.Contains;
+                }
             }
         }
 

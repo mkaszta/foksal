@@ -45,6 +45,11 @@
             this.btnBindNewPosition = new System.Windows.Forms.Button();
             this.btnBindKTM = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.dtTo = new System.Windows.Forms.DateTimePicker();
+            this.dtFrom = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridExProductsAndArticles)).BeginInit();
@@ -61,7 +66,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExProductsAndArticles.ColumnAutoResize = true;
             this.gridExProductsAndArticles.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExProductsAndArticles.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExProductsAndArticles_DesignTimeLayout.LayoutString = resources.GetString("gridExProductsAndArticles_DesignTimeLayout.LayoutString");
             this.gridExProductsAndArticles.DesignTimeLayout = gridExProductsAndArticles_DesignTimeLayout;
             this.gridExProductsAndArticles.DynamicFiltering = true;
@@ -70,12 +74,12 @@
             this.gridExProductsAndArticles.FilterRowFormatStyle.BackColor = System.Drawing.Color.LightCyan;
             this.gridExProductsAndArticles.GroupByBoxVisible = false;
             this.gridExProductsAndArticles.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight;
-            this.gridExProductsAndArticles.Location = new System.Drawing.Point(6, 19);
+            this.gridExProductsAndArticles.Location = new System.Drawing.Point(6, 45);
             this.gridExProductsAndArticles.Name = "gridExProductsAndArticles";
             this.gridExProductsAndArticles.SelectedInactiveFormatStyle.BackColor = System.Drawing.SystemColors.Highlight;
             this.gridExProductsAndArticles.SelectedInactiveFormatStyle.BackColorGradient = System.Drawing.SystemColors.Highlight;
             this.gridExProductsAndArticles.SelectedInactiveFormatStyle.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gridExProductsAndArticles.Size = new System.Drawing.Size(1139, 253);
+            this.gridExProductsAndArticles.Size = new System.Drawing.Size(1139, 227);
             this.gridExProductsAndArticles.TabIndex = 1;
             this.gridExProductsAndArticles.SelectionChanged += new System.EventHandler(this.gridExProductsAndArticles_SelectionChanged);
             // 
@@ -87,7 +91,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridExAgreementsListGrouped.ColumnAutoResize = true;
             this.gridExAgreementsListGrouped.ColumnSetHeaders = Janus.Windows.GridEX.InheritableBoolean.False;
-            this.gridExAgreementsListGrouped.DefaultFilterRowComparison = Janus.Windows.GridEX.FilterConditionOperator.Contains;
             gridExAgreementsListGrouped_DesignTimeLayout.LayoutString = resources.GetString("gridExAgreementsListGrouped_DesignTimeLayout.LayoutString");
             this.gridExAgreementsListGrouped.DesignTimeLayout = gridExAgreementsListGrouped_DesignTimeLayout;
             this.gridExAgreementsListGrouped.DynamicFiltering = true;
@@ -219,13 +222,66 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnFilter);
+            this.groupBox3.Controls.Add(this.dtTo);
+            this.groupBox3.Controls.Add(this.dtFrom);
             this.groupBox3.Controls.Add(this.gridExProductsAndArticles);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1152, 278);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Niepowiązane tytuły z WF MAG";
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(273, 19);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 20);
+            this.btnFilter.TabIndex = 72;
+            this.btnFilter.Text = "Filtruj";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // dtTo
+            // 
+            this.dtTo.Checked = false;
+            this.dtTo.CustomFormat = "MMMM yyyy";
+            this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtTo.Location = new System.Drawing.Point(162, 19);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.Size = new System.Drawing.Size(94, 20);
+            this.dtTo.TabIndex = 70;
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.Checked = false;
+            this.dtFrom.CustomFormat = "MMMM yyyy";
+            this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFrom.Location = new System.Drawing.Point(34, 19);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.Size = new System.Drawing.Size(94, 20);
+            this.dtFrom.TabIndex = 68;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(134, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 13);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "do:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "od:";
             // 
             // btnRefresh
             // 
@@ -265,6 +321,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -286,5 +343,10 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.RadioButton rdbTitle;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DateTimePicker dtTo;
+        private System.Windows.Forms.DateTimePicker dtFrom;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

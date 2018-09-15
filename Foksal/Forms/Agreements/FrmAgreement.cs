@@ -93,7 +93,7 @@ namespace Foksal.Forms.Agreements
 
             cboSettlementModel.DataSource = SettlementModelsRepo.GetAll();
             cboSettlementModel.DisplayMember = "Name";
-            cboSettlementModel.ValueMember = "Id";            
+            cboSettlementModel.ValueMember = "Id";
         }
 
         private void LoadData()
@@ -151,6 +151,8 @@ namespace Foksal.Forms.Agreements
             else
             {
                 dtAdvanceDate.Format = DateTimePickerFormat.Short;
+                dtAdvanceDate.Checked = true;
+
                 if (this.agreement.AdvanceDate.HasValue)
                     dtAdvanceDate.Value = this.agreement.AdvanceDate.GetValueOrDefault();
             }
@@ -1026,6 +1028,6 @@ namespace Foksal.Forms.Agreements
         }
 
         #endregion
-        
+
     }
 }

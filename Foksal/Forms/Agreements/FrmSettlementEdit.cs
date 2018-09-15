@@ -55,6 +55,7 @@ namespace Foksal.Forms.Agreements
             this.settlement.Email = txtEmail.Text;
             this.settlement.InvoiceAmount = numInvoiceAmount.Value;
             this.settlement.TaxPercent = numTaxPercent.Value;
+            this.settlement.PurchaseOrder = txtPurchaseOrder.Text;
 
             this.settlement.CertificateDate = dtCerificate.Checked ? dtCerificate.Value : (DateTime?)null;
             this.settlement.DispatchDate = dtDispatch.Checked ? dtDispatch.Value : (DateTime?)null;

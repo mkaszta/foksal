@@ -234,5 +234,10 @@ namespace Foksal.Forms.Agreements
             this.datePeriodTo = dtTo.Checked ? dtTo.Value : (DateTime?)null;
             this.LoadData();
         }
+
+        private void gridExSettlementsDetails_LoadingRow(object sender, RowLoadEventArgs e)
+        {
+            this.ApplyRowFormatting();
+        }
     }
 }
