@@ -24,7 +24,12 @@ namespace Foksal.Forms.Agreements
 
         private void LoadData()
         {
+            int actualAbsolutePosition = gridExProductsAndArticles.CurrentRow == null ? 0 : gridExProductsAndArticles.CurrentRow.AbsolutePosition;
+
             this.gridProductsAndArticlesRepo.BindDataSet(gridExProductsAndArticles, dtFrom.Value, dtTo.Value);
+
+            if (actualAbsolutePosition > 0)
+                gridExProductsAndArticles.MoveTo(actualAbsolutePosition - 1);
 
             this.gridAgreementsListGroupedRepo.BindDataSet(gridExAgreementsListGrouped);
             gridExAgreementsListGrouped.RootTable.Groups.Clear();
@@ -75,12 +80,19 @@ namespace Foksal.Forms.Agreements
                 if (MessageBox.Show(string.Format("W pozycji:\r\n\r\nKTM:\t\t{0}\r\nDeskryptor:\t{1}\r\n\r\nna umowie {2} zostanie zmieniony parametr:\r\n\r\nKTM:\t\t{3}",
                     positionKtm, positionDescriptor, agreementId.ToString(), ktm), "Przypisanie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    AgreementPosition agreementPosition = AgreementPositionsRepo.GetByID(agreementPositionId);
-                    agreementPosition.KTM = ktm;
+                    try
+                    {
+                        AgreementPosition agreementPosition = AgreementPositionsRepo.GetByID(agreementPositionId);
+                        agreementPosition.KTM = ktm;
 
-                    AgreementPositionsRepo.InsertUpdate(agreementPosition);
+                        AgreementPositionsRepo.InsertUpdate(agreementPosition);
 
-                    MessageBox.Show("KTM został poprawnie zmieniony.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("KTM został poprawnie zmieniony.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                    
 
                     this.LoadData();
                 }
@@ -105,17 +117,24 @@ namespace Foksal.Forms.Agreements
                 if (MessageBox.Show(string.Format("Do pozycji:\r\n\r\nKTM:\t\t{0}\r\nDeskryptor:\t{1}\r\n\r\nna umowie {2} zostanie dopisany produkt powiązany:\r\n\r\nKTM:\t\t{3}\r\nDeskryptor:\t{4}",
                     positionKtm, positionDescriptor, agreementId.ToString(), ktm, descriptor), "Przypisanie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    RelatedProduct relatedProduct = new RelatedProduct()
+                    try
                     {
-                        AgreementPositionId = agreementPositionId,
-                        KTM = ktm,
-                        Descriptor = descriptor
-                    };
+                        RelatedProduct relatedProduct = new RelatedProduct()
+                        {
+                            AgreementPositionId = agreementPositionId,
+                            KTM = ktm,
+                            Descriptor = descriptor
+                        };
 
-                    AgreementPositionsRepo.InsertRelatedProduct(relatedProduct);
+                        AgreementPositionsRepo.InsertRelatedProduct(relatedProduct);
 
-                    MessageBox.Show("Produkt został poprawnie powiązany.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        MessageBox.Show("Produkt został poprawnie powiązany.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                     this.LoadData();
                 }
             }
@@ -134,10 +153,18 @@ namespace Foksal.Forms.Agreements
 
             if (MessageBox.Show(string.Format("Do umowy {0} zostanie dopisana nowa pozycja:\r\n\r\nKTM:\t\t{1}\r\nDeskryptor:\t{2}", agreementId.ToString(), ktm, descriptor), "Przypisanie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                FrmAgreement frmAgreement = new FrmAgreement(agreementId, -1);
+                try
+                {
+                    FrmAgreement frmAgreement = new FrmAgreement(agreementId, -1);
 
-                frmAgreement.AddPosition(ktm, descriptor);
-                frmAgreement.ShowDialog();
+                    frmAgreement.AddPosition(ktm, descriptor);
+                    frmAgreement.ShowDialog();
+                }
+                catch
+                {
+                    MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
                 this.LoadData();
             }
         }
@@ -150,17 +177,25 @@ namespace Foksal.Forms.Agreements
 
             if (MessageBox.Show(string.Format("Do umowy {0} zostanie dopisany towar powiązany:\r\n\r\nKTM:\t\t{1}\r\nDeskryptor:\t{2}", agreementId.ToString(), ktm, descriptor), "Przypisanie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                RelatedArticle relatedArticle = new RelatedArticle()
+                try
                 {
-                    AgreementId = agreementId,
-                    KTM = ktm,
-                    Descriptor = descriptor,
-                    Comments = ""
-                };
+                    RelatedArticle relatedArticle = new RelatedArticle()
+                    {
+                        AgreementId = agreementId,
+                        KTM = ktm,
+                        Descriptor = descriptor,
+                        Comments = ""
+                    };
 
-                AgreementsRepo.InsertRelatedArticle(relatedArticle);
+                    AgreementsRepo.InsertRelatedArticle(relatedArticle);
 
-                MessageBox.Show("Towar został poprawnie powiązany.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Towar został poprawnie powiązany.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
                 this.LoadData();
             }
         }

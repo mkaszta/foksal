@@ -125,7 +125,14 @@ namespace DAL.Repositories
                     command.Parameters.Add("@ktm", SqlDbType.VarChar, 50).Value = relatedProduct.KTM;
                     command.Parameters.Add("@wprowadzenieUzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
 
-                    command.ExecuteNonQuery();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }                    
+                    catch (SqlException)
+                    {
+                        throw new Exception();
+                    }
                 }
             }
         }

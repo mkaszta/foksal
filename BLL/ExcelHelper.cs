@@ -77,11 +77,11 @@ namespace BLL
 
                     if (cell.Column.DataTypeCode == TypeCode.Decimal)
                     {
-                        xlWorkSheet.Columns[cellId].NumberFormat = "# ##0,00";
+                        xlWorkSheet.Columns[cellId].NumberFormat = cell.Column.FormatString.Replace(".", ",");                       
                     }
 
                     cellId++;
-                }                
+                }
             }
 
             int rowId = 2;
@@ -92,7 +92,15 @@ namespace BLL
                 {
                     if (cell.Column.Visible)
                     {
-                        xlWorkSheet.Cells[rowId, cellId] = cell.Value;
+                        if (cell.Value.ToString() == "" && cell.Column.NullText != "")
+                        {
+                            xlWorkSheet.Cells[rowId, cellId] = cell.Column.NullText;
+                        }
+                        else
+                        {
+                            xlWorkSheet.Cells[rowId, cellId] = cell.Value;
+                        }
+                            
                         cellId++;
                     }
                 }
@@ -125,6 +133,8 @@ namespace BLL
 
             xlWorkSheet.Columns.ColumnWidth = 15;
             xlWorkSheet.Rows[1].WrapText = true;
+
+            xlWorkSheet.Columns["A:Y"].EntireColumn.AutoFit();
 
             xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);

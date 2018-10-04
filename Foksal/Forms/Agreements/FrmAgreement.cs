@@ -220,6 +220,7 @@ namespace Foksal.Forms.Agreements
             txtPositionComments.Text = this.selectedPosition.Comments;
             txtKTM.Text = this.selectedPosition.KTM;
             txtDescriptor.Text = this.selectedPosition.Descriptor;
+            dtBillingPeriodFrom.Value = this.selectedPosition.BillingPeriodStart;
 
             if (this.selectedPosition.ExpirationDate == null)
             {
@@ -232,7 +233,7 @@ namespace Foksal.Forms.Agreements
                 dtExpiration.Format = DateTimePickerFormat.Short;
                 if (this.selectedPosition.ExpirationDate.HasValue)
                     dtExpiration.Value = this.selectedPosition.ExpirationDate.GetValueOrDefault();
-            }
+            }           
 
             if (this.selectedPosition.BillingPeriodEnd == null)
             {

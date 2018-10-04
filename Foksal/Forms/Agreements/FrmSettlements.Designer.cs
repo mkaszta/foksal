@@ -100,7 +100,7 @@
             this.gridExSettlementsDetails.Size = new System.Drawing.Size(1274, 278);
             this.gridExSettlementsDetails.TabIndex = 2;
             this.gridExSettlementsDetails.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.gridExSettlementsDetails.LoadingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.gridExSettlementsDetails_LoadingRow);            
+            this.gridExSettlementsDetails.LoadingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.gridExSettlementsDetails_LoadingRow);
             // 
             // btnReport
             // 
