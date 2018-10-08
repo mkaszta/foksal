@@ -75,10 +75,7 @@ namespace BLL
                 {
                     xlWorkSheet.Cells[1, cellId] = cell.Column.Caption;
 
-                    if (cell.Column.DataTypeCode == TypeCode.Decimal)
-                    {
-                        xlWorkSheet.Columns[cellId].NumberFormat = cell.Column.FormatString.Replace(".", ",");                       
-                    }
+                    xlWorkSheet.Columns[cellId].NumberFormat = cell.Column.FormatString.Replace(".", ",");
 
                     cellId++;
                 }
@@ -219,8 +216,8 @@ namespace BLL
                     xlWorkSheetReport.Cells[reportRowId, 7] = gridexRow.Cells["Okres"].Value;
                     xlWorkSheetReport.Cells[reportRowId, 8] = gridexRow.Cells["sprzedaz"].Value;
                     xlWorkSheetReport.Cells[reportRowId, 9] = gridexRow.Cells["PodstawaDoRozliczen"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["Honorarium"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["HonorariumWaluta"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["HonorariumProcent"].Value;
+                    xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["Honorarium"].Value;
                     xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value;
                     xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
                 }
