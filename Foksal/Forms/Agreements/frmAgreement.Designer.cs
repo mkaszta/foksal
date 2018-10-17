@@ -421,6 +421,7 @@
             // 
             // numModelPercent
             // 
+            this.numModelPercent.DecimalPlaces = 2;
             this.numModelPercent.Location = new System.Drawing.Point(331, 67);
             this.numModelPercent.Maximum = new decimal(new int[] {
             1000000,
@@ -457,6 +458,7 @@
             // 
             // numModelFixedPrice
             // 
+            this.numModelFixedPrice.DecimalPlaces = 2;
             this.numModelFixedPrice.Location = new System.Drawing.Point(415, 68);
             this.numModelFixedPrice.Minimum = new decimal(new int[] {
             100,

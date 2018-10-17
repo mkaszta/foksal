@@ -220,7 +220,7 @@ namespace Foksal.Forms.Agreements
             txtPositionComments.Text = this.selectedPosition.Comments;
             txtKTM.Text = this.selectedPosition.KTM;
             txtDescriptor.Text = this.selectedPosition.Descriptor;
-            dtBillingPeriodFrom.Value = this.agreement.Id == 0 ? DateTime.Now : this.selectedPosition.BillingPeriodStart;
+            dtBillingPeriodFrom.Value = this.selectedPosition.Id == 0 ? DateTime.Now : this.selectedPosition.BillingPeriodStart;
 
             if (this.selectedPosition.ExpirationDate == null)
             {
