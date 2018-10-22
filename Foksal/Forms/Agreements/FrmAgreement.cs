@@ -47,7 +47,7 @@ namespace Foksal.Forms.Agreements
             this.SelectPositionById(positionId);
         }
 
-        public void AddPosition(string ktm = "", string descriptor = "")
+        public void AddPosition(DateTime? wfmagDeliveryDate, string ktm = "", string descriptor = "")
         {
             this.gridPositionsRepo.AddRow(this.agreement.Id);
             gridExPositions.Refetch();
@@ -59,6 +59,7 @@ namespace Foksal.Forms.Agreements
 
             txtKTM.Text = ktm;
             txtDescriptor.Text = descriptor;
+            dtBillingPeriodFrom.Value = wfmagDeliveryDate ?? DateTime.Now;
         }
 
         private void SelectPositionById(int positionId)
@@ -233,7 +234,7 @@ namespace Foksal.Forms.Agreements
                 dtExpiration.Format = DateTimePickerFormat.Short;
                 if (this.selectedPosition.ExpirationDate.HasValue)
                     dtExpiration.Value = this.selectedPosition.ExpirationDate.GetValueOrDefault();
-            }           
+            }
 
             if (this.selectedPosition.BillingPeriodEnd == null)
             {
@@ -490,7 +491,13 @@ namespace Foksal.Forms.Agreements
                     AgreementPositionsRepo.InsertUpdate(this.selectedPosition);
                     selectedPositionId = selectedPosition.Id;
 
-                    // update grida z programi dla zaznaczonej pozycji
+                    // update grida z progami dla zaznaczonej pozycji
+                    foreach (var row in this.gridExThresholds.GetDataRows())
+                    {
+                        row.BeginEdit();
+                        row.Cells["pozycjaUmowyId"].Value = selectedPositionId;
+                        row.EndEdit();
+                    }
                     this.gridThresholdsRepo.Update();
 
                     //update grida z produktami dla zaznaczonej pozycji
@@ -573,7 +580,7 @@ namespace Foksal.Forms.Agreements
 
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
-            this.AddPosition();
+            this.AddPosition(null);
         }
 
         private void btnRemovePosition_Click(object sender, EventArgs e)
@@ -640,7 +647,7 @@ namespace Foksal.Forms.Agreements
                 txtReportTitle.Text = frmWFMagPicker.ChosenTitle;
                 this.SaveAgreement();
 
-                this.AddPosition(frmWFMagPicker.ChosenKTM, frmWFMagPicker.ChosenDescriptor);
+                this.AddPosition(frmWFMagPicker.ChosenDeliveryDate, frmWFMagPicker.ChosenKTM, frmWFMagPicker.ChosenDescriptor);
             }
 
             this.SetPositionChangesPending(true);
@@ -734,7 +741,7 @@ namespace Foksal.Forms.Agreements
 
         private void btnPositionsWFMAG_Click(object sender, EventArgs e)
         {
-            this.AddPosition();
+            this.AddPosition(null);
 
             FrmWFMagPicker frmWFMagPicker = new FrmWFMagPicker();
             if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
@@ -745,6 +752,7 @@ namespace Foksal.Forms.Agreements
 
                 txtKTM.Text = frmWFMagPicker.ChosenKTM;
                 txtDescriptor.Text = frmWFMagPicker.ChosenDescriptor;
+                dtBillingPeriodFrom.Value = frmWFMagPicker.ChosenDeliveryDate;
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using DAL.Grids;
+using System;
 using System.Windows.Forms;
 
 namespace Foksal.Forms.Agreements
@@ -10,6 +11,7 @@ namespace Foksal.Forms.Agreements
         public string ChosenKTM { get; set; }
         public string ChosenDescriptor { get; set; }
         public string ChosenTitle { get; set; }
+        public DateTime ChosenDeliveryDate { get; set; }
 
         public FrmWFMagPicker()
         {
@@ -28,7 +30,7 @@ namespace Foksal.Forms.Agreements
             else
             {
                 this.gridWFMagPickerRepo.BindDataSet_Unrelated(gridExWFMagPicker);
-            }            
+            }
         }
 
         private void ReturnData()
@@ -36,6 +38,7 @@ namespace Foksal.Forms.Agreements
             this.ChosenDescriptor = (gridExWFMagPicker.CurrentRow.Cells["Deskryptor"].Value ?? string.Empty).ToString();
             this.ChosenKTM = (gridExWFMagPicker.CurrentRow.Cells["KTM"].Value ?? string.Empty).ToString();
             this.ChosenTitle = (gridExWFMagPicker.CurrentRow.Cells["Tytuł"].Value ?? string.Empty).ToString();
+            this.ChosenDeliveryDate = Convert.ToDateTime(gridExWFMagPicker.CurrentRow.Cells["Data_dostawy"].Value ?? DateTime.Now);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -53,7 +56,7 @@ namespace Foksal.Forms.Agreements
         }
 
         private void rdb_CheckedChanged(object sender, System.EventArgs e)
-        {            
+        {
             this.LoadData();
         }
 

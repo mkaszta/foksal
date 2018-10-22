@@ -233,9 +233,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(148, 160);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.Size = new System.Drawing.Size(128, 13);
             this.label10.TabIndex = 97;
-            this.label10.Text = "% podatku u źródła:";
+            this.label10.Text = "% podatku u źródła/VAT:";
             // 
             // label11
             // 
@@ -269,6 +269,7 @@
             // 
             // numInvoiceAmount
             // 
+            this.numInvoiceAmount.DecimalPlaces = 2;
             this.numInvoiceAmount.Location = new System.Drawing.Point(151, 137);
             this.numInvoiceAmount.Maximum = new decimal(new int[] {
             100000000,
@@ -281,6 +282,7 @@
             // 
             // numTaxPercent
             // 
+            this.numTaxPercent.DecimalPlaces = 2;
             this.numTaxPercent.Location = new System.Drawing.Point(151, 176);
             this.numTaxPercent.Minimum = new decimal(new int[] {
             100,

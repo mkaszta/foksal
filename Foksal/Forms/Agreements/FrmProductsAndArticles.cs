@@ -92,7 +92,7 @@ namespace Foksal.Forms.Agreements
                     catch
                     {
                         MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                    
+                    }
 
                     this.LoadData();
                 }
@@ -134,7 +134,7 @@ namespace Foksal.Forms.Agreements
                     {
                         MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
+
                     this.LoadData();
                 }
             }
@@ -157,14 +157,14 @@ namespace Foksal.Forms.Agreements
                 {
                     FrmAgreement frmAgreement = new FrmAgreement(agreementId, -1);
 
-                    frmAgreement.AddPosition(ktm, descriptor);
+                    frmAgreement.AddPosition(null, ktm, descriptor);
                     frmAgreement.ShowDialog();
                 }
                 catch
                 {
                     MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
                 this.LoadData();
             }
         }
@@ -195,7 +195,7 @@ namespace Foksal.Forms.Agreements
                 {
                     MessageBox.Show("Nie udało się wykonać powiązania.\r\nOdśwież listę i spróbuj ponownie.", "Przypisanie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
                 this.LoadData();
             }
         }
