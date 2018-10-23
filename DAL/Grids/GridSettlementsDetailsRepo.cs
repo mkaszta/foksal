@@ -20,7 +20,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand();
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.Text;
-            cmdSelect.CommandText = string.Format("SELECT * FROM [dbo].[vRozliczeniaAll] WHERE tRozliczenieUmowyId IN ({0}) ORDER BY tUmowaid, tOkres, tLicencjodawcaCafreOfId, typ, HonorariumProcent ",
+            cmdSelect.CommandText = string.Format("SELECT * FROM [dbo].[vRozliczeniaAll] WHERE tRozliczenieUmowyId IN ({0}) ORDER BY tUmowaid, tOkres, tLicencjodawcaCafreOfId, typ, lp ",
                 string.Join(",", lstRozliczenieUmowyID.ToArray()));
             this.dataAdapter.SelectCommand = cmdSelect;
 
