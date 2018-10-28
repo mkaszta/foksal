@@ -5,6 +5,7 @@ using Foksal.Forms.Dictonaries;
 using Janus.Windows.GridEX;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -221,7 +222,7 @@ namespace Foksal.Forms.Agreements
             txtPositionComments.Text = this.selectedPosition.Comments;
             txtKTM.Text = this.selectedPosition.KTM;
             txtDescriptor.Text = this.selectedPosition.Descriptor;
-            dtBillingPeriodFrom.Value = this.selectedPosition.Id == 0 ? DateTime.Now : this.selectedPosition.BillingPeriodStart;
+            dtBillingPeriodFrom.Value = this.selectedPosition.Id == 0 ? DateTime.Now : this.selectedPosition.BillingPeriodStart;            
 
             if (this.selectedPosition.ExpirationDate == null)
             {
@@ -247,6 +248,19 @@ namespace Foksal.Forms.Agreements
                 dtBillingPeriodTo.Format = DateTimePickerFormat.Short;
                 if (this.selectedPosition.BillingPeriodEnd.HasValue)
                     dtBillingPeriodTo.Value = this.selectedPosition.BillingPeriodEnd.GetValueOrDefault();
+            }
+
+            if (this.selectedPosition.FirstSettlementDate == null)
+            {
+                dtFirstSettlement.Checked = false;
+                dtFirstSettlement.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtFirstSettlement.Checked = true;
+                dtFirstSettlement.Format = DateTimePickerFormat.Short;
+                if (this.selectedPosition.FirstSettlementDate.HasValue)
+                    dtFirstSettlement.Value = this.selectedPosition.FirstSettlementDate.GetValueOrDefault();
             }
 
             this.gridThresholdsRepo.BindDataSet(gridExThresholds, this.selectedPosition.Id);
@@ -484,6 +498,7 @@ namespace Foksal.Forms.Agreements
                 selectedPosition.BillingPeriod = (int)cboBillingPeriod.SelectedValue;
                 selectedPosition.BillingPeriodStart = dtBillingPeriodFrom.Value;
                 selectedPosition.BillingPeriodEnd = dtBillingPeriodTo.Text == " " ? (DateTime?)null : dtBillingPeriodTo.Value;
+                selectedPosition.FirstSettlementDate = dtFirstSettlement.Text == " " ? (DateTime?)null : dtFirstSettlement.Value;
 
                 try
                 {
@@ -516,7 +531,12 @@ namespace Foksal.Forms.Agreements
                     if (this.isPositionAddPending)
                         this.isPositionAddPending = false;
 
-                    this.LoadData();
+                    //this.LoadData();
+                    if (gridExPositions.RowCount < 1)
+                    {
+                        this.LoadPositionDetails();
+                    }
+
                     this.SelectPositionById(selectedPositionId);
                 }
             }
@@ -645,9 +665,14 @@ namespace Foksal.Forms.Agreements
             if (frmWFMagPicker.ShowDialog() == DialogResult.OK)
             {
                 txtReportTitle.Text = frmWFMagPicker.ChosenTitle;
+
                 this.SaveAgreement();
 
                 this.AddPosition(frmWFMagPicker.ChosenDeliveryDate, frmWFMagPicker.ChosenKTM, frmWFMagPicker.ChosenDescriptor);
+
+                gridExPositions.CurrentRow.Cells["Tytul"].Value = frmWFMagPicker.ChosenTitle;
+                gridExPositions.CurrentRow.Cells["KTM"].Value = frmWFMagPicker.ChosenKTM;
+                gridExPositions.CurrentRow.Cells["Deskryptor"].Value = frmWFMagPicker.ChosenDescriptor;
             }
 
             this.SetPositionChangesPending(true);
@@ -936,6 +961,7 @@ namespace Foksal.Forms.Agreements
         private void FrmAgreement_Shown(object sender, EventArgs e)
         {
             gridExPositions.Focus();
+            LoadModelDetails();
         }
 
         private void FrmAgreement_FormClosing(object sender, FormClosingEventArgs e)
@@ -1036,7 +1062,20 @@ namespace Foksal.Forms.Agreements
             this.SetPositionChangesPending(true);
         }
 
-        #endregion
+        private void dtFirstSettlement_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtFirstSettlement.Checked)
+            {
+                dtFirstSettlement.Format = DateTimePickerFormat.Short;
+            }
+            else
+            {
+                dtFirstSettlement.Format = DateTimePickerFormat.Custom;
+            }
 
+            this.SetPositionChangesPending(true);
+        }
+
+        #endregion
     }
 }

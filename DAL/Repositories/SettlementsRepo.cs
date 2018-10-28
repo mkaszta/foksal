@@ -84,7 +84,7 @@ namespace DAL.Repositories
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
-                    command.CommandTimeout = 10000;
+                    command.CommandTimeout = 0;
                     command.ExecuteNonQuery();
                 }
             }

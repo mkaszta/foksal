@@ -45,6 +45,7 @@ namespace DAL.Repositories
                         position.ModelPercent = reader.GetDecimal(reader.GetOrdinal("ProcentOdCeny"));
                         position.ModelFixedPrice = reader.GetDecimal(reader.GetOrdinal("StalaCena"));
                         position.Comments = reader.GetString(reader.GetOrdinal("Tytul"));
+                        position.FirstSettlementDate = reader.IsDBNull(reader.GetOrdinal("DataStart")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("DataStart"));
                     }
                 }
             }
@@ -65,18 +66,18 @@ namespace DAL.Repositories
                     "UmowaNaCzasOkreslony = @umowaNaCzasOkreslony, KoniecOkresuRozliczeniowego = @koniecOkresuRozliczeniowego, OkresRozliczeniowy = @okresRozliczeniowy, " +
                     "NaliczanieOdPierwszejSprzedazy = @naliczanieOdPierwszejSprzedazy, LiczbaEgzemplarzyBezOplat = @liczbaEgzemplarzyBezOplat, " +
                     "DataZakonczeniaKontraktu = @dataZakonczeniaKontraktu, StalaCena = @stalaCena, ProcentOdCeny = @procentOdCeny, Uwagi = @uwagi, " +
-                    "EdycjaUzytkownik = @uzytkownik " +
+                    "DataStart = @dataStart, EdycjaUzytkownik = @uzytkownik " +
                     "WHERE Id = @id");
                 }
                 else
                 {
                     sqlQuery = string.Format("INSERT INTO [PozycjaUmowy] (UmowaId, KTM, Deskryptor, ModelId, WalutaId, PoczatekOkresuRozliczeniowego, " +
                     "UmowaNaCzasOkreslony, KoniecOkresuRozliczeniowego, OkresRozliczeniowy, NaliczanieOdPierwszejSprzedazy, LiczbaEgzemplarzyBezOplat, " +
-                    "DataZakonczeniaKontraktu, StalaCena, ProcentOdCeny, Uwagi, WprowadzenieUzytkownik) " +
+                    "DataZakonczeniaKontraktu, StalaCena, ProcentOdCeny, Uwagi, DataStart, WprowadzenieUzytkownik) " +
                     "OUTPUT INSERTED.ID " +
                     "VALUES (@umowaId, @ktm, @deskryptor, @modelId, @walutaId, @poczatekOkresuRozliczeniowego, " +
                     "@umowaNaCzasOkreslony, @koniecOkresuRozliczeniowego, @okresRozliczeniowy, @naliczanieOdPierwszejSprzedazy, @liczbaEgzemplarzyBezOplat, " +
-                    "@dataZakonczeniaKontraktu, @stalaCena, @procentOdCeny, @uwagi, @uzytkownik)");
+                    "@dataZakonczeniaKontraktu, @stalaCena, @procentOdCeny, @uwagi, @dataStart, @uzytkownik)");
                 }
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
@@ -97,6 +98,7 @@ namespace DAL.Repositories
                     command.Parameters.Add("@stalaCena", SqlDbType.Decimal, 10).Value = position.ModelFixedPrice;
                     command.Parameters.Add("@procentOdCeny", SqlDbType.Decimal, 10).Value = position.ModelPercent;
                     command.Parameters.Add("@uwagi", SqlDbType.VarChar, 1000).Value = position.Comments;
+                    command.Parameters.Add("@dataStart", SqlDbType.DateTime, 8).Value = position.FirstSettlementDate ?? SqlDateTime.Null;
                     command.Parameters.Add("@uzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
 
                     if (position.Id > 0)

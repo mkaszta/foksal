@@ -69,6 +69,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblModelFixedPrice = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dtFirstSettlement = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnWFMAG = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -459,7 +461,12 @@
             // numModelFixedPrice
             // 
             this.numModelFixedPrice.DecimalPlaces = 2;
-            this.numModelFixedPrice.Location = new System.Drawing.Point(415, 68);
+            this.numModelFixedPrice.Location = new System.Drawing.Point(415, 67);
+            this.numModelFixedPrice.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numModelFixedPrice.Minimum = new decimal(new int[] {
             100,
             0,
@@ -521,13 +528,15 @@
             // lblModelFixedPrice
             // 
             this.lblModelFixedPrice.AutoSize = true;
-            this.lblModelFixedPrice.Location = new System.Drawing.Point(412, 52);
+            this.lblModelFixedPrice.Location = new System.Drawing.Point(412, 51);
             this.lblModelFixedPrice.Name = "lblModelFixedPrice";
             this.lblModelFixedPrice.Size = new System.Drawing.Size(0, 13);
             this.lblModelFixedPrice.TabIndex = 63;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.dtFirstSettlement);
+            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.btnWFMAG);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label9);
@@ -549,6 +558,27 @@
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Dane pozycji";
+            // 
+            // dtFirstSettlement
+            // 
+            this.dtFirstSettlement.Checked = false;
+            this.dtFirstSettlement.CustomFormat = " ";
+            this.dtFirstSettlement.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFirstSettlement.Location = new System.Drawing.Point(176, 212);
+            this.dtFirstSettlement.Name = "dtFirstSettlement";
+            this.dtFirstSettlement.ShowCheckBox = true;
+            this.dtFirstSettlement.Size = new System.Drawing.Size(101, 20);
+            this.dtFirstSettlement.TabIndex = 68;
+            this.dtFirstSettlement.ValueChanged += new System.EventHandler(this.dtFirstSettlement_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(174, 192);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "Pierwsze rozliczenie:";
             // 
             // btnWFMAG
             // 
@@ -1451,5 +1481,7 @@
         private System.Windows.Forms.Button btnRefreshLicensor;
         private System.Windows.Forms.Button btnRefreshSchedule;
         private System.Windows.Forms.Button btnAgreementWFMAG;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtFirstSettlement;
     }
 }

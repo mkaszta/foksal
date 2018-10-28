@@ -25,6 +25,7 @@ namespace BLL.Entities
         public decimal WFMagBrutto { get; set; }
         public decimal WFMagPZ { get; set; }        
         public decimal ModelPercent { get; set; }        
-        public decimal ModelFixedPrice { get; set; }        
+        public decimal ModelFixedPrice { get; set; }
+        public DateTime? FirstSettlementDate { get; set; }
     }
 }

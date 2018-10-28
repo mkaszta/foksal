@@ -54,7 +54,7 @@
             this.gridExUsers.NewRowFormatStyle.BackColor = System.Drawing.Color.PaleGreen;
             this.gridExUsers.NewRowFormatStyle.BackColorGradient = System.Drawing.Color.White;
             this.gridExUsers.NewRowFormatStyle.ForeColor = System.Drawing.Color.White;
-            this.gridExUsers.Size = new System.Drawing.Size(262, 432);
+            this.gridExUsers.Size = new System.Drawing.Size(262, 181);
             this.gridExUsers.TabIndex = 32;
             // 
             // btnRemoveUser
