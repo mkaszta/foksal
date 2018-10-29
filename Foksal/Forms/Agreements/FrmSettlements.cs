@@ -159,7 +159,7 @@ namespace Foksal.Forms.Agreements
             {
                 gridExSettlementsList.RootTable.Columns["Selector"].UseHeaderSelector = false;
             }
-        }     
+        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {

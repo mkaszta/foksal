@@ -91,6 +91,7 @@
     <Compile Include="Entities\Settlement.cs" />
     <Compile Include="Entities\SettlementModel.cs" />
     <Compile Include="Entities\Threshold.cs" />
+    <Compile Include="Entities\UserPermission.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="NBPHelper.cs" />

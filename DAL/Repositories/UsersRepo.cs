@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Entities;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -15,11 +16,11 @@ namespace DAL.Repositories
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
                 string sqlQuery = string.Format("SELECT * FROM [Uzytkownicy] " +
-                    "WHERE Id = @id ");                    
+                    "WHERE Id = @id ");
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
-                    command.Parameters.Add("@id", SqlDbType.Int, 6).Value = userId;                                        
+                    command.Parameters.Add("@id", SqlDbType.Int, 6).Value = userId;
 
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -61,7 +62,7 @@ namespace DAL.Repositories
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
                 string sqlQuery = string.Format("INSERT INTO [Uzytkownicy] (Login, Haslo, EdycjaUzytkownik, EdycjaData) " +
-                    "VALUES  (@login, @haslo, @edycjaUzytkownik, @edycjaData) ");                    
+                    "VALUES  (@login, @haslo, @edycjaUzytkownik, @edycjaData) ");
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
@@ -80,11 +81,11 @@ namespace DAL.Repositories
         {
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
-                string sqlQuery = string.Format("DELETE FROM [Uzytkownicy] WHERE Id = @id");                    
+                string sqlQuery = string.Format("DELETE FROM [Uzytkownicy] WHERE Id = @id");
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
-                    command.Parameters.Add("@id", SqlDbType.Int, 6).Value = userId;                    
+                    command.Parameters.Add("@id", SqlDbType.Int, 6).Value = userId;
 
                     command.ExecuteNonQuery();
                 }

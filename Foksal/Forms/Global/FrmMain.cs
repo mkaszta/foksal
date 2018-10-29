@@ -7,6 +7,7 @@ using Foksal.Forms.Reports;
 using Foksal.Forms.Settings;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Foksal
@@ -108,12 +109,19 @@ namespace Foksal
 
         private void BtnAgreements_Click(object sender, EventArgs e)
         {
-            FrmAgreementsList frmAgreementsList = new FrmAgreementsList
+            if (AppUser.Instance.UserPermissions.Where(x => x.PermissionId == 1 && x.PermissionLevel > 0).Any())
             {
-                MdiParent = this
-            };
+                FrmAgreementsList frmAgreementsList = new FrmAgreementsList
+                {
+                    MdiParent = this
+                };
 
-            frmAgreementsList.Show();
+                frmAgreementsList.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie masz wystarczających uprawnień do wykonania tej czynności.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }            
         }
 
         private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
