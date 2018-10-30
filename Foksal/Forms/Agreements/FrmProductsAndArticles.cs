@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using BLL;
+using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
 using Janus.Windows.GridEX;
@@ -19,7 +20,16 @@ namespace Foksal.Forms.Agreements
             this.gridProductsAndArticlesRepo = new GridProductsAndArticlesRepo();
             this.gridAgreementsListGroupedRepo = new GridAgreementsListGroupedRepo();
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnBindArticle.Enabled = AppUser.Instance.CanWriteProductsAndArticles;
+            btnBindKTM.Enabled = AppUser.Instance.CanWriteProductsAndArticles;
+            btnBindNewPosition.Enabled = AppUser.Instance.CanWriteProductsAndArticles;
+            btnBindProduct.Enabled = AppUser.Instance.CanWriteProductsAndArticles;
         }
 
         private void LoadData()

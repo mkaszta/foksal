@@ -25,7 +25,14 @@ namespace Foksal.Forms.Agreements
             datePeriodFrom = null;
             datePeriodTo = null;
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnEdit.Enabled = AppUser.Instance.CanWriteSettlements;
+            btnRecalculate.Enabled = AppUser.Instance.CanWriteSettlements;
         }
 
         private void LoadData()
@@ -146,7 +153,8 @@ namespace Foksal.Forms.Agreements
 
         private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
-            this.ShowSettlementEditForm();
+            if (AppUser.Instance.CanWriteSettlements)
+                this.ShowSettlementEditForm();
         }
 
         private void gridExSettlementsList_RowCountChanged(object sender, EventArgs e)

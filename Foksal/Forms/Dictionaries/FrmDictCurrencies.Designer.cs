@@ -41,7 +41,7 @@
             this.btnRemoveCurrency = new System.Windows.Forms.Button();
             this.btnAddCurrency = new System.Windows.Forms.Button();
             this.btnRemoveRate = new System.Windows.Forms.Button();
-            this.BtnAddRate = new System.Windows.Forms.Button();
+            this.btnAddRate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridExCurrencies)).BeginInit();
@@ -160,16 +160,16 @@
             this.btnRemoveRate.UseVisualStyleBackColor = true;
             this.btnRemoveRate.Click += new System.EventHandler(this.btnRemoveRate_Click);
             // 
-            // BtnAddRate
+            // btnAddRate
             // 
-            this.BtnAddRate.ImageKey = "icon-add.png";
-            this.BtnAddRate.ImageList = this.imgListIconsMin;
-            this.BtnAddRate.Location = new System.Drawing.Point(120, 19);
-            this.BtnAddRate.Name = "BtnAddRate";
-            this.BtnAddRate.Size = new System.Drawing.Size(30, 30);
-            this.BtnAddRate.TabIndex = 71;
-            this.BtnAddRate.UseVisualStyleBackColor = true;
-            this.BtnAddRate.Click += new System.EventHandler(this.btnAddRate_Click);
+            this.btnAddRate.ImageKey = "icon-add.png";
+            this.btnAddRate.ImageList = this.imgListIconsMin;
+            this.btnAddRate.Location = new System.Drawing.Point(120, 19);
+            this.btnAddRate.Name = "btnAddRate";
+            this.btnAddRate.Size = new System.Drawing.Size(30, 30);
+            this.btnAddRate.TabIndex = 71;
+            this.btnAddRate.UseVisualStyleBackColor = true;
+            this.btnAddRate.Click += new System.EventHandler(this.btnAddRate_Click);
             // 
             // groupBox1
             // 
@@ -188,7 +188,7 @@
             this.groupBox2.Controls.Add(this.gridExCurrencyRates);
             this.groupBox2.Controls.Add(this.btnGetNBPRate);
             this.groupBox2.Controls.Add(this.btnRemoveRate);
-            this.groupBox2.Controls.Add(this.BtnAddRate);
+            this.groupBox2.Controls.Add(this.btnAddRate);
             this.groupBox2.Location = new System.Drawing.Point(103, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(228, 458);
@@ -226,7 +226,7 @@
         private System.Windows.Forms.Button btnAddCurrency;
         private System.Windows.Forms.ImageList imgListIconsMin;
         private System.Windows.Forms.Button btnRemoveRate;
-        private System.Windows.Forms.Button BtnAddRate;
+        private System.Windows.Forms.Button btnAddRate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
     }

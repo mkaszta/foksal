@@ -1,4 +1,5 @@
-﻿using DAL.Grids;
+﻿using BLL;
+using DAL.Grids;
 using DAL.Repositories;
 using System;
 using System.Drawing;
@@ -21,7 +22,22 @@ namespace Foksal.Forms.Dictonaries
 
             this.gridLicensorsRepo = new GridLicensorsRepo();
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnAdd.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnMergeSource.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnMergeStart.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnMergeTarget.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnRefreshList.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnRemove.Enabled = AppUser.Instance.CanWriteDictLicensors;
+            btnSave.Enabled = AppUser.Instance.CanWriteDictLicensors;
+
+            gridExLicensors.RootTable.AllowDelete = AppUser.Instance.CanWriteDictLicensors ? Janus.Windows.GridEX.InheritableBoolean.True : Janus.Windows.GridEX.InheritableBoolean.False;
+            gridExLicensors.RootTable.AllowEdit = AppUser.Instance.CanWriteDictLicensors ? Janus.Windows.GridEX.InheritableBoolean.True : Janus.Windows.GridEX.InheritableBoolean.False;
         }
 
         private void LoadData()
@@ -145,7 +161,7 @@ namespace Foksal.Forms.Dictonaries
             else
             {
                 MessageBox.Show("Proszę ustawić się na wierszu z danymi.", "Zaznaczanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }            
+            }
         }
 
         private void btnMergeTarget_Click(object sender, EventArgs e)
@@ -164,7 +180,7 @@ namespace Foksal.Forms.Dictonaries
             else
             {
                 MessageBox.Show("Proszę ustawić się na wierszu z danymi.", "Zaznaczanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }            
+            }
         }
 
         private void btnMergeStart_Click(object sender, EventArgs e)

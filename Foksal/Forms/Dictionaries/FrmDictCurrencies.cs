@@ -24,7 +24,17 @@ namespace Foksal.Forms.Dictonaries
             this.gridCurrenciesRepo = new GridCurrenciesRepo();
             this.gridCurrencyRatesRepo = new GridCurrencyRatesRepo();
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnAddCurrency.Enabled = AppUser.Instance.CanWriteDictCurrencies;
+            btnAddRate.Enabled = AppUser.Instance.CanWriteDictCurrencies;
+            btnGetNBPRate.Enabled = AppUser.Instance.CanWriteDictCurrencies;
+            btnRemoveCurrency.Enabled = AppUser.Instance.CanWriteDictCurrencies;
+            btnRemoveRate.Enabled = AppUser.Instance.CanWriteDictCurrencies;
         }
 
         private void LoadData()
