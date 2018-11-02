@@ -44,7 +44,7 @@ namespace Foksal.Forms.Settings
         }
 
         private void LoadUserPermissions()
-        {                        
+        {
             this.gridUserPermissionsRepo.BindDataSet(gridExUserPermissions, (int)gridExUsers.CurrentRow.Cells["id"].Value);
             gridExUserPermissions.Refetch();
         }
@@ -53,9 +53,9 @@ namespace Foksal.Forms.Settings
         {
             try
             {
-                this.gridUserPermissionsRepo.Update();                
+                this.gridUserPermissionsRepo.Update();
 
-                MessageBox.Show("Zmiany zostały zapisane", "Zapis uprawnień", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Zmiany zostały zapisane.\r\nNowe uprawnienia zostaną zastosowane przy następnym logowaniu użytkownika.", "Zapis uprawnień", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -127,6 +127,6 @@ namespace Foksal.Forms.Settings
         private void btnSavePermissions_Click(object sender, EventArgs e)
         {
             this.SavePermissions();
-        }        
+        }
     }
 }

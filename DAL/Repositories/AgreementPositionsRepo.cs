@@ -44,7 +44,7 @@ namespace DAL.Repositories
                         position.WFMagPZ = reader.GetDecimal(reader.GetOrdinal("IloscPz"));
                         position.ModelPercent = reader.GetDecimal(reader.GetOrdinal("ProcentOdCeny"));
                         position.ModelFixedPrice = reader.GetDecimal(reader.GetOrdinal("StalaCena"));
-                        position.Comments = reader.GetString(reader.GetOrdinal("Tytul"));
+                        position.Comments = reader.GetString(reader.GetOrdinal("Uwagi"));
                         position.FirstSettlementDate = reader.IsDBNull(reader.GetOrdinal("DataStart")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("DataStart"));
                     }
                 }
@@ -130,7 +130,7 @@ namespace DAL.Repositories
                     try
                     {
                         command.ExecuteNonQuery();
-                    }                    
+                    }
                     catch (SqlException)
                     {
                         throw new Exception();

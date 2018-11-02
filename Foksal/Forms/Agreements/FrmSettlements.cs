@@ -153,8 +153,7 @@ namespace Foksal.Forms.Agreements
 
         private void gridExSettlementsList_RowDoubleClick(object sender, RowActionEventArgs e)
         {
-            if (AppUser.Instance.CanWriteSettlements)
-                this.ShowSettlementEditForm();
+            this.ShowSettlementEditForm();
         }
 
         private void gridExSettlementsList_RowCountChanged(object sender, EventArgs e)
@@ -187,53 +186,95 @@ namespace Foksal.Forms.Agreements
 
         private void btnCollectiveShort_Click(object sender, EventArgs e)
         {
-            this.GenerateReport_Short();
+            if (gridExSettlementsDetails.GetDataRows().Length > 0)
+            {
+                this.GenerateReport_Short();
+            }
+            else
+            {
+                MessageBox.Show("Brak danych do raportowania.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnCollectiveMail_Click(object sender, EventArgs e)
         {
-            this.PrepareDraftMail(chkSum.Checked);
+            if (gridExSettlementsDetails.GetDataRows().Length > 0)
+            {
+                this.PrepareDraftMail(chkSum.Checked);
+            }
+            else
+            {
+                MessageBox.Show("Brak danych do raportowania.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnCollectiveReport_Click(object sender, EventArgs e)
         {
-            this.GenerateReport_Settlement(chkSum.Checked);
+            if (gridExSettlementsDetails.GetDataRows().Length > 0)
+            {
+                this.GenerateReport_Settlement(chkSum.Checked);
+            }
+            else
+            {
+                MessageBox.Show("Brak danych do raportowania.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            gridExSettlementsList.UnCheckAllRecords();
-            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
-            this.LoadSettlementsDetails();
+            if (gridExSettlementsList.CurrentRow != null && gridExSettlementsList.CurrentRow.RowIndex > -1)
+            {
+                gridExSettlementsList.UnCheckAllRecords();
+                gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+                this.LoadSettlementsDetails();
 
-            this.GenerateReport_Settlement(false);
+                this.GenerateReport_Settlement(false);
 
-            this.UpdateDispatchInfo();
-            this.ShowSettlementEditForm();
+                this.UpdateDispatchInfo();
+                this.ShowSettlementEditForm();
+            }
+            else
+            {
+                MessageBox.Show("Nie zaznaczono żadnego wiersza.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnShort_Click(object sender, EventArgs e)
         {
-            gridExSettlementsList.UnCheckAllRecords();
-            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
-            this.LoadSettlementsDetails();
+            if (gridExSettlementsList.CurrentRow != null && gridExSettlementsList.CurrentRow.RowIndex > -1)
+            {
+                gridExSettlementsList.UnCheckAllRecords();
+                gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+                this.LoadSettlementsDetails();
 
-            this.GenerateReport_Short();
+                this.GenerateReport_Short();
 
-            this.UpdateDispatchInfo();
-            this.ShowSettlementEditForm();
+                this.UpdateDispatchInfo();
+                this.ShowSettlementEditForm();
+            }
+            else
+            {
+                MessageBox.Show("Nie zaznaczono żadnego wiersza.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnMail_Click(object sender, EventArgs e)
         {
-            gridExSettlementsList.UnCheckAllRecords();
-            gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
-            this.LoadSettlementsDetails();
+            if (gridExSettlementsList.CurrentRow != null && gridExSettlementsList.CurrentRow.RowIndex > -1)
+            {
+                gridExSettlementsList.UnCheckAllRecords();
+                gridExSettlementsList.CurrentRow.CheckState = RowCheckState.Checked;
+                this.LoadSettlementsDetails();
 
-            this.PrepareDraftMail(false);
+                this.PrepareDraftMail(false);
 
-            this.UpdateDispatchInfo();
-            this.ShowSettlementEditForm();
+                this.UpdateDispatchInfo();
+                this.ShowSettlementEditForm();
+            }
+            else
+            {
+                MessageBox.Show("Nie zaznaczono żadnego wiersza.", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
