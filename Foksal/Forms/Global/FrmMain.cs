@@ -57,6 +57,8 @@ namespace Foksal
         {
             List<Report> lstReports = ReportsRepo.GetAll();
 
+            ribbonPanelReports.Items.Clear();
+
             foreach (var report in lstReports)
             {
                 RibbonButton newButton = new RibbonButton()
