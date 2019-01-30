@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using BLL;
+using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
 using Foksal.Forms.Dictonaries;
@@ -587,15 +588,32 @@ namespace Foksal.Forms.Agreements
 
         private void btnSaveAgreement_Click(object sender, EventArgs e)
         {
-            if (this.IsAgreementDataValid() && this.IsPositionDataValid())
+            if (AppUser.Instance.CanWriteAgreements)
             {
-                this.SaveAgreement();
+                if (this.IsAgreementDataValid() && this.IsPositionDataValid())
+                {
+                    this.SaveAgreement();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnień do wykonania tej akcji.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
         private void btnSavePosition_Click(object sender, EventArgs e)
         {
-            this.SavePosition();
+            if (AppUser.Instance.CanWriteAgreements)
+            {
+                if (this.IsAgreementDataValid() && this.IsPositionDataValid())
+                {
+                    this.SavePosition();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnień do wykonania tej akcji.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
 
         private void btnAddPosition_Click(object sender, EventArgs e)
@@ -605,16 +623,23 @@ namespace Foksal.Forms.Agreements
 
         private void btnRemovePosition_Click(object sender, EventArgs e)
         {
-            if (gridExPositions.Row > -1)
+            if (AppUser.Instance.CanWriteAgreements)
             {
-                if (MessageBox.Show("Czy na pewno chcesz usunąć zaznaczoną pozycję?\r\nTa operacja jest nieodwracalna!", "Uwaga", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (gridExPositions.Row > -1)
                 {
-                    this.SetPositionChangesPending(false);
-                    this.isPositionAddPending = false;
-                    this.gridPositionsRepo.DeleteRow(gridExPositions.CurrentRow.RowIndex);
-                    gridExPositions.Refetch();
-                    this.LoadData();
+                    if (MessageBox.Show("Czy na pewno chcesz usunąć zaznaczoną pozycję?\r\nTa operacja jest nieodwracalna!", "Uwaga", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        this.SetPositionChangesPending(false);
+                        this.isPositionAddPending = false;
+                        this.gridPositionsRepo.DeleteRow(gridExPositions.CurrentRow.RowIndex);
+                        gridExPositions.Refetch();
+                        this.LoadData();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnień do wykonania tej akcji.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 

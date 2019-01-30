@@ -61,17 +61,24 @@ namespace DAL.Repositories
         {
             using (SqlConnection dbConnection = new DBConnection().Connection)
             {
-                string sqlQuery = string.Format("INSERT INTO [Uzytkownicy] (Login, Haslo, EdycjaUzytkownik, EdycjaData) " +
+                string sqlQuery = string.Format("INSERT INTO [Uzytkownicy] (Login, Haslo, EdycjaUzytkownik, EdycjaData) OUTPUT INSERTED.ID " +
                     "VALUES  (@login, @haslo, @edycjaUzytkownik, @edycjaData) ");
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
                 {
-                    command.Parameters.Add("@id", SqlDbType.Int, 6).Value = user.Id;
                     command.Parameters.Add("@login", SqlDbType.VarChar, 50).Value = user.Login;
                     command.Parameters.Add("@haslo", SqlDbType.VarChar, 256).Value = user.Password;
                     command.Parameters.Add("@edycjaUzytkownik", SqlDbType.Int, 6).Value = AppUser.Instance.UserId;
                     command.Parameters.Add("@edycjaData", SqlDbType.DateTime, 8).Value = DateTime.Now;
 
+                    user.Id = (int)command.ExecuteScalar();
+                }
+
+                sqlQuery = "INSERT INTO [UzytkownicyUprawnienia] (UzytkownikId, UprawnieniaId, Poziom) " +
+                    string.Format("SELECT {0}, id, 0 FROM [Uprawnienia]", user.Id);
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection))
+                {
                     command.ExecuteNonQuery();
                 }
             }

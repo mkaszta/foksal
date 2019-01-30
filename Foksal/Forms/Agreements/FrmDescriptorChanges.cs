@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using BLL;
+using BLL.Entities;
 using DAL.Grids;
 using DAL.Repositories;
 using Janus.Windows.GridEX;
@@ -19,7 +20,13 @@ namespace Foksal.Forms.Agreements
             this.gridDescriptorChangesRepo = new GridDescriptorChangesRepo();
             this.GridAgreementsListGroupedRepo = new GridAgreementsListGroupedRepo();
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnChange.Enabled = AppUser.Instance.CanWriteDescriptorChanges;
         }
 
         private void LoadData()
@@ -41,7 +48,7 @@ namespace Foksal.Forms.Agreements
             string findString = string.Format("{0}|{1};", ktm, descriptorOld);
 
             column = gridExAgreementsListGrouped.RootTable.Columns["Find"];
-            condition.AddCondition(new GridEXFilterCondition(column, ConditionOperator.Contains, findString));            
+            condition.AddCondition(new GridEXFilterCondition(column, ConditionOperator.Contains, findString));
 
             gridExAgreementsListGrouped.RootTable.ApplyFilter(condition);
         }

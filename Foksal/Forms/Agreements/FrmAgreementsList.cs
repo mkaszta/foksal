@@ -16,9 +16,15 @@ namespace Foksal.Forms.Agreements
         public FrmAgreementsList()
         {
             InitializeComponent();
-            this.SetGridMode(false);
 
+            this.SetGridMode(false);
             this.LoadAgreementsList();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnAddAgreement.Enabled = AppUser.Instance.CanWriteAgreements;
+            btnRemoveAgreement.Enabled = AppUser.Instance.CanWriteAgreements;
         }
 
         public void LoadAgreementsList()
@@ -67,6 +73,8 @@ namespace Foksal.Forms.Agreements
             btnRemoveAgreement.Enabled = !this.isGridGrouped;
 
             btnSwitchGridMode.ImageIndex = this.isGridGrouped ? 4 : 3;
+
+            this.ApplyPermissions();
         }
 
         private void ShowAgreementForm(int agreementId, int positionId = -1)
@@ -99,7 +107,7 @@ namespace Foksal.Forms.Agreements
         private void btnAddAgreement_Click(object sender, EventArgs e)
         {
             this.ShowAgreementForm(0);
-        }        
+        }
 
         private void btnRemoveAgreement_Click(object sender, EventArgs e)
         {
@@ -124,6 +132,6 @@ namespace Foksal.Forms.Agreements
         private void gridExAgreementsListGrouped_DoubleClick(object sender, EventArgs e)
         {
             gridExAgreementsListGrouped.ExpandGroups();
-        }        
+        }
     }
 }

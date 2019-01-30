@@ -8,14 +8,17 @@ namespace Foksal.Forms.Settings
     {
         private User user;
         public string Login { get; set; }
-        public string Password { get; set; }        
+        public string Password { get; set; }
 
         public FrmUserDetails(User user)
         {
             InitializeComponent();
             this.user = user;
 
-            txtLogin.Text = this.user.Login;            
+            txtLogin.Text = this.user.Login;
+
+            if (this.user.Id == 1)
+                txtLogin.Enabled = false;
         }
 
         private bool IsDataVerified()
@@ -43,7 +46,7 @@ namespace Foksal.Forms.Settings
                 this.Password = RSACoder.Encryption(txtNewPassword.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }                        
+            }
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)

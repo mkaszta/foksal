@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using BLL;
+using BLL.Entities;
 using DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,13 @@ namespace Foksal.Forms.Agreements
             this.settlement = settlement;
             this.agreementId = agreementId;
 
+            this.ApplyPermissions();
             this.LoadData();
+        }
+
+        private void ApplyPermissions()
+        {
+            btnSave.Enabled = AppUser.Instance.CanWriteSettlements;
         }
 
         private void LoadData()
@@ -79,6 +86,6 @@ namespace Foksal.Forms.Agreements
                 MessageBox.Show("Rozliczenie poprawnie zapisane.", "Rozliczenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-        }        
+        }
     }
 }

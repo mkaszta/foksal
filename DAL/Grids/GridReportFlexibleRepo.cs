@@ -38,6 +38,7 @@ namespace DAL.Grids
             SqlCommand cmdSelect = new SqlCommand("[dbo].[Raport]");
             cmdSelect.Connection = dbConnection.Connection;
             cmdSelect.CommandType = CommandType.StoredProcedure;
+            cmdSelect.CommandTimeout = 0;
 
             cmdSelect.Parameters.AddWithValue("@RapId", reportType.Id);
             if (!string.IsNullOrEmpty(whereClause))

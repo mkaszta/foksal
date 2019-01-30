@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace BLL
 {
@@ -18,11 +19,113 @@ namespace BLL
                 return (this.IsLoggedIn && this.UserName == "admin") ? true : false;
             }
         }
-        public List<UserPermission> UserPermissions { get; set; }
-        public DateTime DateForReports { get; set; }
 
+        // USER PERMISSIONS
+        #region 
+        public bool CanReadAgreements
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 1).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadProductsAndArticles
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 2).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadSettlements
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 3).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadDescriptorChanges
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 4).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadDictCurrencies
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 5).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadDictLicensors
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 6).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanReadReports
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 7).First().PermissionLevel >= UserPermission.PermissionType.READ_ONLY);
+            }
+        }
+        public bool CanWriteAgreements
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 1).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteProductsAndArticles
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 2).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteSettlements
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 3).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteDescriptorChanges
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 4).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteDictCurrencies
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 5).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteDictLicensors
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 6).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        public bool CanWriteReports
+        {
+            get
+            {
+                return (this.IsLoggedIn && this.UserPermissions.Where(x => x.PermissionId == 7).First().PermissionLevel >= UserPermission.PermissionType.READ_WRITE);
+            }
+        }
+        #endregion
+
+        private List<UserPermission> UserPermissions { get; set; }
         private static object singletonLock = new object();
         private static AppUser _instance;
+
         public static AppUser Instance
         {
             get
@@ -70,7 +173,7 @@ namespace BLL
 
             if (Instance.IsLoggedIn)
                 this.GetUserPermissions();
-        }       
+        }
 
         public void LogOut()
         {
@@ -143,11 +246,11 @@ namespace BLL
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("id")),
                             PermissionId = reader.GetInt32(reader.GetOrdinal("UprawnieniaId")),
-                            PermissionLevel = reader.GetInt32(reader.GetOrdinal("Poziom"))
+                            PermissionLevel = (UserPermission.PermissionType)reader.GetInt32(reader.GetOrdinal("Poziom"))
                         });
                     }
                 }
-            }            
+            }
         }
     }
 }

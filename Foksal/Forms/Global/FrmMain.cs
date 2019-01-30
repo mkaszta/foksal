@@ -36,12 +36,19 @@ namespace Foksal
 
             btnLogIn.Visible = !isLoggedIn;
             btnLogOut.Visible = isLoggedIn;
+
             ribbonPanelBasic.Enabled = isLoggedIn;
             ribbonTabDictionaries.Visible = isLoggedIn;
-            ribbonTabReports.Visible = isLoggedIn;
             ribbonTabSettings.Visible = isLoggedIn;
-
             ribbonPanelSettings_Users.Enabled = AppUser.Instance.IsAdmin;
+
+            btnAgreements.Enabled = AppUser.Instance.CanReadAgreements;
+            btnProducts.Enabled = AppUser.Instance.CanReadProductsAndArticles;
+            btnSettlements.Enabled = AppUser.Instance.CanReadSettlements;
+            btnDescriptorChanges.Enabled = AppUser.Instance.CanReadDescriptorChanges;
+            btnDictCurrencies.Enabled = AppUser.Instance.CanReadDictCurrencies;
+            btnDictLicensors.Enabled = AppUser.Instance.CanReadDictLicensors;
+            ribbonTabReports.Visible = AppUser.Instance.CanReadReports;
 
             this.CreateReportsList();
         }
@@ -49,6 +56,8 @@ namespace Foksal
         private void CreateReportsList()
         {
             List<Report> lstReports = ReportsRepo.GetAll();
+
+            ribbonPanelReports.Items.Clear();
 
             foreach (var report in lstReports)
             {
@@ -109,12 +118,10 @@ namespace Foksal
 
         private void BtnAgreements_Click(object sender, EventArgs e)
         {
-            if (AppUser.Instance.UserPermissions.Where(x => x.PermissionId == 1 && x.PermissionLevel > 0).Any())
+            FrmAgreementsList frmAgreementsList = new FrmAgreementsList
             {
-                FrmAgreementsList frmAgreementsList = new FrmAgreementsList
-                {
-                    MdiParent = this
-                };
+                MdiParent = this
+            };
 
                 frmAgreementsList.Show();
             }
