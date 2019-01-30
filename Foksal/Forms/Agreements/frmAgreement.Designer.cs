@@ -234,6 +234,7 @@
             // 
             // numAdvance
             // 
+            this.numAdvance.DecimalPlaces = 2;
             this.numAdvance.Location = new System.Drawing.Point(402, 32);
             this.numAdvance.Maximum = new decimal(new int[] {
             1000000,

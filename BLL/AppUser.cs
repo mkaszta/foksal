@@ -19,6 +19,7 @@ namespace BLL
             }
         }
         public List<UserPermission> UserPermissions { get; set; }
+        public DateTime DateForReports { get; set; }
 
         private static object singletonLock = new object();
         private static AppUser _instance;
@@ -60,7 +61,8 @@ namespace BLL
                         if (RSACoder.Decryption(reader.GetString(reader.GetOrdinal("Haslo"))) == RSACoder.Decryption(this.Password))
                         {
                             Instance.IsLoggedIn = true;
-                            this.UserId = reader.GetInt32(reader.GetOrdinal("id"));                            
+                            this.UserId = reader.GetInt32(reader.GetOrdinal("id"));
+                            this.DateForReports = DateTime.Now;
                         }
                     }
                 }

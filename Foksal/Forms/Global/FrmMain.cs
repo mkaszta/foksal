@@ -121,7 +121,7 @@ namespace Foksal
             else
             {
                 MessageBox.Show("Nie masz wystarczających uprawnień do wykonania tej czynności.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }            
+            }
         }
 
         private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
@@ -201,6 +201,12 @@ namespace Foksal
             };
 
             frmSettlements.Show();
+        }
+
+        private void btnSettingsDateForReports_Click(object sender, EventArgs e)
+        {
+            FrmDateForReports frmDateForReports = new FrmDateForReports();
+            frmDateForReports.Show();
         }
     }
 }

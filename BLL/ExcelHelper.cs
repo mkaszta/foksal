@@ -97,7 +97,7 @@ namespace BLL
                         {
                             xlWorkSheet.Cells[rowId, cellId] = cell.Value;
                         }
-                            
+
                         cellId++;
                     }
                 }
@@ -169,7 +169,7 @@ namespace BLL
             decimal sumPayment = 0;
 
             // DATE
-            xlWorkSheetReport.Cells[3, 13] = string.Format("Warszawa, {0}", DateTime.Now.ToShortDateString());
+            xlWorkSheetReport.Cells[3, 13] = string.Format("Warszawa, {0}", AppUser.Instance.DateForReports.ToShortDateString());
 
             // HEADER            
             templateHeaderRow.Copy(System.Type.Missing);

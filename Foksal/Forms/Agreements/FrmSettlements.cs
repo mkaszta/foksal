@@ -25,6 +25,8 @@ namespace Foksal.Forms.Agreements
             datePeriodFrom = null;
             datePeriodTo = null;
 
+            lblDateForReports.Text = AppUser.Instance.DateForReports.ToShortDateString();
+
             this.LoadData();
         }
 

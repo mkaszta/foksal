@@ -51,6 +51,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.chkSum = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblDateForReports = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExSettlementsDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -299,11 +301,30 @@
             this.chkSum.Text = "Suma";
             this.chkSum.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(336, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 82;
+            this.label1.Text = "Data dla raportów:";
+            // 
+            // lblDateForReports
+            // 
+            this.lblDateForReports.AutoSize = true;
+            this.lblDateForReports.Location = new System.Drawing.Point(436, 56);
+            this.lblDateForReports.Name = "lblDateForReports";
+            this.lblDateForReports.Size = new System.Drawing.Size(0, 13);
+            this.lblDateForReports.TabIndex = 83;
+            // 
             // FrmSettlements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1355, 555);
+            this.Controls.Add(this.lblDateForReports);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chkSum);
             this.Controls.Add(this.btnMail);
             this.Controls.Add(this.btnShort);
@@ -348,5 +369,7 @@
         private System.Windows.Forms.Button btnShort;
         private System.Windows.Forms.CheckBox chkSum;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDateForReports;
     }
 }

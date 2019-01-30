@@ -51,6 +51,7 @@
             this.ribbonPanelSettings_Users = new System.Windows.Forms.RibbonPanel();
             this.btnSettingsUsers = new System.Windows.Forms.RibbonButton();
             this.ribbonMain = new System.Windows.Forms.Ribbon();
+            this.btnSettingsDateForReports = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbonTabMain
@@ -223,6 +224,7 @@
             // ribbonPanelSettings_Mine
             // 
             this.ribbonPanelSettings_Mine.Items.Add(this.btnSettingsChangePassword);
+            this.ribbonPanelSettings_Mine.Items.Add(this.btnSettingsDateForReports);
             this.ribbonPanelSettings_Mine.Name = "ribbonPanelSettings_Mine";
             this.ribbonPanelSettings_Mine.Text = "Moje";
             // 
@@ -280,6 +282,15 @@
             this.ribbonMain.Text = "Ribbon";
             this.ribbonMain.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
             // 
+            // btnSettingsDateForReports
+            // 
+            this.btnSettingsDateForReports.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingsDateForReports.Image")));
+            this.btnSettingsDateForReports.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsDateForReports.LargeImage")));
+            this.btnSettingsDateForReports.Name = "btnSettingsDateForReports";
+            this.btnSettingsDateForReports.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnSettingsDateForReports.SmallImage")));
+            this.btnSettingsDateForReports.Text = "Data raportów";
+            this.btnSettingsDateForReports.Click += new System.EventHandler(this.btnSettingsDateForReports_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +332,7 @@
         private System.Windows.Forms.RibbonButton btnDictCurrencies;
         private System.Windows.Forms.RibbonButton btnDictLicensors;
         private System.Windows.Forms.RibbonPanel ribbonPanelReports;
+        private System.Windows.Forms.RibbonButton btnSettingsDateForReports;
     }
 }
 
