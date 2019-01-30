@@ -19,6 +19,7 @@ namespace BLL
                 return (this.IsLoggedIn && this.UserName == "admin") ? true : false;
             }
         }
+        public DateTime DateForReports { get; set; }
 
         // USER PERMISSIONS
         #region 

@@ -118,18 +118,20 @@ namespace Foksal
 
         private void BtnAgreements_Click(object sender, EventArgs e)
         {
-            FrmAgreementsList frmAgreementsList = new FrmAgreementsList
+            if (AppUser.Instance.CanReadAgreements)
             {
-                MdiParent = this
-            };
+                FrmAgreementsList frmAgreementsList = new FrmAgreementsList
+                {
+                    MdiParent = this
+                };
 
                 frmAgreementsList.Show();
-            }
+            }                  
             else
             {
                 MessageBox.Show("Nie masz wystarczających uprawnień do wykonania tej czynności.", "Niewystarczające uprawnienia", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-        }
+}
 
         private void BtnSettingsChangePassword_Click(object sender, EventArgs e)
         {
