@@ -165,6 +165,7 @@ namespace BLL
             int reportRowId = 6;
             int reportPageRowId = 1;
             int reportPage = 1;
+            int lp = 0;
 
             decimal sumPayment = 0;
 
@@ -186,6 +187,7 @@ namespace BLL
                     xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
 
                     reportPageRowId = 2;
+                    lp = 0;
                     reportRowId++;
                     reportPage++;
                 }
@@ -200,26 +202,33 @@ namespace BLL
                     xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
 
                     sumPayment += (decimal)gridexRow.Cells["DoWyplaty"].Value;
+
+                    lp = 0;
                 }
                 else
                 {
-                    // LINE
-                    templateLineRow.Copy(System.Type.Missing);
-                    xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
+                    if (Convert.ToInt32(gridexRow.Cells["sprzedaz"].Value) > 0)
+                    {
+                        // LINE
+                        lp++;
 
-                    xlWorkSheetReport.Cells[reportRowId, 1] = gridexRow.Cells["lp"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 2] = gridexRow.Cells["Tytul"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 3] = gridexRow.Cells["autor"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 4] = gridexRow.Cells["naklad"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 5] = gridexRow.Cells["CenaDetaliczna"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 6] = gridexRow.Cells["CenaNetto"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 7] = gridexRow.Cells["Okres"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 8] = gridexRow.Cells["sprzedaz"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 9] = gridexRow.Cells["PodstawaDoRozliczen"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["HonorariumProcent"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["Honorarium"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value;
-                    xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
+                        templateLineRow.Copy(System.Type.Missing);
+                        xlWorkSheetReport.Rows[reportRowId].PasteSpecial(XlPasteType.xlPasteAll, XlPasteSpecialOperation.xlPasteSpecialOperationNone, misValue, misValue);
+
+                        xlWorkSheetReport.Cells[reportRowId, 1] = lp.ToString();
+                        xlWorkSheetReport.Cells[reportRowId, 2] = gridexRow.Cells["Tytul"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 3] = gridexRow.Cells["autor"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 4] = gridexRow.Cells["naklad"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 5] = gridexRow.Cells["CenaDetaliczna"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 6] = gridexRow.Cells["CenaNetto"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 7] = gridexRow.Cells["Okres"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 8] = gridexRow.Cells["sprzedaz"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 9] = gridexRow.Cells["PodstawaDoRozliczen"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 10] = gridexRow.Cells["HonorariumProcent"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 11] = gridexRow.Cells["Honorarium"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 12] = gridexRow.Cells["Zaliczka"].Value;
+                        xlWorkSheetReport.Cells[reportRowId, 13] = gridexRow.Cells["DoWyplaty"].Value;
+                    }
                 }
 
                 reportRowId++;
